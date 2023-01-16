@@ -70,3 +70,4 @@ This project uses the following key libraries
 * [react-bootstrap](https://react-bootstrap.github.io/)
 * [Bootstrap 5](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
 * [Vite JS](https://vitejs.dev/)
+* [Storybook JS](https://storybook.js.org/)

@@ -1,0 +1,47 @@
+$black: #000;
+$white: #fff;
+$white5: rgba(255, 255, 255, 0.05);
+$white10: rgba(255, 255, 255, 0.1);
+$white15: rgba(255, 255, 255, 0.15);
+$white20: rgba(255, 255, 255, 0.2);
+$white35: rgba(255, 255, 255, 0.35);
+$white60: rgba(255, 255, 255, 0.6);
+$white75: rgba(255, 255, 255, 0.75);
+$white90: rgba(255, 255, 255, 0.9);
+$black5: rgba(0, 0, 0, 0.05);
+$black10: rgba(0, 0, 0, 0.1);
+$black15: rgba(0, 0, 0, 0.15);
+$black20: rgba(0, 0, 0, 0.2);
+$black35: rgba(0, 0, 0, 0.35);
+$black60: rgba(0, 0, 0, 0.6);
+$black75: rgba(0, 0, 0, 0.75);
+$black90: rgba(0, 0, 0, 0.9);
+$alpha: #17172d;
+$active: #8cbaff;
+$danger: #ff3e3e;
+$success: #1fdb00;
+
+$theme-colors: (
+  "black": $black,
+  "white": $white,
+  "white5": $white5,
+  "white10": $white10,
+  "white15": $white15,
+  "white20": $white20,
+  "white35": $white35,
+  "white60": $white60,
+  "white75": $white75,
+  "white90": $white90,
+  "black5": $black5,
+  "black10": $black10,
+  "black15": $black15,
+  "black20": $black20,
+  "black35": $black35,
+  "black60": $black60,
+  "black75": $black75,
+  "black90": $black90,
+  "alpha": $alpha,
+  "active": $active,
+  "danger": $danger,
+  "success": $success,
+);
