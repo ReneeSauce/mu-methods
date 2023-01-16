@@ -3,6 +3,7 @@
 ## Getting Started
 
 Cloning the repository:
+
 ```
 git clone git@github.com:jahorwitz/mu-methods.git
 ```
@@ -10,16 +11,19 @@ git clone git@github.com:jahorwitz/mu-methods.git
 !!!IMPORTANT Make sure to install dependencies before making any code changes. This repository utilizes git-hooks which must be installed using npm before they will function.
 
 Install:
+
 ```
 npm install
 ```
 
 Running the application:
+
 ```
 npm run dev
 ```
 
 Running tests:
+
 ```
 npm run test
 ```
@@ -27,15 +31,20 @@ npm run test
 ## Contributing
 
 ### No Commits To Main
+
 Contributors are not allowed to commit directly to `main`. This rule is enforced using git hooks. Instead, you must create a new branch off of `main` using the following naming pattern:
+
 ```
-Pattern:"/^(master|main|develop){1}$|^(feature|fix|hotfix|release)\/.+$/g" 
+Pattern:"/^(master|main|develop){1}$|^(feature|fix|hotfix|release)\/.+$/g"
 ```
+
 Example:
 `feature/my-dev-task`
 
 ### Commit messages
+
 If your commit message does not conform to the correct pattern, you will receive an error message like the following:
+
 ```
   ************* Invalid Git Commit Message **************
   commit message: Added husky git hooks
@@ -67,7 +76,10 @@ If your commit message does not conform to the correct pattern, you will receive
 ## Helpful Resources
 
 This project uses the following key libraries
-* [react-bootstrap](https://react-bootstrap.github.io/)
-* [Bootstrap 5](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
-* [Vite JS](https://vitejs.dev/)
-* [Storybook JS](https://storybook.js.org/)
+
+- [react-bootstrap](https://react-bootstrap.github.io/)
+- [Bootstrap 5](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
+- [Bootstrap Classes](https://getbootstrap.com/docs/5.0/utilities/colors/)
+- [Vite JS](https://vitejs.dev/)
+- [Storybook JS](https://storybook.js.org/)
+- [React Router](https://reactrouter.com/en/main/start/tutorial)

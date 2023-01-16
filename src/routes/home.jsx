@@ -3,5 +3,5 @@ export const Home = () => {
     <div className="bg-alpha">
       <h1>Home</h1>
     </div>
-  )
-}
+  );
+};
