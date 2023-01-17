@@ -83,3 +83,9 @@ This project uses the following key libraries
 - [Vite JS](https://vitejs.dev/)
 - [Storybook JS](https://storybook.js.org/)
 - [React Router](https://reactrouter.com/en/main/start/tutorial)
+- [Testing Cheatsheet](https://testing-library.com/docs/react-testing-library/cheatsheet)
+- [Testing Cheatsheet #2](https://vitest.dev/api/)
+
+## Deployment
+
+The project is configured to deploy automatically using GitHub Actions whenever a commit is made to `main`. This workflow is triggered by merging a Pull Request. After the workflow runs, you can visit the deployed site here: http://mu-methods-apiary.s3-website-us-east-1.amazonaws.com/
