@@ -19,9 +19,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14
-      - run: npm install -g nx
       - run: npm install
-      - run: nx build @app/labs/frontend
+      - run: npm run build
 
       - uses: aws-actions/configure-aws-credentials@v1
         with:
