@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "prepare": "husky install",
-    "lint": "npx prettier --check .",
+    "lint": "npx prettier --write --ignore-unknown",
     "test": "vitest run",
     "test:watch": "vitest watch",
     "coverage": "vitest run --coverage"

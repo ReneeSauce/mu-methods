@@ -9,5 +9,5 @@ if [ "$branch" = "main" ]; then
 fi
 
 npx validate-branch-name
-npx lint-staged
+npm run lint
 npm test
