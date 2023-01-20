@@ -11,7 +11,9 @@
     "lint": "npx prettier --write --ignore-unknown",
     "test": "vitest run",
     "test:watch": "vitest watch",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "lint-staged": {
     "**/*.js": "prettier --write --ignore-unknown"
@@ -26,11 +28,21 @@
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@storybook/addon-actions": "^6.5.15",
+    "@storybook/addon-essentials": "^6.5.15",
+    "@storybook/addon-interactions": "^6.5.15",
+    "@storybook/addon-links": "^6.5.15",
+    "@storybook/builder-vite": "^0.3.0",
+    "@storybook/preset-scss": "^1.0.3",
+    "@storybook/react": "^6.5.15",
+    "@storybook/testing-library": "^0.0.13",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
     "@vitejs/plugin-react": "^3.0.0",
+    "babel-loader": "^8.3.0",
     "git-commit-msg-linter": "^4.5.0",
     "husky": "^8.0.0",
     "jsdom": "^21.0.0",

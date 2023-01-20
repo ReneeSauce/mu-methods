@@ -17,7 +17,7 @@ $black60: rgba(0, 0, 0, 0.6);
 $black75: rgba(0, 0, 0, 0.75);
 $black90: rgba(0, 0, 0, 0.9);
 $alpha: #17172d;
-$active: #8cbaff;
+$primary: #8cbaff;
 $danger: #ff3e3e;
 $success: #1fdb00;
 
@@ -41,7 +41,7 @@ $theme-colors: (
   "black75": $black75,
   "black90": $black90,
   "alpha": $alpha,
-  "active": $active,
+  "primary": $primary,
   "danger": $danger,
   "success": $success,
-);
+) !default;
