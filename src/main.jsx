@@ -4,7 +4,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Home, Login } from "./routes";
-import Table from "./components/table-component/table";
 
 const router = createBrowserRouter([
   {

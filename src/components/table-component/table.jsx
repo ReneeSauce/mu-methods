@@ -11,27 +11,27 @@ const title = ({ children }) => {
 };
 
 const asset = ({ children }) => {
-  <p className="">{children}</p>;
+  return <p className="">{children}</p>;
 };
 
 const avatar = ({ link, alt }) => {
-  <img className="" src={link} alt={alt} />;
+  return <img className="" src={link} alt={alt} />;
 };
 
 const name = ({ children }) => {
-  <p className="">{children}</p>;
+  return <p className="">{children}</p>;
 };
 
 const bal = ({ children }) => {
-  <p className="">{children}</p>;
+  return <p className="">{children}</p>;
 };
 
 const key = ({ children }) => {
-  <p className="text-white90">{children}</p>;
+  return <p className="text-white90">{children}</p>;
 };
 
 const symbol = ({ alt, link }) => {
-  <img className="" alt={alt} src={link} />;
+  return <img className="" alt={alt} src={link} />;
 };
 
 Table.Header = heading;
