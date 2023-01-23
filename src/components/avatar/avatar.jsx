@@ -1,11 +1,12 @@
 import { ThemeProvider } from "styled-components";
 import styled from "styled-components";
+
 /**
  * Avatar Component
  * @author [J. Hartsek](https://github.com/JHartsek)
  */
 
-export const Avatar = ({ shape, src, size }) => {
+export const Avatar = ({ shape, src, size, alt }) => {
   const sizes = {
     xs: "35px",
     small: "40px",
@@ -24,6 +25,7 @@ export const Avatar = ({ shape, src, size }) => {
         className={`overflow-hidden ${
           shape === "round" ? "rounded-circle" : "rounded"
         }`}
+        alt={alt}
       ></Container>
     </ThemeProvider>
   );
