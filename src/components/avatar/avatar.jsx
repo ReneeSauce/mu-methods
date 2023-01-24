@@ -6,6 +6,11 @@ import styled from "styled-components";
  * @author [J. Hartsek](https://github.com/JHartsek)
  */
 
+const Container = styled.img`
+  height: ${(props) => props.theme[props.size]};
+  width: ${(props) => props.theme[props.size]};
+`;
+
 export const Avatar = ({ shape, src, size, alt }) => {
   const sizes = {
     xs: "35px",
@@ -14,10 +19,6 @@ export const Avatar = ({ shape, src, size, alt }) => {
     large: "60px",
   };
 
-  const Container = styled.img`
-    height: ${(props) => props.theme[size]};
-    width: ${(props) => props.theme[size]};
-  `;
   return (
     <ThemeProvider theme={sizes}>
       <Container
@@ -26,6 +27,7 @@ export const Avatar = ({ shape, src, size, alt }) => {
           shape === "round" ? "rounded-circle" : "rounded"
         }`}
         alt={alt}
+        size={size}
       ></Container>
     </ThemeProvider>
   );
