@@ -4,6 +4,10 @@ import styled from "styled-components";
 /**
  * Avatar Component
  * @author [J. Hartsek](https://github.com/JHartsek)
+ * @param shape expects 'round' or 'square'
+ * @param src the image link
+ * @param size expects 'xs', 'small', 'medium', or 'large'
+ * @param alt the image description
  */
 
 const Container = styled.img`
