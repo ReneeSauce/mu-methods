@@ -11,8 +11,8 @@ import styled from "styled-components";
  */
 
 const Container = styled.img`
-  height: ${(props) => props.theme[props.size]};
-  width: ${(props) => props.theme[props.size]};
+  height: ${(props) => props.size};
+  width: ${(props) => props.size};
 `;
 
 export const Avatar = ({ shape, src, size, alt }) => {
@@ -24,15 +24,13 @@ export const Avatar = ({ shape, src, size, alt }) => {
   };
 
   return (
-    <ThemeProvider theme={sizes}>
-      <Container
-        src={src}
-        className={`overflow-hidden ${
-          shape === "round" ? "rounded-circle" : "rounded"
-        }`}
-        alt={alt}
-        size={size}
-      ></Container>
-    </ThemeProvider>
+    <Container
+      src={src}
+      className={`overflow-hidden ${
+        shape === "round" ? "rounded-circle" : "rounded"
+      }`}
+      alt={alt}
+      size={sizes[size]}
+    ></Container>
   );
 };
