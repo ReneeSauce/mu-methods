@@ -16,6 +16,13 @@ const StyledHeading = styled.p`
   color: rgba(246, 246, 246, 0.7);
 `;
 
+const StyledAvatar = styled.img`
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  margin: 22px 12px 0 12px;
+`;
+
 const Table = ({ children }) => {
   return <div className="d-flex flex-column">{children}</div>;
 };
@@ -30,7 +37,12 @@ const Cell = ({ children }) => {
   return <StyledCell>{children}</StyledCell>;
 };
 
+const Avatar = ({ src, alt }) => {
+  return <StyledAvatar src={src} alt={alt}></StyledAvatar>;
+};
+
 Table.Header = Header;
 Table.Cell = Cell;
+Table.Avatar = Avatar;
 
 export default Table;
