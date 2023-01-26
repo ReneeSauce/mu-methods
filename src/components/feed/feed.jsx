@@ -1,5 +1,6 @@
 import styled from "styled-components";
-export default function Feed({ children }) {
+
+export const Feed = ({children}) => {
   return <div className="bg-alpha">{children}</div>;
 }
 

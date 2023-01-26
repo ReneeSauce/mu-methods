@@ -19,5 +19,5 @@ Empty.args = { items: [] };
 
 export const OneItem = FeedTemplate.bind({});
 OneItem.args = {
-    children: [<Feed.Item/>]
+    children: [<Feed.Item />]
 };
