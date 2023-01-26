@@ -11,16 +11,18 @@ import { Avatar } from "../avatar/avatar";
  * @param status expects 'read' or 'unread'
  */
 
-const Container = styled.div`
+const NotificationWrapper = ({ children }) => ({ children });
+
+NotificationWrapper.Container = styled.div`
   column-gap: 8px;
   padding: 12px 0 16px 12px;
 `;
 
-const Info = styled.div`
+NotificationWrapper.Info = styled.div`
   row-gap: 4px;
 `;
 
-const Title = styled.h3`
+NotificationWrapper.Title = styled.h3`
   margin: 0;
   color: rgba(246, 246, 246, 0.7);
   font-family: "DM Sans", sans-serif;
@@ -28,7 +30,7 @@ const Title = styled.h3`
   font-weight: 400;
 `;
 
-const Summary = styled.p`
+NotificationWrapper.Summary = styled.p`
   margin: 0;
   column-gap: 4px;
   font-family: "DM Sans", sans-serif;
@@ -36,24 +38,26 @@ const Summary = styled.p`
   font-weight: 500;
 `;
 
-const Dot = styled.div`
+NotificationWrapper.Dot = styled.div`
   height: 8px;
   width: 8px;
 `;
 
+NotificationWrapper.Avatar = Avatar;
+
 export const Notification = ({ src, alt, title, summary, status }) => {
   return (
-    <Container className="d-flex w-100 bg-alpha">
-      <Avatar shape="round" src={src} size="xs" alt={alt} />
-      <Info className="flex-column">
-        <Title> {title}</Title>
-        <Summary className="d-flex">
+    <NotificationWrapper.Container className="d-flex w-100 bg-alpha">
+      <NotificationWrapper.Avatar shape="round" src={src} size="xs" alt={alt} />
+      <NotificationWrapper.Info className="flex-column">
+        <NotificationWrapper.Title> {title}</NotificationWrapper.Title>
+        <NotificationWrapper.Summary className="d-flex">
           {summary}
           {status === "unread" && (
-            <Dot className="bg-primary d-inline-block rounded-circle" />
+            <NotificationWrapper.Dot className="bg-primary d-inline-block rounded-circle" />
           )}
-        </Summary>
-      </Info>
-    </Container>
+        </NotificationWrapper.Summary>
+      </NotificationWrapper.Info>
+    </NotificationWrapper.Container>
   );
 };
