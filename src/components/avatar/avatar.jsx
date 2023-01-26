@@ -6,7 +6,7 @@ import styled from "styled-components";
  * @author [J. Hartsek](https://github.com/JHartsek)
  * @param shape expects 'round' or 'square'
  * @param src the image link
- * @param size expects 'xs', 'small', 'medium', or 'large'
+ * @param size expects 'xs', 'sm', 'md', or 'lg'
  * @param alt the image description
  */
 
@@ -18,9 +18,9 @@ const Container = styled.img`
 export const Avatar = ({ shape, src, size, alt }) => {
   const sizes = {
     xs: "35px",
-    small: "40px",
-    medium: "50px",
-    large: "60px",
+    sm: "40px",
+    md: "50px",
+    lg: "60px",
   };
 
   return (
