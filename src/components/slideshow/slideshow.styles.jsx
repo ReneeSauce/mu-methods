@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import muLogo from "../../../public/mu-methods.svg";
-import cubes from "../../../public/cubes.svg";
+import muLogo from "../../assets/mu-methods.svg";
+import cubes from "../../assets/cubes.svg";
 
 export const SlideShowLogo = styled.div`
   width: 30px;
