@@ -4,7 +4,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Home, Login } from "./routes";
-
+import Modal from "./components/modal/modal";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -18,6 +18,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+     
     <RouterProvider router={router} />
+    <Modal/>
   </React.StrictMode>
 );
