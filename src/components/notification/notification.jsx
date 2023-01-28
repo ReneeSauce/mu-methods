@@ -25,16 +25,12 @@ NotificationWrapper.Info = styled.div`
 NotificationWrapper.Title = styled.h3`
   margin: 0;
   color: rgba(246, 246, 246, 0.7);
-  font-family: "DM Sans", sans-serif;
   font-size: 12px;
-  font-weight: 400;
 `;
 
 NotificationWrapper.Summary = styled.p`
   margin: 0;
   column-gap: 4px;
-  font-family: "DM Sans", sans-serif;
-  font-size: 16px;
   font-weight: 500;
 `;
 
