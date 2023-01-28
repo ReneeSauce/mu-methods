@@ -49,7 +49,7 @@ export const Notification = ({ src, alt, title, summary, status }) => {
   return (
     <NotificationWrapper.Container className="d-flex w-100 bg-alpha">
       <NotificationWrapper.Avatar shape="round" src={src} size="xs" alt={alt} />
-      <NotificationWrapper.Info className="flex-column">
+      <NotificationWrapper.Info className="d-flex flex-column">
         <NotificationWrapper.Title> {title}</NotificationWrapper.Title>
         <NotificationWrapper.Summary className="d-flex">
           {summary}
