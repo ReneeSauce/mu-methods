@@ -1,25 +1,28 @@
 import styled from "styled-components";
 
-export const Feed = ({children}) => {
-  return <div className="bg-alpha">{children}</div>;
-}
+/* 
+ @author [Jenny Doctor](https://github.com/jendoc)
+*/
 
-const headerDate = ({ children }) => {
-  const Date = styled.h3`
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 120%;
-    text-transform: uppercase;
-    text-transform: uppercase;
-    font-feature-settings: "pnum" on, "lnum" on;
-    margin: 8px auto 8px 16px;
-  `;
-  <Date>{children}</Date>;
+export const Feed = ({ children }) => {
+  return <div className="bg-alpha" role={"feed"}>{children}</div>;
 };
 
-const item = ({ children }) => {
-  <div>{children}</div>;
+const Heading = styled.h3`
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 120%;
+  margin: 16px auto 8px 16px;
+  opacity: 0.7;
+`;
+
+const feedHeading = ({ children }) => {
+  return <Heading className="text-uppercase" role={"heading"}>{children}</Heading>;
 };
 
-Feed.HeaderDate = headerDate;
-Feed.Item = item;
+const feedItem = ({ children }) => {
+  return <div className="text-white75" role={"item"}>{children}</div>;
+};
+
+Feed.Heading = feedHeading;
+Feed.Item = feedItem;

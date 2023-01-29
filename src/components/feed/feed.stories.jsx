@@ -1,23 +1,23 @@
+import React from "react";
+
 import { Feed } from "./feed";
+
+/* 
+ @author [Jenny Doctor](https://github.com/jendoc)
+*/
 
 export default {
   title: "Components/Feed",
-  component: Feed,
+  component: Feed
 };
 
-const FeedTemplate = ({ items, ...args }) => (
+
+export const Default = () => (
   <Feed>
-    <Feed.HeaderDate/>
-    {items.map((item) => (
-      <Feed.Item {...item} />
-    ))}
-  </Feed>
-);
-
-export const Empty = FeedTemplate.bind({});
-Empty.args = { items: [] };
-
-export const OneItem = FeedTemplate.bind({});
-OneItem.args = {
-    children: [<Feed.Item />]
-};
+    <Feed.Heading>Dec 07 (today)</Feed.Heading>
+    <Feed.Item>Notifications go here</Feed.Item>
+    <Feed.Item>Test 1 2</Feed.Item>
+    <Feed.Heading>Dec 05</Feed.Heading>
+    <Feed.Item>More testing</Feed.Item>  
+    </Feed>
+)
