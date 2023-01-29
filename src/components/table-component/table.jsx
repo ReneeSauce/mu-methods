@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+/* 
+ @author [Kurtney J.](https://github.com/xhundo)
+*/
+
+// Table component build with named spaced format
+
 const StyledCell = styled.div`
   width: 343px;
   height: 84px;
@@ -19,17 +25,27 @@ const StyledAvatar = styled.img`
 `;
 
 const Table = ({ children }) => {
-  return <div className="d-flex flex-column">{children}</div>;
+  return (
+    <div role="table" className="d-flex flex-column">
+      {children}
+    </div>
+  );
 };
 
 const Header = ({ children }) => {
   return (
-    <StyledHeading className="text-uppercase mb-2">{children}</StyledHeading>
+    <StyledHeading role="heading" className="text-uppercase mb-2">
+      {children}
+    </StyledHeading>
   );
 };
 
 const Cell = ({ children }) => {
-  return <StyledCell className="rounded mb-2">{children}</StyledCell>;
+  return (
+    <StyledCell role="cell" className="rounded mb-2">
+      {children}
+    </StyledCell>
+  );
 };
 
 const Avatar = ({ src, alt }) => {
