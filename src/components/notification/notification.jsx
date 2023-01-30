@@ -25,6 +25,7 @@ NotificationWrapper.Info = styled.div`
 NotificationWrapper.Title = styled.h3`
   margin: 0;
   font-size: 12px;
+  color: var(--bs-white60);
 `;
 
 NotificationWrapper.Summary = styled.p`
@@ -45,10 +46,7 @@ export const Notification = ({ src, alt, title, summary, status }) => {
     <NotificationWrapper.Container className="d-flex w-100 bg-alpha">
       <NotificationWrapper.Avatar shape="round" src={src} size="xs" alt={alt} />
       <NotificationWrapper.Info className="d-flex flex-column">
-        <NotificationWrapper.Title className="text-white75">
-          {" "}
-          {title}
-        </NotificationWrapper.Title>
+        <NotificationWrapper.Title> {title}</NotificationWrapper.Title>
         <NotificationWrapper.Summary className="d-flex">
           {summary}
           {status === "unread" && (
