@@ -1,7 +1,37 @@
+import Modal from "../components/modal/modal";
+import React,{useState,useEffect} from "react"
 export const Home = () => {
+  const [isModalOpen,setIsModalOpen]=useState(false);
+const handleOpenClick=()=>{
+  setIsModalOpen(true);
+}
+const closeModal=()=>{
+  setIsModalOpen(false);
+}
+useEffect(() => {
+  
+
+  const handleEscClose = (event) => {
+    if (event.key === 'Escape') {
+      closeModal();
+    }
+  };
+
+  if (isModalOpen) {
+   
+    document.addEventListener('keydown', handleEscClose);
+  }
+
+  return () => {
+    
+    document.removeEventListener('keydown', handleEscClose);
+  };
+}, [isModalOpen]);
   return (
     <div className="bg-alpha">
       <h1>Home</h1>
+      <Modal isOpen ={isModalOpen} onClose={closeModal}title={"coinbase"} text={"Transaction for 0.008 ETH sign request"} notifications={"Type “carrot pizza” to sign your transaction"} />
+    <button onClick={handleOpenClick}>open modal</button>
     </div>
   );
 };
