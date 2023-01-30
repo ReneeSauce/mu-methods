@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "../button";
+// import {Button} from "../button";
 import styled from "styled-components";
 
 const ModalComponent = styled.div`
@@ -52,12 +52,15 @@ const ModalContainer = styled.div`
   padding: 16px 16px 24px;
   box-sizing: border-box;
   position: relative;
-
+justify-content:space-between;
   @media (min-width: 1000px) {
     border-radius: 16px 16px 16px 16px;}
 `;
 const ModalHeader = styled.div`
   display: flex;
+  justify-content: center;
+  @media (min-width: 1000px) {
+    display:none;}
 `;
 const ModalTitle = styled.p`
   font-family: "DM Sans";
@@ -74,6 +77,9 @@ const ModalTitle = styled.p`
 
   color: rgba(246, 246, 246, 0.7);
   margin: 32px 0 16px;
+  @media (min-width: 1000px) {
+    margin: 84px 0 12px;
+    }
 `;
 const ModalBody = styled.div`
   display: flex;
@@ -118,43 +124,64 @@ const ModalNotificationBox = styled.div`
 const ModalFooter = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 57px;
-
-  outline: solid 1px yellow;
+  // margin-top: 57px;
+align-self:flex-end;
+  
 `;
 const ModalCloseButton = styled.div`
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   position: absolute;
-  top: -26px;
+  top: 26px;
   right: 26px;
   width: 12px;
   height: 12px;
-  background-color: transparent;
-  background-image: url(../../assets/closeIcon.svg);
+  //background-color: transparent;
+  background-image: url(../../../assets/Group1.png);
   background-position: center;
   background-size: cover;
   border: none;
   cursor: pointer;
   transition: opacity 0.3s;
+  @media (max-width: 1000px) {
+    display:none;}
 `;
+const Button = styled.button`
+width:343px;
+height:60px;
+margin-top:12px;
 
+border-radius: 8px;
+border:none;
+
+
+`
 const Modal = ({ header, title, text, children, notifications, footer }) => {
   return (
+    
     <ModalComponent>
       {" "}
       {children}
+     
+      
       <ModalContainer>
+      <ModalCloseButton>hi</ModalCloseButton>
+        <div>
         <ModalHeader>{header}</ModalHeader>
         <ModalTitle>{title}</ModalTitle>
         <ModalBody>
           <ModalText>{text}</ModalText>
           <ModalNotificationBox>{notifications}</ModalNotificationBox>
         </ModalBody>
-        <ModalFooter><Button >Decline</Button><Button >Sign in</Button></ModalFooter>
+        </div>
+        <ModalFooter><Button className="bg-dangerOpacity50">Decline</Button><Button className="bg-primary">
+  Sign In
+</Button></ModalFooter>
       </ModalContainer>
+      
     </ModalComponent>
+    
   );
 };
 export default Modal;
