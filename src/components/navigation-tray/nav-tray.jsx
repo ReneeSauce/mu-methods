@@ -62,11 +62,11 @@ export const NavTray = ({ isNotification }) => {
       className="nav position-fixed d-flex justify-content-evenly align-items-center rounded-pill bg-white"
       style={{ "--bs-bg-opacity": 0.1 }}
     >
-      <StyledProfileNavLink className="nav-link rounded-circle" to="/login" />
-      <StyledHomeNavLink className="nav-link rounded-circle" to="/" />
+      <StyledProfileNavLink className="nav-link rounded-circle" to="#/login" />
+      <StyledHomeNavLink className="nav-link rounded-circle" to="#/" />
       <StyledNotificationNavLink
         className="nav-link rounded-circle"
-        to="/notification"
+        to="#/notification"
       >
         {isNotification ? (
           <img
