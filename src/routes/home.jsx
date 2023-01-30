@@ -10,7 +10,11 @@ const closeModal=()=>{
   setIsModalOpen(false);
 }
 useEffect(() => {
-  
+  const handleClickClose = (event) => {
+    if (event.target.classList.contains('modal')) {
+      closeModal();
+    }
+  };
 
   const handleEscClose = (event) => {
     if (event.key === 'Escape') {
@@ -19,12 +23,12 @@ useEffect(() => {
   };
 
   if (isModalOpen) {
-   
+    document.addEventListener('click', handleClickClose);
     document.addEventListener('keydown', handleEscClose);
   }
 
   return () => {
-    
+    document.removeEventListener('click', handleClickClose);
     document.removeEventListener('keydown', handleEscClose);
   };
 }, [isModalOpen]);
