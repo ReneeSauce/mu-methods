@@ -1,5 +1,6 @@
 import Modal from "../components/modal/modal";
 import React,{useState,useEffect} from "react"
+import rectangleModalHeader from "../assets/rectangleModalHeader.svg"
 export const Home = () => {
   const [isModalOpen,setIsModalOpen]=useState(false);
 const handleOpenClick=()=>{
@@ -30,7 +31,7 @@ useEffect(() => {
   return (
     <div className="bg-alpha">
       <h1>Home</h1>
-      <Modal isOpen ={isModalOpen} onClose={closeModal}title={"coinbase"} text={"Transaction for 0.008 ETH sign request"} notifications={"Type “carrot pizza” to sign your transaction"} />
+      <Modal isOpen ={isModalOpen} onClose={closeModal} header={`${rectangleModalHeader}`} title={"coinbase"} text={"Transaction for 0.008 ETH sign request"} notifications={"Type “carrot pizza” to sign your transaction"} />
     <button onClick={handleOpenClick}>open modal</button>
     </div>
   );

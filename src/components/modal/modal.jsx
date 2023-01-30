@@ -1,8 +1,9 @@
 import React from "react";
+import Modal from 'react-bootstrap/Modal';
 // import {Button} from "../button";
 import styled from "styled-components";
-import CloseButtonSvg from "../../assets/closeIcon.svg"
-
+import closeIcon from "../../assets/closeIcon.svg";
+import rectangleModalHeader from "../../assets/rectangleModalHeader.svg"
 
 /**
  The **Modal** component is the base of all the modals in the web app.
@@ -10,7 +11,7 @@ import CloseButtonSvg from "../../assets/closeIcon.svg"
  *  @author [Nuriya](https://github.com/NuriyaAkh)
  */
 const ModalComponent = styled.div`
-box-sizing: border-box;
+  box-sizing: border-box;
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -24,20 +25,20 @@ box-sizing: border-box;
   transition: visibility 0s ease-in-out 0.4s, opacity 0.4s ease-in-out;
   margin: 0;
   padding: 0;
-  color:white;
+  color: white;
   //visibility: hidden;
-  
+
   @media (max-width: 1000px) {
     align-items: flex-end;
     transform: translateX(0%);
   }
-  `;
+`;
 const ModalComponent1 = styled.div`
   box-sizing: border-box;
   justify-content: center;
   align-items: flex-end;
   position: fixed;
-  
+
   left: 0;
   width: 100%;
   height: 100%;
@@ -77,6 +78,9 @@ const ModalContainer = styled.div`
 const ModalHeader = styled.div`
   display: flex;
   justify-content: center;
+  // background-color:transparent;
+  // background-image:url("${rectangleModalHeader}");
+  
   @media (min-width: 1000px) {
     display: none;
   }
@@ -91,9 +95,6 @@ const ModalTitle = styled.p`
   text-align: center;
   text-transform: uppercase;
   font-feature-settings: "pnum" on, "lnum" on;
-
-  /* Dark/Content/Secondary */
-
   color: rgba(246, 246, 246, 0.7);
   margin: 32px 0 16px;
   @media (min-width: 1000px) {
@@ -112,12 +113,8 @@ const ModalText = styled.h3`
   font-size: 18px;
   line-height: 120%;
   /* identical to box height, or 22px */
-
   text-align: center;
   font-feature-settings: "pnum" on, "lnum" on;
-
-  /* Dark/Content/Primary */
-
   color: #f6f6f6;
   margin-bottom: 32px;
 `;
@@ -131,12 +128,8 @@ const ModalNotificationBox = styled.div`
   font-size: 18px;
   line-height: 120%;
   /* or 22px */
-
   text-align: center;
   font-feature-settings: "pnum" on, "lnum" on;
-
-  /* Dark/Content/Primary */
-
   color: #f6f6f6;
   padding: 0 30px;
 `;
@@ -154,8 +147,9 @@ const ModalCloseButton = styled.div`
   right: 26px;
   width: 12px;
   height: 12px;
-  //background-color: transparent;
-  background-image: url("../../assets/closeIcon.svg");
+  background-color: transparent;
+  background-image: url("${closeIcon}");
+
   background-position: center;
   background-size: cover;
   border: none;
@@ -173,25 +167,44 @@ const Button = styled.button`
   border: none;
   //opacity:0.5;
 `;
-const Modal = ({ isOpen,onClose, title, text, children, notifications, footer }) => {
-  return (
-    isOpen ? (
+const Modal1 = ({
+  isOpen,
+  onClose,
+  header,
+  title,
+  text,
+  children,
+  notifications,
+  footer,
+}) => {
+  return isOpen ? (
     <ModalComponent>
       {" "}
       {children}
       <ModalContainer>
-        <ModalCloseButton type="button"
+        <ModalCloseButton
+          type="button"
           onClick={onClose}
-          aria-label="Close modal">
-        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect y="11.3137" width="16" height="2" rx="1" transform="rotate(-45 0 11.3137)" fill="#F6F6F6"/>
-<rect x="1.41418" width="16" height="2" rx="1" transform="rotate(45 1.41418 0)" fill="#F6F6F6"/>
-</svg>
-        </ModalCloseButton>
+          aria-label="Close modal"
+        ></ModalCloseButton>
         <div>
-          <ModalHeader><svg width="40" height="2" viewBox="0 0 40 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="40" height="2" rx="1" fill="#F6F6F6" fillOpacity="0.5"/>
-</svg></ModalHeader>
+          <ModalHeader>{header}
+            {/* <svg
+              width="40"
+              height="2"
+              viewBox="0 0 40 2"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                width="40"
+                height="2"
+                rx="1"
+                fill="#F6F6F6"
+                fillOpacity="0.5"
+              />
+            </svg> */}
+          </ModalHeader>
           <ModalTitle>{title}</ModalTitle>
           <ModalBody>
             <ModalText>{text}</ModalText>
@@ -199,17 +212,20 @@ const Modal = ({ isOpen,onClose, title, text, children, notifications, footer })
           </ModalBody>
         </div>
         <ModalFooter>
+          {footer}
           <Button className="bg-dangerOpacity50">Decline</Button>
-          <Button className="bg-primary">Sign In</Button>
+          {/* <Button className="bg-primary">Sign In</Button> */}
         </ModalFooter>
       </ModalContainer>
-    </ModalComponent>) :("")
+    </ModalComponent>
+  ) : (
+    ""
   );
 };
-export default Modal;
+export default Modal1;
 
 Modal.Header = ModalHeader;
-Modal.Title= ModalTitle;
+Modal.Title = ModalTitle;
 Modal.Container = ModalContainer;
 Modal.Footer = ModalFooter;
 Modal.Body = ModalBody;
