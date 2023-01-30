@@ -12,8 +12,7 @@ const Heading = styled.h3`
   font-weight: 400;
   font-size: 10px;
   line-height: 120%;
-  margin: 16px auto 8px 16px;
-  opacity: 0.7;
+  color: var(--vs-white75)
 `;
 
 const feedHeading = ({ children }) => {
