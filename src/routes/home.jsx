@@ -31,8 +31,8 @@ useEffect(() => {
   return (
     <div className="bg-alpha">
       <h1>Home</h1>
-      <Modal isOpen ={isModalOpen} onClose={closeModal} header={`${rectangleModalHeader}`} title={"coinbase"} text={"Transaction for 0.008 ETH sign request"} notifications={"Type “carrot pizza” to sign your transaction"} />
-    <button onClick={handleOpenClick}>open modal</button>
+       <Modal isOpen ={isModalOpen} onClose={closeModal}  title={"coinbase"} text={"Transaction for 0.008 ETH sign request"} notifications={"Type “carrot pizza” to sign your transaction"} />
+       <button onClick={handleOpenClick} class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#appModal">open modal</button> 
     </div>
   );
 };
