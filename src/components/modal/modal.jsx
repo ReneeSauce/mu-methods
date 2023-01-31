@@ -3,7 +3,7 @@ import React, { useState,useEffect } from "react";
 import {Button} from "../button";
 import styled from "styled-components";
 import closeIcon from "../../assets/closeIcon.svg";
-import { motion } from "framer-motion"
+import { motion, AnimatePresence} from "framer-motion"
 
 /**
  The **Modal** component is the base of all the modals in the web app.
@@ -26,34 +26,16 @@ const ModalComponent = styled(motion.div)`
   margin: 0;
   padding: 0;
   color: white;
-  //visibility: hidden;
+  
 
   @media (max-width: 1000px) {
     align-items: flex-end;
-
-    animation: slideDown 1s, slideUp 1s linear;
-
-    @keyframes slideUp {
-      from {
-        transform: translateY(100%);
-        background-color: transparent;
-      }
-
-      to {
-        transform: translateY(0);
-        background-color: rgba(0, 0, 0, 0.5);
-      }
-    }
-    @keyframes slideDown {
-      from {
-        transform: translateY(-100%);
-        background-color: rgba(0, 0, 0, 0.5);
-      }
-      to {
-        transform: translateY(0);
-        background-color: transparent;
-      }
-    }
+    <motion.div
+    initial={{ y: "100%" }}
+    animate={{ y: 0 }}
+    exit={{ y: "100%" }}
+    transition={{ duration: 0.5 }}></motion.div>
+    
   }
   
 `;
@@ -172,9 +154,14 @@ const ModalButton = styled.button`
   notifications,
   footer,
 }) => {
-  return isOpen ? (
+  return (
+    <AnimatePresence> {isOpen && (
     
-    <ModalComponent className="modal" tabindex="-1">
+    <ModalComponent 
+    initial={{ y: "100%" }}
+    animate={{ y: 0 }}
+    exit={{ y: "100%" }}
+    transition={{ duration: 0.5 }}>
       {" "}
       {children}
       <ModalContainer>
@@ -206,9 +193,8 @@ const ModalButton = styled.button`
         </ModalFooter>
       </ModalContainer>
     </ModalComponent>
-  ) : (
-    ""
-    );
+  )}
+  </AnimatePresence>);
   
 };
 
