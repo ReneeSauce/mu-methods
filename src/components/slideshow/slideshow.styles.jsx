@@ -4,9 +4,7 @@ import cubes from "../../assets/cubes.svg";
 
 export const SlideShowLogo = styled.div`
   width: 30px;
-  margin-top: 33px;
   height: 37px;
-  align-self: center;
   background-image: url(${muLogo});
 `;
 
@@ -19,8 +17,10 @@ export const SlideShowTitle = styled.h1`
 export const SlideShowImage = styled.div`
   width: 375px;
   height: 222px;
-  align-self: center;
   margin-left: 7px;
 
   background-image: url(${cubes});
+`;
+export const ButtonContainer = styled.div`
+  width: 343px;
 `;

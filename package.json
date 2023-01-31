@@ -25,7 +25,8 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.6.2",
     "sass": "^1.57.1",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "swiper": "^8.4.7"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",

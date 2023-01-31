@@ -17,5 +17,5 @@ const Template = (args) => <SlideShow {...args} />;
 
 export const Variants = Template.bind({});
 Variants.args = {
-  children: "Helllo",
+  children: "Hello",
 };
