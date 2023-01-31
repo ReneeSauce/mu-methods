@@ -5,22 +5,35 @@ import styled from "styled-components";
 */
 
 export const Feed = ({ children }) => {
-  return <div className="bg-alpha" role={"feed"}>{children}</div>;
+  return (
+    <div className="bg-alpha" role={"feed"}>
+      {children}
+    </div>
+  );
 };
 
+//TODO Adjust font-size to bs className 'fs-x"
+
 const Heading = styled.h3`
-  font-weight: 400;
   font-size: 10px;
   line-height: 120%;
-  color: var(--vs-white75)
+  color: var(--bs-white75);
 `;
 
 const feedHeading = ({ children }) => {
-  return <Heading className="text-uppercase" role={"heading"}>{children}</Heading>;
+  return (
+    <Heading className="text-uppercase fw-light" role={"heading"}>
+      {children}
+    </Heading>
+  );
 };
 
 const feedItem = ({ children }) => {
-  return <div className="text-white75" role={"item"}>{children}</div>;
+  return (
+    <div className="text-white75" role={"item"}>
+      {children}
+    </div>
+  );
 };
 
 Feed.Heading = feedHeading;
