@@ -1,16 +1,11 @@
-import React, { useState,useEffect } from "react";
-// import Modal from 'react-bootstrap/Modal';
-import {Button} from "../button";
 import styled from "styled-components";
+import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import closeIcon from "../../assets/closeIcon.svg";
-import { motion } from "framer-motion"
 
-/**
- The **Modal** component is the base of all the modals in the web app.
- *
- *  @author [Nuriya](https://github.com/NuriyaAkh)
- */
-const ModalComponent = styled(motion.div)`
+
+const ModalComponent = styled.div`
   box-sizing: border-box;
   justify-content: center;
   align-items: center;
@@ -22,7 +17,8 @@ const ModalComponent = styled(motion.div)`
   display: flex;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
-  transition: visibility 0s ease-in-out 0.4s, opacity 0.4s ease-in-out;
+  transition: visibility 0s ease-in-out 0.4s,opacity 0.4s ease-in-out;
+
   margin: 0;
   padding: 0;
   color: white;
@@ -30,35 +26,31 @@ const ModalComponent = styled(motion.div)`
 
   @media (max-width: 1000px) {
     align-items: flex-end;
-
-    animation: slideDown 1s, slideUp 1s linear;
+   
+    animation: slideDown 1s, slideUp 0.8s linear;
 
     @keyframes slideUp {
       from {
         transform: translateY(100%);
-        background-color: transparent;
       }
 
       to {
         transform: translateY(0);
-        background-color: rgba(0, 0, 0, 0.5);
       }
     }
     @keyframes slideDown {
       from {
         transform: translateY(-100%);
-        background-color: rgba(0, 0, 0, 0.5);
       }
       to {
         transform: translateY(0);
-        background-color: transparent;
       }
     }
   }
   
 `;
 
-const ModalContainer = styled.div`
+const ModalWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 375px;
@@ -70,7 +62,7 @@ const ModalContainer = styled.div`
   box-sizing: border-box;
   position: relative;
   justify-content: space-between;
-  transition: visibility 0s ease-in-out 0.4s, opacity 0.4s ease-in-out;
+  transition: visibility 0s ease-in-out 0.4s,opacity 0.4s ease-in-out;
   @media (min-width: 1000px) {
     border-radius: 16px 16px 16px 16px;
   }
@@ -88,7 +80,7 @@ margin:0 auto;
   }
 `;
 const ModalTitle = styled.h5`
-  font-style: normal;
+font-style: normal;
   font-weight: 400;
   font-size: 10px;
   line-height: 120%;
@@ -101,13 +93,15 @@ const ModalTitle = styled.h5`
     margin: 84px 0 12px;
   }
 `;
+const ModalContainer=styled.div``;
 const ModalBody = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
 const ModalText = styled.p`
-  font-style: normal;
+ 
+font-style: normal;
   font-weight: 700;
   font-size: 18px;
   line-height: 120%;
@@ -120,6 +114,7 @@ const ModalNotificationBox = styled.div`
   display: flex;
   flex-direction: column;
   height: 111px;
+ 
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
@@ -154,68 +149,52 @@ const ModalCloseButton = styled.div`
     display: none;
   }
 `;
-const ModalButton = styled.button`
-  width: 343px;
-  height: 60px;
-  margin-top: 12px;
-  border-radius: 8px;
-  border: none;
-  //opacity:0.5;
-`;
- export const Modal = ({
-  isOpen,
-  onClose,
-  header,
-  title,
-  text,
-  children,
-  notifications,
-  footer,
-}) => {
-  return isOpen ? (
+  
+  export function Popup1({header,title, notifications,text,children,onClick}) {
+    const [show, setShow] = useState(false);
+  
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    const handleOverlayClick=(event)=>{
+      if (event.target.classList.contains('modal')) {
+        handleClose();
+      }
     
-    <ModalComponent className="modal" tabindex="-1">
-      {" "}
-      {children}
-      <ModalContainer>
-        <ModalCloseButton
+    }
+  
+    return (
+      <>
+        <Button variant="primary" onClick={handleShow}>
+      demo modal
+        </Button>
+  
+        <Modal className="modal fade"show={show} onHide={handleClose} animation={false}>
+        <ModalComponent>
+        <ModalWrapper closeButton>
+          <ModalCloseButton
           type="button"
-          onClick={onClose}
+          onClick={handleClose}
           aria-label="Close modal"
           data-bs-dismiss="modal"
         ></ModalCloseButton>
-
-<div>
+        <ModalContainer>
           <ModalHeader>{header}</ModalHeader>
           <ModalTitle>{title}</ModalTitle>
           <ModalBody>
             <ModalText>{text}</ModalText>
             <ModalNotificationBox>{notifications}</ModalNotificationBox>
           </ModalBody>
-        </div>
-        <ModalFooter>
-          {footer}
-          <ModalButton
-            className="bg-dangerOpacity50"
-            type="button"
-            onClick={onClose}
-            data-bs-dismiss="modal"
-          >
-            Decline
-          </ModalButton>
-        </ModalFooter>
-      </ModalContainer>
-    </ModalComponent>
-  ) : (
-    ""
+        </ModalContainer>
+        </ModalWrapper>
+        </ModalComponent>
+        
+        </Modal>
+      </>
     );
-  
-};
-
+  }
 Modal.Header = ModalHeader;
 Modal.Title = ModalTitle;
-Modal.Container = ModalContainer;
+Modal.Wrapper = ModalWrapper;
 Modal.Footer = ModalFooter;
 Modal.Body = ModalBody;
-Modal.NotificationsBox = ModalNotificationBox;
-Modal.Button=ModalButton;
+Modal.NotificationsBox=ModalNotificationBox
