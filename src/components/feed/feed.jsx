@@ -12,7 +12,7 @@ export const Feed = ({ children }) => {
   );
 };
 
-//TODO Adjust font-size to bs className 'fs-x"
+//TODO Adjust font-size to bs className 'font-size-x"
 
 const Heading = styled.h3`
   font-size: 10px;
