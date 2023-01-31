@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Modal from "react-bootstrap/Modal";
+
 // import {Button} from "../button";
 import styled from "styled-components";
 import closeIcon from "../../assets/closeIcon.svg";
@@ -30,7 +30,7 @@ const ModalComponent = styled.div`
 
   @media (max-width: 1000px) {
     align-items: flex-end;
-    transform: translateX(0%);
+   
     animation: slideDown 1s, slideUp 0.8s linear;
 
     @keyframes slideUp {
@@ -51,6 +51,18 @@ const ModalComponent = styled.div`
       }
     }
   }
+  // .modal-fade-transform {
+  //   &.show {
+  //     &.modal {
+  //       transform: translateY(0);
+  //     }
+  //   }
+  //   &.hide {
+  //     &.modal {
+  //       transform: translateY(-100%);
+  //     }
+  //   }
+  // }
 `;
 
 const ModalContainer = styled.div`
@@ -155,7 +167,7 @@ const Button = styled.button`
   border: none;
   //opacity:0.5;
 `;
-const Modal1 = ({
+ const Modal = ({
   isOpen,
   onClose,
   header,
@@ -167,12 +179,7 @@ const Modal1 = ({
 }) => {
   return isOpen ? (
     
-    <ModalComponent className="modal modal-fade-transform:from {
-      transform: translateY(-100%);
-    }
-    to {
-      transform: translateY(0);
-    }" tabindex="-1">
+    <ModalComponent className="modal" tabindex="-1">
       {" "}
       {children}
       <ModalContainer>
@@ -228,10 +235,11 @@ const Modal1 = ({
     );
   
 };
-export default Modal1;
+ export default Modal;
 
 Modal.Header = ModalHeader;
 Modal.Title = ModalTitle;
 Modal.Container = ModalContainer;
 Modal.Footer = ModalFooter;
 Modal.Body = ModalBody;
+Modal.NotificationsBox=ModalNotificationBox
