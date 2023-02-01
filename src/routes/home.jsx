@@ -11,14 +11,15 @@ const handleOpenClick=()=>{
 }
 const closeModal=()=>{
   setIsModalOpen(false);
+  console.log("modal closed")
 }
+console.log(isModalOpen);
 useEffect(() => {
   const handleClickClose = (event) => {
     if (event.target.classList.contains('modal')) {
       closeModal();
     }
   };
-
   const handleEscClose = (event) => {
     if (event.key === 'Escape') {
       closeModal();

@@ -1,9 +1,10 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 // import Modal from 'react-bootstrap/Modal';
-import {Button} from "../button";
+//import {Button} from "../button";
 import styled from "styled-components";
 import closeIcon from "../../assets/closeIcon.svg";
-import { motion, AnimatePresence} from "framer-motion"
+import { motion, AnimatePresence,useAnimation,useMotionValue,useTransform } from "framer-motion";
+import useMediaQuery from "../../utils/useMediaQuery";
 
 /**
  The **Modal** component is the base of all the modals in the web app.
@@ -30,11 +31,7 @@ const ModalComponent = styled(motion.div)`
 
   @media (max-width: 1000px) {
     align-items: flex-end;
-    <motion.div
-    initial={{ y: "100%" }}
-    animate={{ y: 0 }}
-    exit={{ y: "100%" }}
-    transition={{ duration: 0.5 }}></motion.div>
+    
     
   }
   
@@ -64,7 +61,8 @@ const ModalHeader = styled.div`
   height: 2px;
   background: rgba(246, 246, 246, 0.5);
   border-radius: 1px;
-margin:0 auto;
+  margin: 0 auto;
+  cursor: grab;
   @media (min-width: 1000px) {
     display: none;
   }
@@ -144,7 +142,7 @@ const ModalButton = styled.button`
   border: none;
   //opacity:0.5;
 `;
- export const Modal = ({
+export const Modal = ({
   isOpen,
   onClose,
   header,
@@ -153,49 +151,116 @@ const ModalButton = styled.button`
   children,
   notifications,
   footer,
-}) => {
-  return (
-    <AnimatePresence> {isOpen && (
-    
-    <ModalComponent 
-    initial={{ y: "100%" }}
-    animate={{ y: 0 }}
-    exit={{ y: "100%" }}
-    transition={{ duration: 0.5 }}>
-      {" "}
-      {children}
-      <ModalContainer>
-        <ModalCloseButton
-          type="button"
-          onClick={onClose}
-          aria-label="Close modal"
-          data-bs-dismiss="modal"
-        ></ModalCloseButton>
 
-<div>
-          <ModalHeader>{header}</ModalHeader>
-          <ModalTitle>{title}</ModalTitle>
-          <ModalBody>
-            <ModalText>{text}</ModalText>
-            <ModalNotificationBox>{notifications}</ModalNotificationBox>
-          </ModalBody>
-        </div>
-        <ModalFooter>
-          {footer}
-          <ModalButton
-            className="bg-dangerOpacity50"
+}) => {
+  const isLessThan1000 = useMediaQuery("(max-width:1000px)");
+  const [isActive, setIsActive] = useState(true);
+  const y = useMotionValue(0);
+  
+useEffect(()=>{
+if (!isActive ){
+  console.log("how to make the modal closed" )
+  onClose();
+  
+
+}
+},[isActive])
+ 
+
+  return isLessThan1000 ? (
+    <AnimatePresence>
+      {" "}
+      {isOpen && (
+        <ModalComponent className="modal"
+          initial={{ y: "100%", opacity: 0 }}
+          animate={{ y: isActive ? 0 :'100%' , opacity:1}}
+          exit={{ y: "100%", opacity: 0 }}
+          transition={{
+            duration: 0.5,
+            type: "spring",
+            damping: 50,
+            stiffness: 200,
+          }}
+          drag="y"
+          dragElastic={0.1}
+          dragMomentum={false}
+          dragConstraints={{ top: 0, bottom: 0 }}
+          onDragEnd={(event, info) => {
+            if( info.offset.y >300){
+              setIsActive(false);
+              onClose();
+            }
+          }}
+        >
+          {" "}
+          {children}
+          <ModalContainer >
+            <ModalCloseButton
+              type="button"
+              onClick={onClose}
+              aria-label="Close modal"
+              data-bs-dismiss="modal"
+            ></ModalCloseButton>
+
+            <div>
+              <ModalHeader>{header}</ModalHeader>
+              <ModalTitle>{title}</ModalTitle>
+              <ModalBody>
+                <ModalText>{text}</ModalText>
+                <ModalNotificationBox>{notifications}</ModalNotificationBox>
+              </ModalBody>
+            </div>
+            <ModalFooter>
+              {footer}
+              <ModalButton
+                className="bg-dangerOpacity50"
+                type="button"
+                onClick={onClose}
+                data-bs-dismiss="modal"
+              >
+                Decline
+              </ModalButton>
+            </ModalFooter>
+          </ModalContainer>
+        </ModalComponent>
+      )}
+    </AnimatePresence>
+  ) : (
+    isOpen && (
+      <ModalComponent>
+        {" "}
+        {children}
+        <ModalContainer>
+          <ModalCloseButton
             type="button"
             onClick={onClose}
+            aria-label="Close modal"
             data-bs-dismiss="modal"
-          >
-            Decline
-          </ModalButton>
-        </ModalFooter>
-      </ModalContainer>
-    </ModalComponent>
-  )}
-  </AnimatePresence>);
-  
+          ></ModalCloseButton>
+
+          <div>
+            <ModalHeader>{header}</ModalHeader>
+            <ModalTitle>{title}</ModalTitle>
+            <ModalBody>
+              <ModalText>{text}</ModalText>
+              <ModalNotificationBox>{notifications}</ModalNotificationBox>
+            </ModalBody>
+          </div>
+          <ModalFooter>
+            {footer}
+            <ModalButton
+              className="bg-dangerOpacity50"
+              type="button"
+              onClick={onClose}
+              data-bs-dismiss="modal"
+            >
+              Decline
+            </ModalButton>
+          </ModalFooter>
+        </ModalContainer>
+      </ModalComponent>
+    )
+  );
 };
 
 Modal.Header = ModalHeader;
@@ -204,4 +269,4 @@ Modal.Container = ModalContainer;
 Modal.Footer = ModalFooter;
 Modal.Body = ModalBody;
 Modal.NotificationsBox = ModalNotificationBox;
-Modal.Button=ModalButton;
+Modal.Button = ModalButton;
