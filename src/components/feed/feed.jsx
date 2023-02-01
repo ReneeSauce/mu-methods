@@ -15,14 +15,13 @@ export const Feed = ({ children }) => {
 //TODO Adjust font-size to bs className 'font-size-x"
 
 const Heading = styled.h3`
-  font-size: 10px;
   line-height: 120%;
   color: var(--bs-white75);
 `;
 
 const feedHeading = ({ children }) => {
   return (
-    <Heading className="text-uppercase fw-light" role={"heading"}>
+    <Heading className="text-uppercase fw-light fs-10px" role={"heading"}>
       {children}
     </Heading>
   );
