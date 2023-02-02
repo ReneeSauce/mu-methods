@@ -203,7 +203,7 @@ if (!isActive ){
             ></ModalCloseButton>
 
             <div>
-              <ModalHeader>{header}</ModalHeader>
+              <ModalHeader/>
               <ModalTitle>{title}</ModalTitle>
               <ModalBody>
                 <ModalText>{text}</ModalText>
@@ -239,7 +239,7 @@ if (!isActive ){
           ></ModalCloseButton>
 
           <div>
-            <ModalHeader>{header}</ModalHeader>
+            <ModalHeader/>
             <ModalTitle>{title}</ModalTitle>
             <ModalBody>
               <ModalText>{text}</ModalText>
