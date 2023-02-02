@@ -1,3 +1,6 @@
+/// This component is a navigation tray
+/// for mobile version of the app
+
 import { NavLink } from "react-router-dom";
 import profileIcon from "../../assets/profile.svg";
 import profileIconActive from "../../assets/profile_active.svg";
@@ -7,6 +10,8 @@ import homeIcon from "../../assets/home.svg";
 import homeIconActive from "../../assets/home_active.svg";
 import notificationSign from "../../assets/notification_sign.svg";
 import styled, { css } from "styled-components";
+
+/// Here is a global styles for every link:
 
 const NavGlobalStyle = css`
   width: 60px;
