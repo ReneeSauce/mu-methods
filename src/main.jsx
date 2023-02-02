@@ -1,5 +1,6 @@
 import "./theme/defaults.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "swiper/css/bundle";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
