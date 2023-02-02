@@ -5,7 +5,7 @@ export default {
   component: Pill,
   argTypes: {
     isCopiable: {
-      options: ["true", "false"],
+      options: [true, false],
       control: { type: "radio" },
     },
     text: { control: "text" },
@@ -14,11 +14,11 @@ export default {
       control: { type: "radio" },
     },
     opacity: {
-      options: ["10", "25"],
+      options: ["10", "20"],
       control: { type: "radio" },
     },
     textOpacity: {
-      options: ["100", "75"],
+      options: [100, "70"],
       control: { type: "radio" },
     },
   },
@@ -28,8 +28,9 @@ const Template = (args) => <Pill {...args} />;
 
 export const Variants = Template.bind({});
 Variants.args = {
-  isCopiable: "false",
+  isCopiable: false,
   text: "text",
-  opacity: "25",
-  textOpacity: "100",
+  opacity: "20",
+  textOpacity: 100,
+  shape: "square",
 };

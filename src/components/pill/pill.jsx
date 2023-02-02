@@ -21,8 +21,15 @@ const CopyBtn = styled.button`
   background-color: transparent;
 `;
 
-export const Pill = ({ isCopiable, text, shape, opacity, textOpacity }) => {
-  const [pillText, setPillText] = useState("none");
+const PillContainer = styled.div`
+  background-color: ${(props) => `var(--bs-white${props.opacity})`};
+  color: ${(props) =>
+    `var(--bs-white${props.textOpacity !== 100 ? props.textOpacity : ``})`};
+  padding: 2px 8px 2px;
+`;
+
+export const Pill = ({ isCopiable, text, shape, opacity, textOpacity, fs }) => {
+  const [pillText, setPillText] = useState("");
 
   useEffect(() => {
     setPillText(text);
@@ -30,13 +37,13 @@ export const Pill = ({ isCopiable, text, shape, opacity, textOpacity }) => {
 
   return (
     <div className="d-flex flex-row align-items-center">
-      <div
-        className={`badge bg-white text-white text-opacity-${textOpacity} bg-opacity-${opacity} ${
-          shape === "round" ? "rounded-pill" : ""
-        }`}
+      <PillContainer
+        className={`badge fs-${fs} ${shape === "round" ? "rounded-pill" : ""}`}
+        opacity={opacity}
+        textOpacity={textOpacity}
       >
         {pillText}
-      </div>
+      </PillContainer>
       {isCopiable && (
         <CopyBtn
           onClick={() => {
