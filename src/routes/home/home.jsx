@@ -4,7 +4,15 @@ import balls from "../../assets/balls.svg";
 import users from "../../assets/users.svg";
 import { SwiperSlide } from "swiper/react";
 import { Button } from "../../components/button/button";
-import { HomepageLogo, HomepageTitle, FooterContainer } from "./home.styles";
+import {
+  HomepageLogo,
+  HomepageTitle,
+  FooterContainer,
+  SlideShowCubeImage,
+  SlideShowBallsImage,
+  SlideShowUsersImage,
+  SlideCaption,
+} from "./home.styles";
 
 export const Home = () => {
   return (
@@ -13,39 +21,40 @@ export const Home = () => {
       <div className="bg-alpha d-flex flex-column align-items-center">
         <HomepageLogo />
         <HomepageTitle className="mx-auto ">
-          <span className="text-alpha">'--</span>Welcome{" "}
-          <span className="text-alpha">---</span>to MU Methods{" "}
+          <span className="text-alpha">'--</span>Welcome
+          <span className="text-alpha">---</span>to MU Methods
         </HomepageTitle>
         <SlideShow>
           <SwiperSlide className="bg-alpha d-flex flex-column align-items-center">
-            <SlideShow.Image src={cubes} alt="" />
-            <p> All your crypto accounts in one place</p>
+            <SlideShowCubeImage>
+              <SlideShow.Image src={cubes} alt="" />
+            </SlideShowCubeImage>
+            <SlideCaption> All your crypto accounts in one place</SlideCaption>
           </SwiperSlide>
           <SwiperSlide className="bg-alpha d-flex flex-column align-items-center">
-            <SlideShow.Image src={balls} alt="" />
-            <p>
-              {" "}
+            <SlideShowBallsImage>
+              <SlideShow.Image src={balls} alt="" />
+            </SlideShowBallsImage>
+            <SlideCaption>
               Never loose access to your account by sharing your seed phrase
-            </p>
+            </SlideCaption>
           </SwiperSlide>
           <SwiperSlide className="bg-alpha d-flex flex-column align-items-center">
-            <SlideShow.Image src={users} alt="" />
-            <p> Sign all transactions from one app</p>
+            <SlideShowUsersImage>
+              <SlideShow.Image src={users} alt="" />
+            </SlideShowUsersImage>
+            <SlideCaption> Sign all transactions from one app</SlideCaption>
           </SwiperSlide>
         </SlideShow>
 
         <FooterContainer className="d-flex flex-column m-auto">
-          {" "}
           <Button className="bg-alpha border-alpha text-white60 btn-lg">
-            Log In{" "}
-          </Button>{" "}
-          <Button className="text-alpha bg-primary btn-lg mt-3">
-            {" "}
-            Sign Up{" "}
-          </Button>{" "}
+            Log In
+          </Button>
+          <Button className="text-alpha bg-primary btn-lg mt-3">Sign Up</Button>
           <Button className="bg-alpha border-white mt-3 text-white60 btn-lg">
-            Connect Existing Web3 wallet{" "}
-          </Button>{" "}
+            Connect Existing Web3 wallet
+          </Button>
         </FooterContainer>
       </div>
     </>
