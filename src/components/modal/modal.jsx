@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-// import Modal from 'react-bootstrap/Modal';
-//import {Button} from "../button";
 import styled from "styled-components";
 import closeIcon from "../../assets/closeIcon.svg";
-import { motion, AnimatePresence,useAnimation,useMotionValue,useTransform } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue } from "framer-motion";
 import useMediaQuery from "../../utils/useMediaQuery";
 
 /**
@@ -27,17 +25,12 @@ const ModalComponent = styled(motion.div)`
   margin: 0;
   padding: 0;
   color: white;
-  
-
   @media (max-width: 1000px) {
     align-items: flex-end;
-    
-    
   }
-  
 `;
 
-const ModalContainer = styled.div`
+const ModalWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 375px;
@@ -54,6 +47,10 @@ const ModalContainer = styled.div`
     border-radius: 16px 16px 16px 16px;
   }
 `;
+const ModalContainer=styled.div`
+display:flex;
+flex-direction:column;`
+
 const ModalHeader = styled.div`
   display: flex;
   justify-content: center;
@@ -142,10 +139,9 @@ const ModalButton = styled.button`
   border: none;
   //opacity:0.5;
 `;
-export const Modal = ({
+ export const Modal = ({
   isOpen,
   onClose,
-  header,
   title,
   text,
   children,
@@ -156,24 +152,22 @@ export const Modal = ({
   const isLessThan1000 = useMediaQuery("(max-width:1000px)");
   const [isActive, setIsActive] = useState(true);
   const y = useMotionValue(0);
-  
-useEffect(()=>{
-if (!isActive ){
-  console.log("how to make the modal closed" )
-  onClose();
-  
 
-}
-},[isActive])
- 
+  useEffect(() => {
+    if (!isActive) {
+      console.log("how to make the modal closed");
+      onClose();
+    }
+  }, [isActive]);
 
   return isLessThan1000 ? (
     <AnimatePresence>
       {" "}
       {isOpen && (
-        <ModalComponent className="modal"
+        <ModalComponent
+          className="modal"
           initial={{ y: "100%", opacity: 0 }}
-          animate={{ y: isActive ? 0 :'100%' , opacity:1}}
+          animate={{ y: isActive ? 0 : "100%", opacity: 1 }}
           exit={{ y: "100%", opacity: 0 }}
           transition={{
             duration: 0.5,
@@ -186,7 +180,7 @@ if (!isActive ){
           dragMomentum={false}
           dragConstraints={{ top: 0, bottom: 0 }}
           onDragEnd={(event, info) => {
-            if( info.offset.y >300){
+            if (info.offset.y > 300) {
               setIsActive(false);
               onClose();
             }
@@ -194,7 +188,7 @@ if (!isActive ){
         >
           {" "}
           {children}
-          <ModalContainer >
+          <ModalWrapper>
             <ModalCloseButton
               type="button"
               onClick={onClose}
@@ -202,16 +196,17 @@ if (!isActive ){
               data-bs-dismiss="modal"
             ></ModalCloseButton>
 
-            <div>
-              <ModalHeader/>
+            <ModalContainer>
+              <ModalHeader />
               <ModalTitle>{title}</ModalTitle>
               <ModalBody>
-                <ModalText>{text}</ModalText>
-                <ModalNotificationBox>{notifications}</ModalNotificationBox>
+                {children}
+                {/* <ModalText>{text}</ModalText>
+                <ModalNotificationBox>{notifications}</ModalNotificationBox> */}
               </ModalBody>
-            </div>
-            <ModalFooter>
-              {footer}
+            </ModalContainer>
+            <ModalFooter>{children}
+            
               <ModalButton
                 className="bg-dangerOpacity50"
                 type="button"
@@ -221,7 +216,7 @@ if (!isActive ){
                 Decline
               </ModalButton>
             </ModalFooter>
-          </ModalContainer>
+          </ModalWrapper>
         </ModalComponent>
       )}
     </AnimatePresence>
@@ -230,7 +225,7 @@ if (!isActive ){
       <ModalComponent>
         {" "}
         {children}
-        <ModalContainer>
+        <ModalWrapper>
           <ModalCloseButton
             type="button"
             onClick={onClose}
@@ -238,26 +233,27 @@ if (!isActive ){
             data-bs-dismiss="modal"
           ></ModalCloseButton>
 
-          <div>
-            <ModalHeader/>
+          <ModalContainer>
+            <ModalHeader />
             <ModalTitle>{title}</ModalTitle>
             <ModalBody>
               <ModalText>{text}</ModalText>
               <ModalNotificationBox>{notifications}</ModalNotificationBox>
             </ModalBody>
-          </div>
+          </ModalContainer>
           <ModalFooter>
-            {footer}
+            {children}
             <ModalButton
               className="bg-dangerOpacity50"
               type="button"
               onClick={onClose}
               data-bs-dismiss="modal"
+              aria-label="Decline action or close modal"
             >
               Decline
             </ModalButton>
           </ModalFooter>
-        </ModalContainer>
+        </ModalWrapper>
       </ModalComponent>
     )
   );
@@ -265,8 +261,12 @@ if (!isActive ){
 
 Modal.Header = ModalHeader;
 Modal.Title = ModalTitle;
-Modal.Container = ModalContainer;
+Modal.Wrapper = ModalWrapper;
+Modal.ModalContainer=ModalContainer;
 Modal.Footer = ModalFooter;
 Modal.Body = ModalBody;
 Modal.NotificationsBox = ModalNotificationBox;
 Modal.Button = ModalButton;
+Modal.CloseButton=ModalCloseButton;
+
+// export default Modal; 

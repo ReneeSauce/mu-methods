@@ -1,5 +1,5 @@
-import {Modal }from "../components/modal/modal";
-import { Popup1 } from "../components/modal/popup";
+import {Modal} from "../components/modal/modal";
+
 import React,{useState,useEffect} from "react"
 
 
@@ -13,7 +13,7 @@ const closeModal=()=>{
   setIsModalOpen(false);
   console.log("modal closed")
 }
-console.log(isModalOpen);
+console.log("isModalOpen",isModalOpen);
 useEffect(() => {
   const handleClickClose = (event) => {
     if (event.target.classList.contains('modal')) {
