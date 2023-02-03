@@ -9,46 +9,24 @@ import notificationIconActive from "../../assets/notification_active.svg";
 import homeIcon from "../../assets/home.svg";
 import homeIconActive from "../../assets/home_active.svg";
 import notificationSign from "../../assets/notification_sign.svg";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-/// Here is a global styles for every link:
+/// Here is a styles for every link:
 
-const NavGlobalStyle = css`
+const StyledNavLink = styled(NavLink)`
   width: 60px;
   height: 60px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: center;
   position: relative;
+  background-image: url("${({ inactive }) => inactive}");
   &:active {
     background-color: rgba(255, 255, 255, 0.3);
   }
   &.active {
     background-color: rgba(255, 255, 255, 0.3);
-  }
-`;
-
-const StyledProfileNavLink = styled(NavLink)`
-  ${NavGlobalStyle}
-  background-image: url("${profileIcon}");
-  &.active {
-    background-image: url("${profileIconActive}");
-  }
-`;
-
-const StyledHomeNavLink = styled(NavLink)`
-  ${NavGlobalStyle}
-  background-image: url("${homeIcon}");
-  &.active {
-    background-image: url("${homeIconActive}");
-  }
-`;
-
-const StyledNotificationNavLink = styled(NavLink)`
-  ${NavGlobalStyle}
-  background-image: url("${notificationIcon}");
-  &.active {
-    background-image: url("${notificationIconActive}");
+    background-image: url("${({ active }) => active}");
   }
 `;
 
@@ -61,38 +39,61 @@ const StyledNavBar = styled.nav`
   transform: translate(50%, 0);
 `;
 
-export const NavTray = ({ isNotification }) => {
+const NavLinks = [
+  {
+    role: "login",
+    to: "/login",
+    icon: profileIcon,
+    activeIcon: profileIconActive,
+  },
+  {
+    role: "home",
+    to: "/",
+    icon: homeIcon,
+    activeIcon: homeIconActive,
+  },
+  {
+    role: "notification",
+    to: "/#notfication",
+    icon: notificationIcon,
+    activeIcon: notificationIconActive,
+    isNotification: true,
+  },
+];
+
+let num = 0;
+
+export const NavTray = ({ isUnreadedMessages }) => {
   return (
     <StyledNavBar
       className="nav position-fixed d-flex justify-content-evenly align-items-center rounded-pill bg-white"
       style={{ "--bs-bg-opacity": 0.1 }}
     >
-      <StyledProfileNavLink
-        role="login"
-        className="nav-link rounded-circle"
-        to="/login"
-      />
-      <StyledHomeNavLink
-        role="home"
-        className="nav-link rounded-circle"
-        to="/"
-      />
-      <StyledNotificationNavLink
-        role="notification"
-        className="nav-link rounded-circle"
-        to="/notification"
-      >
-        {isNotification ? (
-          <img
-            className="position-absolute"
-            style={{ top: "13px", right: "13px" }}
-            alt="Notification Sign"
-            src={notificationSign}
-          />
-        ) : (
-          ""
-        )}
-      </StyledNotificationNavLink>
+      {NavLinks.map((link) => {
+        return (
+          <StyledNavLink
+            key={(num += 1)}
+            role={link.role}
+            to={link.to}
+            className="nav-link rounded-circle"
+            inactive={link.icon}
+            active={link.activeIcon}
+          >
+            {link.isNotification ? (
+              <img
+                src={notificationSign}
+                alt="Blue circle"
+                className={`position-absolute ${
+                  isUnreadedMessages ? "d-block" : "d-none"
+                }`}
+                style={{ top: "13px", right: "13px" }}
+              />
+            ) : (
+              ""
+            )}
+          </StyledNavLink>
+        );
+      })}
     </StyledNavBar>
   );
 };
