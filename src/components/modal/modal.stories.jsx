@@ -1,6 +1,6 @@
 import React from "react";
+import { useState } from "react";
 import { Modal } from "./modal";
-
 
 export default {
   title: "Components/Modal",
@@ -10,20 +10,31 @@ export default {
     text: { control: "text" },
     notifications: { control: "text" },
     onClose: { action: "onClose" },
-    isOpen: {
-      options: [true, false],
-      control: { type: "radio" },
-    },
   },
 };
 
-const Template = ({ ...args }) => <Modal {...args} />;
+const Template = ({ onClose, ...args }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div>
+      <button onClick={() => setIsOpen(true)}>Click Me</button>
+      <Modal
+        {...args}
+        isOpen={isOpen}
+        onClose={() => {
+          setIsOpen(false);
+          onClose();
+        }}
+      />
+    </div>
+  );
+};
+
 export const ModalComponent = Template.bind({});
 ModalComponent.args = {
   title: "coinbase",
   text: "Transaction for 0.008 ETH sign request",
   notifications: "Type “carrot pizza” to sign your transaction",
-  isOpen: true,
   // onClose:???
 };
 
