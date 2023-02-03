@@ -90,3 +90,64 @@ h6,
 p {
   color: rgba($white, 0.9);
 }
+
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "text-opacity":
+      map-merge(
+        map-get($utilities, "text-opacity"),
+        (
+          values:
+            map-merge(
+              map-get(map-get($utilities, "text-opacity"), "values"),
+              (
+                5: 0.05,
+                10: 0.1,
+                15: 0.15,
+                20: 0.2,
+                30: 0.3,
+                35: 0.35,
+                60: 0.6,
+                70: 0.7,
+                90: 0.9,
+              )
+            ),
+        )
+      ),
+  )
+);
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "bg-opacity":
+      map-merge(
+        map-get($utilities, "bg-opacity"),
+        (
+          values:
+            map-merge(
+              map-get(map-get($utilities, "bg-opacity"), "values"),
+              (
+                5: 0.05,
+                10: 0.1,
+                15: 0.15,
+                20: 0.2,
+                30: 0.3,
+                35: 0.35,
+                60: 0.6,
+                70: 0.7,
+                90: 0.9,
+              )
+            ),
+        )
+      ),
+  )
+);
+@import "bootstrap/scss/utilities/api";

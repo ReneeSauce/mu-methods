@@ -7,8 +7,9 @@ import copyIcon from "../../assets/copy-icon.svg";
  * @param shape expects 'round' or 'square'
  * @param isCopiable expects 'true' or 'false'
  * @param text expects the text to be displayed in the pill
- * @param opacity expects the pill background opacity '10' or '25'
- * @param textOpacity expects the text opacity '100' or '75'
+ * @param opacity expects the pill background opacity '10' or '20'
+ * @param textOpacity expects the text opacity '100' or '70'
+ * @param fs expects the font size
  */
 
 const CopyBtn = styled.button`
@@ -21,13 +22,6 @@ const CopyBtn = styled.button`
   background-color: transparent;
 `;
 
-const PillContainer = styled.div`
-  background-color: ${(props) => `var(--bs-white${props.opacity})`};
-  color: ${(props) =>
-    `var(--bs-white${props.textOpacity !== 100 ? props.textOpacity : ``})`};
-  padding: 2px 8px 2px;
-`;
-
 export const Pill = ({ isCopiable, text, shape, opacity, textOpacity, fs }) => {
   const [pillText, setPillText] = useState("");
 
@@ -37,13 +31,13 @@ export const Pill = ({ isCopiable, text, shape, opacity, textOpacity, fs }) => {
 
   return (
     <div className="d-flex flex-row align-items-center">
-      <PillContainer
-        className={`badge fs-${fs} ${shape === "round" ? "rounded-pill" : ""}`}
-        opacity={opacity}
-        textOpacity={textOpacity}
+      <div
+        className={`badge bg-white${opacity} bg-opacity-${opacity} text-opacity-${textOpacity} text-white${textOpacity} fs-${fs} ${
+          shape === "round" ? "rounded-pill" : ""
+        }`}
       >
         {pillText}
-      </PillContainer>
+      </div>
       {isCopiable && (
         <CopyBtn
           onClick={() => {

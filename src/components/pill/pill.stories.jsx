@@ -21,6 +21,10 @@ export default {
       options: [100, "70"],
       control: { type: "radio" },
     },
+    fs: {
+      options: ["14px", "16px"],
+      control: { type: "radio" },
+    },
   },
 };
 
@@ -33,4 +37,5 @@ Variants.args = {
   opacity: "20",
   textOpacity: 100,
   shape: "square",
+  fs: "14px",
 };
