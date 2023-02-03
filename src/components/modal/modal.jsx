@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from 'prop-types';
 import styled from "styled-components";
 import closeIcon from "../../assets/closeIcon.svg";
 import { motion, AnimatePresence, useMotionValue } from "framer-motion";
@@ -147,6 +148,7 @@ const ModalButton = styled.button`
   children,
   notifications,
   footer,
+ 
 
 }) => {
   const isLessThan1000 = useMediaQuery("(max-width:1000px)");
@@ -166,9 +168,11 @@ const ModalButton = styled.button`
       {isOpen && (
         <ModalComponent
           className="modal"
+          role="modal"
           initial={{ y: "100%", opacity: 0 }}
           animate={{ y: isActive ? 0 : "100%", opacity: 1 }}
           exit={{ y: "100%", opacity: 0 }}
+          
           transition={{
             duration: 0.5,
             type: "spring",
@@ -183,6 +187,7 @@ const ModalButton = styled.button`
             if (info.offset.y > 300) {
               setIsActive(false);
               onClose();
+             
             }
           }}
         >
@@ -201,14 +206,15 @@ const ModalButton = styled.button`
               <ModalTitle>{title}</ModalTitle>
               <ModalBody>
                 {children}
-                {/* <ModalText>{text}</ModalText>
-                <ModalNotificationBox>{notifications}</ModalNotificationBox> */}
+                <ModalText>{text}</ModalText>
+                <ModalNotificationBox>{notifications}</ModalNotificationBox>
               </ModalBody>
             </ModalContainer>
             <ModalFooter>{children}
             
               <ModalButton
-                className="bg-dangerOpacity50"
+                className="bg-danger"
+                style={{ "--bs-bg-opacity": 0.5 }}
                 type="button"
                 onClick={onClose}
                 data-bs-dismiss="modal"
@@ -222,7 +228,7 @@ const ModalButton = styled.button`
     </AnimatePresence>
   ) : (
     isOpen && (
-      <ModalComponent>
+      <ModalComponent role="modal">
         {" "}
         {children}
         <ModalWrapper>
@@ -244,7 +250,8 @@ const ModalButton = styled.button`
           <ModalFooter>
             {children}
             <ModalButton
-              className="bg-dangerOpacity50"
+              className="bg-danger"
+              style={{ "--bs-bg-opacity": 0.5 }}
               type="button"
               onClick={onClose}
               data-bs-dismiss="modal"
@@ -269,4 +276,10 @@ Modal.NotificationsBox = ModalNotificationBox;
 Modal.Button = ModalButton;
 Modal.CloseButton=ModalCloseButton;
 
-// export default Modal; 
+Modal.propTypes = {
+  title: PropTypes.string,
+  text:PropTypes.string,
+  isOpen: PropTypes.bool,
+  onClose: PropTypes.func,
+  children: PropTypes.any,
+}

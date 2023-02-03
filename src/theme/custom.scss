@@ -20,7 +20,6 @@ $black90: rgba(0, 0, 0, 0.9);
 $alpha: #17172d;
 $primary: #8cbaff;
 $danger: #ff3e3e;
-$dangerOpacity50: rgba(255, 62, 62, 0.5);
 $success: #1fdb00;
 $modal: #2d2d41;
 
@@ -49,5 +48,4 @@ $theme-colors: (
   "danger": $danger,
   "success": $success,
   "modal": $modal,
-  "dangerOpacity50": $dangerOpacity50
-) !default;
+ ) !default;
