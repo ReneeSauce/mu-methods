@@ -1,7 +1,7 @@
 import * as React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { Modal } from "./modal";
-
+const handleClick = vitest.fn();
 describe("Component: Modal", () => {
   const props = {
     isOpen: true,
@@ -15,7 +15,7 @@ describe("Component: Modal", () => {
     render(
       <Modal
         isOpen={props.isOpen}
-        onClose={props.onClose}
+        onClose={handleClick}
         title={props.title}
         {...props}
       />
@@ -24,7 +24,9 @@ describe("Component: Modal", () => {
     const modalElement = screen.getByRole("modal");
     //console.log(modalElement);
     expect(modalElement).toBeInTheDocument();
-    // expect(modalElement).toBeVisible();
+    const closeButton = screen.getByLabelText("Close modal");
+    fireEvent.click(closeButton);
+    expect(modalElement).not.toBeVisible();
     expect(modalElement).toHaveTextContent("coinbase");
   });
 });
