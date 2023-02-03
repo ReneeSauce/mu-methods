@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import closeIcon from "../../assets/closeIcon.svg";
 import { motion, AnimatePresence, useMotionValue } from "framer-motion";
-import useMediaQuery from "../../utils/useMediaQuery";
 
 /**
  The **Modal** component is the base of all the modals in the web app.
@@ -48,7 +47,7 @@ const ModalWrapper = styled.div`
     border-radius: 16px 16px 16px 16px;
   }
 `;
-const ModalContainer = styled.div`
+const ModalBody = styled.div`
   display: flex;
   flex-direction: column;
 `;
@@ -80,7 +79,7 @@ const ModalTitle = styled.h5`
     margin: 84px 0 12px;
   }
 `;
-const ModalBody = styled.div`
+const ModalNotificationBox = styled.div`
   display: flex;
   flex-direction: column;
 `;
@@ -94,19 +93,6 @@ const ModalText = styled.p`
   font-feature-settings: "pnum" on, "lnum" on;
   color: #f6f6f6;
   margin-bottom: 32px;
-`;
-const ModalNotificationBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 111px;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 120%;
-  text-align: center;
-  font-feature-settings: "pnum" on, "lnum" on;
-  color: #f6f6f6;
-  padding: 0 30px;
 `;
 const ModalFooter = styled.div`
   display: flex;
@@ -133,34 +119,17 @@ const ModalCloseButton = styled.div`
     display: none;
   }
 `;
-const ModalButton = styled.button`
-  width: 343px;
-  height: 60px;
-  margin-top: 12px;
-  border-radius: 8px;
-  border: none;
-  //opacity:0.5;
-`;
-export const Modal = ({
-  isOpen,
-  onClose,
-  title,
-  text,
-  children,
-  notifications,
-  footer,
-}) => {
-  const isLessThan1000 = useMediaQuery("(max-width:1000px)");
+
+export const Modal = ({ isOpen, onClose, title, text, children }) => {
   const y = useMotionValue(0);
 
   useEffect(() => {
     if (!isOpen) {
-      console.log("how to make the modal closed");
       onClose();
     }
   }, [isOpen]);
 
-  return isLessThan1000 ? (
+  return (
     <AnimatePresence>
       {" "}
       {isOpen && (
@@ -186,8 +155,6 @@ export const Modal = ({
             }
           }}
         >
-          {" "}
-          {children}
           <ModalWrapper>
             <ModalCloseButton
               type="button"
@@ -195,81 +162,28 @@ export const Modal = ({
               aria-label="Close modal"
               data-bs-dismiss="modal"
             ></ModalCloseButton>
-
-            <ModalContainer>
+            <ModalBody>
               <ModalHeader />
               <ModalTitle>{title}</ModalTitle>
-              <ModalBody>
+              <ModalNotificationBox>
                 {children}
                 <ModalText>{text}</ModalText>
-                <ModalNotificationBox>{notifications}</ModalNotificationBox>
-              </ModalBody>
-            </ModalContainer>
-            <ModalFooter>
-              {children}
-
-              <ModalButton
-                className="bg-danger"
-                style={{ "--bs-bg-opacity": 0.5 }}
-                type="button"
-                onClick={onClose}
-                data-bs-dismiss="modal"
-              >
-                Decline
-              </ModalButton>
-            </ModalFooter>
+              </ModalNotificationBox>
+            </ModalBody>
+            <ModalFooter>{children}</ModalFooter>
           </ModalWrapper>
         </ModalComponent>
       )}
     </AnimatePresence>
-  ) : (
-    isOpen && (
-      <ModalComponent role="modal">
-        {" "}
-        {children}
-        <ModalWrapper>
-          <ModalCloseButton
-            type="button"
-            onClick={onClose}
-            aria-label="Close modal"
-            data-bs-dismiss="modal"
-          ></ModalCloseButton>
-
-          <ModalContainer>
-            <ModalHeader />
-            <ModalTitle>{title}</ModalTitle>
-            <ModalBody>
-              <ModalText>{text}</ModalText>
-              <ModalNotificationBox>{notifications}</ModalNotificationBox>
-            </ModalBody>
-          </ModalContainer>
-          <ModalFooter>
-            {children}
-            <ModalButton
-              className="bg-danger"
-              style={{ "--bs-bg-opacity": 0.5 }}
-              type="button"
-              onClick={onClose}
-              data-bs-dismiss="modal"
-              aria-label="Decline action or close modal"
-            >
-              Decline
-            </ModalButton>
-          </ModalFooter>
-        </ModalWrapper>
-      </ModalComponent>
-    )
   );
 };
 
 Modal.Header = ModalHeader;
 Modal.Title = ModalTitle;
 Modal.Wrapper = ModalWrapper;
-Modal.ModalContainer = ModalContainer;
+Modal.ModalBody = ModalBody;
 Modal.Footer = ModalFooter;
-Modal.Body = ModalBody;
-Modal.NotificationsBox = ModalNotificationBox;
-Modal.Button = ModalButton;
+Modal.NotificationBox = ModalNotificationBox;
 Modal.CloseButton = ModalCloseButton;
 
 Modal.propTypes = {

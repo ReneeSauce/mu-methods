@@ -9,9 +9,8 @@ export const Home = () => {
   };
   const closeModal = () => {
     setIsModalOpen(false);
-    console.log("modal closed");
   };
-  console.log("isModalOpen", isModalOpen);
+
   useEffect(() => {
     const handleClickClose = (event) => {
       if (event.target.classList.contains("modal")) {
@@ -43,7 +42,7 @@ export const Home = () => {
         onClose={closeModal}
         title={"coinbase"}
         text={"Transaction for 0.008 ETH sign request"}
-        notifications={"Type “carrot pizza” to sign your transaction"}
+        
       />
       <button
         onClick={handleOpenClick}
