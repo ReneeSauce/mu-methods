@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import closeIcon from "../../assets/closeIcon.svg";
 import { motion, AnimatePresence, useMotionValue } from "framer-motion";
-
+import useMediaQuery from "../../utils/useMediaQuery";
 /**
  The **Modal** component is the base of all the modals in the web app.
  *
@@ -122,7 +122,7 @@ const ModalCloseButton = styled.div`
 
 export const Modal = ({ isOpen, onClose, title, text, children }) => {
   const y = useMotionValue(0);
-
+  const isLessThan1000 = useMediaQuery("(max-width:1000px)");
   useEffect(() => {
     if (!isOpen) {
       onClose();
@@ -136,11 +136,11 @@ export const Modal = ({ isOpen, onClose, title, text, children }) => {
         <ModalComponent
           className="modal"
           role="modal"
-          initial={{ y: "100%", opacity: 0 }}
+          initial={{y: isLessThan1000 ? "100%" :"", opacity: 0 }}
           animate={{ y: isOpen ? 0 : "100%", opacity: 1 }}
-          exit={{ y: "100%", opacity: 0 }}
+          exit={{ y: isLessThan1000 ?"100%":"", opacity: 0 }}
           transition={{
-            duration: 0.5,
+            duration: 0.3,
             type: "spring",
             damping: 50,
             stiffness: 200,

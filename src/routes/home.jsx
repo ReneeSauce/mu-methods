@@ -3,10 +3,13 @@ import { Modal } from "../components/modal/modal";
 import React, { useState, useEffect } from "react";
 
 export const Home = () => {
+
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const handleOpenClick = () => {
+
+  const openModal = () => {
     setIsModalOpen(true);
   };
+
   const closeModal = () => {
     setIsModalOpen(false);
   };
@@ -41,17 +44,16 @@ export const Home = () => {
         isOpen={isModalOpen}
         onClose={closeModal}
         title={"coinbase"}
-        text={"Transaction for 0.008 ETH sign request"}
-        
+       
       />
-      <button
-        onClick={handleOpenClick}
+      {/* <button
+        onClick={openModal}
         className="btn btn-danger"
         data-bs-toggle="modal"
         data-bs-target="#appModal"
       >
         open modal
-      </button>
+      </button> */}
     </div>
   );
 };

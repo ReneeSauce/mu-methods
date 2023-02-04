@@ -32,6 +32,6 @@ const Template = ({ onClose, ...args }) => {
 export const ModalComponent = Template.bind({});
 ModalComponent.args = {
   title: "coinbase",
-  text: "Transaction for 0.008 ETH sign request",
+  text: "on the smaller screens drag me down to close",
 };
 
