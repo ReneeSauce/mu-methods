@@ -2,12 +2,6 @@
 /// for mobile version of the app
 
 import { NavLink } from "react-router-dom";
-import profileIcon from "../../assets/profile.svg";
-import profileIconActive from "../../assets/profile_active.svg";
-import notificationIcon from "../../assets/notification.svg";
-import notificationIconActive from "../../assets/notification_active.svg";
-import homeIcon from "../../assets/home.svg";
-import homeIconActive from "../../assets/home_active.svg";
 import notificationSign from "../../assets/notification_sign.svg";
 import styled from "styled-components";
 
@@ -39,37 +33,15 @@ const StyledNavBar = styled.nav`
   transform: translate(50%, 0);
 `;
 
-const NavLinks = [
-  {
-    role: "login",
-    to: "/login",
-    icon: profileIcon,
-    activeIcon: profileIconActive,
-  },
-  {
-    role: "home",
-    to: "/",
-    icon: homeIcon,
-    activeIcon: homeIconActive,
-  },
-  {
-    role: "notification",
-    to: "/#notfication",
-    icon: notificationIcon,
-    activeIcon: notificationIconActive,
-    isNotification: true,
-  },
-];
-
 let num = 0;
 
-export const NavTray = ({ isUnreadedMessages }) => {
+export const NavTray = ({ isUnreadedMessages, navLinks }) => {
   return (
     <StyledNavBar
       className="nav position-fixed d-flex justify-content-evenly align-items-center rounded-pill bg-white"
       style={{ "--bs-bg-opacity": 0.1 }}
     >
-      {NavLinks.map((link) => {
+      {navLinks.map((link) => {
         return (
           <StyledNavLink
             key={(num += 1)}
