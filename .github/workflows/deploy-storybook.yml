@@ -1,4 +1,4 @@
-name: Frontend PROD Deployment
+name: Storybook Deployment
 on:
   push:
     branches:
