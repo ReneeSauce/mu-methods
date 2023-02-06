@@ -12,8 +12,6 @@ export const Feed = ({ children }) => {
   );
 };
 
-//TODO Adjust font-size to bs className 'font-size-x"
-
 const Heading = styled.h3`
   line-height: 120%;
   color: var(--bs-white75);
