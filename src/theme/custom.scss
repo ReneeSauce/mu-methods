@@ -21,6 +21,17 @@ $primary: #8cbaff;
 $danger: #ff3e3e;
 $success: #1fdb00;
 
+// Font sizes below:
+$font-sizes: (
+  "10px": 10px,
+  "12px": 12px,
+  "14px": 14px,
+  "16px": 16px,
+  "18px": 18px,
+  "24px": 24px,
+  "32px": 32px,
+);
+
 $theme-colors: (
   "black": $black,
   "white": $white,
