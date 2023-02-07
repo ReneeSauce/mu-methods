@@ -46,14 +46,14 @@ export const Home = () => {
         title={"coinbase"}
        
       />
-      {/* <button
+      <button
         onClick={openModal}
         className="btn btn-danger"
         data-bs-toggle="modal"
         data-bs-target="#appModal"
       >
         open modal
-      </button> */}
+      </button>
     </div>
   );
 };

@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import closeIcon from "../../assets/closeIcon.svg";
+import closeIcon from "../../assets/close-icon.svg";
 import { motion, AnimatePresence, useMotionValue } from "framer-motion";
-import useMediaQuery from "../../utils/useMediaQuery";
+import useMediaQuery from "../../utils/use-media-query";
+import {Notification} from "../notification"
 /**
  The **Modal** component is the base of all the modals in the web app.
  *
@@ -12,13 +13,13 @@ import useMediaQuery from "../../utils/useMediaQuery";
 const ModalComponent = styled(motion.div)`
   box-sizing: border-box;
   justify-content: center;
-  align-items: center;
+ align-items: center;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
+ display: flex;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
   transition: visibility 0s ease-in-out 0.4s, opacity 0.4s ease-in-out;
@@ -31,18 +32,13 @@ const ModalComponent = styled(motion.div)`
 `;
 
 const ModalWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 375px;
-  min-height: 465px;
-  background: #2d2d41;
-  border-radius: 16px 16px 0px 0px;
-  align-items: center;
-  padding: 16px 16px 24px;
-  box-sizing: border-box;
-  position: relative;
-  justify-content: space-between;
-  transition: visibility 0s ease-in-out 0.4s, opacity 0.4s ease-in-out;
+width: 375px;
+min-height: 465px;
+padding: 16px 16px 24px;
+border-radius: 16px 16px 0 0;
+background: #2d2d41;
+ 
+   transition: visibility 0s ease-in-out 0.4s, opacity 0.4s ease-in-out;
   @media (min-width: 1000px) {
     border-radius: 16px 16px 16px 16px;
   }
@@ -53,28 +49,15 @@ const ModalBody = styled.div`
 `;
 
 const ModalHeader = styled.div`
-  display: flex;
-  justify-content: center;
   width: 40px;
   height: 2px;
-  background: rgba(246, 246, 246, 0.5);
-  border-radius: 1px;
-  margin: 0 auto;
+  background: var(--bs-white35);
   cursor: grab;
-  @media (min-width: 1000px) {
-    display: none;
-  }
-`;
+ `;
 const ModalTitle = styled.h5`
-  font-style: normal;
-  font-weight: 400;
-  font-size: 10px;
-  line-height: 120%;
-  text-align: center;
-  text-transform: uppercase;
-  font-feature-settings: "pnum" on, "lnum" on;
-  color: rgba(246, 246, 246, 0.7);
-  margin: 32px 0 16px;
+   line-height: 120%;
+   color: var(--bs-white35);
+   margin: 32px 0 16px;
   @media (min-width: 1000px) {
     margin: 84px 0 12px;
   }
@@ -83,7 +66,6 @@ const ModalNotificationBox = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
 const ModalText = styled.p`
   font-style: normal;
   font-weight: 700;
@@ -98,6 +80,7 @@ const ModalFooter = styled.div`
   display: flex;
   flex-direction: column;
   align-self: flex-end;
+ 
 `;
 const ModalCloseButton = styled.div`
   box-sizing: border-box;
@@ -119,7 +102,6 @@ const ModalCloseButton = styled.div`
     display: none;
   }
 `;
-
 export const Modal = ({ isOpen, onClose, title, text, children }) => {
   const y = useMotionValue(0);
   const isLessThan1000 = useMediaQuery("(max-width:1000px)");
@@ -133,8 +115,8 @@ export const Modal = ({ isOpen, onClose, title, text, children }) => {
     <AnimatePresence>
       {" "}
       {isOpen && (
-        <ModalComponent
-          className="modal"
+        <ModalComponent 
+          className="modal "
           role="modal"
           initial={{y: isLessThan1000 ? "100%" :"", opacity: 0 }}
           animate={{ y: isOpen ? 0 : "100%", opacity: 1 }}
@@ -155,28 +137,32 @@ export const Modal = ({ isOpen, onClose, title, text, children }) => {
             }
           }}
         >
-          <ModalWrapper>
+          <ModalWrapper className="d-flex flex-column align-items-center justify-content-between position-relative ">
             <ModalCloseButton
               type="button"
               onClick={onClose}
               aria-label="Close modal"
               data-bs-dismiss="modal"
             ></ModalCloseButton>
-            <ModalBody>
-              <ModalHeader />
-              <ModalTitle>{title}</ModalTitle>
-              <ModalNotificationBox>
+            <ModalBody >
+            <ModalHeader className="d-flex justify-content-center  d-lg-none my-0 mx-auto rounded"/>
+              <ModalTitle className="text-uppercase text-center fst-normal fw-normal fs-10px">{title}</ModalTitle>
+              {/* <ModalNotificationBox>
                 {children}
                 <ModalText>{text}</ModalText>
-              </ModalNotificationBox>
+              </ModalNotificationBox> */}
             </ModalBody>
-            <ModalFooter>{children}</ModalFooter>
+            <ModalFooter/>
           </ModalWrapper>
         </ModalComponent>
       )}
     </AnimatePresence>
   );
 };
+
+
+
+
 
 Modal.Header = ModalHeader;
 Modal.Title = ModalTitle;

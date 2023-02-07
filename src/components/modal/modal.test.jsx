@@ -5,7 +5,6 @@ const handleClick = vitest.fn();
 describe("Component: Modal", () => {
   const props = {
     isOpen: true,
-    isModalOpen: true,
     isLessThan1000: true,
     title: "coinbase",
     text: "Transaction for 0.008 ETH sign request",
@@ -22,7 +21,6 @@ describe("Component: Modal", () => {
     );
 
     const modalElement = screen.getByRole("modal");
-    //console.log(modalElement);
     expect(modalElement).toBeInTheDocument();
     const closeButton = screen.getByLabelText("Close modal");
     fireEvent.click(closeButton);
