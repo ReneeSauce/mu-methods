@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import { AnimatePresence, motion, useMotionValue } from "framer-motion";
 import PropTypes from "prop-types";
+import { useEffect } from "react";
 import styled from "styled-components";
 import closeIcon from "../../assets/close-icon.svg";
-import { motion, AnimatePresence, useMotionValue } from "framer-motion";
 import useMediaQuery from "../../utils/use-media-query";
-import { Notification } from "../notification";
 /**
  The **Modal** component is the base of all the modals in the web app.
  *

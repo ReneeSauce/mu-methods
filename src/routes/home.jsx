@@ -1,6 +1,6 @@
 import { Modal } from "../components/modal/modal";
 
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
