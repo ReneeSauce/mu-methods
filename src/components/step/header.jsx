@@ -1,27 +1,19 @@
 import styled, { css } from "styled-components";
 
+//todo
+//move text styling to bs once bs font-sizes and colors are available
+
 const Container = styled.div`
+//trying props for flex to simplify - orignal grid still in example repo if needed
   display: grid;
   color: var(--bs-white);
   grid-template-columns: 1 fr minmax() (40px, auto) 1fr;
-  //something to try - maybe grid or flex box. If it is grid, use case three
-  //if it is flex - use flex for case one
-  ${(props) => {
-    switch (props.$grid) {
-      case "one":
-        return css`
-          grid-template-areas: "main main main";
-        `;
-      case "two":
-        return css`
-          grid-template-areas: "left main .";
-        `;
-      case "three":
-        return css`
-          grid-template-areas: "left main right";
-        `;
-    }
-  }}
+  ${(props) =>
+    props.$flex &&
+    css`
+      display: flex;
+    `}
+
 `;
 const StyledLeft = styled.div`
   grid-area: left;
