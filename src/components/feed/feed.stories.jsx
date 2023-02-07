@@ -1,7 +1,5 @@
-import React from "react";
-
-import { Feed } from "./feed";
 import { Notification } from "../notification";
+import { Feed } from "./feed";
 
 /* 
  @author [Jenny Doctor](https://github.com/jendoc)
