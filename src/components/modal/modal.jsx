@@ -72,7 +72,7 @@ const ModalText = styled.p`
   font-size: 18px;
   line-height: 120%;
   text-align: center;
-  font-feature-settings: "pnum" on, "lnum" on;
+
   color: #f6f6f6;
   margin-bottom: 32px;
 `;
@@ -101,7 +101,7 @@ const ModalCloseButton = styled.div`
     display: none;
   }
 `;
-export const Modal = ({ isOpen, onClose, title, text, children }) => {
+export const Modal = ({ isOpen, onClose, children }) => {
   const y = useMotionValue(0);
   const isLessThan1000 = useMediaQuery("(max-width:1000px)");
   useEffect(() => {
@@ -143,17 +143,7 @@ export const Modal = ({ isOpen, onClose, title, text, children }) => {
               aria-label="Close modal"
               data-bs-dismiss="modal"
             ></ModalCloseButton>
-            <ModalBody>
-              <ModalHeader className="d-flex justify-content-center  d-lg-none my-0 mx-auto rounded" />
-              <ModalTitle className="text-uppercase text-center fst-normal fw-normal fs-10px">
-                {title}
-              </ModalTitle>
-              {/* <ModalNotificationBox>
-                {children}
-                <ModalText>{text}</ModalText>
-              </ModalNotificationBox> */}
-            </ModalBody>
-            <ModalFooter />
+            <ModalBody>{children}</ModalBody>
           </ModalWrapper>
         </ModalComponent>
       )}
@@ -161,17 +151,27 @@ export const Modal = ({ isOpen, onClose, title, text, children }) => {
   );
 };
 
-Modal.Header = ModalHeader;
-Modal.Title = ModalTitle;
-Modal.Wrapper = ModalWrapper;
+const Header = () => {
+  return (
+    <ModalHeader className="d-flex justify-content-center  d-lg-none my-0 mx-auto rounded" />
+  );
+};
+const Title = ({ title }) => {
+  return (
+    <ModalTitle className="text-uppercase text-center fst-normal fw-normal fs-10px">
+      {title}
+    </ModalTitle>
+  );
+};
+Modal.Header = Header;
+Modal.Title = Title;
+
 Modal.ModalBody = ModalBody;
 Modal.Footer = ModalFooter;
-Modal.NotificationBox = ModalNotificationBox;
+
 Modal.CloseButton = ModalCloseButton;
 
 Modal.propTypes = {
-  title: PropTypes.string,
-  text: PropTypes.string,
   isOpen: PropTypes.bool,
   onClose: PropTypes.func,
   children: PropTypes.any,

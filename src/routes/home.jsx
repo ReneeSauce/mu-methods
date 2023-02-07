@@ -39,7 +39,7 @@ export const Home = () => {
   return (
     <div className="bg-alpha">
       <h1>Home</h1>
-      <Modal isOpen={isModalOpen} onClose={closeModal} title={"coinbase"} />
+      <Modal isOpen={isModalOpen} onClose={closeModal} />
       <button
         onClick={openModal}
         className="btn btn-danger"

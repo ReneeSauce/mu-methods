@@ -6,8 +6,6 @@ export default {
   title: "Components/Modal",
   component: Modal,
   argTypes: {
-    title: { control: "text" },
-    text: { control: "text" },
     onClose: { action: "onClose" },
   },
 };
@@ -30,7 +28,18 @@ const Template = ({ onClose, ...args }) => {
 };
 
 export const ModalComponent = Template.bind({});
-ModalComponent.args = {
-  title: "coinbase",
-  text: "on the smaller screens drag me down to close",
+ModalComponent.args = {};
+
+export const ModalWithHeader = Template.bind({});
+ModalWithHeader.args = {
+  children: <Modal.Header />,
+};
+export const ModalWithHeaderAndTitle = Template.bind({});
+ModalWithHeaderAndTitle.args = {
+  children: (
+    <>
+      <Modal.Header />
+      <Modal.Title title="coinbase"></Modal.Title>
+    </>
+  ),
 };
