@@ -4,7 +4,7 @@ import styled from "styled-components";
 import closeIcon from "../../assets/close-icon.svg";
 import { motion, AnimatePresence, useMotionValue } from "framer-motion";
 import useMediaQuery from "../../utils/use-media-query";
-import {Notification} from "../notification"
+import { Notification } from "../notification";
 /**
  The **Modal** component is the base of all the modals in the web app.
  *
@@ -13,13 +13,13 @@ import {Notification} from "../notification"
 const ModalComponent = styled(motion.div)`
   box-sizing: border-box;
   justify-content: center;
- align-items: center;
+  align-items: center;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 100%;
- display: flex;
+  display: flex;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
   transition: visibility 0s ease-in-out 0.4s, opacity 0.4s ease-in-out;
@@ -32,13 +32,13 @@ const ModalComponent = styled(motion.div)`
 `;
 
 const ModalWrapper = styled.div`
-width: 375px;
-min-height: 465px;
-padding: 16px 16px 24px;
-border-radius: 16px 16px 0 0;
-background: #2d2d41;
- 
-   transition: visibility 0s ease-in-out 0.4s, opacity 0.4s ease-in-out;
+  width: 375px;
+  min-height: 465px;
+  padding: 16px 16px 24px;
+  border-radius: 16px 16px 0 0;
+  background: #2d2d41;
+
+  transition: visibility 0s ease-in-out 0.4s, opacity 0.4s ease-in-out;
   @media (min-width: 1000px) {
     border-radius: 16px 16px 16px 16px;
   }
@@ -53,11 +53,11 @@ const ModalHeader = styled.div`
   height: 2px;
   background: var(--bs-white35);
   cursor: grab;
- `;
+`;
 const ModalTitle = styled.h5`
-   line-height: 120%;
-   color: var(--bs-white35);
-   margin: 32px 0 16px;
+  line-height: 120%;
+  color: var(--bs-white35);
+  margin: 32px 0 16px;
   @media (min-width: 1000px) {
     margin: 84px 0 12px;
   }
@@ -80,7 +80,6 @@ const ModalFooter = styled.div`
   display: flex;
   flex-direction: column;
   align-self: flex-end;
- 
 `;
 const ModalCloseButton = styled.div`
   box-sizing: border-box;
@@ -115,12 +114,12 @@ export const Modal = ({ isOpen, onClose, title, text, children }) => {
     <AnimatePresence>
       {" "}
       {isOpen && (
-        <ModalComponent 
+        <ModalComponent
           className="modal "
           role="modal"
-          initial={{y: isLessThan1000 ? "100%" :"", opacity: 0 }}
+          initial={{ y: isLessThan1000 ? "100%" : "", opacity: 0 }}
           animate={{ y: isOpen ? 0 : "100%", opacity: 1 }}
-          exit={{ y: isLessThan1000 ?"100%":"", opacity: 0 }}
+          exit={{ y: isLessThan1000 ? "100%" : "", opacity: 0 }}
           transition={{
             duration: 0.3,
             type: "spring",
@@ -144,25 +143,23 @@ export const Modal = ({ isOpen, onClose, title, text, children }) => {
               aria-label="Close modal"
               data-bs-dismiss="modal"
             ></ModalCloseButton>
-            <ModalBody >
-            <ModalHeader className="d-flex justify-content-center  d-lg-none my-0 mx-auto rounded"/>
-              <ModalTitle className="text-uppercase text-center fst-normal fw-normal fs-10px">{title}</ModalTitle>
+            <ModalBody>
+              <ModalHeader className="d-flex justify-content-center  d-lg-none my-0 mx-auto rounded" />
+              <ModalTitle className="text-uppercase text-center fst-normal fw-normal fs-10px">
+                {title}
+              </ModalTitle>
               {/* <ModalNotificationBox>
                 {children}
                 <ModalText>{text}</ModalText>
               </ModalNotificationBox> */}
             </ModalBody>
-            <ModalFooter/>
+            <ModalFooter />
           </ModalWrapper>
         </ModalComponent>
       )}
     </AnimatePresence>
   );
 };
-
-
-
-
 
 Modal.Header = ModalHeader;
 Modal.Title = ModalTitle;

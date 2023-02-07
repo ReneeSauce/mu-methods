@@ -1,6 +1,5 @@
 //custom hook for media query
 
-
 import { useEffect, useState } from "react";
 
 const useMediaQuery = (query) => {

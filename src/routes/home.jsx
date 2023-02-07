@@ -3,7 +3,6 @@ import { Modal } from "../components/modal/modal";
 import React, { useState, useEffect } from "react";
 
 export const Home = () => {
-
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -40,12 +39,7 @@ export const Home = () => {
   return (
     <div className="bg-alpha">
       <h1>Home</h1>
-      <Modal
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        title={"coinbase"}
-       
-      />
+      <Modal isOpen={isModalOpen} onClose={closeModal} title={"coinbase"} />
       <button
         onClick={openModal}
         className="btn btn-danger"

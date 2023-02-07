@@ -34,4 +34,3 @@ ModalComponent.args = {
   title: "coinbase",
   text: "on the smaller screens drag me down to close",
 };
-
