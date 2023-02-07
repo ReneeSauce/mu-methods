@@ -1,4 +1,3 @@
-import React from "react";
 import { Avatar } from "../avatar/avatar";
 
 import { Table } from "./table";
