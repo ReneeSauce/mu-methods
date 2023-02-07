@@ -4,7 +4,7 @@ import styled, { css } from "styled-components/macro";
 //move text styling to bs once bs font-sizes and colors are available
 
 const Container = styled.div`
-//trying props for flex to simplify - orignal grid still in example repo if needed
+  //trying props for flex to simplify - orignal grid still in example repo if needed
   display: grid;
   color: var(--bs-white);
   grid-template-columns: 1 fr minmax() (40px, auto) 1fr;
@@ -13,7 +13,6 @@ const Container = styled.div`
     css`
       display: flex;
     `}
-
 `;
 const StyledLeft = styled.div`
   grid-area: left;
