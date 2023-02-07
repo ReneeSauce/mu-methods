@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from "styled-components/macro";
 
 //todo
 //move text styling to bs once bs font-sizes and colors are available
