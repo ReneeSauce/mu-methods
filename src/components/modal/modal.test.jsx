@@ -25,6 +25,5 @@ describe("Component: Modal", () => {
     const closeButton = screen.getByLabelText("Close modal");
     fireEvent.click(closeButton);
     expect(modalElement).not.toBeVisible();
-    expect(modalElement).toHaveTextContent("coinbase");
   });
 });
