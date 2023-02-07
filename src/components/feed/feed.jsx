@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 /* 
  @author [Jenny Doctor](https://github.com/jendoc)
