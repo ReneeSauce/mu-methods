@@ -8,7 +8,6 @@ $white35: rgba(255, 255, 255, 0.35);
 $white60: rgba(255, 255, 255, 0.6);
 $white75: rgba(255, 255, 255, 0.75);
 $white90: rgba(255, 255, 255, 0.9);
-
 $black5: rgba(0, 0, 0, 0.05);
 $black10: rgba(0, 0, 0, 0.1);
 $black15: rgba(0, 0, 0, 0.15);
@@ -21,7 +20,7 @@ $alpha: #17172d;
 $primary: #8cbaff;
 $danger: #ff3e3e;
 $success: #1fdb00;
-$modal: #2d2d41;
+
 
 // Font sizes below:
 $font-sizes: (
@@ -57,5 +56,4 @@ $theme-colors: (
   "primary": $primary,
   "danger": $danger,
   "success": $success,
-  "modal": $modal,
- ) !default;
+   ) !default;
