@@ -29,16 +29,7 @@ const Template = ({ onClose, ...args }) => {
 export const ModalComponent = Template.bind({});
 ModalComponent.args = {};
 
-export const ModalWithHeader = Template.bind({});
-ModalWithHeader.args = {
-  children: <Modal.Header />,
-};
 export const ModalWithHeaderAndTitle = Template.bind({});
 ModalWithHeaderAndTitle.args = {
-  children: (
-    <>
-      <Modal.Header />
-      <Modal.Title title="coinbase"></Modal.Title>
-    </>
-  ),
+  children: <Modal.Title title="coinbase"></Modal.Title>,
 };

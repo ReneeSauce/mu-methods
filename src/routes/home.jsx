@@ -40,14 +40,14 @@ export const Home = () => {
     <div className="bg-alpha">
       <h1>Home</h1>
       <Modal isOpen={isModalOpen} onClose={closeModal} />
-      <button
+      {/* <button
         onClick={openModal}
         className="btn btn-danger"
         data-bs-toggle="modal"
         data-bs-target="#appModal"
       >
         open modal
-      </button>
+      </button> */}
     </div>
   );
 };

@@ -9,51 +9,31 @@ import useMediaQuery from "../../utils/use-media-query";
  *
  *  @author [Nuriya](https://github.com/NuriyaAkh)
  */
-const ModalComponent = styled(motion.div)`
-  box-sizing: border-box;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
+const Component = styled(motion.div)`
   bottom: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  background-color: rgba(0, 0, 0, 0.5);
+  background: var(--bs-black60);
   z-index: 999;
   transition: visibility 0s ease-in-out 0.4s, opacity 0.4s ease-in-out;
-  margin: 0;
-  padding: 0;
-  color: white;
-  @media (max-width: 1000px) {
-    align-items: flex-end;
-  }
 `;
-
-const ModalWrapper = styled.div`
+const Container = styled.div`
   width: 375px;
   min-height: 465px;
   padding: 16px 16px 24px;
   border-radius: 16px 16px 0 0;
-  background: #2d2d41;
-
+  background: var(--bs-white10);
   transition: visibility 0s ease-in-out 0.4s, opacity 0.4s ease-in-out;
   @media (min-width: 1000px) {
     border-radius: 16px 16px 16px 16px;
   }
 `;
-const ModalBody = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const ModalHeader = styled.div`
+const Header = styled.div`
   width: 40px;
   height: 2px;
   background: var(--bs-white35);
   cursor: grab;
 `;
-const ModalTitle = styled.h5`
+const Title = styled.h5`
   line-height: 120%;
   color: var(--bs-white35);
   margin: 32px 0 16px;
@@ -61,45 +41,21 @@ const ModalTitle = styled.h5`
     margin: 84px 0 12px;
   }
 `;
-const ModalNotificationBox = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-const ModalText = styled.p`
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 120%;
-  text-align: center;
-
-  color: #f6f6f6;
-  margin-bottom: 32px;
-`;
-const ModalFooter = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-self: flex-end;
-`;
-const ModalCloseButton = styled.div`
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  position: absolute;
+const CloseButton = styled.div`
   top: 26px;
   right: 26px;
   width: 12px;
   height: 12px;
-  background-color: transparent;
   background-image: url("${closeIcon}");
   background-position: center;
   background-size: cover;
-  border: none;
   cursor: pointer;
   transition: opacity 0.3s;
-  @media (max-width: 1000px) {
-    display: none;
+  &: hover {
+    opacity: 0.7;
   }
 `;
+
 export const Modal = ({ isOpen, onClose, children }) => {
   const y = useMotionValue(0);
   const isLessThan1000 = useMediaQuery("(max-width:1000px)");
@@ -113,8 +69,8 @@ export const Modal = ({ isOpen, onClose, children }) => {
     <AnimatePresence>
       {" "}
       {isOpen && (
-        <ModalComponent
-          className="modal "
+        <Component
+          className=" modal d-flex justify-content-center align-items-end align-items-lg-center position-fixed w-100 h-100 m-0 p-0"
           role="modal"
           initial={{ y: isLessThan1000 ? "100%" : "", opacity: 0 }}
           animate={{ y: isOpen ? 0 : "100%", opacity: 1 }}
@@ -135,40 +91,45 @@ export const Modal = ({ isOpen, onClose, children }) => {
             }
           }}
         >
-          <ModalWrapper className="d-flex flex-column align-items-center justify-content-between position-relative ">
-            <ModalCloseButton
+          <Container className="d-flex flex-column align-items-center position-relative ">
+            <CloseButton
+              className="d-lg-flex m-0 p-0 position-absolute bg-transparent border-0 d-none "
               type="button"
               onClick={onClose}
               aria-label="Close modal"
               data-bs-dismiss="modal"
-            ></ModalCloseButton>
-            <ModalBody>{children}</ModalBody>
-          </ModalWrapper>
-        </ModalComponent>
+            ></CloseButton>
+            <div className="d-flex flex-column justify-content-space-between  align-items-center position-relative">
+              <Modal.Header />
+              {children}
+            </div>
+          </Container>
+        </Component>
       )}
     </AnimatePresence>
   );
 };
 
-const Header = () => {
+const ModalHeader = () => {
   return (
-    <ModalHeader className="d-flex justify-content-center  d-lg-none my-0 mx-auto rounded" />
+    <Header className="d-block justify-content-center d-lg-none my-0 mx-auto rounded" />
   );
 };
-const Title = ({ title }) => {
+const ModalTitle = ({ title }) => {
   return (
-    <ModalTitle className="text-uppercase text-center fst-normal fw-normal fs-10px">
+    <Title className="text-uppercase text-center fst-normal fw-normal fs-10px">
       {title}
-    </ModalTitle>
+    </Title>
   );
 };
-Modal.Header = Header;
-Modal.Title = Title;
 
-Modal.ModalBody = ModalBody;
+const ModalFooter = ({ footer }) => {
+  return <div className="d-flex flex-column align-self-end ">{footer}</div>;
+};
+
+Modal.Header = ModalHeader;
+Modal.Title = ModalTitle;
 Modal.Footer = ModalFooter;
-
-Modal.CloseButton = ModalCloseButton;
 
 Modal.propTypes = {
   isOpen: PropTypes.bool,
