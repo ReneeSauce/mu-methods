@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useState, useEffect } from "react";
 import copyIcon from "../../assets/copy-icon.svg";
 
 /**
@@ -12,6 +11,7 @@ import copyIcon from "../../assets/copy-icon.svg";
  * @param fs expects the font size
  */
 
+// TODO: Refactor to use common Button Component
 const CopyBtn = styled.button`
   background-image: url(${copyIcon});
   background-position: center;
@@ -23,12 +23,6 @@ const CopyBtn = styled.button`
 `;
 
 export const Pill = ({ isCopiable, text, shape, opacity, textOpacity, fs }) => {
-  const [pillText, setPillText] = useState("");
-
-  useEffect(() => {
-    setPillText(text);
-  }, []);
-
   return (
     <div className="d-flex flex-row align-items-center">
       <div
@@ -36,12 +30,12 @@ export const Pill = ({ isCopiable, text, shape, opacity, textOpacity, fs }) => {
           shape === "round" ? "rounded-pill" : ""
         }`}
       >
-        {pillText}
+        {text}
       </div>
       {isCopiable && (
         <CopyBtn
           onClick={() => {
-            navigator.clipboard.writeText(pillText);
+            navigator.clipboard.writeText(text);
           }}
           className="ms-2"
         ></CopyBtn>
