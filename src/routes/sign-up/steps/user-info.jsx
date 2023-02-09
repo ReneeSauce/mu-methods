@@ -14,22 +14,42 @@ import { Button } from "../../../components/button/button";
 //should it be subTitle or subtitle
 //btnText or btntext
 
-export default function UserInfo(title, subTitle, btnText, onBackClick, onForwardClick) {
-  <Step.Container>
-    <Step.Header>
-      <Step.Header.Left>
-        {/* insert back button here with onClick={onBackClick}*/}
-      </Step.Header.Left>
-      <Step.Header.Center>
-        <Step.Header.Title title={title}></Step.Header.Title>
-        <Step.Header.SubTitle subtitle={subTitle}></Step.Header.SubTitle>
-      </Step.Header.Center>
-    </Step.Header>
-    <Step.Body>
-        {/* insert form comopnent here */}
-        </Step.Body>
-    <Step.Footer>
-      <Button onClick={onForwardClick}>{btnText}</Button>
-    </Step.Footer>
-  </Step.Container>;
+export default function UserInfo(
+  onBackClick,
+  onForwardClick
+){
+  return(
+    <Step
+    left={<Button onClick={onBackClick}>**</Button>} //replace button with icon button
+    title="Sign up"
+    subtitle=" Step 1/4"
+    body="insert form component here"
+    footer={<Button onClick={onForwardClick}>Continue</Button>} //replace buton with step button
+  ></Step>
+  )
 }
+
+//this is composition way - keeping incase we don't use step component
+// export default function UserInfo(
+//   title,
+//   subTitle,
+//   btnText,
+//   onBackClick,
+//   onForwardClick
+// ) {
+//   <Step.Container>
+//     <Step.Header>
+//       <Step.Header.Left>
+//         {/* insert back button here with onClick={onBackClick}*/}
+//       </Step.Header.Left>
+//       <Step.Header.Center>
+//         <Step.Header.Title title={title}></Step.Header.Title>
+//         <Step.Header.SubTitle subtitle={subTitle}></Step.Header.SubTitle>
+//       </Step.Header.Center>
+//     </Step.Header>
+//     <Step.Body>{/* insert form comopnent here */}</Step.Body>
+//     <Step.Footer>
+//       <Button onClick={onForwardClick}>{btnText}</Button>
+//     </Step.Footer>
+//   </Step.Container>;
+// }

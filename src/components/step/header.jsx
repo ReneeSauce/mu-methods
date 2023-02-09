@@ -1,18 +1,14 @@
-import styled, { css } from "styled-components/macro";
+import styled from "styled-components/macro";
 
 //todo
-//move text styling to bs once bs font-sizes and colors are available
+//move text styling to bs once bs spacing and colors are available
 
 const Container = styled.div`
-  //trying props for flex to simplify - orignal grid still in example repo if needed
   display: grid;
   color: var(--bs-white);
   grid-template-columns: 1 fr minmax() (40px, auto) 1fr;
-  ${(props) =>
-    props.$flex &&
-    css`
-      display: flex;
-    `}
+  grid-template-areas: "left main right";
+  margin-bottom: 32px;
 `;
 const StyledLeft = styled.div`
   grid-area: left;
@@ -21,22 +17,27 @@ const StyledLeft = styled.div`
 const StyledCenter = styled.div`
   grid-area: main;
   justify-self: center;
+  row-gap: 12px; //need to convert to bs
+  /* display: flex; */ //put bs in component
+  /* flex-direction: column; */ //put bs in component
 `;
 const StyledRight = styled.div`
   grid-area: right;
   justify-self: end;
-  align-items: flex-start;
+  /* align-items: flex-start; */ //put bs in component
   column-gap: 12px;
 `;
+
 const left = ({ children }) => {
   return <StyledLeft>{children}</StyledLeft>;
 };
-
 const right = ({ children }) => {
-  return <StyledRight className="d-flex">{children}</StyledRight>;
+  return (
+    <StyledRight className="d-flex align-items-start">{children}</StyledRight>
+  );
 };
 const center = ({ children }) => {
-  return <StyledCenter>{children}</StyledCenter>;
+  return <StyledCenter className="d-flex flex-column">{children}</StyledCenter>;
 };
 const title = ({ title }) => {
   return <h2 className="fs-24px fw-bold m-0">{title}</h2>;
@@ -44,8 +45,8 @@ const title = ({ title }) => {
 const subtitle = ({ subtitle }) => {
   return <h3 className="fs-12px fw-light m-0">{subtitle}</h3>;
 };
-export const Header = ({ grid, children, title, subtitle }) => {
-  return <Container $grid={grid}>{children}</Container>;
+export const Header = ({ children }) => {
+  return <Container>{children}</Container>;
 };
 
 Header.Left = left;

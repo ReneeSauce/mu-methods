@@ -1,6 +1,7 @@
-import { container as Container } from "./container";
-import { header as Header } from "./header";
-import { body as Body } from "./body";
-import { footer as Footer } from "./footer";
+// import { container as Container } from "./container";
+// import { header as Header } from "./header";
+// import { body as Body } from "./body";
+// import { footer as Footer } from "./footer";
 
-export const Step = { Container, Header, Body, Footer };
+// export const Step = { Container, Header, Body, Footer };
+export * as Step from "./step";
