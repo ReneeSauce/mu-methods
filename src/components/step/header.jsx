@@ -19,7 +19,7 @@ const StyledCenter = styled.div`
   justify-self: center;
   justify-content: center;
   align-items: center;
-  text-align:center;
+  text-align: center;
   row-gap: 12px; //need to convert to bs
   /* display: flex; */ //put bs in component
   /* flex-direction: column; */ //put bs in component

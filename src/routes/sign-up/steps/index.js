@@ -6,7 +6,6 @@ import { RepeatSeedPhrase } from "./repeat-seed-phrase";
 import { SeedPhrase } from "./seed-phrase";
 import { UserInfo } from "./user-info";
 
-
 export const Steps = {
   UserInfo,
   SeedPhrase,
