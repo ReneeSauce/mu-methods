@@ -1,5 +1,5 @@
 import { Button } from "../../../components/button/button"; //button needs to be updated when it is available
-import { Step } from "../../../components/step/step";
+import Step from "../../../components/step";
 
 export function FinishReg({ onForwardClick }) {
   return (

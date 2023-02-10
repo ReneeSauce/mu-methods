@@ -1,5 +1,5 @@
 import { Button } from "../../../components/button/button";
-import { Step } from "../../../components/step/step";
+import  Step  from "../../../components/step";
 
 export function ChoosePeers({ onBackClick, onForwardClick }) {
   return (
@@ -12,3 +12,5 @@ export function ChoosePeers({ onBackClick, onForwardClick }) {
     ></Step>
   );
 }
+
+//remove {} from step and step from step/step

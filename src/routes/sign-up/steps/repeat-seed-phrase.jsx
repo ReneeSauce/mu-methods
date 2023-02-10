@@ -1,5 +1,5 @@
 import { Button } from "../../../components/button/button";
-import { Step } from "../../../components/step/step";
+import  Step  from "../../../components/step";
 
 export function RepeatSeedPhrase({ onBackClick, onForwardClick }) {
   return (

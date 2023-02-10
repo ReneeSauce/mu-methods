@@ -1,5 +1,5 @@
 import { Button } from "../../../components/button/button";
-import { Step } from "../../../components/step/step";
+import Step from "../../../components/step";
 
 //TO DO
 //need to import and add correct buttons when they are created

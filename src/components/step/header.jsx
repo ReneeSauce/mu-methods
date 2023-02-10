@@ -1,9 +1,9 @@
-import styled from "styled-components/macro";
-
+// import styled from "styled-components/macro";
+import styled from "styled-components";
 //todo
 //move text styling to bs once bs spacing and colors are available
 
-const Container = styled.div`
+const StyledContainer = styled.div`
   display: grid;
   color: var(--bs-white);
   grid-template-columns: 1fr minmax(40px, auto) 1fr;
@@ -50,8 +50,8 @@ const title = ({ title }) => {
 const subtitle = ({ subtitle }) => {
   return <h3 className="fs-12px fw-light m-0">{subtitle}</h3>;
 };
-export const Header = ({ children }) => {
-  return <Container>{children}</Container>;
+const Header = ({ children }) => {
+  return <StyledContainer>{children}</StyledContainer>;
 };
 
 Header.Left = left;
@@ -59,3 +59,5 @@ Header.Center = center;
 Header.Right = right;
 Header.Title = title;
 Header.SubTitle = subtitle;
+
+export default Header;

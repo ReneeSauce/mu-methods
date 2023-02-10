@@ -6,7 +6,7 @@ const StyledWrapper = styled.div`
   max-width: 375px;
   min-height: 762px;
 `;
-const StepContainer = ({ children }) => {
+const Container = ({ children }) => {
   return (
     <StyledWrapper className="d-flex flex-column bg-alpha">
       {children}
@@ -14,4 +14,4 @@ const StepContainer = ({ children }) => {
   );
 };
 
-export default StepContainer;
+export default Container;

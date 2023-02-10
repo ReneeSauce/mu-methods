@@ -1,7 +1,17 @@
-// import { container as Container } from "./container";
-// import { header as Header } from "./header";
-// import { body as Body } from "./body";
-// import { footer as Footer } from "./footer";
+import Step from "./step";
 
-// export const Step = { Container, Header, Body, Footer };
-export * as Step from "./step";
+export default Step;
+
+// import { body as Body } from "./body";
+// import { container as Container } from "./container";
+// import { footer as Footer } from "./footer";
+// import { header as Header } from "./header";
+
+// import { Step } from "./step";
+
+// Step.Container = Container;
+// Step.Header = Header;
+// Step.Body = Body;
+// Step.Footer = Footer;
+
+// export default Step;
