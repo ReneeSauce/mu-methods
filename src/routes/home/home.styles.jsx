@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { Button } from "../../components/button/button";
 import muLogo from "../../assets/mu-methods.svg";
 
 export const HomepageLogo = styled.div`
@@ -19,7 +21,7 @@ export const HomepageTitle = styled.h1`
   margin-bottom: 36px;
 `;
 
-export const FooterContainer = styled.div`
+export const HomeFooter = styled.div`
   width: 343px;
   padding-top: 48px;
   padding-bottom: 84px;
@@ -32,21 +34,21 @@ export const SlideImageContainer = styled.div`
   }
 `;
 
-export const SlideShowCubeImage = styled(SlideImageContainer)`
+export const HomeCubeImage = styled(SlideImageContainer)`
   img {
     width: 320px;
     height: 187px;
   }
 `;
 
-export const SlideShowBallsImage = styled(SlideImageContainer)`
+export const HomeBallsImage = styled(SlideImageContainer)`
   img {
     width: 359px;
     height: 144px;
   }
 `;
 
-export const SlideShowUsersImage = styled(SlideImageContainer)`
+export const HomeUsersImage = styled(SlideImageContainer)`
   img {
     width: 203px;
     height: 182px;
@@ -57,3 +59,14 @@ export const SlideCaption = styled.p`
   margin: 31px 0 0 0;
   max-width: 343px;
 `;
+
+export const HomeButton = styled(Button)`
+  height: 60px;
+  width: 343px;
+  font-family: "DM Sans", Inter, Avenir, Helvetica, Arial, sans-serif;
+`;
+// export const HomeButton = styled(Link)`
+//   height: 60px;
+//   width: 343px;
+//   font-family: "DM Sans", Inter, Avenir, Helvetica, Arial, sans-serif;
+// `;
