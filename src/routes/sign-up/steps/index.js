@@ -1,9 +1,18 @@
-import UserInfo from "./user-info";
-import SeedPhrase from "./seed-phrase";
-import ChoosePeers from "./choose-peers";
-import ModalStub from "./modal-stub"; //need to delete this once modal hooked up
-import RepeatSeedPhrase from "./repeat-seed-phrase";
-import NotifyPeers from "./notify-peers";
-import FinishReg from "./finish-reg";
+import { ChoosePeers } from "./choose-peers";
+import { FinishReg } from "./finish-reg";
+import { ModalStub } from "./modal-stub"; //need to delete this once modal hooked up
+import { NotifyPeers } from "./notify-peers";
+import { RepeatSeedPhrase } from "./repeat-seed-phrase";
+import { SeedPhrase } from "./seed-phrase";
+import { UserInfo } from "./user-info";
 
-export * as Steps from "./steps";
+
+export const Steps = {
+  UserInfo,
+  SeedPhrase,
+  ChoosePeers,
+  ModalStub,
+  RepeatSeedPhrase,
+  NotifyPeers,
+  FinishReg,
+};

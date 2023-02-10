@@ -6,8 +6,8 @@ import styled from "styled-components/macro";
 const Container = styled.div`
   display: grid;
   color: var(--bs-white);
-  grid-template-columns: 1 fr minmax() (40px, auto) 1fr;
-  grid-template-areas: "left main right";
+  grid-template-columns: 1fr minmax(40px, auto) 1fr;
+  grid-template-areas: "left center right";
   margin-bottom: 32px;
 `;
 const StyledLeft = styled.div`
@@ -15,8 +15,11 @@ const StyledLeft = styled.div`
   justify-self: start;
 `;
 const StyledCenter = styled.div`
-  grid-area: main;
+  grid-area: center;
   justify-self: center;
+  justify-content: center;
+  align-items: center;
+  text-align:center;
   row-gap: 12px; //need to convert to bs
   /* display: flex; */ //put bs in component
   /* flex-direction: column; */ //put bs in component
@@ -37,10 +40,12 @@ const right = ({ children }) => {
   );
 };
 const center = ({ children }) => {
-  return <StyledCenter className="d-flex flex-column">{children}</StyledCenter>;
+  return (
+    <StyledCenter className="d-flex flex-column  px-3">{children}</StyledCenter>
+  );
 };
 const title = ({ title }) => {
-  return <h2 className="fs-24px fw-bold m-0">{title}</h2>;
+  return <h2 className="fs-24px fw-bold m-0 align-self-center">{title}</h2>;
 };
 const subtitle = ({ subtitle }) => {
   return <h3 className="fs-12px fw-light m-0">{subtitle}</h3>;

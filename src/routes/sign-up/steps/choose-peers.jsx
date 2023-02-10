@@ -1,7 +1,7 @@
-import { Step } from "../../../components/step";
 import { Button } from "../../../components/button/button";
+import { Step } from "../../../components/step/step";
 
-export default function ChoosePeers(onBackClick, onForwardClick) {
+export function ChoosePeers({ onBackClick, onForwardClick }) {
   return (
     <Step
       left={<Button onClick={onBackClick}>**</Button>} //replace button with icon button

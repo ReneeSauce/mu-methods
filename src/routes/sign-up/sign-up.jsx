@@ -1,14 +1,12 @@
 import React, { useCallback, useMemo, useState } from "react";
 import StepWizard from "react-step-wizard";
 import { Steps } from "./steps";
-import SeedPhrase from "./steps/seed-phrase";
-import UserInfo from "./steps/user-info";
 
 //context - does this need to go in a separate file
 //does one context work for the entire app
 export const WizardContext = React.createContext();
 
-function SignUp() {
+export function SignUp() {
   //updates context?
   const [state, updateState] = useState({
     form: {},
@@ -88,7 +86,7 @@ function SignUp() {
           stepName="seed-phrase"
           SW={SW}
           onForwardClick={goTo("modal-stub")} //needs logic to open modal here
-          onBackClick={goTo("seed-phrase")}
+          onBackClick={goTo("user-info")}
         ></Steps.SeedPhrase>
         <Steps.ModalStub
           stepName="modal-stub"
@@ -122,4 +120,4 @@ function SignUp() {
     </WizardContext.Provider>
   );
 }
-export default SignUp;
+// export default SignUp;

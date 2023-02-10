@@ -1,7 +1,7 @@
-import { Step } from "../../../components/step";
-import { Button } from "../../../components/button/button";//button needs to be updated when it is available
+import { Button } from "../../../components/button/button"; //button needs to be updated when it is available
+import { Step } from "../../../components/step/step";
 
-export default function FinishReg(onForwardClick) {
+export function FinishReg({onForwardClick}) {
   return (
     <Step
       title="We've sent a link to your email to finish your registration process"
