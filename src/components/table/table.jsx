@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 /* 
  @author [Kurtney J.](https://github.com/xhundo)
@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 // Table component build with named spaced format
 const StyledCell = styled.div`
-  width: 100%
+  width: 100%;
   min-height: 84px;
   padding: 16px;
   background: var(--bs-white10);

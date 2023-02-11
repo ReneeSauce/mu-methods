@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { Avatar } from "../avatar/avatar";
 
 /**
@@ -34,7 +34,7 @@ NotificationWrapper.Summary = styled.p`
   font-weight: 500;
 `;
 
-NotificationWrapper.Dot = styled.div`
+NotificationWrapper.Dot = styled.span`
   height: 8px;
   width: 8px;
 `;
