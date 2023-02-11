@@ -6,8 +6,8 @@ export default {
   title: 'Components/Button',
   component: Button,
   argTypes: {
-    variant: {
-      options: ['primary', 'danger', 'success'],
+    variants: {
+      options: ['primary', 'secondary', 'tertiary'],
       control: { type: 'radio' },
     },
   },
@@ -23,6 +23,12 @@ Variants.args = {
 export const Large = Template.bind({});
 Large.args = {
   size: 'lg',
+  children: 'Button',
+};
+
+export const Medium = Template.bind({});
+Medium.args = {
+  size: 'md',
   children: 'Button',
 };
 

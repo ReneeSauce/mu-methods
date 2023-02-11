@@ -20,6 +20,7 @@ $alpha: #17172d;
 $primary: #8cbaff;
 $danger: #ff3e3e;
 $success: #1fdb00;
+$muted: #2E2E42;
 
 // Font sizes below:
 $font-sizes: (
@@ -55,4 +56,5 @@ $theme-colors: (
   "primary": $primary,
   "danger": $danger,
   "success": $success,
+  "muted": $muted
 ) !default;
