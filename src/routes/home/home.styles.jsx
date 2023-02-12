@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { Button } from "../../components/button/button";
 import muLogo from "../../assets/mu-methods.svg";
+import { Button } from "../../components/button/button";
 
 export const HomepageLogo = styled.div`
   margin-top: 63px;

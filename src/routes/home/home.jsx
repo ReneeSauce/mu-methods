@@ -1,19 +1,18 @@
-import { SlideShow } from "../../components/slideshow/slideshow";
-import cubes from "../../assets/cubes.svg";
-import balls from "../../assets/balls.svg";
-import users from "../../assets/users.svg";
 import { SwiperSlide } from "swiper/react";
-import { Link } from "react-router-dom";
+import balls from "../../assets/balls.svg";
+import cubes from "../../assets/cubes.svg";
+import users from "../../assets/users.svg";
+import { SlideShow } from "../../components/slideshow/slideshow";
 // import { HomeButton } from "../../components/button/button";
 import {
+  HomeBallsImage,
+  HomeButton,
+  HomeCubeImage,
+  HomeFooter,
   HomepageLogo,
   HomepageTitle,
-  HomeFooter,
-  HomeCubeImage,
-  HomeBallsImage,
   HomeUsersImage,
   SlideCaption,
-  HomeButton,
 } from "./home.styles";
 
 export const Home = () => {
@@ -50,7 +49,7 @@ export const Home = () => {
         </SlideShow>
 
         <HomeFooter className="d-flex flex-column m-auto">
-          {/* <Link to="/login"></Link> */}
+          {/* <Link to="/login"> </Link> */}
           <HomeButton
             type="button"
             className="bg-alpha border-alpha text-white60 btn btn-lg"
@@ -58,7 +57,7 @@ export const Home = () => {
             Log In
           </HomeButton>
 
-          {/* <Link to="/sign-up"> </Link> */}
+          {/* <Link to="/sign-up"></Link> */}
           <HomeButton
             type="button"
             className="text-alpha bg-primary btn btn-lg mt-3"
