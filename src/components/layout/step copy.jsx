@@ -4,18 +4,21 @@ import Footer from "./footer";
 import Header from "./header";
 
 //question how to add this to the index.js?
-
-function Step({ left, right, center, body, footer, title, subtitle }) {
+//rename this to be layout - folder layout
+//
+function Step({ left, right, center, body, footer, header, title, subtitle }) {
   return (
     <Container>
       <Header>
-        <Header.Left>{left}</Header.Left>
+        {header}
+        {/* //pass this stuff into to the step */}
+        {/* <Header.Left>{left}</Header.Left>
         <Header.Center>
           {title && <Header.Title title={title} />}
           {subtitle && <Header.SubTitle subtitle={subtitle} />}
           {center}
         </Header.Center>
-        <Header.Right>{right}</Header.Right>
+        <Header.Right>{right}</Header.Right> */}
       </Header>
       <Body>{body}</Body>
       <Footer>{footer}</Footer>
