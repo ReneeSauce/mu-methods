@@ -3,4 +3,5 @@ export * from "./button";
 export * from "./feed";
 export * from "./modal";
 export * from "./notification";
+export * from "./pill";
 export * from "./table";
