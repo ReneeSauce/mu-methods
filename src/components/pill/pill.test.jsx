@@ -1,5 +1,4 @@
-import * as React from "react";
-import { fireEvent, getByRole, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { Pill } from "./pill";
 
 describe("Component: Pill", () => {
