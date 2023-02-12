@@ -1,11 +1,11 @@
 import Body from "./body";
 import Container from "./container";
 import Footer from "./footer";
-import  Header from "./header";
+import Header from "./header";
 
 //question how to add this to the index.js?
 
- function Step({ left, right, center, body, footer, title, subtitle }) {
+function Step({ left, right, center, body, footer, title, subtitle }) {
   return (
     <Container>
       <Header>

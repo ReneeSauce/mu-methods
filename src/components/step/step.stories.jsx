@@ -1,4 +1,3 @@
-
 import { Step } from "./step";
 
 /**
@@ -6,14 +5,10 @@ import { Step } from "./step";
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
  */
 
+export default {
+  title: "Components/Step/Step",
+  component: Step,
+  argTypes: {},
+};
 
-export default{
-    title: "Components/Step/Step",
-    component: Step,
-    argTypes:{
-        
-    }
-}
-
-const Template = (args) =><Step {...args}/>
-
+const Template = (args) => <Step {...args} />;

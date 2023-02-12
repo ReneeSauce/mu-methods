@@ -1,4 +1,3 @@
-
 import Body from "./body";
 
 /**
@@ -6,8 +5,7 @@ import Body from "./body";
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
  */
 
-export default{
-    title: 'Step/Body',
-    component: Body,
-    
-}
+export default {
+  title: "Step/Body",
+  component: Body,
+};
