@@ -9,12 +9,10 @@ const StyledCell = styled.div`
   width: 100%;
   min-height: 84px;
   padding: 16px;
-  background: var(--bs-white10);
 `;
 
 const StyledHeading = styled.p`
   line-height: 12px;
-  color: var(--bs-white75);
 `;
 
 export const Table = ({ children }) => {
@@ -27,7 +25,10 @@ export const Table = ({ children }) => {
 
 const Header = ({ children }) => {
   return (
-    <StyledHeading role="heading" className="text-uppercase mb-2 fs-10px">
+    <StyledHeading
+      role="heading"
+      className="text-uppercase mb-2 fs-10px text-white text-opacity-75"
+    >
       {children}
     </StyledHeading>
   );
@@ -35,7 +36,7 @@ const Header = ({ children }) => {
 
 const Cell = ({ children }) => {
   return (
-    <StyledCell role="cell" className="rounded mb-2">
+    <StyledCell role="cell" className="rounded mb-2 bg-white bg-opacity-10">
       {children}
     </StyledCell>
   );
