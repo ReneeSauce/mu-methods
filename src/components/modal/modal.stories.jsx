@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button } from "../button";
 import { Modal } from "./modal";
 
 export default {
@@ -13,7 +14,7 @@ const Template = ({ onClose, ...args }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <button onClick={() => setIsOpen(true)}>Click Me</button>
+      <Button onClick={() => setIsOpen(true)}>Click Me</Button>
       <Modal
         {...args}
         isOpen={isOpen}
@@ -31,5 +32,11 @@ ModalComponent.args = {};
 
 export const ModalWithHeaderAndTitle = Template.bind({});
 ModalWithHeaderAndTitle.args = {
-  children: <Modal.Title title="coinbase"></Modal.Title>,
+  children: (
+    <>
+      <Modal.Title>coinbase</Modal.Title>
+      <div className="flex-grow-1">Modal Body Goes Here</div>
+      <div>Modal Footer Goes Here</div>
+    </>
+  ),
 };

@@ -9,20 +9,23 @@ describe("Component: Modal", () => {
     text: "Transaction for 0.008 ETH sign request",
     notifications: "Type “carrot pizza” to sign your transaction",
   };
-  it("renders a modal that includes an title, notifications, text", () => {
+  it("renders a modal that includes an title, notifications, text", (done) => {
     render(
-      <Modal
-        isOpen={props.isOpen}
-        onClose={handleClick}
-        title={props.title}
-        {...props}
-      />
+      <Modal isOpen={props.isOpen} onClose={handleClick} {...props}>
+        <Modal.Title>{props.title}</Modal.Title>
+        <div>{props.text}</div>
+      </Modal>
     );
 
     const modalElement = screen.getByRole("modal");
     expect(modalElement).toBeInTheDocument();
     const closeButton = screen.getByLabelText("Close modal");
     fireEvent.click(closeButton);
-    expect(modalElement).not.toBeVisible();
+
+    // Modal animation has to finish before element is no longer visible
+    setTimeout(() => {
+      expect(modalElement).not.toBeVisible();
+      done();
+    }, 1000);
   });
 });
