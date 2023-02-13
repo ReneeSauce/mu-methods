@@ -1,11 +1,10 @@
-import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import profileIcon from "../../assets/profile.svg";
-import profileIconActive from "../../assets/profile_active.svg";
-import notificationIcon from "../../assets/notification.svg";
-import notificationIconActive from "../../assets/notification_active.svg";
+import homeIconActive from "../../assets/home-active.svg";
 import homeIcon from "../../assets/home.svg";
-import homeIconActive from "../../assets/home_active.svg";
+import notificationIconActive from "../../assets/notification-active.svg";
+import notificationIcon from "../../assets/notification.svg";
+import profileIconActive from "../../assets/profile-active.svg";
+import profileIcon from "../../assets/profile.svg";
 
 import { NavTray } from "./nav-tray";
 
