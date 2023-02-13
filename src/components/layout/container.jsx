@@ -1,4 +1,4 @@
-import styled from "styled-components/macro";
+import styled from "styled-components";
 
 const StyledWrapper = styled.div`
   padding: 32px 16px 24px 16px;

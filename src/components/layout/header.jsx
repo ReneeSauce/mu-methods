@@ -31,6 +31,13 @@ const StyledRight = styled.div`
   column-gap: 12px;
 `;
 
+const StyledTitle = styled.h2`
+  font-weight: 700;
+`;
+const StyledSubtitle = styled.h2`
+  font-weight: 400;
+`;
+
 const left = ({ children }) => {
   return <StyledLeft>{children}</StyledLeft>;
 };
@@ -41,14 +48,22 @@ const right = ({ children }) => {
 };
 const center = ({ children }) => {
   return (
-    <StyledCenter className="d-flex flex-column  px-3">{children}</StyledCenter>
+    <StyledCenter className="d-flex flex-column px-16px">
+      {children}
+    </StyledCenter>
   );
 };
 const title = ({ title }) => {
-  return <h2 className="fs-24px fw-bold m-0 align-self-center">{title}</h2>;
+  return (
+    <StyledTitle className="fs-24px m-0 align-self-center">{title}</StyledTitle>
+  );
 };
 const subtitle = ({ subtitle }) => {
-  return <h3 className="fs-12px fw-light m-0">{subtitle}</h3>;
+  return (
+    <StyledSubtitle className="fs-12px m-0 text-opacity-70">
+      {subtitle}
+    </StyledSubtitle>
+  );
 };
 const Header = ({ children }) => {
   return <StyledContainer>{children}</StyledContainer>;

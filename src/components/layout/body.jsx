@@ -6,6 +6,6 @@ const StyledBody = styled.div`
   overflow: hidden;
 `;
 const Body = ({ children }) => {
-  return <StyledBody>{children}</StyledBody>;
+  return <StyledBody className="d-flex flex-column">{children}</StyledBody>;
 };
 export default Body;
