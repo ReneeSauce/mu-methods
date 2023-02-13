@@ -35,7 +35,7 @@ describe("Navigation tray", () => {
             },
             {
               role: "notification",
-              to: "/#notfication",
+              to: "/notification",
               icon: notificationIcon,
               activeIcon: notificationIconActive,
               isNotification: true,

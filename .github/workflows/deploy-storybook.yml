@@ -1,4 +1,4 @@
-name: Frontend PROD Deployment
+name: Storybook Deployment
 on:
   push:
     branches:
@@ -18,9 +18,9 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 16
       - run: npm install
-      - run: npm run build
+      - run: npm run build-storybook
 
       - uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -28,5 +28,5 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - run: aws s3 sync --delete ./dist s3://mu-methods-apiary
-      - run: aws cloudfront create-invalidation --distribution-id E2ZYW0OM8H4BA8 --paths "/index.html"
+      - run: aws s3 sync --delete ./storybook-static s3://storybook.mu-methods-apiary
+      - run: aws cloudfront create-invalidation --distribution-id EWSP5PWGJWOMY --paths "/index.html"

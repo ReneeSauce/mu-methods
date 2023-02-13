@@ -1,11 +1,13 @@
-/// This component is a navigation tray
-/// for mobile version of the app
-
+import _ from "lodash";
 import { NavLink } from "react-router-dom";
-import notificationSign from "../../assets/notification_sign.svg";
 import styled from "styled-components";
+import notificationSign from "../../assets/notification-sign.svg";
 
-/// Here is a styles for every link:
+/**
+ The **NavTrau** component is the navigation tray component for mobile version of the application.
+ *
+ *  @author [Kamal Ganiev](https://github.com/kamal-ganiev)
+ */
 
 const StyledNavLink = styled(NavLink)`
   width: 60px;
@@ -25,7 +27,7 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 const StyledNavBar = styled.nav`
-  width: 215px;
+  padding: 0 17px;
   height: 60px;
   background-color: white;
   bottom: 3%;
@@ -35,16 +37,13 @@ const StyledNavBar = styled.nav`
 
 let num = 0;
 
-export const NavTray = ({ isUnreadedMessages, navLinks }) => {
+export const NavTray = ({ isUnreadedMessages = true, navLinks }) => {
   return (
-    <StyledNavBar
-      className="nav position-fixed d-flex justify-content-evenly align-items-center rounded-pill bg-white"
-      style={{ "--bs-bg-opacity": 0.1 }}
-    >
+    <StyledNavBar className="nav position-fixed d-flex justify-content-evenly align-items-center rounded-pill bg-white bg-opacity-10">
       {navLinks.map((link) => {
         return (
           <StyledNavLink
-            key={(num += 1)}
+            key={_.uniqueId()}
             role={link.role}
             to={link.to}
             className="nav-link rounded-circle"
