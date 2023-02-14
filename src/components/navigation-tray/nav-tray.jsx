@@ -52,7 +52,7 @@ export const NavTray = ({ isUnreadMessages, navLinks }) => {
             inactive={link.icon}
             active={link.activeIcon}
           >
-            {link.isNotification ? (
+            {link.isNotification && (
               <img
                 src={notificationSign}
                 alt="Blue circle"
@@ -61,8 +61,6 @@ export const NavTray = ({ isUnreadMessages, navLinks }) => {
                 }`}
                 style={{ top: "13px", right: "13px" }}
               />
-            ) : (
-              ""
             )}
           </StyledNavLink>
         );
