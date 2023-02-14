@@ -1,6 +1,12 @@
 // import styled from "styled-components/macro";
 import styled from "styled-components";
 
+/**
+ * Body Component used with the Layout Component
+ * @author [K. Ehrenclou](https://github.com/kehrenclou)
+ * @param children pass components to body via children
+ */
+
 const StyledBody = styled.div`
   flex-grow: 1;
   overflow: hidden;

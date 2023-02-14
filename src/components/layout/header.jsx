@@ -1,6 +1,11 @@
-// import styled from "styled-components/macro";
 import styled from "styled-components";
-//?need mb prop for container
+
+/**
+ * Header Component used with the Layout Component
+ * @author [K. Ehrenclou](https://github.com/kehrenclou)
+ * @param children pass components and namespaced components to header via children
+ * @param mb used to set the header container margin bottom dynamically - default is 32px
+ */
 
 const StyledContainer = styled.div.attrs((props) => ({
   mb: props.mb || "32px",
@@ -10,12 +15,7 @@ const StyledContainer = styled.div.attrs((props) => ({
   grid-template-areas: "left center right";
   margin-bottom: ${(props) => props.mb};
 `;
-// const StyledContainer = styled.div`
-//   display: grid;
-//   grid-template-columns: 1fr minmax(40px, auto) 1fr;
-//   grid-template-areas: "left center right";
-//   margin-bottom: ${(props) => props.mb || "32px"};
-// `;
+
 const StyledLeft = styled.div`
   grid-area: left;
   justify-self: start;

@@ -10,6 +10,8 @@ import { Layout } from "./layout";
 /**
  * Step Storybook Component
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
+ * showing different layout combinations
+ * needs updating when button and profile components are available
  */
 
 export default {

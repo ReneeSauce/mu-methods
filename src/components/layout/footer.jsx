@@ -1,6 +1,13 @@
 // import styled from "styled-components/macro";
 import styled from "styled-components";
 
+/**
+ * Footer component used with the Layout Component
+ * @author [K. Ehrenclou](https://github.com/kehrenclou)
+ * @param children pass components to footer via children
+ *
+ */
+
 const StyledFooter = styled.footer`
   text-align: center;
 `;
