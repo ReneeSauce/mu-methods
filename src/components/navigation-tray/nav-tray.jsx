@@ -7,6 +7,8 @@ import notificationSign from "../../assets/notification-sign.svg";
  The **NavTrau** component is the navigation tray component for mobile version of the application.
  *
  *  @author [Kamal Ganiev](https://github.com/kamal-ganiev)
+ *  @param isUnreadMessages boolean param for notifications' alert
+ *  @param navLink the array of navigation links
  */
 
 const StyledNavLink = styled(NavLink)`
@@ -37,7 +39,7 @@ const StyledNavBar = styled.nav`
 
 let num = 0;
 
-export const NavTray = ({ isUnreadedMessages = true, navLinks }) => {
+export const NavTray = ({ isUnreadMessages, navLinks }) => {
   return (
     <StyledNavBar className="nav position-fixed d-flex justify-content-evenly align-items-center rounded-pill bg-white bg-opacity-10">
       {navLinks.map((link) => {
@@ -55,7 +57,7 @@ export const NavTray = ({ isUnreadedMessages = true, navLinks }) => {
                 src={notificationSign}
                 alt="Blue circle"
                 className={`position-absolute ${
-                  isUnreadedMessages ? "d-block" : "d-none"
+                  isUnreadMessages ? "d-block" : "d-none"
                 }`}
                 style={{ top: "13px", right: "13px" }}
               />
