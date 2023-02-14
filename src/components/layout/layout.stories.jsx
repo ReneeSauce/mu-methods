@@ -1,6 +1,8 @@
 import { Button } from "../button/button";
 import { Default as Feed } from "../feed/feed.stories";
 import { Variants as Pill } from "../pill/pill.stories";
+import * as Table from "../table/table.stories";
+import muMethods from "/mu-methods.svg";
 
 import Header from "./header";
 import { Layout } from "./layout";
@@ -15,16 +17,21 @@ export default {
   component: Layout,
   parameters: {
     docs: {
-      // page: null,
       description: {
         component: "Primary Layout Component showing basic parts",
       },
     },
   },
+
   argTypes: {
+    mb: {
+      description:
+        "Styled Component Prop that controls margin-bottom on header.  Default is 32px. Wrap desired px in '' ",
+      table: { defaultValue: { summary: "32px" } },
+    },
     header: {
       description:
-        "Header Component uses namespaced areas.  Pass components or text into these components. ",
+        "Header Component uses namespaced areas.  Pass buttons, icons, components or text into the namespaced areas. ",
       table: {
         type: {
           summary: "Namespaced Areas",
@@ -37,14 +44,16 @@ export default {
       },
     },
     body: {
-      description: "Body Component.  To use, pass in components or text.",
+      description:
+        "Body Component.  To use, pass in buttons,components or text.",
 
       control: {
         type: null,
       },
     },
     footer: {
-      description: "Footer Component.  To use, pass in components or text.",
+      description:
+        "Footer Component.  To use, pass in buttons, components or text.",
 
       control: {
         type: null,
@@ -53,27 +62,32 @@ export default {
   },
 };
 
-const Template = ({ header, body, footer, ...args }) => {
-  return <Layout header={header} body={body} footer={footer}></Layout>;
+const Template = ({ header, body, footer, mb }) => {
+  return <Layout header={header} body={body} footer={footer} mb={mb}></Layout>;
 };
 
-//Basic Parts of Layout Component
+/* -------------------------------------------------------------------------- */
+/*                       Basic Parts of Layout Component                      */
+/* -------------------------------------------------------------------------- */
 export const LayoutComponent = Template.bind({});
 LayoutComponent.args = {
+  mb: "",
   header: (
     <>
-      <Header.Left className="border">header left</Header.Left>
-      <Header.Center className="border">header center</Header.Center>
-      <Header.Right className="border">header right</Header.Right>
+      <Header.Left>header left</Header.Left>
+      <Header.Center>header center</Header.Center>
+      <Header.Right>header right</Header.Right>
     </>
   ),
   body: <>insert body components here</>,
   footer: <>insert footer components here</>,
 };
 
-//Left-Center(title only)-Body -Footer
-export const BasicLayoutLeftCenterBodyFooter = Template.bind({});
-BasicLayoutLeftCenterBodyFooter.args = {
+/* -------------------------------------------------------------------------- */
+/*                    Left-Center(title only)-Body -Footer                    */
+/* -------------------------------------------------------------------------- */
+export const LayoutLeftCenterBodyFooter = Template.bind({});
+LayoutLeftCenterBodyFooter.args = {
   header: (
     <>
       <Header.Left>
@@ -96,37 +110,11 @@ BasicLayoutLeftCenterBodyFooter.args = {
   ),
 };
 
-//Left-Center(title/subtitle)-Body(with xtra button)-Footer
-export const BasicLayoutWithSubtitleAndExtraBodyButton = Template.bind({});
-BasicLayoutWithSubtitleAndExtraBodyButton.args = {
-  header: (
-    <>
-      <Header.Left>
-        <Button></Button>
-      </Header.Left>
-      <Header.Center>
-        <Header.Title title="Sign up"></Header.Title>
-        <Header.SubTitle subtitle="Step 1/4"></Header.SubTitle>
-      </Header.Center>
-    </>
-  ),
-  body: (
-    <>
-      <div className="mb-auto">Form or other components goes here</div>
-      <Button className="btn btn-link text-decoration-none fs-18px text-white fw-bold">
-        Sign Up
-      </Button>
-    </>
-  ),
-  footer: (
-    <>
-      <Button className="py-16px fw-bold fs-18px w-100">Log In</Button>
-    </>
-  ),
-};
-//Left-Center(title/subtitle)-Body(with xtra text)-Footer
-export const BasicLayoutWithSubtitleAndExtraBodyText = Template.bind({});
-BasicLayoutWithSubtitleAndExtraBodyText.args = {
+/* -------------------------------------------------------------------------- */
+/*           Left-Center(title/subtitle)-Body(with xtra text)-Footer          */
+/* -------------------------------------------------------------------------- */
+export const LayoutWithTitleSubtitleAndExtraBodyText = Template.bind({});
+LayoutWithTitleSubtitleAndExtraBodyText.args = {
   header: (
     <>
       <Header.Left>
@@ -154,12 +142,101 @@ BasicLayoutWithSubtitleAndExtraBodyText.args = {
   ),
 };
 
-export const Default = Template.bind({});
-Default.args = {
+/* -------------------------------------------------------------------------- */
+/*          Left-Center(title/subtitle)-Body(with xtra button)-Footer         */
+/* -------------------------------------------------------------------------- */
+export const LayoutWithTitleSubtitleAndExtraBodyButton = Template.bind({});
+LayoutWithTitleSubtitleAndExtraBodyButton.args = {
   header: (
     <>
       <Header.Left>
         <Button></Button>
+      </Header.Left>
+      <Header.Center>
+        <Header.Title title="Sign up"></Header.Title>
+        <Header.SubTitle subtitle="Step 1/4"></Header.SubTitle>
+      </Header.Center>
+    </>
+  ),
+  body: (
+    <>
+      <div className="mb-auto ">Form or other components goes here</div>
+      <Button className="btn btn-link text-decoration-none fs-18px text-white fw-bold">
+        Sign Up
+      </Button>
+    </>
+  ),
+  footer: (
+    <>
+      <Button className="py-16px fw-bold fs-18px w-100">Log In</Button>
+    </>
+  ),
+};
+
+/* -------------------------------------------------------------------------- */
+/*                             LayoutWithHeaderAndButton                            */
+/* -------------------------------------------------------------------------- */
+export const LayoutWithHeaderTextAndFooterButton = Template.bind({});
+LayoutWithHeaderTextAndFooterButton.args = {
+  header: (
+    <>
+      <Header.Center>
+        <Header.Title title="We've sent a link to your email to finish your registration process"></Header.Title>
+      </Header.Center>
+    </>
+  ),
+
+  footer: (
+    <>
+      <Button className="py-16px fw-bold fs-18px w-100">Open email app</Button>
+    </>
+  ),
+};
+
+export const LayoutWithHeaderMargin0RightButtonsTableAndNoFooter =
+  Template.bind({});
+LayoutWithHeaderMargin0RightButtonsTableAndNoFooter.args = {
+  mb: "0px",
+  header: (
+    <>
+      <Header.Left>
+        <Button></Button>
+      </Header.Left>
+
+      <Header.Right>
+        <Pill
+          text="XX"
+          shape="square"
+          opacity="20"
+          className="p-8px fs-16px"
+        ></Pill>
+        <Pill
+          text="XX"
+          shape="square"
+          opacity="20"
+          className="p-8px fs-16px"
+        ></Pill>
+      </Header.Right>
+    </>
+  ),
+  body: (
+    <>
+      <div className="border p-24px mb-32px">component</div>
+      <Table.Primary avatar="https://cdn.pixabay.com/photo/2021/05/24/09/15/ethereum-logo-6278328_960_720.png"></Table.Primary>
+      <Table.Secondary
+        avatar="https://cdn.pixabay.com/photo/2021/05/24/09/15/ethereum-logo-6278328_960_720.png"
+        avatar2="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1200px-Bitcoin.svg.png"
+      ></Table.Secondary>
+    </>
+  ),
+};
+
+export const NotificationsFeed = Template.bind({});
+NotificationsFeed.args = {
+  header: (
+    <>
+      <Header.Left>
+        <img src={muMethods} width="24px" height="24px"></img>
       </Header.Left>
       <Header.Center>
         <div className="d-flex gap-2 justify-self-center">
@@ -168,35 +245,16 @@ Default.args = {
             text="8"
             shape="round"
             opacity="20"
-            className="px-2 py-1 fs-12px"
+            className="px-8px py-4px fs-12px"
           ></Pill>
         </div>
         <Header.SubTitle subtitle="Subtitle"></Header.SubTitle>
       </Header.Center>
-      <Header.Right>
-        <Pill
-          text="cc"
-          shape="square"
-          opacity="20"
-          className="px-1 py-1 fs-12px"
-        ></Pill>
-        <Pill
-          text="cc"
-          shape="square"
-          opacity="20"
-          className="px-1 py-1 fs-12px"
-        ></Pill>
-      </Header.Right>
     </>
   ),
   body: (
     <>
       <Feed></Feed>
-    </>
-  ),
-  footer: (
-    <>
-      <Button className="w-100">Continue</Button>
     </>
   ),
 };

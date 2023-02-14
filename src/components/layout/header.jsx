@@ -1,15 +1,21 @@
 // import styled from "styled-components/macro";
 import styled from "styled-components";
-//todo
-//move text styling to bs once bs spacing and colors are available
+//?need mb prop for container
 
-const StyledContainer = styled.div`
+const StyledContainer = styled.div.attrs((props) => ({
+  mb: props.mb || "32px",
+}))`
   display: grid;
-  color: var(--bs-white);
   grid-template-columns: 1fr minmax(40px, auto) 1fr;
   grid-template-areas: "left center right";
-  margin-bottom: 32px;
+  margin-bottom: ${(props) => props.mb};
 `;
+// const StyledContainer = styled.div`
+//   display: grid;
+//   grid-template-columns: 1fr minmax(40px, auto) 1fr;
+//   grid-template-areas: "left center right";
+//   margin-bottom: ${(props) => props.mb || "32px"};
+// `;
 const StyledLeft = styled.div`
   grid-area: left;
   justify-self: start;
@@ -18,16 +24,11 @@ const StyledCenter = styled.div`
   grid-area: center;
   justify-self: center;
   justify-content: center;
-  align-items: center;
   text-align: center;
-  row-gap: 12px; //need to convert to bs
-  /* display: flex; */ //put bs in component
-  /* flex-direction: column; */ //put bs in component
 `;
 const StyledRight = styled.div`
   grid-area: right;
   justify-self: end;
-  /* align-items: flex-start; */ //put bs in component
   column-gap: 12px;
 `;
 
@@ -48,7 +49,7 @@ const right = ({ children }) => {
 };
 const center = ({ children }) => {
   return (
-    <StyledCenter className="d-flex flex-column px-16px">
+    <StyledCenter className="d-flex flex-column px-16px gap-12px align-items-center">
       {children}
     </StyledCenter>
   );
@@ -60,13 +61,17 @@ const title = ({ title }) => {
 };
 const subtitle = ({ subtitle }) => {
   return (
-    <StyledSubtitle className="fs-12px m-0 text-opacity-70">
+    <StyledSubtitle className="fs-12px m-0 text-white text-opacity-70">
       {subtitle}
     </StyledSubtitle>
   );
 };
-const Header = ({ children }) => {
-  return <StyledContainer>{children}</StyledContainer>;
+const Header = ({ children, mb }) => {
+  return (
+    <StyledContainer mb={mb} className="text-white text-opacity-90">
+      {children}
+    </StyledContainer>
+  );
 };
 
 Header.Left = left;

@@ -5,12 +5,12 @@ import Header from "./header";
 
 //question how to add this to the index.js?
 
-export const Layout = ({ header, body, footer }) => {
+export const Layout = ({ header, body, footer, mb }) => {
   return (
     <Container>
-      <Header>{header}</Header>
+      {header && <Header mb={mb}>{header}</Header>}
       <Body>{body}</Body>
-      <Footer>{footer}</Footer>
+      {footer && <Footer>{footer}</Footer>}
     </Container>
   );
 };
