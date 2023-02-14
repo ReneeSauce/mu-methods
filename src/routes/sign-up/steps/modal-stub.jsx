@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 
+//NOTE: This is a temporary component to be replaced with the modal component
 export function ModalStub({ onSkipClick, onStorePeersClick }) {
   return (
     <Form className="d-flex flex-column  align-items-center">

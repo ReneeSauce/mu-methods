@@ -13,6 +13,7 @@ import Header from "./header";
  */
 
 export const Layout = ({ header, body, footer, mb }) => {
+  console.log(header);
   return (
     <Container>
       {header && <Header mb={mb}>{header}</Header>}
@@ -21,3 +22,6 @@ export const Layout = ({ header, body, footer, mb }) => {
     </Container>
   );
 };
+
+// Layout.Header.Left = Header.Left;
+// Layout.Header.Center = Header.Center;

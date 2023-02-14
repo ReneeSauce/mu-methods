@@ -1,5 +1,5 @@
 import { Button, Layout } from "../../../components"; //button needs to be changed when avail
-
+import Header from "../../../components/layout/header";
 //TO DO
 //need to import and add correct buttons when they are created
 //need to import and add corresponding form when it is created
@@ -8,44 +8,24 @@ import { Button, Layout } from "../../../components"; //button needs to be chang
 //need to identify props
 //QUESTIONS
 //where should click handlers go in the tree
-//is there a better way to structure or name header components
-//should title and subtitle be passed with props or written in component
-//should it be subTitle or subtitle
-//btnText or btntext
+//how to implement Layout.Header.Left, etc namespacing - it crashed app.
 
 export function UserInfo({ onBackClick, onForwardClick }) {
   return (
     <Layout
-      left={<Button onClick={onBackClick}>**</Button>} //replace button with icon button
-      title="Sign up"
-      subtitle="Step 1/4"
+      header={
+        <>
+          <Header.Left>
+            <Button onClick={onBackClick}>**</Button>
+          </Header.Left>
+          <Header.Center>
+            <Header.Title title="Sign up" />
+            <Header.SubTitle subtitle="Step 1/4" />
+          </Header.Center>{" "}
+        </>
+      }
       body="insert form component here"
       footer={<Button onClick={onForwardClick}>Continue</Button>} //replace buton with step button
     ></Layout>
   );
 }
-
-//this is composition way - keeping incase we don't use step component
-// export default function UserInfo(
-//   title,
-//   subTitle,
-//   btnText,
-//   onBackClick,
-//   onForwardClick
-// ) {
-//   <Step.Container>
-//     <Step.Header>
-//       <Step.Header.Left>
-//         {/* insert back button here with onClick={onBackClick}*/}
-//       </Step.Header.Left>
-//       <Step.Header.Center>
-//         <Step.Header.Title title={title}></Step.Header.Title>
-//         <Step.Header.SubTitle subtitle={subTitle}></Step.Header.SubTitle>
-//       </Step.Header.Center>
-//     </Step.Header>
-//     <Step.Body>{/* insert form comopnent here */}</Step.Body>
-//     <Step.Footer>
-//       <Button onClick={onForwardClick}>{btnText}</Button>
-//     </Step.Footer>
-//   </Step.Container>;
-// }

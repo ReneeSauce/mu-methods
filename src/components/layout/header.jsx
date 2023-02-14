@@ -67,6 +67,7 @@ const subtitle = ({ subtitle }) => {
   );
 };
 const Header = ({ children, mb }) => {
+  console.log(children);
   return (
     <StyledContainer mb={mb} className="text-white text-opacity-90">
       {children}
