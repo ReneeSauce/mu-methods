@@ -1,22 +1,7 @@
 $black: #000;
 $white: #fff;
-$white5: rgba(255, 255, 255, 0.05);
-$white10: rgba(255, 255, 255, 0.1);
-$white15: rgba(255, 255, 255, 0.15);
-$white20: rgba(255, 255, 255, 0.2);
-$white35: rgba(255, 255, 255, 0.35);
-$white60: rgba(255, 255, 255, 0.6);
-$white75: rgba(255, 255, 255, 0.75);
-$white90: rgba(255, 255, 255, 0.9);
-$black5: rgba(0, 0, 0, 0.05);
-$black10: rgba(0, 0, 0, 0.1);
-$black15: rgba(0, 0, 0, 0.15);
-$black20: rgba(0, 0, 0, 0.2);
-$black35: rgba(0, 0, 0, 0.35);
-$black60: rgba(0, 0, 0, 0.6);
-$black75: rgba(0, 0, 0, 0.75);
-$black90: rgba(0, 0, 0, 0.9);
 $alpha: #17172d;
+$beta: #2d2d41;
 $primary: #8cbaff;
 $danger: #ff3e3e;
 $success: #1fdb00;
@@ -36,25 +21,35 @@ $font-sizes: (
 $theme-colors: (
   "black": $black,
   "white": $white,
-  "white5": $white5,
-  "white10": $white10,
-  "white15": $white15,
-  "white20": $white20,
-  "white35": $white35,
-  "white60": $white60,
-  "white75": $white75,
-  "white90": $white90,
-  "black5": $black5,
-  "black10": $black10,
-  "black15": $black15,
-  "black20": $black20,
-  "black35": $black35,
-  "black60": $black60,
-  "black75": $black75,
-  "black90": $black90,
   "alpha": $alpha,
+  "beta": $beta,
   "primary": $primary,
   "danger": $danger,
   "success": $success,
   "muted": $muted
 ) !default;
+
+$font-sizes: (
+  "10px": 10px,
+  "12px": 12px,
+  "14px": 14px,
+  "16px": 16px,
+  "18px": 18px,
+  "24px": 24px,
+  "32px": 32px,
+);
+
+$spacer: 4px;
+$spacers: (
+  0: 0,
+  "4px": $spacer * 1,
+  "8px": $spacer * 2,
+  "12px": $spacer * 3,
+  "16px": $spacer * 4,
+  "20px": $spacer * 5,
+  "24px": $spacer * 6,
+  "28px": $spacer * 7,
+  "32px": $spacer * 8,
+  "36px": $spacer * 9,
+  "48px": $spacer * 12,
+);

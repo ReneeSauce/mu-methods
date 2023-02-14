@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "prepare": "husky install",
-    "lint": "npx prettier --write --ignore-unknown \"src/**/*.{js,jsx}\"",
+    "lint": "npx prettier --check --ignore-unknown \"src/**/*.{js,jsx}\"",
+    "lint:fix": "npx prettier --write --ignore-unknown \"src/**/*.{js,jsx}\"",
     "test": "vitest run",
     "test:watch": "vitest watch",
     "coverage": "vitest run --coverage",
@@ -22,6 +23,8 @@
   },
   "dependencies": {
     "bootstrap": "^5.2.3",
+    "classnames": "^2.3.2",
+    "framer-motion": "^8.5.5",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",
