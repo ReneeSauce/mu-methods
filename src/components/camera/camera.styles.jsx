@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
+
+
 const Container = styled.div`
   display: flex;
-  column-gap: 8px;
-  position: relative;
-  flexdirection: column;
   justify-content: center;
-  alignitems: center;
-  margin: auto;
+  align-items: center;
+  width: 100vw;
+  background-color: #282c34;
 `;
 
 const Info = styled.div`
@@ -45,14 +45,13 @@ const SubTitle = styled.caption`
 `;
 
 const CameraContainer = styled.div`
-  column-gap: 8px;
-  width: 279px;
-  height: 281px;
-  margin: 0px 48px 0 150px;
-  background: var(--bs-white10);
-  border-radius: 8px;
-  color: #fff;
-  justifycontent: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  margin: 0 10px;
 `;
 
 const Input = styled.input`
@@ -70,17 +69,13 @@ const Input = styled.input`
 `;
 
 const Button = styled.button`
-  background: var(--bs-white10);
-  width: 343px;
-  margin: 0px -102px 0px 0px;
-  height: 60px;
-  fontsize: 18px;
-  fontweight: 700;
-  fontstyle: normal;
-  fontfamily: DM Sans;
-  color: #17172d;
+  background-color: crimson;
+  color: #fff;
+  margin-top: 10px;
+  padding: 10px 40px;
   border: none;
-  border-radius: 5px;
+  border-radius: 25px;
+  cursor: pointer;
 `;
 
 export {

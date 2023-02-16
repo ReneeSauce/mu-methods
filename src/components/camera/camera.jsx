@@ -1,39 +1,47 @@
-import React from "react";
-import {
-  Container,
-  Info,
-  Title,
-  SubTitle,
-  ScanTitle,
-  CameraContainer,
-  Input,
-  Button,
-} from "./camera.styles";
-
 /**
- * Camera Component
+ * Camera Component Testing
  * @author [Colburn Sanders](https://github.com/colburncodes)
  */
 
-export const Camera = ({ title, caption, subTitle, inputText, buttonText }) => {
+import React from "react";
+import Webcam from "react-webcam";
+import { CameraContainer } from "./camera.styles";
+
+export function Camera() {
+  const webcamRef = React.useRef(null);
+  const [img, setImg] = React.useState(null);
+
+  const videoConstraints = {
+    width: 420,
+    height: 420,
+    facingMode: "user",
+  };
+
+  const capture = React.useCallback(() => {
+    const imageSrc = webcamRef.current.getScreenshot();
+    setImg(imageSrc);
+  }, [webcamRef]);
+
   return (
     <>
-      <Container className="d-flex text-center bg-alpha">
-        <Info className="flex-column">
-          <Title>{title}</Title>
-          <SubTitle>{caption}</SubTitle>
-          <ScanTitle>{subTitle}</ScanTitle>
-          <CameraContainer className="flex-column"></CameraContainer>
-          <div className="mb-3">
-            <Input type="text" placeholder={inputText} />
-          </div>
-          <div className="mb-3">
-            <Button type="submit" placeholder={"Continue"}>
-              {buttonText}
-            </Button>
-          </div>
-        </Info>
-      </Container>
+      <CameraContainer className="d-flex text-center bg-alpha">
+        <Webcam
+          audio={false}
+          width={400}
+          height={400}
+          ref={webcamRef}
+          imageSmoothing={true}
+          videoConstraints={videoConstraints}
+          screenshotFormat="image/jpeg"
+        />
+        <p>
+          <img src={img} alt="qr code image" />
+        </p>
+
+        <button className="qr__button-reader" onClick={capture}>
+          Capture photo
+        </button>
+      </CameraContainer>
     </>
   );
-};
+}

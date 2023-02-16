@@ -4,17 +4,17 @@
  */
 
 import React from "react";
-import { Camera } from "./Camera";
+import { QRCodeScanner } from "./qr-reader";
 
 export default {
-  title: "Camera",
-  component: Camera,
+  title: "QRCodeScanner",
+  component: QRCodeScanner,
 };
 
-const Template = (args) => <Camera {...args} />;
+const Template = (args) => <QRCodeScanner {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
   delay: 300,
-  facingMode: "environment",
+  facingMode: "user",
 };
