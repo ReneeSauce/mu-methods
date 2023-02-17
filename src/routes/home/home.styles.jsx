@@ -12,7 +12,7 @@ export const HomepageLogo = styled.div`
 `;
 
 export const HomepageTitle = styled.h1`
-  max-width: 235px;
+  max-width: 240px;
   height: 64px;
   font-weight: 700;
   font-size: 32px;

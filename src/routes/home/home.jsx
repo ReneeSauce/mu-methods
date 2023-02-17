@@ -22,7 +22,7 @@ export const Home = () => {
       <div className="bg-alpha d-flex flex-column align-items-center">
         <HomepageLogo />
         <HomepageTitle className="mx-auto ">
-          <span className="text-alpha">'--</span>Welcome
+          <span className="text-alpha">'----</span>Welcome
           <span className="text-alpha">---</span>to MU Methods
         </HomepageTitle>
         <SlideShow>
@@ -48,11 +48,11 @@ export const Home = () => {
           </SwiperSlide>
         </SlideShow>
 
-        <HomeFooter className="d-flex flex-column m-auto">
+        <HomeFooter className="d-flex flex-column m-auto ">
           {/* <Link to="/login"> </Link> */}
           <HomeButton
             type="button"
-            className="bg-alpha border-alpha text-white60 btn btn-lg"
+            className="bg-alpha border-alpha text-white btn btn-lg"
           >
             Log In
           </HomeButton>
@@ -68,7 +68,7 @@ export const Home = () => {
           {/* <Link to="/connect"> </Link> */}
           <HomeButton
             type="button"
-            className="bg-alpha border-white mt-3 text-white60 btn btn-lg"
+            className="bg-alpha border-white mt-3 text-white btn btn-lg"
           >
             Connect Existing Web3 wallet
           </HomeButton>
