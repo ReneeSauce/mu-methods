@@ -11,11 +11,10 @@ const StyledBody = styled.div`
   overflow: hidden;
   width: 100%;
 `;
-const Body = ({ children }) => {
+export const Body = ({ children }) => {
   return (
     <StyledBody className="d-flex flex-column text-white text-opacity-90 align-items-center">
       {children}
     </StyledBody>
   );
 };
-export default Body;

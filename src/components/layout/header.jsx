@@ -66,7 +66,7 @@ const subtitle = ({ subtitle }) => {
     </StyledSubtitle>
   );
 };
-const Header = ({ children, mb }) => {
+export const Header = ({ children, mb }) => {
   return (
     <StyledContainer mb={mb} className="text-white text-opacity-90">
       {children}
@@ -79,5 +79,3 @@ Header.Center = center;
 Header.Right = right;
 Header.Title = title;
 Header.SubTitle = subtitle;
-
-export default Header;

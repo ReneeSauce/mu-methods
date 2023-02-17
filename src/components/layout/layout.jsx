@@ -1,7 +1,7 @@
-import Body from "./body";
-import Container from "./container";
-import Footer from "./footer";
-import Header from "./header";
+import { Body } from "./body";
+import { Container } from "./container";
+import { Footer } from "./footer";
+import { Header } from "./header";
 
 /**
  * Layout Component used for majority of layouts
