@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useEffect } from "react";
 import styled from "styled-components";
 import closeIcon from "../../assets/close-icon.svg";
-
+import CloseIcon from "../icons/close-icon";
 /**
  The **Modal** component is the base of all the modals in the web app.
  *
@@ -38,9 +38,9 @@ const CloseButton = styled.div`
   right: 26px;
   width: 12px;
   height: 12px;
-  background-image: url("${closeIcon}");
-  background-position: center;
-  background-size: cover;
+  // background-image: url("${closeIcon}");
+  // background-position: center;
+  // background-size: cover;
   cursor: pointer;
   transition: opacity 0.3s;
   &:hover {
@@ -94,7 +94,9 @@ export const Modal = ({ isOpen, onClose, children }) => {
               onClick={onClose}
               aria-label="Close modal"
               data-bs-dismiss="modal"
-            ></CloseButton>
+            >
+              <CloseIcon />
+            </CloseButton>
             <Header className="d-lg-none position-absolute rounded bg-white bg-opacity-35" />
             {children}
           </Container>
