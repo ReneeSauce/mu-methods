@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { SwiperSlide } from "swiper/react";
 import balls from "../../assets/balls.svg";
 import cubes from "../../assets/cubes.svg";
@@ -49,29 +50,32 @@ export const Home = () => {
         </SlideShow>
 
         <HomeFooter className="d-flex flex-column m-auto ">
-          {/* <Link to="/login"> </Link> */}
-          <HomeButton
-            type="button"
-            className="bg-alpha border-alpha text-white btn btn-lg"
-          >
-            Log In
-          </HomeButton>
+          <Link to="/login">
+            <HomeButton
+              type="button"
+              className="bg-alpha border-alpha text-white btn btn-lg"
+            >
+              Log In
+            </HomeButton>
+          </Link>
 
-          {/* <Link to="/sign-up"></Link> */}
-          <HomeButton
-            type="button"
-            className="text-alpha bg-primary btn btn-lg mt-3"
-          >
-            Sign Up
-          </HomeButton>
+          <Link to="/sign-up">
+            <HomeButton
+              type="button"
+              className="text-alpha bg-primary btn btn-lg mt-3"
+            >
+              Sign Up
+            </HomeButton>
+          </Link>
 
-          {/* <Link to="/connect"> </Link> */}
-          <HomeButton
-            type="button"
-            className="bg-alpha border-white mt-3 text-white btn btn-lg"
-          >
-            Connect Existing Web3 wallet
-          </HomeButton>
+          <Link to="/connect">
+            <HomeButton
+              type="button"
+              className="bg-alpha border-white mt-3 text-white btn btn-lg"
+            >
+              Connect Existing Web3 wallet
+            </HomeButton>
+          </Link>
         </HomeFooter>
       </div>
     </>
