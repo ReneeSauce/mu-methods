@@ -10,7 +10,7 @@ const Profile = () => {
       <circle cx="11" cy="11" r="11" fill="#F6F6F6" fillOpacity="0.7" />
       <mask
         id="mask0_1508_1842"
-        style={{"mask-type": "alpha"}}
+        style={{ "mask-type": "alpha" }}
         maskUnits="userSpaceOnUse"
         x="2"
         y="2"

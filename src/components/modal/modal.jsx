@@ -2,7 +2,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import PropTypes from "prop-types";
 import { useEffect } from "react";
 import styled from "styled-components";
-import closeIcon from "../../assets/close-icon.svg";
 import CloseIcon from "../icons/close";
 /**
  The **Modal** component is the base of all the modals in the web app.
@@ -38,7 +37,7 @@ const CloseButton = styled.div`
   right: 26px;
   width: 12px;
   height: 12px;
- 
+
   cursor: pointer;
   transition: opacity 0.3s;
   &:hover {

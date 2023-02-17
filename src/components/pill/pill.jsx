@@ -1,6 +1,6 @@
 import cx from "classnames";
 import styled from "styled-components";
-import CopyIcon from "../icons/copy"
+import CopyIcon from "../icons/copy";
 /**
  * Pill Component
  * @param className optional classNames that will be passed to the pill
@@ -13,7 +13,6 @@ import CopyIcon from "../icons/copy"
 
 // TODO: Refactor to use common Button Component
 const CopyBtn = styled.button`
-
   height: 16px;
   width: 16px;
   border: none;
@@ -47,7 +46,9 @@ export const Pill = ({
             navigator.clipboard.writeText(text);
           }}
           className="ms-2"
-        ><CopyIcon/></CopyBtn>
+        >
+          <CopyIcon />
+        </CopyBtn>
       )}
     </div>
   );
