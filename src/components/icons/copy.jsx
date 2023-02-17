@@ -1,4 +1,4 @@
-const CopyIcon = () => {
+const Copy = () => {
   return (
     <svg
       width="17"
@@ -26,4 +26,4 @@ const CopyIcon = () => {
     </svg>
   );
 };
-export default CopyIcon;
+export default Copy;

@@ -1,4 +1,4 @@
-const AddIcon = () => {
+const Add = () => {
   return (
     <svg
       width="14"
@@ -20,4 +20,4 @@ const AddIcon = () => {
     </svg>
   );
 };
-export default AddIcon;
+export default Add;

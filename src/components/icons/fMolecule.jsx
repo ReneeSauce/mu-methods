@@ -1,4 +1,4 @@
-const FMoleculeIcon = () => {
+const FMolecule = () => {
   return (
     <svg
       width="16"
@@ -16,4 +16,4 @@ const FMoleculeIcon = () => {
     </svg>
   );
 };
-export default FMoleculeIcon;
+export default FMolecule;

@@ -1,4 +1,4 @@
-const RegenerateIcon = () => {
+const Regenerate = () => {
   return (
     <svg
       width="16"
@@ -24,4 +24,4 @@ const RegenerateIcon = () => {
     </svg>
   );
 };
-export default RegenerateIcon;
+export default Regenerate;

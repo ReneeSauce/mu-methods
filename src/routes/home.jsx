@@ -1,6 +1,4 @@
-import SettingsIcon from "../components/icons/settings-icon";
-
-import ProfileIcon from "../components/icons/profile-icon";
+import SettingsIcon from "../components/icons/settings";
 
 export const Home = () => {
   return (
@@ -8,8 +6,6 @@ export const Home = () => {
       <h1>Home</h1>
 
       <SettingsIcon />
-
-      <ProfileIcon />
     </div>
   );
 };

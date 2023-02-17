@@ -1,4 +1,4 @@
-const SettingsIcon = () => {
+const Settings = () => {
   return (
     <svg
       width="16"
@@ -7,7 +7,7 @@ const SettingsIcon = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <mask id="path-1-inside-1_1508_511" fill="white">
+      <mask id="path-1-inside-1_1508_1261" fill="white">
         <rect x="6" width="4" height="16" rx="1" />
       </mask>
       <rect
@@ -17,10 +17,10 @@ const SettingsIcon = () => {
         rx="1"
         fill="#17172D"
         stroke="#F6F6F6"
-        strokeWidth="4"
-        mask="url(#path-1-inside-1_1508_511)"
+        stroke-width="4"
+        mask="url(#path-1-inside-1_1508_1261)"
       />
-      <mask id="path-2-inside-2_1508_511" fill="white">
+      <mask id="path-2-inside-2_1508_1261" fill="white">
         <rect
           x="16"
           y="6"
@@ -39,32 +39,32 @@ const SettingsIcon = () => {
         transform="rotate(90 16 6)"
         fill="#17172D"
         stroke="#F6F6F6"
-        strokeWidth="4"
-        mask="url(#path-2-inside-2_1508_511)"
+        stroke-width="4"
+        mask="url(#path-2-inside-2_1508_1261)"
       />
-      <mask id="path-3-inside-3_1508_511" fill="white">
+      <mask id="path-3-inside-3_1508_1261" fill="white">
         <rect
           x="15.071"
-          y="12.2422"
+          y="12.2427"
           width="4"
           height="16"
           rx="1"
-          transform="rotate(135 15.071 12.2422)"
+          transform="rotate(135 15.071 12.2427)"
         />
       </mask>
       <rect
         x="15.071"
-        y="12.2422"
+        y="12.2427"
         width="4"
         height="16"
         rx="1"
-        transform="rotate(135 15.071 12.2422)"
+        transform="rotate(135 15.071 12.2427)"
         fill="#17172D"
         stroke="#F6F6F6"
-        strokeWidth="4"
-        mask="url(#path-3-inside-3_1508_511)"
+        stroke-width="4"
+        mask="url(#path-3-inside-3_1508_1261)"
       />
-      <mask id="path-4-inside-4_1508_511" fill="white">
+      <mask id="path-4-inside-4_1508_1261" fill="white">
         <rect
           x="3.75732"
           y="15.0713"
@@ -83,8 +83,8 @@ const SettingsIcon = () => {
         transform="rotate(-135 3.75732 15.0713)"
         fill="#17172D"
         stroke="#F6F6F6"
-        strokeWidth="4"
-        mask="url(#path-4-inside-4_1508_511)"
+        stroke-width="4"
+        mask="url(#path-4-inside-4_1508_1261)"
       />
       <circle
         cx="8"
@@ -92,18 +92,18 @@ const SettingsIcon = () => {
         r="3"
         fill="#17172D"
         stroke="#F6F6F6"
-        strokeWidth="2"
+        stroke-width="2"
       />
       <circle
         cx="8"
         cy="8"
         r="3"
         fill="#F6F6F6"
-        fillOpacity="0.2"
+        fill-opacity="0.2"
         stroke="#F6F6F6"
-        strokeWidth="2"
+        stroke-width="2"
       />
     </svg>
   );
 };
-export default SettingsIcon;
+export default Settings;

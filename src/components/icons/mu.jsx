@@ -1,4 +1,4 @@
-const MuIcon = () => {
+const Mu = () => {
   return (
     <svg
       width="17"
@@ -14,4 +14,4 @@ const MuIcon = () => {
     </svg>
   );
 };
-export default MuIcon;
+export default Mu;

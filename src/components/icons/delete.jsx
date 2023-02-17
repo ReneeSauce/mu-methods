@@ -1,4 +1,4 @@
-const DeleteIcon = () => {
+const Delete = () => {
   return (
     <svg
       width="16"
@@ -23,4 +23,4 @@ const DeleteIcon = () => {
     </svg>
   );
 };
-export default DeleteIcon;
+export default Delete;

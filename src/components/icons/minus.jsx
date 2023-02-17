@@ -1,4 +1,4 @@
-const MinusIcon = () => {
+const Minus = () => {
   return (
     <svg
       width="14"
@@ -11,4 +11,4 @@ const MinusIcon = () => {
     </svg>
   );
 };
-export default MinusIcon;
+export default Minus;
