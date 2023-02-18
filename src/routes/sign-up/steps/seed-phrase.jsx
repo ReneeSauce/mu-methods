@@ -1,6 +1,6 @@
 import { Button, Layout } from "../../../components"; //button needs to be changed when avail
-import Header from "../../../components/layout/header";
-//TODO replace buttons with buttons when available
+import { Header } from "../../../components/layout/header";
+//TODO: Update buttons when available
 
 export function SeedPhrase({ onBackClick, onForwardClick }) {
   return (

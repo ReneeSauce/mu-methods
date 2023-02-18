@@ -1,8 +1,10 @@
+import cx from "classnames";
 import styled from "styled-components";
 
 /**
  * Header Component used with the Layout Component
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
+ * @param className optional classNames that will be passed to the header
  * @param children pass components and namespaced components to header via children
  * @param mb used to set the header container margin bottom dynamically - default is 32px
  */
@@ -66,9 +68,9 @@ const subtitle = ({ subtitle }) => {
     </StyledSubtitle>
   );
 };
-export const Header = ({ children, mb }) => {
+export const Header = ({ children, className }) => {
   return (
-    <StyledContainer mb={mb} className="text-white text-opacity-90">
+    <StyledContainer className={cx(`text-white text-opacity-90`, className)}>
       {children}
     </StyledContainer>
   );

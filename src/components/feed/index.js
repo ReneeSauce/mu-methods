@@ -1,1 +1,1 @@
-export * as Feed from "./feed";
+export * from "./feed";

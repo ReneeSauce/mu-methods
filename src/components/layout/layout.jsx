@@ -12,10 +12,10 @@ import { Header } from "./header";
  * @param mb used to pass optional header margin-bottom values to layout, default is 32px. logic is in <header className="jsx"></header>
  */
 
-export const Layout = ({ header, body, footer, mb }) => {
+export const Layout = ({ header, body, footer, className }) => {
   return (
     <Container>
-      {header && <Header mb={mb}>{header}</Header>}
+      {header && <Header className>{header}</Header>}
       <Body>{body}</Body>
       {footer && <Footer>{footer}</Footer>}
     </Container>
