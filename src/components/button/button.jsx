@@ -19,7 +19,6 @@ import styled from "styled-components";
 // TODO add active styling for improved UX
 
 // ! Implement kinds styling
-// ! Implement size styling
 
 export const Button = ({
   size,
@@ -34,11 +33,12 @@ export const Button = ({
 }) => {
   const sizes = {
     sm: "auto",
+    md: "50%",
     lg: "100%",
   };
 
   Button.Container = styled.button`
-    background: ${(bgColor) => (bgColor.positive ? "#8cbaff" : "red")};
+    background: ${(bgColor) => (bgColor.positive ? "primary" : "red")};
     border: none;
     border-radius: 8px;
     opacity: ${() => disabled && "0.5"};
@@ -48,7 +48,6 @@ export const Button = ({
   Button.Icon = styled.img`
     height: 16px;
     width: 16px;
-    margin: 0px 10px;
   `;
 
   Button.Text = styled.h3`
@@ -66,11 +65,17 @@ export const Button = ({
       className="d-flex flex-row align-items-center justify-content-center"
     >
       {leftIcon && (
-        <Button.Icon src={leftIcon} className={children && "me-3"} />
+        <Button.Icon
+          src={leftIcon}
+          className={(children && "me-3") || "ms-2 me-2"}
+        />
       )}
       <Button.Text className="fs-18px">{children}</Button.Text>
       {rightIcon && (
-        <Button.Icon src={rightIcon} className={children && "ms-3"} />
+        <Button.Icon
+          src={rightIcon}
+          className={(children && "ms-3") || "ms-2 me-2"}
+        />
       )}
     </Button.Container>
   );
