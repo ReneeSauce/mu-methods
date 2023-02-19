@@ -1,15 +1,16 @@
+import cx from "classnames";
 import styled from "styled-components";
 
 /**
  * Button Component
  * @author [Jenny Doctor](https://github.com/jendoc)
  * @param size expects 'sm', 'md', or 'lg'
- * @param bgColor expects 'positive', or 'negative'
+ * @param bgColor expects 'primary', or 'danger'
  * @param kind expects 'PRIMARY', 'SECONDARY', or 'TERTIARY'
  * @param disabled expects boolean
  * @param danger expects boolean
  * @param leftIcon expects icon
- * @param righticon expects icon
+ * @param rightIcon expects icon
  *
  * @param children expects button text content
  * @param onClick callback function to run when btn is clicked
@@ -38,7 +39,6 @@ export const Button = ({
   };
 
   Button.Container = styled.button`
-    background: ${(bgColor) => (bgColor.positive ? "primary" : "red")};
     border: none;
     border-radius: 8px;
     opacity: ${() => disabled && "0.5"};
@@ -52,7 +52,6 @@ export const Button = ({
 
   Button.Text = styled.h3`
     margin: 19px 0px;
-    color: ${() => danger && "red"};
     font-weight: 700;
   `;
 
@@ -60,9 +59,10 @@ export const Button = ({
     <Button.Container
       disabled={disabled}
       onClick={onClick}
-      bgColor={bgColor}
       size={sizes[size]}
-      className="d-flex flex-row align-items-center justify-content-center"
+      className={cx(
+        `d-flex flex-row align-items-center justify-content-center bg-${bgColor}`
+      )}
     >
       {leftIcon && (
         <Button.Icon
@@ -70,7 +70,9 @@ export const Button = ({
           className={(children && "me-3") || "ms-2 me-2"}
         />
       )}
-      <Button.Text className="fs-18px">{children}</Button.Text>
+      <Button.Text className={(danger && "text-danger fs-18px") || "fs-18px"}>
+        {children}
+      </Button.Text>
       {rightIcon && (
         <Button.Icon
           src={rightIcon}

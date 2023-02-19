@@ -9,7 +9,7 @@ export default {
       control: { type: "radio" },
     },
     bgColor: {
-      options: ["positive", "negative"],
+      options: ["primary", "danger"],
       control: { type: "radio" },
     },
     kind: {
