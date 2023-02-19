@@ -71,7 +71,7 @@ body {
   line-height: 24px;
   font-weight: 400;
 
-  color: rgba($white, 0.9);
+  color: $white;
   background-color: $alpha;
 
   font-synthesis: none;
@@ -88,5 +88,5 @@ h4,
 h5,
 h6,
 p {
-  color: rgba($white, 0.9);
+  color: $white;
 }
