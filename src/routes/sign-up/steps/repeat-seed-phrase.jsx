@@ -5,6 +5,7 @@ import { Header } from "../../../components/layout/header";
 export function RepeatSeedPhrase({ onBackClick, onForwardClick }) {
   return (
     <Layout
+      className="mb-32px"
       header={
         <>
           <Header.Left>

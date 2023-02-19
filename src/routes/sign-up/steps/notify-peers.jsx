@@ -5,6 +5,7 @@ import { Header } from "../../../components/layout/header";
 export function NotifyPeers({ onForwardClick }) {
   return (
     <Layout
+      className="mb-32px"
       header={
         <Header.Center subtitle=" Step 4/4">
           <Header.Title title="Sign up" />

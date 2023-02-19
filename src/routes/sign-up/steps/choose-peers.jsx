@@ -5,6 +5,7 @@ import { Header } from "../../../components/layout/header";
 export function ChoosePeers({ onBackClick, onForwardClick }) {
   return (
     <Layout //Layout and all props passed here
+      className="mb-32px"
       header={
         <>
           <Header.Left>
