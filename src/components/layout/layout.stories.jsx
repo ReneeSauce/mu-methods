@@ -4,7 +4,7 @@ import { Variants as Pill } from "../pill/pill.stories";
 import * as Table from "../table/table.stories";
 import muMethods from "/mu-methods.svg";
 
-import Header from "./header";
+import { Header } from "./header";
 import { Layout } from "./layout";
 
 /**
@@ -26,10 +26,12 @@ export default {
   },
 
   argTypes: {
-    mb: {
+    className: {
       description:
-        "Styled Component Prop that controls margin-bottom on header.  Default is 32px. Wrap desired px in '' ",
-      table: { defaultValue: { summary: "32px" } },
+        "optional ClassName passed to Header component from Layout  Most layouts are 32px. add prop className='mb-**px' to every layout with desired margin bottom ",
+      control: {
+        type: "null",
+      },
     },
     header: {
       description:
@@ -64,8 +66,15 @@ export default {
   },
 };
 
-const Template = ({ header, body, footer, mb }) => {
-  return <Layout header={header} body={body} footer={footer} mb={mb}></Layout>;
+const Template = ({ header, body, footer, className }) => {
+  return (
+    <Layout
+      header={header}
+      body={body}
+      footer={footer}
+      className={className}
+    ></Layout>
+  );
 };
 
 /* -------------------------------------------------------------------------- */
@@ -73,7 +82,7 @@ const Template = ({ header, body, footer, mb }) => {
 /* -------------------------------------------------------------------------- */
 export const LayoutComponent = Template.bind({});
 LayoutComponent.args = {
-  mb: "",
+  className: "mb-32px",
   header: (
     <>
       <Header.Left>header left</Header.Left>
@@ -90,6 +99,7 @@ LayoutComponent.args = {
 /* -------------------------------------------------------------------------- */
 export const LayoutLeftCenterBodyFooter = Template.bind({});
 LayoutLeftCenterBodyFooter.args = {
+  className: "mb-32px",
   header: (
     <>
       <Header.Left>
@@ -117,6 +127,7 @@ LayoutLeftCenterBodyFooter.args = {
 /* -------------------------------------------------------------------------- */
 export const LayoutWithTitleSubtitleAndExtraBodyText = Template.bind({});
 LayoutWithTitleSubtitleAndExtraBodyText.args = {
+  className: "mb-32px",
   header: (
     <>
       <Header.Left>
@@ -149,6 +160,7 @@ LayoutWithTitleSubtitleAndExtraBodyText.args = {
 /* -------------------------------------------------------------------------- */
 export const LayoutWithTitleSubtitleAndExtraBodyButton = Template.bind({});
 LayoutWithTitleSubtitleAndExtraBodyButton.args = {
+  className: "mb-32px",
   header: (
     <>
       <Header.Left>
@@ -198,7 +210,7 @@ LayoutWithHeaderTextAndFooterButton.args = {
 export const LayoutWithHeaderMargin0RightButtonsTableAndNoFooter =
   Template.bind({});
 LayoutWithHeaderMargin0RightButtonsTableAndNoFooter.args = {
-  mb: "0px",
+  className: "mb-0",
   header: (
     <>
       <Header.Left>
@@ -235,6 +247,7 @@ LayoutWithHeaderMargin0RightButtonsTableAndNoFooter.args = {
 
 export const NotificationsFeed = Template.bind({});
 NotificationsFeed.args = {
+  className: "mb-32px",
   header: (
     <>
       <Header.Left>

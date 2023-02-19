@@ -15,7 +15,7 @@ import { Header } from "./header";
 export const Layout = ({ header, body, footer, className }) => {
   return (
     <Container>
-      {header && <Header className>{header}</Header>}
+      {header && <Header className={className}>{header}</Header>}
       <Body>{body}</Body>
       {footer && <Footer>{footer}</Footer>}
     </Container>

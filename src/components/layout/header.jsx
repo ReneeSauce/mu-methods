@@ -9,13 +9,10 @@ import styled from "styled-components";
  * @param mb used to set the header container margin bottom dynamically - default is 32px
  */
 
-const StyledContainer = styled.div.attrs((props) => ({
-  mb: props.mb || "32px",
-}))`
+const StyledContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr minmax(40px, auto) 1fr;
   grid-template-areas: "left center right";
-  margin-bottom: ${(props) => props.mb};
 `;
 
 const StyledLeft = styled.div`
