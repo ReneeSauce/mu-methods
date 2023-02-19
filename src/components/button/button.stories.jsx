@@ -5,7 +5,7 @@ export default {
   component: Button,
   argTypes: {
     size: {
-      options: ["sm", "md", "lg"],
+      options: ["sm", "lg"],
       control: { type: "radio" },
     },
     bgColor: {

@@ -33,8 +33,7 @@ export const Button = ({
   children,
 }) => {
   const sizes = {
-    sm: "object-fit",
-    md: "50%",
+    sm: "auto",
     lg: "100%",
   };
 
@@ -43,12 +42,13 @@ export const Button = ({
     border: none;
     border-radius: 8px;
     opacity: ${() => disabled && "0.5"};
-    width: 100%;
+    width: ${(props) => props.size};
   `;
 
   Button.Icon = styled.img`
     height: 16px;
     width: 16px;
+    margin: 0px 10px;
   `;
 
   Button.Text = styled.h3`
@@ -62,11 +62,16 @@ export const Button = ({
       disabled={disabled}
       onClick={onClick}
       bgColor={bgColor}
+      size={sizes[size]}
       className="d-flex flex-row align-items-center justify-content-center"
     >
-      {leftIcon && <Button.Icon src={leftIcon} className="me-3" />}
+      {leftIcon && (
+        <Button.Icon src={leftIcon} className={children && "me-3"} />
+      )}
       <Button.Text className="fs-18px">{children}</Button.Text>
-      {rightIcon && <Button.Icon src={rightIcon} className="ms-3" />}
+      {rightIcon && (
+        <Button.Icon src={rightIcon} className={children && "ms-3"} />
+      )}
     </Button.Container>
   );
 };
