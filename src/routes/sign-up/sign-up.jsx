@@ -2,17 +2,25 @@ import React, { useCallback, useMemo, useState } from "react";
 import StepWizard from "react-step-wizard";
 import { Steps } from "./steps";
 
+/* ----------------------------- Wizard Context ----------------------------- */
 //context - does this need to go in a separate file
 //does one context work for the entire app
 export const WizardContext = React.createContext();
 
+/* -------------------------------------------------------------------------- */
+/*                               function SignUp                              */
+/* -------------------------------------------------------------------------- */
 export function SignUp() {
+  /* ------------------------------- use states ------------------------------- */
   //updates context?
   const [state, updateState] = useState({
     form: {},
     seedPhrases: [],
   });
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  /* ------------------------------ use Callbacks ----------------------------- */
   const updateForm = useCallback(
     (key, value) => {
       const { form } = state;
@@ -36,6 +44,7 @@ export function SignUp() {
     [state]
   );
 
+  /* --------------------------------- useMemo -------------------------------- */
   const storeValue = useMemo(() => {
     return {
       state,
@@ -44,6 +53,7 @@ export function SignUp() {
     };
   }, [state, updateForm, updateSeeds]);
 
+  /* -------------------------------- functions ------------------------------- */
   //do something on stepchange
   const onStepChange = (stats) => {
     console.log(stats);
@@ -53,19 +63,28 @@ export function SignUp() {
   const setInstance = (SW) => updateState({ ...state, SW });
   const { SW } = state;
 
+  function goTo(step) {
+    return () => SW.goToNamedStep(step);
+  }
+  const onClose = () => {
+    setIsOpen(false);
+  };
+  /* -------------------------------- handlers -------------------------------- */
   const handleForwardClick = (nextStep) => {
     console.log(nextStep);
   };
   const handleBackClick = () => {
     console.log(nextStep);
   };
+  const handleSaveSeedPhraseClick = () => {
+    console.log(isOpen);
+    setIsOpen(true);
+  };
+  /* --------------------------- animation controls --------------------------- */
   //to customize transitions from animate.css
   let custom = {};
 
-  function goTo(step) {
-    return () => SW.goToNamedStep(step);
-  }
-
+  /* --------------------------------- return --------------------------------- */
   return (
     <WizardContext.Provider value={storeValue}>
       <StepWizard
@@ -85,15 +104,18 @@ export function SignUp() {
         <Steps.SeedPhrase
           stepName="seed-phrase"
           SW={SW}
-          onForwardClick={goTo("modal-stub")} //needs logic to open modal here
+          onForwardClick={handleSaveSeedPhraseClick} //needs logic to open modal here
           onBackClick={goTo("user-info")}
+          isOpen={isOpen}
+          onClose={onClose}
         ></Steps.SeedPhrase>
-        <Steps.ModalStub
+        {/* <Steps.ModalStub
           stepName="modal-stub"
           SW={SW}
           onSkipClick={goTo("repeat-seed-phrase")}
           onStorePeersClick={goTo("choose-peers")}
-        ></Steps.ModalStub>
+        ></Steps.ModalStub> */}
+
         <Steps.RepeatSeedPhrase
           stepName="repeat-seed-phrase"
           SW={SW}
