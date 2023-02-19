@@ -1,94 +1,72 @@
-import BS_Button from "react-bootstrap/Button";
 import styled from "styled-components";
 
 /**
  * Button Component
  * @author [Jenny Doctor](https://github.com/jendoc)
  * @param size expects 'sm', 'md', or 'lg'
- * @param color expects 'primary', 'positive', or 'negative'
+ * @param bgColor expects 'positive', or 'negative'
  * @param kind expects 'PRIMARY', 'SECONDARY', or 'TERTIARY'
  * @param disabled expects boolean
- * @param loading expects boolean
- * @param active expects boolean
- * @param success expects boolean
  * @param danger expects boolean
  * @param leftIcon expects icon
  * @param righticon expects icon
  *
+ * @param children expects button text content
  * @param onClick callback function to run when btn is clicked
  */
 
 // TODO integrate icons when all are catalogued
+// TODO add active styling for improved UX
+
+// ! Implement kinds styling
+// ! Implement size styling
 
 export const Button = ({
   size,
-  color,
+  bgColor,
   kind,
   disabled,
-  loading,
-  active,
-  success,
   danger,
   leftIcon,
   rightIcon,
   onClick,
   children,
 }) => {
-  Button.Icon = styled.img`
-    src: ${icon};
+  const sizes = {
+    sm: "object-fit",
+    md: "50%",
+    lg: "100%",
+  };
+
+  Button.Container = styled.button`
+    background: ${(bgColor) => (bgColor.positive ? "#8cbaff" : "red")};
+    border: none;
+    border-radius: 8px;
+    opacity: ${() => disabled && "0.5"};
+    width: 100%;
   `;
 
-  // TODO define sizes
-  const sizes = {
-    sm: "",
-    md: "",
-    lg: "",
-  };
+  Button.Icon = styled.img`
+    height: 16px;
+    width: 16px;
+  `;
 
-  // ? how to pass classNames as props?
-  // ? or wrap component in styled-component?
-  const colors = {
-    primary: "",
-    positive: "",
-    negative: "",
-  };
-
-  // ? same as above
-  const kinds = {
-    PRIMARY: "",
-    SECONDARY: "",
-    TERTIARY: "",
-  };
-
-  if (loading) {
-    return (
-      <BS_Button
-        size={sizes[size]}
-        color={colors[color]}
-        kind={kinds[kind]}
-        disabled={disabled}
-        success={success}
-        danger={danger}
-        onClick={onClick}
-      >
-        {loadingIcon}
-      </BS_Button>
-    );
-  }
+  Button.Text = styled.h3`
+    margin: 19px 0px;
+    color: ${() => danger && "red"};
+    font-weight: 700;
+  `;
 
   return (
-    <BS_Button
-      size={sizes[size]}
-      color={colors[color]}
-      kind={kinds[kind]}
+    <Button.Container
       disabled={disabled}
-      success={success}
-      danger={danger}
       onClick={onClick}
+      bgColor={bgColor}
+      className="d-flex flex-row align-items-center justify-content-center"
     >
-      {leftIcon ? <Button.Icon icon={leftIcon} /> : null}
-      {children}
-      {rightIcon ? <Button.Icon icon={rightIcon} /> : null}
-    </BS_Button>
+      {leftIcon && <Button.Icon src={leftIcon} className="me-3" />}
+      <Button.Text className="fs-18px">{children}</Button.Text>
+      {rightIcon && <Button.Icon src={rightIcon} className="ms-3" />}
+    </Button.Container>
   );
 };

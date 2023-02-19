@@ -4,9 +4,32 @@ export default {
   title: "Components/Button",
   component: Button,
   argTypes: {
-    variants: {
-      options: ['primary', 'secondary', 'tertiary'],
-      control: { type: 'radio' },
+    size: {
+      options: ["sm", "md", "lg"],
+      control: { type: "radio" },
+    },
+    bgColor: {
+      options: ["positive", "negative"],
+      control: { type: "radio" },
+    },
+    kind: {
+      options: ["PRIMARY", "SECONDARY", "TERTIARY"],
+      control: { type: "radio" },
+    },
+    disabled: {
+      control: "boolean",
+    },
+    danger: {
+      control: "boolean",
+    },
+    leftIcon: {
+      control: "text",
+    },
+    rightIcon: {
+      control: "text",
+    },
+    onClick: {
+      control: "text",
     },
   },
 };
@@ -15,23 +38,8 @@ const Template = (args) => <Button {...args} />;
 
 export const Variants = Template.bind({});
 Variants.args = {
-  children: "Button",
-};
-
-export const Large = Template.bind({});
-Large.args = {
-  size: 'lg',
-  children: 'Button',
-};
-
-export const Medium = Template.bind({});
-Medium.args = {
-  size: 'md',
-  children: 'Button',
-};
-
-export const Small = Template.bind({});
-Small.args = {
-  size: "sm",
-  children: "Button",
+  children: "Decline",
+  disabled: false,
+  danger: false,
+  bgColor: "positive",
 };
