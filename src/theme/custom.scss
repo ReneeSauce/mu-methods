@@ -40,6 +40,7 @@ $font-sizes: (
 $spacer: 4px;
 $spacers: (
   0: 0,
+  "2px": $spacer * 0.5,
   "4px": $spacer * 1,
   "8px": $spacer * 2,
   "12px": $spacer * 3,
