@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import Spinner from "react-bootstrap/Spinner";
 import styled from "styled-components";
 import { Avatar } from "../components/avatar/avatar";
 import { Pill } from "../components/pill/pill";
@@ -29,22 +31,58 @@ export const Profile = ({
   email,
   id,
 }) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [profileInfo, setProfileInfo] = useState({
+    src,
+    alt,
+    name,
+    pillText,
+    isCopiable,
+    email,
+    id,
+  });
+
+  console.log(profileInfo);
+  useEffect(() => {
+    console.log(src);
+    // TO DO: replace this with API call for fetching profile data
+    /*setProfileInfo({})*/
+    setIsLoading(false);
+  }, []);
+
+  //console.log(profileInfo)
+
   return (
     <Container className="d-flex flex-column align-items-center bg-alpha">
-      <Avatar shape="round" src={src} size="lg" alt={alt} />
-      <h3 className="fs-18px fw-bold m-0">{name}</h3>
-      <Pill
-        className="profile__pill"
-        shape="square"
-        isCopiable={isCopiable}
-        text={pillText}
-        textOpacity="70"
-        opacity="10"
-      />
-      <div className="d-flex flex-column align-items-center fs-14px">
-        <p className="m-0 lh-sm text-white text-opacity-60">{email}</p>
-        <p className="m-0 lh-sm text-white text-opacity-60">{id}</p>
-      </div>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <>
+          <Avatar
+            shape="round"
+            src={profileInfo.src}
+            size="lg"
+            alt={profileInfo.alt}
+          />
+          <h3 className="fs-18px fw-bold m-0">{profileInfo.name}</h3>
+          <Pill
+            className="profile__pill"
+            shape="square"
+            isCopiable={profileInfo.isCopiable}
+            text={profileInfo.pillText}
+            textOpacity="70"
+            opacity="10"
+          />
+          <div className="d-flex flex-column align-items-center fs-14px">
+            <p className="m-0 lh-sm text-white text-opacity-60">
+              {profileInfo.email}
+            </p>
+            <p className="m-0 lh-sm text-white text-opacity-60">
+              {profileInfo.id}
+            </p>
+          </div>
+        </>
+      )}
     </Container>
   );
 };
