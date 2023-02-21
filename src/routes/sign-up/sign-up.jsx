@@ -106,15 +106,11 @@ export function SignUp() {
           SW={SW}
           onForwardClick={handleSaveSeedPhraseClick} //needs logic to open modal here
           onBackClick={goTo("user-info")}
+          onSkipStepClick={goTo("repeat-seed-phrase")}
+          onStoreWithPeersClick={goTo("choose-peers")}
           isOpen={isOpen}
           onClose={onClose}
         ></Steps.SeedPhrase>
-        {/* <Steps.ModalStub
-          stepName="modal-stub"
-          SW={SW}
-          onSkipClick={goTo("repeat-seed-phrase")}
-          onStorePeersClick={goTo("choose-peers")}
-        ></Steps.ModalStub> */}
 
         <Steps.RepeatSeedPhrase
           stepName="repeat-seed-phrase"
