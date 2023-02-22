@@ -1,13 +1,77 @@
 @import "custom";
 @import "bootstrap/scss/bootstrap";
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
 
-:root {
+$utilities: map-merge(
+  $utilities,
+  (
+    "text-opacity":
+      map-merge(
+        map-get($utilities, "text-opacity"),
+        (
+          values:
+            map-merge(
+              map-get(map-get($utilities, "text-opacity"), "values"),
+              (
+                5: 0.05,
+                10: 0.1,
+                15: 0.15,
+                20: 0.2,
+                30: 0.3,
+                35: 0.35,
+                60: 0.6,
+                70: 0.7,
+                75: 0.75,
+                90: 0.9,
+              )
+            ),
+        )
+      ),
+  )
+);
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "bg-opacity":
+      map-merge(
+        map-get($utilities, "bg-opacity"),
+        (
+          values:
+            map-merge(
+              map-get(map-get($utilities, "bg-opacity"), "values"),
+              (
+                5: 0.05,
+                10: 0.1,
+                15: 0.15,
+                20: 0.2,
+                30: 0.3,
+                35: 0.35,
+                60: 0.6,
+                70: 0.7,
+                75: 0.75,
+                90: 0.9,
+              )
+            ),
+        )
+      ),
+  )
+);
+
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/utilities/api";
+
+:root,
+body {
   font-family: "DM Sans", Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
 
-  color: $white90;
+  color: $white;
   background-color: $alpha;
 
   font-synthesis: none;
@@ -24,5 +88,5 @@ h4,
 h5,
 h6,
 p {
-  color: $white90;
+  color: $white;
 }

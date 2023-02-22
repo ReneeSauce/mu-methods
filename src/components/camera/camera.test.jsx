@@ -3,8 +3,7 @@
  * @author [Colburn Sanders](https://github.com/colburncodes)
  */
 
-import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import { Camera } from "./Camera";
 
 describe("Camera", () => {

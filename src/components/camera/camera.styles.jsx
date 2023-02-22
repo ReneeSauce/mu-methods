@@ -10,6 +10,4 @@ const CameraContainer = styled.div`
   margin: 0 10px;
 `;
 
-
-
 export { CameraContainer };

@@ -1,11 +1,11 @@
-import "./theme/defaults.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Home, Login } from "./routes";
 import { Camera } from "./components/camera/camera";
 import { QRCodeScanner } from "./components/qr-reader/qr-reader";
+import { Home, Login } from "./routes";
+import "./theme/defaults.scss";
 
 const router = createBrowserRouter([
   {

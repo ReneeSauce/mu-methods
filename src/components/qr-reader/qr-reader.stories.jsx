@@ -3,7 +3,6 @@
  * @author [Colburn Sanders](https://github.com/colburncodes)
  */
 
-import React from "react";
 import { QRCodeScanner } from "./qr-reader";
 
 export default {
