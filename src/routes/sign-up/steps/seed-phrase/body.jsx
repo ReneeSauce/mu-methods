@@ -2,7 +2,7 @@
 import { faker } from "@faker-js/faker";
 import _ from "lodash";
 import { useCallback, useContext, useEffect, useState } from "react";
-import { Button } from "../../../../components";
+import { Button, Pill } from "../../../../components";
 import { WizardContext } from "../../sign-up";
 
 //TODO: Should Download button have an error popup?
@@ -24,7 +24,7 @@ export const Body = ({ text, setText }) => {
   useEffect(() => {
     setSeedPhrases(
       Array.from({ length: 12 }, () =>
-        faker.word.adjective()
+        faker.music.genre()
       ) /** Sdk.generateSeedPhrases()  */
     );
   }, []);
@@ -68,9 +68,16 @@ export const Body = ({ text, setText }) => {
         Save your seed phrase
       </h3>
 
-      <div>
+      <div className="d-flex flex-wrap justify-content-center gap-8px square rounded w-100 bg-beta px-14px py-20px mb-12px">
         {seedPhrases.map((phrase) => (
-          <p key={_.uniqueId("seed-phrase-")}>{phrase}</p>
+          <Pill
+            text={phrase}
+            key={_.uniqueId("seed-phrase-")}
+            className="fs-16px fw-normal"
+            opacity="20"
+            shape="square"
+            textOpacity={100}
+          ></Pill>
         ))}
       </div>
       <Button onClick={regenerateSeedPhrases}>Regenerate</Button>
