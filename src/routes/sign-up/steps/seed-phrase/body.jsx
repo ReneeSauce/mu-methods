@@ -1,17 +1,23 @@
 //body component for seed.jsx
-import { useState } from "react";
+import { useContext } from "react";
 import { Button } from "../../../../components";
+import { WizardContext } from "../../sign-up";
 
 //TODO: Should Download button have an error popup?
 //should value/text be handled by state
 //TODO: copy to clipboard - should we use react-copy-to-clipboard library?
 //currently writing from scratch
+//TODO: how does body work with context in step?
 
-export const Body = ({}) => {
+export const Body = ({ text, setText }) => {
   //copy to clipboard function
-  const [text, setText] = useState("placeholder for seed phrase form");
+  const context = useContext(WizardContext);
+  const { seedPhrases } = context.state;
+  // const [seedPhrases, setSeedPhrases] = useContext(WizardContext)
   const inputHandler = (event) => {
-    setText(event.target.value);
+    //on input change want this function to update seedphrase sate/context
+    setSeedPhrases(event.target.value);
+    context.updateSeedPhrases;
   };
   const copy = async () => {
     await navigator.clipboard.writeText(text);
@@ -37,7 +43,8 @@ export const Body = ({}) => {
       <input
         id="input"
         type="text"
-        value={text}
+        // what in the actual f am i supposed to do with value?!
+        value={seedPhrases}
         onChange={inputHandler}
         className="mb-12px w-100"
       ></input>

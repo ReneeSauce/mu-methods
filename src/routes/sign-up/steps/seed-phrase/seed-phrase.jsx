@@ -5,6 +5,7 @@ import { Body } from "./body";
 //TODO:  Figure out how to get modal to line up with layout bottom
 //TODO:  Modal need flexibility for font sizes and text layout
 //TODO: CHECK MODAL WORD SPACING VS FIGMA IS THIS OK?
+//TODO: how does body work with context in step?
 
 export function SeedPhrase({
   onBackClick,
@@ -13,7 +14,11 @@ export function SeedPhrase({
   onStoreWithPeersClick,
   isOpen,
   onClose,
+  text,
+  setText,
 }) {
+  // console.log(seedPhrase);
+  //call use context with wizard context imported
   return (
     <Layout
       className="mb-32px"
@@ -30,8 +35,7 @@ export function SeedPhrase({
       }
       body={
         <>
-          {/* Insert Save your seed phrase form component here with buttons */}
-          <Body />
+          <Body text={text} setText={setText} />
           <Modal isOpen={isOpen} onClose={onClose}>
             <div className="mt-48px px-20px fs-24px text-center lh-base fw-bold flex-grow-1">
               Store your seed phrase with peers so you never lose access to your

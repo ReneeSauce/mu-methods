@@ -13,9 +13,10 @@ export const WizardContext = React.createContext();
 export function SignUp() {
   /* ------------------------------- use states ------------------------------- */
   //updates context?
+  const [text, setText] = useState([]);
   const [state, updateState] = useState({
     form: {},
-    seedPhrases: [],
+    seedPhrases: [1, 2],
   });
 
   const [isOpen, setIsOpen] = useState(false);
@@ -29,10 +30,11 @@ export function SignUp() {
         ...state,
         form,
       });
+      console.log(state);
     },
     [state]
   );
-  const updateSeeds = useCallback(
+  const updateSeedPhrases = useCallback(
     (key, value) => {
       const { seedPhrases } = state;
       seedPhrases[key] = value;
@@ -43,15 +45,19 @@ export function SignUp() {
     },
     [state]
   );
+  // const updateSeedPhrases = (seedPhrases) =>{
+  //   updateState({ ...state, seedPhrases });
+  //   console.log(state);}
+  //   const { seedPhrases } = state;
 
   /* --------------------------------- useMemo -------------------------------- */
   const storeValue = useMemo(() => {
     return {
       state,
       updateForm,
-      updateSeeds,
+      updateSeedPhrases,
     };
-  }, [state, updateForm, updateSeeds]);
+  }, [state, updateForm, updateSeedPhrases]);
 
   /* -------------------------------- functions ------------------------------- */
   //do something on stepchange
@@ -77,9 +83,9 @@ export function SignUp() {
     console.log(nextStep);
   };
   const handleSaveSeedPhraseClick = () => {
-    console.log(isOpen);
     setIsOpen(true);
   };
+
   /* --------------------------- animation controls --------------------------- */
   //to customize transitions from animate.css
   let custom = {};
@@ -110,6 +116,8 @@ export function SignUp() {
           onStoreWithPeersClick={goTo("choose-peers")}
           isOpen={isOpen}
           onClose={onClose}
+          text={text}
+          setText={setText}
         ></Steps.SeedPhrase>
 
         <Steps.RepeatSeedPhrase
