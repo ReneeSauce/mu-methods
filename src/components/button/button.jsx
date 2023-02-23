@@ -5,28 +5,23 @@ import styled from "styled-components";
  * Button Component
  * @author [Jenny Doctor](https://github.com/jendoc)
  * @param size expects 'sm', 'md', or 'lg'
- * @param bgColor expects 'primary', or 'danger'
- * @param kind expects 'PRIMARY', 'SECONDARY', or 'TERTIARY'
+ * @param kind expects 'primary', 'secondary', 'tertiary', or 'textOnly'
  * @param disabled expects boolean
  * @param danger expects boolean
- * @param leftIcon expects icon
- * @param rightIcon expects icon
+ * @param leftIcon expects icon for left side of button
+ * @param rightIcon expects icon expects icon for right side of button
  *
  * @param children expects button text content
  * @param onClick callback function to run when btn is clicked
  */
 
 // TODO integrate icons when all are catalogued
-// TODO add active styling for improved UX
-
-// ! Implement kinds styling
 
 export const Button = ({
   size,
-  bgColor,
-  kind,
+  buttonKind,
   disabled,
-  danger,
+  dangerText,
   leftIcon,
   rightIcon,
   onClick,
@@ -38,11 +33,23 @@ export const Button = ({
     lg: "100%",
   };
 
+  const kinds = {
+    primary: "bg-primary",
+    primary_red: "bg-danger",
+    secondary: "border border-white bg-transparent",
+    tertiary: "bg-f6f6f6", //bg-white 0.5 opacity
+    textOnly: "bg-transparent text-white",
+  };
+
   Button.Container = styled.button`
     border: none;
     border-radius: 8px;
     opacity: ${() => disabled && "0.5"};
     width: ${(props) => props.size};
+    transition: opacity 0.2s;
+    &:hover {
+      opacity: 0.8;
+    }
   `;
 
   Button.Icon = styled.img`
@@ -61,22 +68,28 @@ export const Button = ({
       onClick={onClick}
       size={sizes[size]}
       className={cx(
-        `d-flex flex-row align-items-center justify-content-center bg-${bgColor}`
+        `d-flex flex-row align-items-center justify-content-center ${kinds[buttonKind]}`
       )}
     >
       {leftIcon && (
         <Button.Icon
           src={leftIcon}
-          className={(children && "me-3") || "ms-2 me-2"}
+          className={(children && "me-12px") || "mx-8px"} // renders padding conditionally based on text content
         />
       )}
-      <Button.Text className={(danger && "text-danger fs-18px") || "fs-18px"}>
+      <Button.Text
+        className={
+          (dangerText && "text-danger fs-18px") ||
+          (buttonKind === "primary" && "text-alpha fs-18px") ||
+          "text-white fs-18px"
+        }
+      >
         {children}
       </Button.Text>
       {rightIcon && (
         <Button.Icon
           src={rightIcon}
-          className={(children && "ms-3") || "ms-2 me-2"}
+          className={(children && "ms-12px") || "mx-8px"} // renders padding conditionally based on text content
         />
       )}
     </Button.Container>
