@@ -14,9 +14,10 @@ export function SignUp() {
   /* ------------------------------- use states ------------------------------- */
   //updates context?
   const [text, setText] = useState([]);
+  const [SW, setSW] = useState();
   const [state, updateState] = useState({
     form: {},
-    seedPhrases: [1, 2],
+    seedPhrases: [],
   });
 
   const [isOpen, setIsOpen] = useState(false);
@@ -30,17 +31,14 @@ export function SignUp() {
         ...state,
         form,
       });
-      console.log(state);
     },
     [state]
   );
   const updateSeedPhrases = useCallback(
-    (key, value) => {
-      const { seedPhrases } = state;
-      seedPhrases[key] = value;
+    (value) => {
       updateState({
         ...state,
-        seedPhrases,
+        seedPhrases: value,
       });
     },
     [state]
@@ -66,12 +64,16 @@ export function SignUp() {
     console.log(state);
   };
 
-  const setInstance = (SW) => updateState({ ...state, SW });
-  const { SW } = state;
+  const setInstance = (sw) => {
+    setSW(sw);
+  };
 
-  function goTo(step) {
-    return () => SW.goToNamedStep(step);
-  }
+  const goTo = useCallback(
+    (step) => {
+      return () => SW.goToNamedStep(step);
+    },
+    [SW]
+  );
   const onClose = () => {
     setIsOpen(false);
   };

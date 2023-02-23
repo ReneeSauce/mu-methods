@@ -15,7 +15,9 @@ export function UserInfo({ onBackClick, onForwardClick }) {
       header={
         <>
           <Header.Left>
-            <Button onClick={onBackClick}>**</Button>
+            <Button onClick={onBackClick} className="w-100">
+              **
+            </Button>
           </Header.Left>
           <Header.Center>
             <Header.Title title="Sign up" />
