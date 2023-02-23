@@ -21,6 +21,8 @@ export function SignUp() {
   });
 
   const [isOpen, setIsOpen] = useState(false);
+  //isVisible for copied alert
+  const [isVisible, setIsVisible] = useState(false);
 
   /* ------------------------------ use Callbacks ----------------------------- */
   const updateForm = useCallback(
@@ -85,6 +87,7 @@ export function SignUp() {
     console.log(nextStep);
   };
   const handleSaveSeedPhraseClick = () => {
+    setIsVisible(false);
     setIsOpen(true);
   };
 
@@ -118,8 +121,8 @@ export function SignUp() {
           onStoreWithPeersClick={goTo("choose-peers")}
           isOpen={isOpen}
           onClose={onClose}
-          text={text}
-          setText={setText}
+          isVisible={isVisible}
+          setIsVisible={setIsVisible}
         ></Steps.SeedPhrase>
 
         <Steps.RepeatSeedPhrase

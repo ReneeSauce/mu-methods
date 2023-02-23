@@ -14,11 +14,12 @@ export function SeedPhrase({
   onStoreWithPeersClick,
   isOpen,
   onClose,
-  text,
-  setText,
+  isVisible,
+  setIsVisible,
 }) {
   // console.log(seedPhrase);
   //call use context with wizard context imported
+
   return (
     <Layout
       className="mb-32px"
@@ -35,7 +36,7 @@ export function SeedPhrase({
       }
       body={
         <>
-          <Body text={text} setText={setText} />
+          <Body isVisible={isVisible} setIsVisible={setIsVisible} />
           <Modal isOpen={isOpen} onClose={onClose}>
             <div className="mt-48px px-20px fs-24px text-center lh-base fw-bold flex-grow-1">
               Store your seed phrase with peers so you never lose access to your
