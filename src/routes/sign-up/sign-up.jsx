@@ -92,6 +92,14 @@ export function SignUp() {
     setIsOpen(false);
   };
 
+  const handleOpenEmailApp = () => {
+    //open email app - how does this work
+    //create and save a token to local storage
+    //send token to user's email - does this make more sense to put in next to last step?
+    //on return from email, oath flow to logged in route
+    console.log("open email app,");
+    // window.location = "mailto:yourmail@domain.com";//opens a new email not the app
+  };
   /* --------------------------- animation controls --------------------------- */
   //to customize transitions from animate.css
   let custom = {};
@@ -146,7 +154,7 @@ export function SignUp() {
         <Steps.FinishReg
           stepName="finish-reg"
           SW={SW}
-          onForwardClick={() => alert("Need code to open email app")} //need logic here to open email app
+          onForwardClick={handleOpenEmailApp} //need logic here to open email app
         ></Steps.FinishReg>
       </StepWizard>
     </WizardContext.Provider>
