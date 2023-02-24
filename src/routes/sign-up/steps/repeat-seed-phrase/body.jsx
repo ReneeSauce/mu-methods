@@ -1,5 +1,4 @@
 //body component for repeat-seed-phrase
-
 import styled from "styled-components";
 
 const StyledTextArea = styled.textarea`

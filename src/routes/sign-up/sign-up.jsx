@@ -91,9 +91,6 @@ export function SignUp() {
     SW.goToNamedStep("repeat-seed-phrase");
     setIsOpen(false);
   };
-  const handleRepeatSeedPaste = () => {
-    console.log("pasted");
-  };
 
   /* --------------------------- animation controls --------------------------- */
   //to customize transitions from animate.css
@@ -108,7 +105,7 @@ export function SignUp() {
         transitions={custom}
       >
         {/* steps go here with sw */}
-        {/* <SignupForm></SignupForm> */}
+
         <Steps.UserInfo
           stepName="user-info"
           SW={SW}
@@ -119,7 +116,7 @@ export function SignUp() {
         <Steps.SeedPhrase
           stepName="seed-phrase"
           SW={SW}
-          onForwardClick={handleSaveSeedPhraseClick} //needs logic to open modal here
+          onForwardClick={handleSaveSeedPhraseClick}
           onBackClick={goTo("user-info")}
           onSkipStepClick={handleSkipStepClick}
           onStoreWithPeersClick={goTo("choose-peers")}
@@ -134,7 +131,6 @@ export function SignUp() {
           SW={SW}
           onForwardClick={goTo("finish-reg")}
           onBackClick={goTo("seed-phrase")}
-          // onChange={handleRepeatSeedPaste}
         ></Steps.RepeatSeedPhrase>
         <Steps.ChoosePeers
           stepName="choose-peers"
@@ -156,4 +152,3 @@ export function SignUp() {
     </WizardContext.Provider>
   );
 }
-// export default SignUp;

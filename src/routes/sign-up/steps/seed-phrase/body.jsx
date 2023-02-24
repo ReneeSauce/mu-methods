@@ -6,10 +6,6 @@ import { Button, Pill } from "../../../../components";
 import { WizardContext } from "../../sign-up";
 
 //TODO: Should Download button have an error popup?
-//should value/text be handled by state
-//TODO: copy to clipboard - should we use react-copy-to-clipboard library?
-//currently writing from scratch
-//TODO: how does body work with context in step?
 
 export const Body = ({ isVisible, setIsVisible }) => {
   // Get updateSeed
@@ -62,13 +58,10 @@ export const Body = ({ isVisible, setIsVisible }) => {
   const downloadTextFile = () => {
     const element = document.createElement("a");
     const blobData = seedPhrases.join(" ");
-    console.log(blobData);
     const file = new Blob([blobData], {
       type: "text/plain",
     });
-    // const file = new Blob([document.getElementById("input").value], {
-    //   type: "text/plain",
-    // });
+
     element.href = URL.createObjectURL(file);
     element.download = "myFile.txt";
     document.body.appendChild(element);
