@@ -1,4 +1,4 @@
-//body component for seed.jsx
+//body component for seed-phrase.jsx
 import { faker } from "@faker-js/faker";
 import _ from "lodash";
 import { useCallback, useContext, useEffect, useState } from "react";

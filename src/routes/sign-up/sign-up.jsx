@@ -12,16 +12,17 @@ export const WizardContext = React.createContext();
 /* -------------------------------------------------------------------------- */
 export function SignUp() {
   /* ------------------------------- use states ------------------------------- */
-  //updates context?
-  const [text, setText] = useState([]);
+  //updates SW, form data and seedPhrases for context
   const [SW, setSW] = useState();
   const [state, updateState] = useState({
     form: {},
     seedPhrases: [],
   });
 
+  //isOpen for Modal
   const [isOpen, setIsOpen] = useState(false);
-  //isVisible for copied alert
+
+  //isVisible for copied alert in Seed-Phrase.jsx
   const [isVisible, setIsVisible] = useState(false);
 
   /* ------------------------------ use Callbacks ----------------------------- */
@@ -45,10 +46,6 @@ export function SignUp() {
     },
     [state]
   );
-  // const updateSeedPhrases = (seedPhrases) =>{
-  //   updateState({ ...state, seedPhrases });
-  //   console.log(state);}
-  //   const { seedPhrases } = state;
 
   /* --------------------------------- useMemo -------------------------------- */
   const storeValue = useMemo(() => {
@@ -90,6 +87,13 @@ export function SignUp() {
     setIsVisible(false);
     setIsOpen(true);
   };
+  const handleSkipStepClick = () => {
+    SW.goToNamedStep("repeat-seed-phrase");
+    setIsOpen(false);
+  };
+  const handleRepeatSeedPaste = () => {
+    console.log("pasted");
+  };
 
   /* --------------------------- animation controls --------------------------- */
   //to customize transitions from animate.css
@@ -117,7 +121,7 @@ export function SignUp() {
           SW={SW}
           onForwardClick={handleSaveSeedPhraseClick} //needs logic to open modal here
           onBackClick={goTo("user-info")}
-          onSkipStepClick={goTo("repeat-seed-phrase")}
+          onSkipStepClick={handleSkipStepClick}
           onStoreWithPeersClick={goTo("choose-peers")}
           isOpen={isOpen}
           onClose={onClose}
@@ -129,7 +133,8 @@ export function SignUp() {
           stepName="repeat-seed-phrase"
           SW={SW}
           onForwardClick={goTo("finish-reg")}
-          onBackClick={goTo("modal-stub")}
+          onBackClick={goTo("seed-phrase")}
+          // onChange={handleRepeatSeedPaste}
         ></Steps.RepeatSeedPhrase>
         <Steps.ChoosePeers
           stepName="choose-peers"
