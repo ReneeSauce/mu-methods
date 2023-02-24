@@ -30,6 +30,7 @@
     "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.6.2",
+    "react-step-wizard": "^5.3.11",
     "sass": "^1.57.1",
     "styled-components": "^5.3.6",
     "vite-plugin-babel-macros": "^1.0.6"
