@@ -17,7 +17,6 @@ export function SeedPhrase({
   isVisible,
   setIsVisible,
 }) {
-  // console.log(seedPhrase);
   //call use context with wizard context imported
 
   return (

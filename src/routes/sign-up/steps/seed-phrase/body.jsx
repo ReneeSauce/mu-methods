@@ -61,9 +61,14 @@ export const Body = ({ isVisible, setIsVisible }) => {
   // Download to text function
   const downloadTextFile = () => {
     const element = document.createElement("a");
-    const file = new Blob([document.getElementById("input").value], {
+    const blobData = seedPhrases.join(" ");
+    console.log(blobData);
+    const file = new Blob([blobData], {
       type: "text/plain",
     });
+    // const file = new Blob([document.getElementById("input").value], {
+    //   type: "text/plain",
+    // });
     element.href = URL.createObjectURL(file);
     element.download = "myFile.txt";
     document.body.appendChild(element);
