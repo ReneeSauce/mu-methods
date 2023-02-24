@@ -66,7 +66,7 @@ export const Profile = ({
           />
           <h3 className="fs-18px fw-bold m-0">{profileInfo.name}</h3>
           <Pill
-            className="profile__pill"
+            className="profile__pill fw-normal"
             shape="square"
             isCopiable={profileInfo.isCopiable}
             text={profileInfo.pillText}
