@@ -1,5 +1,6 @@
-import { Button, Layout } from "../../../components"; //button needs to be changed when avail
-import { Header } from "../../../components/layout/header";
+import { Button, Layout } from "../../../../components"; //button needs to be changed when avail
+import { Header } from "../../../../components/layout/header";
+import { Body } from "./body";
 //TODO: Update buttons when available
 
 export function ChoosePeers({ onBackClick, onForwardClick }) {
@@ -17,7 +18,7 @@ export function ChoosePeers({ onBackClick, onForwardClick }) {
           </Header.Center>
         </>
       }
-      body="insert form component here"
+      body={<Body></Body>}
       footer={<Button onClick={onForwardClick}>Share seed phrase</Button>} //replace buton with step button
     ></Layout>
   );
