@@ -7,7 +7,6 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import { NavTray } from "./components/navigation-tray/nav-tray";
 import { Home, Login, Profile } from "./routes";
 import { SignUp } from "./routes/sign-up/sign-up";
 import "./theme/defaults.scss";
@@ -48,6 +47,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route
           path="/profile"
           element={
@@ -63,7 +63,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           }
         />
       </Routes>
-      <NavTray
+      {/* <NavTray
         navLinks={[
           {
             role: "login",
@@ -74,7 +74,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             to: "/",
           },
         ]}
-      />
+      /> */}
     </BrowserRouter>
   </React.StrictMode>
 );

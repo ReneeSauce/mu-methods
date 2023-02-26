@@ -10,7 +10,7 @@ export const WizardContext = React.createContext();
 /* -------------------------------------------------------------------------- */
 /*                               function SignUp                              */
 /* -------------------------------------------------------------------------- */
-export function SignUp() {
+export const SignUp = () => {
   /* ------------------------------- use states ------------------------------- */
   //updates SW, form data and seedPhrases for context
   const [SW, setSW] = useState();
@@ -113,12 +113,27 @@ export function SignUp() {
         transitions={custom}
       >
         {/* steps go here with sw */}
+        {/* test entry point here */}
+        <Steps.EntryPoint
+          stepName="entry-point"
+          SW={SW}
+          onLoginClick={goTo("user-info")}
+          onSignUpClick={goTo("user-info")}
+          onConnectWalletClick={goTo("connect-scan")}
+        ></Steps.EntryPoint>
+
+        <Steps.ConnectWalletScan
+          stepName="connect-scan"
+          SW={SW}
+          onForwardClick={goTo("entry-point")}
+          onBackClick={goTo("entry-point")}
+        ></Steps.ConnectWalletScan>
 
         <Steps.UserInfo
           stepName="user-info"
           SW={SW}
           onForwardClick={goTo("seed-phrase")}
-          onBackClick={goTo("user-info")}
+          onBackClick={goTo("entry-point")}
         ></Steps.UserInfo>
 
         <Steps.SeedPhrase
@@ -159,4 +174,4 @@ export function SignUp() {
       </StepWizard>
     </WizardContext.Provider>
   );
-}
+};

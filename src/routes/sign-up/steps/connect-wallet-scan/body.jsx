@@ -1,5 +1,4 @@
 //connect-wallet-scan-body
-import { Button } from "../../../../components";
 
 export const Body = () => {
   return (
@@ -8,7 +7,6 @@ export const Body = () => {
         Scan QR code to connect your existing Web3 wallet
       </h4>
       <div>camera component here</div>
-      <Button>Or enter public key manually</Button>
     </>
   );
 };

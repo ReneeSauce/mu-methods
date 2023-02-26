@@ -1,6 +1,7 @@
-import { Layout } from "../../../../components"; //button needs to be changed when avail
+import { Button, Layout } from "../../../../components"; //button needs to be changed when avail
+import { Header } from "../../../../components/layout/header";
 import { Body } from "./body";
-export const ConnectWalletScan = () => {
+export const ConnectWalletScan = ({ onBackClick, onForwardClick }) => {
   return (
     <Layout
       className="mb-32px"
@@ -18,7 +19,14 @@ export const ConnectWalletScan = () => {
         </>
       }
       body={<Body></Body>}
-      footer={<Button onClick={onForwardClick}>Continue</Button>} //replace buton with step button
+      footer={
+        <>
+          <div className="d-flex flex-column gap-16px">
+            <Button className="mt-auto">Or enter public key manually</Button>
+            <Button onClick={onForwardClick}>Continue</Button>
+          </div>
+        </>
+      } //replace buton with step button
     ></Layout>
   );
 };
