@@ -1,6 +1,7 @@
-import { Layout } from "../../../../components"; //button needs to be changed when avail
+import { Button, Layout } from "../../../../components"; //button needs to be changed when avail
+import { Header } from "../../../../components/layout/header";
 import { Body } from "./body";
-export const ConnectWalletConfirm = () => {
+export const ConnectWalletConfirm = ({ onBackClick, onForwardClick }) => {
   return (
     <Layout
       className="mb-32px"
@@ -18,7 +19,7 @@ export const ConnectWalletConfirm = () => {
         </>
       }
       body={<Body></Body>}
-      footer={<Button onClick={onForwardClick}>Continue</Button>} //replace buton with step button
+      footer={<Button onClick={onForwardClick}>Or confirm via App</Button>} //replace buton with step button
     ></Layout>
   );
 };

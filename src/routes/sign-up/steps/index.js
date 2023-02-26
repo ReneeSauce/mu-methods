@@ -1,4 +1,5 @@
 import { ChoosePeers } from "./choose-peers/choose-peers";
+import { ConnectWalletConfirm } from "./connect-wallet-confirm/connect-wallet-confirm";
 import { ConnectWalletScan } from "./connect-wallet-scan/connect-wallet-scan";
 import { EntryPoint } from "./entrypoint";
 import { FinishReg } from "./finish-reg";
@@ -16,4 +17,5 @@ export const Steps = {
   FinishReg,
   EntryPoint,
   ConnectWalletScan,
+  ConnectWalletConfirm,
 };

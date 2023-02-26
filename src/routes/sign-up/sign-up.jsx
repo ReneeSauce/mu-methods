@@ -91,7 +91,10 @@ export const SignUp = () => {
     SW.goToNamedStep("repeat-seed-phrase");
     setIsOpen(false);
   };
-
+  const handleEnterKey = () => {
+    console.log("needs keyboard to open to handle public key manually");
+    alert("needs keyboard to open to handle public key manually");
+  };
   const handleOpenEmailApp = () => {
     //open email app - how does this work
     //create and save a token to local storage
@@ -125,10 +128,17 @@ export const SignUp = () => {
         <Steps.ConnectWalletScan
           stepName="connect-scan"
           SW={SW}
-          onForwardClick={goTo("entry-point")}
+          onEnterKey={handleEnterKey}
+          onForwardClick={goTo("connect-confirm")}
           onBackClick={goTo("entry-point")}
         ></Steps.ConnectWalletScan>
 
+        <Steps.ConnectWalletConfirm
+          stepName="connect-confirm"
+          SW={SW}
+          onForwardClick={goTo("connect-permissions")}
+          onBackClick={goTo("connect-scan")}
+        ></Steps.ConnectWalletConfirm>
         <Steps.UserInfo
           stepName="user-info"
           SW={SW}
