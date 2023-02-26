@@ -1,17 +1,13 @@
 import { useState } from "react";
 import { QrReader } from "react-qr-reader";
 import { CameraContainer } from "../camera/camera.styles";
+import { ScannerContainer } from "./qr-reader.styles";
 
 export function QRCodeScanner() {
   const [data, setData] = useState("No Result");
   return (
     <CameraContainer className="d-flex text-center bg-alpha">
-      <div
-        style={{
-          margin: "auto",
-          width: "400px",
-        }}
-      >
+      <ScannerContainer>
         <QrReader
           ViewFinder={function noRefCheck() {}}
           constraints={{
@@ -29,7 +25,7 @@ export function QRCodeScanner() {
         />
         <p>The value is: {data}</p>
         <p>The error is: </p>
-      </div>
+      </ScannerContainer>
     </CameraContainer>
   );
 }

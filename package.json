@@ -34,7 +34,8 @@
     "react-webcam": "^7.0.1",
     "sass": "^1.57.1",
     "styled-components": "^5.3.6",
-    "vite-plugin-babel-macros": "^1.0.6"
+    "vite-plugin-babel-macros": "^1.0.6",
+    "webrtc-adapter": "^8.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
