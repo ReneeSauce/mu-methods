@@ -1,8 +1,8 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 
 /**
- * Form Component
+ * Form Component using react-hook-form smart form compoment
+ * to inject all react-hook-form methods into the child component
  * @author [Jake Bohn](https://github.com/JakobOrion)
  */
 
