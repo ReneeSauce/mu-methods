@@ -14,6 +14,7 @@ export const SignUp = () => {
   /* ------------------------------- use states ------------------------------- */
   //updates SW, form data and seedPhrases for context
   const [SW, setSW] = useState();
+  const [prevStep, setPrevStep] = useState("");
   const [state, updateState] = useState({
     form: {},
     seedPhrases: [],
@@ -61,8 +62,13 @@ export const SignUp = () => {
   const onStepChange = (stats) => {
     console.log(stats);
     console.log(state);
+    console.log(stats.previousStep);
+    setPrevStep(stats.previousStep);
+    console.log(SW);
   };
 
+  // const setInstance = (SW) => updateState({ ...state, SW });
+  // const { SW } = state;
   const setInstance = (sw) => {
     setSW(sw);
   };
@@ -73,9 +79,12 @@ export const SignUp = () => {
     },
     [SW]
   );
+
+  //close modal
   const onClose = () => {
     setIsOpen(false);
   };
+
   /* -------------------------------- handlers -------------------------------- */
   const handleForwardClick = (nextStep) => {
     console.log(nextStep);
@@ -139,6 +148,14 @@ export const SignUp = () => {
           onForwardClick={goTo("connect-permissions")}
           onBackClick={goTo("connect-scan")}
         ></Steps.ConnectWalletConfirm>
+
+        <Steps.ConnectWalletPermissions
+          stepName="connect-permissions"
+          SW={SW}
+          onForwardClick={goTo("seed-phrase")}
+          onBackClick={goTo("connect-confirm")}
+        ></Steps.ConnectWalletPermissions>
+
         <Steps.UserInfo
           stepName="user-info"
           SW={SW}
@@ -150,7 +167,8 @@ export const SignUp = () => {
           stepName="seed-phrase"
           SW={SW}
           onForwardClick={handleSaveSeedPhraseClick}
-          onBackClick={goTo("user-info")}
+          onBackClick={() => SW.goToStep(prevStep)}
+          // onBackClick={goTo("user-info")}
           onSkipStepClick={handleSkipStepClick}
           onStoreWithPeersClick={goTo("choose-peers")}
           isOpen={isOpen}

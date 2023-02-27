@@ -1,6 +1,7 @@
-import { Layout } from "../../../../components"; //button needs to be changed when avail
+import { Button, Layout } from "../../../../components"; //button needs to be changed when avail
+import { Header } from "../../../../components/layout/header";
 import { Body } from "./body";
-export const ConnectWalletPermissions = () => {
+export const ConnectWalletPermissions = ({ onBackClick, onForwardClick }) => {
   return (
     <Layout
       className="mb-32px"
@@ -13,7 +14,7 @@ export const ConnectWalletPermissions = () => {
           </Header.Left>
           <Header.Center>
             <Header.Title title="Connecting wallet" />
-            <Header.SubTitle subtitle="Step 3/4" />
+            <Header.SubTitle subtitle="Step 1/4" />
           </Header.Center>
         </>
       }
