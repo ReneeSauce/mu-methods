@@ -60,11 +60,12 @@ export const SignUp = () => {
   /* -------------------------------- functions ------------------------------- */
   //do something on stepchange
   const onStepChange = (stats) => {
-    console.log(stats);
-    console.log(state);
-    console.log(stats.previousStep);
-    setPrevStep(stats.previousStep);
-    console.log(SW);
+    // console.log(stats);
+    // console.log(state);
+    // console.log(stats.previousStep);
+    // setPrevStep(stats.previousStep);
+    // // console.log(SW);
+    // console.log(users)
   };
 
   // const setInstance = (SW) => updateState({ ...state, SW });
