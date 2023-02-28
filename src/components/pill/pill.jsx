@@ -1,5 +1,8 @@
 import cx from "classnames";
 import { motion } from "framer-motion";
+import { useRef, useState } from "react";
+import Overlay from "react-bootstrap/Overlay";
+import Tooltip from "react-bootstrap/Tooltip";
 import styled from "styled-components";
 import copyIcon from "../../assets/copy-icon.svg";
 
@@ -35,9 +38,12 @@ export const Pill = ({
   textOpacity,
   size,
 }) => {
+  const [show, setShow] = useState(false);
+  const target = useRef(null);
   return (
     <div className="d-flex flex-row align-items-center">
       <div
+        ref={target}
         className={cx(
           `badge px-8px lh-sm bg-white bg-opacity-${opacity} text-opacity-${textOpacity} text-white fs-12px ${
             shape === "round" ? "rounded-pill" : ""
@@ -48,13 +54,22 @@ export const Pill = ({
         {text}
       </div>
       {isCopiable && (
-        <CopyBtn
-          onClick={() => {
-            navigator.clipboard.writeText(text);
-          }}
-          className="ms-8px"
-          whileTap={{ scale: 0.75 }}
-        ></CopyBtn>
+        <>
+          <CopyBtn
+            onClick={() => {
+              navigator.clipboard.writeText(text);
+              setShow(true);
+              setTimeout(() => {
+                setShow(false);
+              }, 1500);
+            }}
+            className="ms-8px"
+            whileTap={{ scale: 0.75 }}
+          ></CopyBtn>
+          <Overlay target={target.current} show={show} placement="bottom">
+            {(props) => <Tooltip {...props}>Copied!</Tooltip>}
+          </Overlay>
+        </>
       )}
     </div>
   );
