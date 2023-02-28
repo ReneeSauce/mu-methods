@@ -6,6 +6,7 @@ import { Body } from "./body";
 //TODO: get permissions form
 //TODO: logic to set permissions value send to context?
 //TODO: question will Account info context hold all of this stuff?
+//TODO: should modal open he re and then continue to flow from modal
 
 /**
  * Connect-Wallet Permissions Component -

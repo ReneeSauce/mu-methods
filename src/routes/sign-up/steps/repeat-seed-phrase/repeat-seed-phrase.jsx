@@ -1,7 +1,7 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import { Button, Layout } from "../../../../components"; //button needs to be changed when avail
 import { Header } from "../../../../components/layout/header";
-import { WizardContext } from "../../sign-up";
+import { WizardContext } from "../../../../contexts/wizard-context";
 import { Body } from "./body";
 //TODO: Update buttons when available
 //TODO: Check Font Weight on body - all other steps have 700 and this step in figma has 500

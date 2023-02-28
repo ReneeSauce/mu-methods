@@ -3,7 +3,7 @@ import { faker } from "@faker-js/faker";
 import _ from "lodash";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { Button, Pill } from "../../../../components";
-import { WizardContext } from "../../sign-up";
+import { WizardContext } from "../../../../contexts/wizard-context";
 
 //TODO: Should Download button have an error popup?
 

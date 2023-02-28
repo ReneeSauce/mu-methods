@@ -1,11 +1,11 @@
-import React, { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import StepWizard from "react-step-wizard";
+import { WizardContext } from "../../contexts/wizard-context";
 import { Steps } from "./steps";
-
 /* ----------------------------- Wizard Context ----------------------------- */
 //context - does this need to go in a separate file
 //does one context work for the entire app
-export const WizardContext = React.createContext();
+// export const WizardContext = React.createContext();
 
 /* -------------------------------------------------------------------------- */
 /*                               function SignUp                              */
