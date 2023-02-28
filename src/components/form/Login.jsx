@@ -1,7 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import Button from "../button";
+import { Button } from "../button";
 import Form from "./form";
 import { Input } from "./input";
 
@@ -39,7 +39,7 @@ export default function LoginForm() {
           placeholder="myemail@mumethods.com"
           label="Email"
           className="mb-3"
-          error={errors?.email?.message}
+          error={errors.email?.message}
           type="email"
           required
         />
@@ -48,7 +48,7 @@ export default function LoginForm() {
           placeholder="password"
           label="password"
           className="mb-3"
-          error={errors?.password?.message}
+          error={errors.password?.message}
           type="password"
           required
         />
