@@ -63,7 +63,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           }
         />
       </Routes>
-      <NavTray
+      {/* <NavTray
         navLinks={[
           {
             role: "login",
@@ -74,7 +74,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             to: "/",
           },
         ]}
-      />
+      /> */}
     </BrowserRouter>
   </React.StrictMode>
 );
