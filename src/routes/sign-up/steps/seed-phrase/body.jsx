@@ -7,6 +7,23 @@ import { WizardContext } from "../../sign-up";
 
 //TODO: Should Download button have an error popup?
 
+/**
+ * Body Component - used with the Seed-phrase component
+ * @author [K. Ehrenclou](https://github.com/kehrenclou)
+ * @param isVisible passed from parent - boolean useState value to control seed phrase copied notification
+ * @param setIsVisible passed from parent - boolean useState setter to control seed phrase copied notification
+ * @param updateSeedPhrases function to updateSeedPhrases in WizardContext
+ * @param WizardContext context for data in Sign up Wizard
+ * @param isCopied boolean useState value to control if seed phrases copied
+ * @param setIsCopied boolean useState setter to control if seed phrases copied
+ * @param seedPhrases  useState value containing seed phrase array - local not in context
+ * @param setSeedPhrases useState setter to set seed phrase array - local not in context
+ * @param text text used for seed in Pill component
+ * @param key key used to map seed in Pill component
+ * @param textOpacity param to set textOpacity in Pill component
+ * @param onClick param to call button onclick fucntions in Buttons
+ */
+
 export const Body = ({ isVisible, setIsVisible }) => {
   /* ----------------------------- set up Context ----------------------------- */
   // Get updateSeed

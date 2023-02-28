@@ -3,6 +3,19 @@ import logo from "../../../assets/mu-methods.svg";
 import { Button, Layout } from "../../../components"; //button needs to be changed when avail
 import { Header } from "../../../components/layout/header";
 
+/**
+ * Home Component
+ * @author [K. Ehrenclou](https://github.com/kehrenclou)
+ * @param onLoginClick login click handler prop passed down from parent
+ * @param onSignUpClick signup click handler prop passed down from parent
+ * @param onConnectWalletClick connect wallet click handler prop passed down from parent
+ * @param header expects header components
+ * @param body expects body components
+ * @param footer expects footer components
+ * @param src the image link
+ * @param alt the alt description
+ */
+
 export const EntryPoint = ({
   onLoginClick,
   onSignUpClick,

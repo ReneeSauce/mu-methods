@@ -7,6 +7,22 @@ import { Body } from "./body";
 //TODO: CHECK MODAL WORD SPACING VS FIGMA IS THIS OK?
 //TODO: how does body work with context in step?
 
+/**
+ * Seed-phrase Component -
+ * @author [K. Ehrenclou](https://github.com/kehrenclou)
+ * @param onBackClick back click handler prop passed down from parent
+ * @param onForwardClick forward click handler prop passed down from parent
+ * @param onSkipStepClick skip step click handler passed down from parent
+ * @param onStoreWithPeersClick connect store with peers prop passed down from parent
+ * @param isOpen passed from parent - boolean useState value to control modal visibility
+ * @param onClose modal close button handler passed down from parent
+ * @param isVisible passed from parent - boolean useState value to control seed phrase copied notification
+ * @param setIsVisible passed from parent - boolean useState setter to control seed phrase copied notification
+ * @param header expects header components
+ * @param body expects body components
+ * @param footer expects footer components
+ */
+
 export function SeedPhrase({
   onBackClick,
   onForwardClick,

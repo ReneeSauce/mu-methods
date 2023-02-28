@@ -1,9 +1,21 @@
 //body component for choose-peers.jsx
 
 import { Button } from "../../../../components";
+//TODO: Add number of peers, find peers and chosen peers table
+//TODO: Hook up buttons and form inputs for choosing peers
+//TODO: Create logic to check array.length of peers to match number of peers
+//TODO: Button disable/enable logic based on if #peers chosen
 //TODO: As chosen peers increases, should the share seed phrase
 //be position absoluted or travel to bottom of peers list
+//per Josh - body part between choose and a piece... should scroll
 //TODO: need to make the sizing of the layout flexible to screen size
+
+/**
+ * Body Component - used with Choose Peers Component -
+ * @author [K. Ehrenclou](https://github.com/kehrenclou)
+ * @param onClick onClick prop to call handleFindPeers function
+ */
+
 export const Body = ({}) => {
   const handleFindPeers = () => {
     //open search screen form

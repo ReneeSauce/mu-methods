@@ -5,10 +5,29 @@ import { WizardContext } from "../../sign-up";
 import { Body } from "./body";
 //TODO: Update buttons when available
 //TODO: Check Font Weight on body - all other steps have 700 and this step in figma has 500
-//TODO: write logic for pasted seed phrase to match seed phrase - logic done
-//TODO: disable button until seed phrase matches- logic done
 //TODOL consider auto focus to text area on pageload - having trouble since component mounts at signup
 //TODO: set up error messaging on not a match
+//TODO: check useEffect that clears on load - component mounts on signup route may not work without lazyloading
+
+/**
+ * Repeat Seed Phrase Component - 
+ * @author [K. Ehrenclou](https://github.com/kehrenclou)
+ * @param onBackClick back click handler prop passed down from parent
+ * @param onForwardClick forward click handler prop passed down from parent
+ * @param onClick prop to call handleBackClick function
+ * @param state param to bring in all of WizardContext
+ * @param WizardContext context for data in Sign up Wizard
+ * @param repeatedseedPhrase  useState value containing copied seed phrase array - local not in context
+ * @param setRepeatedSeedPhrases useState setter to set copied seed phrase array - local not in context
+ * @param isMatch boolean useState value to return if repeated and original seed phrase array match
+ * @param setIsMatch useState setter to set isMatch
+ * @param onChange prop to call handleInputChange function
+ * @param disabled prop using isMatch to enable/disable button
+ * @param header expects header components
+ * @param body expects body components
+ * @param footer expects footer components
+
+ */
 
 export function RepeatSeedPhrase({ onBackClick, onForwardClick }) {
   /* ----------------------------- set up Context ----------------------------- */
@@ -21,14 +40,13 @@ export function RepeatSeedPhrase({ onBackClick, onForwardClick }) {
 
   /* -------------------------------- useEffect ------------------------------- */
   //clear on load -
-  //TODO: need to check this because component mounts on signup route
-  //this is to clear it if back button invoked and seeds change
-  //and copy not done again
+  //this is to clear it if back button invoked and seeds changeand copy not done again
   useEffect(() => {
     setRepeatedSeedPhrase("");
     setIsMatch(false);
   }, []);
 
+  //check seeds and copied seeds match
   useEffect(() => {
     checkSeedPhrasesMatch();
   }, [repeatedSeedPhrase, seedPhrases]);

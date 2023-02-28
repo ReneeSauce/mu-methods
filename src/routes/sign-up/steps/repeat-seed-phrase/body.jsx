@@ -1,6 +1,15 @@
 //body component for repeat-seed-phrase
 import styled from "styled-components";
 
+/**
+ * Body Component - used with Repeat Seed Phrase Component - 
+ * @author [K. Ehrenclou](https://github.com/kehrenclou)
+ * @param repeatedseedPhrase  useState value copied seed phrase - used to control input label
+ * @param onChange prop passed from parent to call handleInputChange function
+ * @param value prop expects repeatedSeedPhrase
+
+
+ */
 const StyledTextArea = styled.textarea`
   width: 100%;
   min-height: 180px;
@@ -30,7 +39,6 @@ export const Body = ({ repeatedSeedPhrase, onChange }) => {
           type="text"
           className="border-0 bg-beta fs-18px text-white text-opacity-0 lh-sm  d-flex flex-wrap justify-content-center gap-8px pt-8px"
           placeholder="Enter your 12 word seed phrase"
-          value={repeatedSeedPhrase}
           onChange={onChange}
         ></StyledTextArea>
       </label>
