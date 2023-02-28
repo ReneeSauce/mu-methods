@@ -1,9 +1,8 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import { Button } from "../button";
+import { Input } from "../input";
 import Form from "./form";
-import { Input } from "./input";
 
 /**
  * Login Form component using react-hook-form and yup for validation.
@@ -52,7 +51,6 @@ export default function LoginForm() {
           type="password"
           required
         />
-        <Button type="submit">Submit</Button>
       </Form>
     </>
   );
