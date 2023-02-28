@@ -9,17 +9,27 @@ import { WizardContext } from "../../sign-up";
 //I think it is passing data from qrcode scanner
 //needs to pass down
 //onScan use set state
+
+/**
+ * Body Component - used with Connect-Wallet Scan Component-
+ * @author [K. Ehrenclou](https://github.com/kehrenclou)
+ * @param WizardContext context for data in Sign up Wizard
+ * @param updateAccountData function to update scan user data in Sign up Wizard Context
+ * @param seedPhrases seed phrases from scan to update in Signup Wizard Context
+ * @param data useState value containing data from scan
+ * @param setData useState setter to set data from scan
+ * @param account eximported faker user data to emulate scan
+ * @param onClick prop to call handleScan function
+
+ *
+ */
+
 export const Body = () => {
   /* ----------------------------- set up Context ----------------------------- */
   //get update scanAccountData
   const { updateAccountData, seedPhrases } = useContext(WizardContext);
   /* -------------------------------- useState -------------------------------- */
-  const [data, setData] = useState({
-    // accountType: "",
-    // accountName: "",
-    // accountID: "",
-    // avatar: "",
-  });
+  const [data, setData] = useState({});
 
   /* ------------------------------- use Effect ------------------------------- */
   //not working

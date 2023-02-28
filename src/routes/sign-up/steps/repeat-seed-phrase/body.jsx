@@ -7,6 +7,7 @@ import styled from "styled-components";
  * @param repeatedseedPhrase  useState value copied seed phrase - used to control input label
  * @param onChange prop passed from parent to call handleInputChange function
  * @param value prop expects repeatedSeedPhrase
+ * @param placeholder expects placeholder text
 
 
  */

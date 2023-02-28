@@ -1,6 +1,21 @@
 //connect-wallet-confirm-body
 import { Notification } from "../../../../components";
-// TODO: need notification \reconfic for account or new reusable component
+
+//TODO: need notification \reconfic for account or new reusable component
+//TODO: need placeholde for qr code --?**sdk will generate?
+//TODO: need logic to set is confirmed to true - use state
+//TODO: way to trigger setIsConfirmed to true
+//TODO: logic to go to next step when isConfirmed = true
+//TODO: send is confirmed to usercontext
+
+/**
+ * Body Component - used with Connect-Wallet Confirm Component-
+ * @author [K. Ehrenclou](https://github.com/kehrenclou)
+
+
+ *
+ */
+
 export const Body = () => {
   return (
     <>
