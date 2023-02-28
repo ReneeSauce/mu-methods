@@ -16,6 +16,7 @@ import styled from "styled-components";
  */
 
 // TODO integrate icons when all are catalogued
+// TODO update bg-opacity when theme color mapping done
 
 export const Button = ({
   size,
@@ -48,7 +49,7 @@ export const Button = ({
     width: ${(props) => props.size};
     transition: opacity 0.2s;
     &:hover {
-      opacity: 0.8;
+      opacity: ${() => !disabled && "0.8"};
     }
   `;
 
@@ -70,19 +71,24 @@ export const Button = ({
       className={cx(
         `d-flex flex-row align-items-center justify-content-center ${kinds[buttonKind]}`
       )}
+      role="button"
     >
       {leftIcon && (
         <Button.Icon
           src={leftIcon}
           className={(children && "me-12px") || "mx-8px"} // renders padding conditionally based on text content
+          role="icon"
         />
       )}
       <Button.Text
-        className={
-          (dangerText && "text-danger fs-18px") ||
-          (buttonKind === "primary" && "text-alpha fs-18px") ||
-          "text-white fs-18px"
-        }
+        role="label"
+        className={cx(
+          `fs-18px ${
+            (dangerText && "text-danger") ||
+            (buttonKind === "primary" && "text-alpha") ||
+            "text-white"
+          }`
+        )}
       >
         {children}
       </Button.Text>
@@ -90,6 +96,7 @@ export const Button = ({
         <Button.Icon
           src={rightIcon}
           className={(children && "ms-12px") || "mx-8px"} // renders padding conditionally based on text content
+          role="icon"
         />
       )}
     </Button.Container>
