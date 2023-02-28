@@ -18,6 +18,7 @@ export const SignUp = () => {
   const [state, updateState] = useState({
     form: {},
     seedPhrases: [],
+    accountData: {},
   });
 
   //isOpen for Modal
@@ -47,6 +48,15 @@ export const SignUp = () => {
     },
     [state]
   );
+  const updateAccountData = useCallback(
+    (accountData) => {
+      updateState({
+        ...state,
+        accountData,
+      });
+    },
+    [state]
+  );
 
   /* --------------------------------- useMemo -------------------------------- */
   const storeValue = useMemo(() => {
@@ -54,22 +64,21 @@ export const SignUp = () => {
       state,
       updateForm,
       updateSeedPhrases,
+      updateAccountData,
     };
-  }, [state, updateForm, updateSeedPhrases]);
+  }, [state, updateForm, updateSeedPhrases, updateAccountData]);
 
   /* -------------------------------- functions ------------------------------- */
   //do something on stepchange
   const onStepChange = (stats) => {
     // console.log(stats);
-    // console.log(state);
+    console.log(state);
     // console.log(stats.previousStep);
-    // setPrevStep(stats.previousStep);
+    setPrevStep(stats.previousStep);
     // // console.log(SW);
-    // console.log(users)
+    // console.log(account);
   };
 
-  // const setInstance = (SW) => updateState({ ...state, SW });
-  // const { SW } = state;
   const setInstance = (sw) => {
     setSW(sw);
   };
@@ -102,8 +111,8 @@ export const SignUp = () => {
     setIsOpen(false);
   };
   const handleEnterKey = () => {
-    console.log("needs keyboard to open to handle public key manually");
-    alert("needs keyboard to open to handle public key manually");
+    console.log("open input form to enter key manually");
+    alert("open input form to enter key manually");
   };
   const handleOpenEmailApp = () => {
     //open email app - how does this work
@@ -188,7 +197,7 @@ export const SignUp = () => {
           stepName="choose-peers"
           SW={SW}
           onForwardClick={goTo("notify-peers")}
-          onBackClick={goTo("modal-stub")}
+          onBackClick={() => SW.goToStep(prevStep)}
         ></Steps.ChoosePeers>
         <Steps.NotifyPeers
           stepName="notify-peers"

@@ -2,17 +2,28 @@
 import { faker } from "@faker-js/faker";
 
 export let users = [];
+// export let account=[];
 
-export function createRandomUser() {
+export function createRandomAccount() {
   return {
-    userId: faker.datatype.uuid(),
-    username: faker.internet.userName(),
-    email: faker.internet.email(),
-    avatar: faker.image.avatar(),
-    password: faker.internet.password(),
+    accountType: faker.word.interjection(),
+    accountName: faker.accountName(),
+    aID: faker.finance.bitcoinAddress(),
+    avatar: faker.internet.avatar(),
   };
 }
+export const createFakerScanAccount = () => {
+  return {
+    accountType: faker.word.interjection(),
+    accountName: faker.finance.accountName(),
+    accountID: faker.finance.bitcoinAddress(),
+    avatar: faker.internet.avatar(),
+  };
+};
 
-for (var i = 0; i < 25; i++) {
-  users.push(createRandomUser());
-}
+export const account = {
+  accountType: faker.word.interjection(),
+  accountName: faker.finance.accountName(),
+  accountID: faker.finance.bitcoinAddress(),
+  avatar: faker.internet.avatar(),
+};

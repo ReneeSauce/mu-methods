@@ -1,6 +1,9 @@
 import { Button, Layout } from "../../../../components"; //button needs to be changed when avail
 import { Header } from "../../../../components/layout/header";
+
 import { Body } from "./body";
+
+//trying data as a prop to grab qr values - will use faker
 export const ConnectWalletScan = ({
   onBackClick,
   onForwardClick,
