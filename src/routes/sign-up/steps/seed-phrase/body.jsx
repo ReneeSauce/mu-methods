@@ -63,8 +63,8 @@ export const Body = ({ isVisible, setIsVisible }) => {
   }, [seedPhrases]);
 
   /* -------------------------------- functions ------------------------------- */
-  // Copy to clipboard function
-  // Get seeds from store
+  // Copy to clipboard function - gets seeds from store
+
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(seedPhrases.join(" "));

@@ -11,15 +11,9 @@ import styled from "styled-components";
 /**
  * Body Component - used with Connect-Wallet Scan Component-
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
- * @param WizardContext context for data in Sign up Wizard
- * @param updateAccountData function to update scan user data in Sign up Wizard Context
- * @param seedPhrases seed phrases from scan to update in Signup Wizard Context
- * @param updateSeedPhrases function to update SignupWizardContext
- * @param data useState value containing data from scan
- * @param setData useState setter to set data from scan
- * @param account imported faker user data to emulate scan
+
  * @param onClick prop to call handleScan function
- * @param handleScan 
+
 
  *
  */
@@ -29,26 +23,6 @@ const StyledBox = styled.div`
 `;
 
 export const Body = ({ onClick }) => {
-  /* ----------------------------- set up Context ----------------------------- */
-  //get update scanAccountData
-  // const { updateAccountData, seedPhrases, updateSeedPhrases } =
-  //   useContext(WizardContext);
-  /* -------------------------------- useState -------------------------------- */
-  // const [data, setData] = useState({});
-
-  /* ------------------------------- use Effect ------------------------------- */
-  //not working
-  //update Context
-  // useEffect(() => {
-  //   updateAccountData(data);
-  // }, [data]);
-
-  /* --------------------------------- handler -------------------------------- */
-  // const handleScan = () => {
-  //   setData(account);
-  //   console.log(data);
-  //   //sdk will handle this
-  // };
   /* --------------------------------- return --------------------------------- */
   return (
     <>
