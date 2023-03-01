@@ -96,7 +96,6 @@ export const ConnectWalletScan = ({ onBackClick, onForwardClick }) => {
     setData(account);
     updateSeedPhrases(fSeedPhrases);
     copy();
-    console.log(fSeedPhrases);
     onForwardClick();
   };
 
