@@ -106,14 +106,25 @@ export const SignUp = () => {
     setIsVisible(false);
     setIsOpen(true);
   };
+
+  const handleConnectWallet = () => {
+    setIsOpen(true);
+    console.log("save wallet data here");
+    alert("save wallet info here");
+  };
   const handleSkipStepClick = () => {
     SW.goToNamedStep("repeat-seed-phrase");
     setIsOpen(false);
   };
-  const handleEnterKey = () => {
-    console.log("open input form to enter key manually");
-    alert("open input form to enter key manually");
+  const handleWithPeersClick = () => {
+    SW.goToNamedStep("choose-peers");
+    setIsOpen(false);
   };
+  // const handleEnterKey = () => {
+  //   console.log("open input form to enter key manually");
+  //   console.log(state.accountData);
+  //   alert("open input form to enter key manually");
+  // };
   const handleOpenEmailApp = () => {
     //open email app - how does this work
     //create and save a token to local storage
@@ -147,7 +158,6 @@ export const SignUp = () => {
         <Steps.ConnectWalletScan
           stepName="connect-scan"
           SW={SW}
-          onEnterKey={handleEnterKey}
           onForwardClick={goTo("connect-confirm")}
           onBackClick={goTo("entry-point")}
         ></Steps.ConnectWalletScan>
@@ -162,8 +172,12 @@ export const SignUp = () => {
         <Steps.ConnectWalletPermissions
           stepName="connect-permissions"
           SW={SW}
-          onForwardClick={goTo("seed-phrase")}
+          onForwardClick={handleConnectWallet}
           onBackClick={goTo("connect-confirm")}
+          onSkipStepClick={handleSkipStepClick}
+          onStoreWithPeersClick={handleWithPeersClick}
+          isOpen={isOpen}
+          onClose={onClose}
         ></Steps.ConnectWalletPermissions>
 
         <Steps.UserInfo
@@ -177,10 +191,10 @@ export const SignUp = () => {
           stepName="seed-phrase"
           SW={SW}
           onForwardClick={handleSaveSeedPhraseClick}
-          onBackClick={() => SW.goToStep(prevStep)}
+          onBackClick={goTo("user-info")}
           // onBackClick={goTo("user-info")}
           onSkipStepClick={handleSkipStepClick}
-          onStoreWithPeersClick={goTo("choose-peers")}
+          onStoreWithPeersClick={handleWithPeersClick}
           isOpen={isOpen}
           onClose={onClose}
           isVisible={isVisible}
@@ -191,7 +205,7 @@ export const SignUp = () => {
           stepName="repeat-seed-phrase"
           SW={SW}
           onForwardClick={goTo("finish-reg")}
-          onBackClick={goTo("seed-phrase")}
+          onBackClick={() => SW.goToStep(prevStep)}
         ></Steps.RepeatSeedPhrase>
         <Steps.ChoosePeers
           stepName="choose-peers"

@@ -1,4 +1,4 @@
-import { Button, Layout } from "../../../../components"; //button needs to be changed when avail
+import { Button, Layout, Modal } from "../../../../components"; //button needs to be changed when avail
 import { Header } from "../../../../components/layout/header";
 import { Body } from "./body";
 
@@ -21,7 +21,14 @@ import { Body } from "./body";
  *
  */
 
-export const ConnectWalletPermissions = ({ onBackClick, onForwardClick }) => {
+export const ConnectWalletPermissions = ({
+  onBackClick,
+  onForwardClick,
+  onSkipStepClick,
+  onStoreWithPeersClick,
+  isOpen,
+  onClose,
+}) => {
   return (
     <Layout
       className="mb-32px"
@@ -38,7 +45,24 @@ export const ConnectWalletPermissions = ({ onBackClick, onForwardClick }) => {
           </Header.Center>
         </>
       }
-      body={<Body></Body>}
+      body={
+        <>
+          <Body></Body>
+          <Modal isOpen={isOpen} onClose={onClose}>
+            <div className="mt-48px px-20px fs-24px text-center lh-base fw-bold flex-grow-1">
+              Store your seed phrase with peers so you never lose access to your
+              account
+            </div>
+            <Button
+              onClick={onSkipStepClick}
+              className="btn btn-link text-decoration-none fs-18px text-white fw-bold mb-32px p-0"
+            >
+              Skip this step
+            </Button>
+            <Button onClick={onStoreWithPeersClick}>Store with peers</Button>
+          </Modal>
+        </>
+      }
       footer={<Button onClick={onForwardClick}>Continue</Button>} //replace buton with step button
     ></Layout>
   );

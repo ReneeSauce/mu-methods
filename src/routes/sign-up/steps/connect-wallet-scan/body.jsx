@@ -1,8 +1,5 @@
 //connect-wallet-scan-body
-import { useContext, useEffect, useState } from "react";
-import { WizardContext } from "../../../../contexts/wizard-context";
-import { account } from "../../../../utils/faker-data";
-// import { WizardContext } from "../../sign-up";
+import styled from "styled-components";
 
 //TODO: What happens with the camera component
 //QR Code will have information
@@ -20,43 +17,51 @@ import { account } from "../../../../utils/faker-data";
  * @param updateSeedPhrases function to update SignupWizardContext
  * @param data useState value containing data from scan
  * @param setData useState setter to set data from scan
- * @param account eximported faker user data to emulate scan
+ * @param account imported faker user data to emulate scan
  * @param onClick prop to call handleScan function
+ * @param handleScan 
 
  *
  */
+const StyledBox = styled.div`
+  min-width: 280px;
+  min-height: 280px;
+`;
 
-export const Body = () => {
+export const Body = ({ onClick }) => {
   /* ----------------------------- set up Context ----------------------------- */
   //get update scanAccountData
-  const { updateAccountData, seedPhrases, updateSeedPhrases } =
-    useContext(WizardContext);
+  // const { updateAccountData, seedPhrases, updateSeedPhrases } =
+  //   useContext(WizardContext);
   /* -------------------------------- useState -------------------------------- */
-  const [data, setData] = useState({});
+  // const [data, setData] = useState({});
 
   /* ------------------------------- use Effect ------------------------------- */
   //not working
   //update Context
-  useEffect(() => {
-    updateAccountData(data);
-  }, [data]);
+  // useEffect(() => {
+  //   updateAccountData(data);
+  // }, [data]);
 
   /* --------------------------------- handler -------------------------------- */
-  const handleScan = () => {
-    setData(account);
-    console.log(data);
-    //sdk will handle this
-  };
+  // const handleScan = () => {
+  //   setData(account);
+  //   console.log(data);
+  //   //sdk will handle this
+  // };
   /* --------------------------------- return --------------------------------- */
   return (
     <>
       <h4 className="pb-12px m-0 text-white text-opacity-90 fs-24px text-center">
         Scan QR code to connect your existing Web3 wallet
       </h4>
-      <div>camera component goes here</div>
-      <div role="button" onClick={handleScan}>
-        TestFaker
-      </div>
+
+      <StyledBox className="d-flex flex-column align-items-center justify-content-center bg-beta">
+        <div>camera component goes here</div>
+        <div role="button" onClick={onClick}>
+          TestFaker
+        </div>
+      </StyledBox>
     </>
   );
 };
