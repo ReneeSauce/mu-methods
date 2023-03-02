@@ -71,7 +71,7 @@ export const SignUp = () => {
   /* -------------------------------- functions ------------------------------- */
   //do something on stepchange
   const onStepChange = (stats) => {
-    // console.log(stats);
+    console.log(state);
     console.log(state.seedPhrases);
     // console.log(stats.previousStep);
     setPrevStep(stats.previousStep);

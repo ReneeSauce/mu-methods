@@ -2,9 +2,9 @@
 import { faker } from "@faker-js/faker";
 
 export const account = {
-  accountType: faker.word.interjection(),
+  accountWallet: faker.word.interjection(),
   accountName: faker.finance.accountName(),
-  accountID: faker.finance.bitcoinAddress(),
+  accountId: faker.finance.ethereumAddress(),
   avatar: faker.internet.avatar(),
 };
 export const fSeedPhrases = Array.from({ length: 12 }, () =>
