@@ -47,7 +47,7 @@ export const Pill = ({
           }}
           className="ms-2"
         >
-          <CopyIcon width="17"/>
+          <CopyIcon width="17" />
         </CopyBtn>
       )}
     </div>
