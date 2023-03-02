@@ -72,9 +72,6 @@ export const Button = ({
       className={cx(
         `d-flex flex-row align-items-center justify-content-center ${kinds[buttonKind]} `
       )}
-      // className={cx(
-      //   `d-flex flex-row align-items-center justify-content-center ${kinds[buttonKind]}`
-      // )}
       role="button"
     >
       {leftIcon && (
