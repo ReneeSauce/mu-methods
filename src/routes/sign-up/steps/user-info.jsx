@@ -34,7 +34,11 @@ export function UserInfo({ onBackClick, onForwardClick }) {
         </>
       }
       body="insert sign up form component here"
-      footer={<Button onClick={onForwardClick}>Continue</Button>} //replace buton with step button
+      footer={
+        <Button size="lg" kinds="primary" onClick={onForwardClick}>
+          Continue
+        </Button>
+      } //replace buton with step button
     ></Layout>
   );
 }
