@@ -155,21 +155,21 @@ export const SignUp = () => {
           onConnectWalletClick={goTo("connect-scan")}
         ></Steps.EntryPoint>
 
-        {/* <Steps.ConnectWalletScan
+        <Steps.ConnectWalletScan
           stepName="connect-scan"
           SW={SW}
           onForwardClick={goTo("connect-confirm")}
           onBackClick={goTo("entry-point")}
-        ></Steps.ConnectWalletScan> */}
+        ></Steps.ConnectWalletScan>
 
-        {/* <Steps.ConnectWalletConfirm
+        <Steps.ConnectWalletConfirm
           stepName="connect-confirm"
           SW={SW}
           onForwardClick={goTo("connect-permissions")}
           onBackClick={goTo("connect-scan")}
-        ></Steps.ConnectWalletConfirm> */}
+        ></Steps.ConnectWalletConfirm>
 
-        {/* <Steps.ConnectWalletPermissions
+        <Steps.ConnectWalletPermissions
           stepName="connect-permissions"
           SW={SW}
           onForwardClick={handleConnectWallet}
@@ -178,7 +178,7 @@ export const SignUp = () => {
           onStoreWithPeersClick={handleWithPeersClick}
           isOpen={isOpen}
           onClose={onClose}
-        ></Steps.ConnectWalletPermissions> */}
+        ></Steps.ConnectWalletPermissions>
 
         <Steps.UserInfo
           stepName="user-info"
@@ -201,28 +201,31 @@ export const SignUp = () => {
           setIsVisible={setIsVisible}
         ></Steps.SeedPhrase>
 
-        {/* <Steps.RepeatSeedPhrase
+        <Steps.RepeatSeedPhrase
           stepName="repeat-seed-phrase"
           SW={SW}
           onForwardClick={goTo("finish-reg")}
           onBackClick={() => SW.goToStep(prevStep)}
-        ></Steps.RepeatSeedPhrase> */}
-        {/* <Steps.ChoosePeers
+        ></Steps.RepeatSeedPhrase>
+
+        <Steps.ChoosePeers
           stepName="choose-peers"
           SW={SW}
           onForwardClick={goTo("notify-peers")}
           onBackClick={() => SW.goToStep(prevStep)}
-        ></Steps.ChoosePeers> */}
-        {/* <Steps.NotifyPeers
+        ></Steps.ChoosePeers>
+
+        <Steps.NotifyPeers
           stepName="notify-peers"
           SW={SW}
           onForwardClick={goTo("finish-reg")}
-        ></Steps.NotifyPeers> */}
-        {/* <Steps.FinishReg
+        ></Steps.NotifyPeers>
+
+        <Steps.FinishReg
           stepName="finish-reg"
           SW={SW}
           onForwardClick={handleOpenEmailApp} //need logic here to open email app
-        ></Steps.FinishReg> */}
+        ></Steps.FinishReg>
       </StepWizard>
     </WizardContext.Provider>
   );

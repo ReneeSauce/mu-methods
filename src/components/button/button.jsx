@@ -38,7 +38,8 @@ export const Button = ({
     primary: "bg-primary",
     primary_red: "bg-danger",
     secondary: "border border-white bg-transparent",
-    tertiary: "bg-#f6f6f6", //bg-white 0.5 opacity
+    tertiary: "bg-beta", //bg-white 0.5 opacity
+    // tertiary: "bg-#f6f6f6", //bg-white 0.5 opacity
     textOnly: "bg-transparent text-white",
   };
 
@@ -59,7 +60,7 @@ export const Button = ({
   `;
 
   Button.Text = styled.h3`
-    margin: 19px 0px;
+    margin: 19px 0px; //should we make this 20px to match other elements with bootstrap
     font-weight: 700;
   `;
 
@@ -69,8 +70,11 @@ export const Button = ({
       onClick={onClick}
       size={sizes[size]}
       className={cx(
-        `d-flex flex-row align-items-center justify-content-center ${kinds[buttonKind]}`
+        `d-flex flex-row align-items-center justify-content-center ${kinds[buttonKind]} `
       )}
+      // className={cx(
+      //   `d-flex flex-row align-items-center justify-content-center ${kinds[buttonKind]}`
+      // )}
       role="button"
     >
       {leftIcon && (
@@ -87,7 +91,7 @@ export const Button = ({
             (dangerText && "text-danger") ||
             (buttonKind === "primary" && "text-alpha") ||
             "text-white"
-          }`
+          } ${buttonKind === "tertiary" && "my-12px"}` //added by ke - renders padding conditionally for puttons in seedphrase tertiary
         )}
       >
         {children}

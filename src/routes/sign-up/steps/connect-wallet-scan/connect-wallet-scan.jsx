@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import chevron from "../../../../assets/chevron.svg";
 import { Button, Layout } from "../../../../components"; //button needs to be changed when avail
 import { Header } from "../../../../components/layout/header";
 import { WizardContext } from "../../../../contexts/wizard-context";
@@ -118,9 +119,12 @@ export const ConnectWalletScan = ({ onBackClick, onForwardClick }) => {
       header={
         <>
           <Header.Left>
-            <Button onClick={onBackClick} className="w-100">
-              **
-            </Button>
+            <Button
+              buttonKind="textOnly"
+              leftIcon={chevron}
+              size="sm"
+              onClick={onBackClick}
+            />
           </Header.Left>
           <Header.Center>
             <Header.Title title="Connecting wallet" />
@@ -134,14 +138,19 @@ export const ConnectWalletScan = ({ onBackClick, onForwardClick }) => {
           <div className="d-flex flex-column gap-16px">
             <input
               onChange={handleEnterKeyClick}
-              className="mt-auto rounded py-8px border-0 bg-beta"
-              placeholder=" Or enter public key manually"
+              className="mt-auto rounded py-20px border-0 bg-beta"
+              placeholder=" Or enter public key manually" //may need styled components to style per figma
               value={key}
             ></input>
             {/* <Button onClick={onEnterKeyClick} className="mt-auto">
               Or enter public key manually
             </Button> */}
-            <Button onClick={handleContinueClick} disabled={disabled}>
+            <Button
+              size="lg"
+              buttonKind="primary"
+              onClick={handleContinueClick}
+              disabled={disabled}
+            >
               Continue
             </Button>
           </div>

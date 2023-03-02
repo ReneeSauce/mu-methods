@@ -29,7 +29,6 @@ export function UserInfo({ onBackClick, onForwardClick }) {
               leftIcon={chevron}
               size="sm"
               onClick={onBackClick}
-              className="fs-24px"
             />
           </Header.Left>
           <Header.Center>

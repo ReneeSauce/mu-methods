@@ -1,4 +1,5 @@
 import { useCallback, useContext, useEffect, useState } from "react";
+import chevron from "../../../../assets/chevron.svg";
 import { Button, Layout } from "../../../../components"; //button needs to be changed when avail
 import { Header } from "../../../../components/layout/header";
 import { WizardContext } from "../../../../contexts/wizard-context";
@@ -74,7 +75,12 @@ export function RepeatSeedPhrase({ onBackClick, onForwardClick }) {
       header={
         <>
           <Header.Left>
-            <Button onClick={handleBackClick}>**</Button>
+            <Button
+              buttonKind="textOnly"
+              leftIcon={chevron}
+              size="sm"
+              onClick={handleBackClick}
+            />
           </Header.Left>
           <Header.Center>
             <Header.Title title="Sign up" />
@@ -92,7 +98,12 @@ export function RepeatSeedPhrase({ onBackClick, onForwardClick }) {
         </>
       }
       footer={
-        <Button onClick={onForwardClick} disabled={!isMatch}>
+        <Button
+          size="lg"
+          buttonKind="primary"
+          onClick={onForwardClick}
+          disabled={!isMatch}
+        >
           Continue
         </Button>
       }

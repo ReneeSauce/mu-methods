@@ -1,3 +1,4 @@
+import chevron from "../../../../assets/chevron.svg";
 import { Button, Layout, Modal } from "../../../../components"; //button needs to be changed when avail
 import { Header } from "../../../../components/layout/header";
 import { Body } from "./body";
@@ -35,9 +36,12 @@ export const ConnectWalletPermissions = ({
       header={
         <>
           <Header.Left>
-            <Button onClick={onBackClick} className="w-100">
-              **
-            </Button>
+            <Button
+              buttonKind="textOnly"
+              leftIcon={chevron}
+              size="sm"
+              onClick={onBackClick}
+            />
           </Header.Left>
           <Header.Center>
             <Header.Title title="Connecting wallet" />
@@ -54,16 +58,28 @@ export const ConnectWalletPermissions = ({
               account
             </div>
             <Button
+              size="lg"
+              buttonKind="textOnly"
               onClick={onSkipStepClick}
-              className="btn btn-link text-decoration-none fs-18px text-white fw-bold mb-32px p-0"
+              // className="btn btn-link text-decoration-none fs-18px text-white fw-bold mb-32px p-0"
             >
               Skip this step
             </Button>
-            <Button onClick={onStoreWithPeersClick}>Store with peers</Button>
+            <Button
+              size="lg"
+              buttonKind="primary"
+              onClick={onStoreWithPeersClick}
+            >
+              Store with peers
+            </Button>
           </Modal>
         </>
       }
-      footer={<Button onClick={onForwardClick}>Continue</Button>} //replace buton with step button
+      footer={
+        <Button size="lg" buttonKind="primary" onClick={onForwardClick}>
+          Continue
+        </Button>
+      } //replace buton with step button
     ></Layout>
   );
 };

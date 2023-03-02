@@ -23,7 +23,16 @@ export function FinishReg({ onForwardClick }) {
           </Header.Center>
         </>
       }
-      footer={<Button onClick={onForwardClick}>Open email app</Button>} //replace buton with step button
+      footer={
+        <Button
+          size="lg"
+          buttonKind="primary"
+          disabled={false}
+          onClick={onForwardClick}
+        >
+          Open email app
+        </Button>
+      } //replace buton with step button
     ></Layout>
   );
 }

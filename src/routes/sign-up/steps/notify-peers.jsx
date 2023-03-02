@@ -20,7 +20,11 @@ export function NotifyPeers({ onForwardClick }) {
           </h3>
         </>
       }
-      footer={<Button onClick={onForwardClick}>Finish Registration</Button>} //replace buton with step button
+      footer={
+        <Button size="lg" buttonKind="primary" onClick={onForwardClick}>
+          Finish Registration
+        </Button>
+      } //replace buton with step button
     ></Layout>
   );
 }

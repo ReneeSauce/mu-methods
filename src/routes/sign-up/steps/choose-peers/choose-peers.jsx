@@ -1,3 +1,4 @@
+import chevron from "../../../../assets/chevron.svg";
 import { Button, Layout } from "../../../../components"; //button needs to be changed when avail
 import { Header } from "../../../../components/layout/header";
 import { Body } from "./body";
@@ -23,7 +24,12 @@ export function ChoosePeers({ onBackClick, onForwardClick }) {
       header={
         <>
           <Header.Left>
-            <Button onClick={onBackClick}>**</Button>
+            <Button
+              buttonKind="textOnly"
+              leftIcon={chevron}
+              size="sm"
+              onClick={onBackClick}
+            />
           </Header.Left>
           <Header.Center>
             <Header.Title title="Sign up" />
@@ -32,7 +38,11 @@ export function ChoosePeers({ onBackClick, onForwardClick }) {
         </>
       }
       body={<Body></Body>}
-      footer={<Button onClick={onForwardClick}>Share seed phrase</Button>} //replace buton with step button
+      footer={
+        <Button size="lg" buttonKind="primary" onClick={onForwardClick}>
+          Share seed phrase
+        </Button>
+      } //replace buton with step button
     ></Layout>
   );
 }

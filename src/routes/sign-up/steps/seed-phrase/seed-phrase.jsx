@@ -63,12 +63,7 @@ export function SeedPhrase({
               Store your seed phrase with peers so you never lose access to your
               account
             </div>
-            <Button
-              size="lg"
-              buttonKind="textOnly"
-              onClick={onSkipStepClick}
-              className="btn btn-link text-decoration-none fs-18px text-white fw-bold mb-32px p-0"
-            >
+            <Button size="lg" buttonKind="textOnly" onClick={onSkipStepClick}>
               Skip this step
             </Button>
             <Button

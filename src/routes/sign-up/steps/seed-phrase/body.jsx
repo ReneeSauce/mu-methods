@@ -2,10 +2,14 @@
 import { faker } from "@faker-js/faker";
 import _ from "lodash";
 import { useCallback, useContext, useEffect, useState } from "react";
+import copyI from "../../../../assets/copy-icon.svg";
 import { Button, Pill } from "../../../../components";
 import { WizardContext } from "../../../../contexts/wizard-context";
-
 //TODO: Should Download button have an error popup?
+//TODO: put in icons when available
+//TODO: Check on tertiary bg color - temp change in button file set to bg-beta
+//TODO: Check on how to change padding/margin-y to 13px from 19px
+//note will need to be 12px or 16px bs
 
 /**
  * Body Component - used with the Seed-phrase component
@@ -109,7 +113,12 @@ export const Body = ({ isVisible, setIsVisible }) => {
           ></Pill>
         ))}
       </div>
-      <Button size="lg" buttonKind="tertiary" onClick={regenerateSeedPhrases}>
+      <Button
+        size="lg"
+        buttonKind="tertiary"
+        className="bg-beta my-16px"
+        onClick={regenerateSeedPhrases}
+      >
         Regenerate
       </Button>
       {isVisible && (
@@ -123,8 +132,8 @@ export const Body = ({ isVisible, setIsVisible }) => {
         setting up peers to restore it, you'll loose access to your account
         forever
       </p>
-      <div className=" d-flex gap-16px">
-        <Button size="md" buttonKind="tertiary" onClick={copy}>
+      <div className=" d-flex gap-16px w-100">
+        <Button size="md" buttonKind="tertiary" leftIcon={copyI} onClick={copy}>
           Copy
         </Button>
         <Button size="md" buttonKind="tertiary" onClick={downloadTextFile}>
