@@ -1,5 +1,6 @@
 import { render } from "@testing-library/react";
-import { Camera } from "./Camera";
+import { Camera } from "./camera";
+
 /**
  * Camera Component Testing
  * @author [Colburn Sanders](https://github.com/colburncodes)
