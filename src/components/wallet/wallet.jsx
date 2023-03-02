@@ -2,6 +2,7 @@ import { Avatar } from "../avatar/avatar";
 /**
  * Wallet Component
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
+ 
  */
 
 export const Wallet = ({ src, alt, wallet, name, id }) => {

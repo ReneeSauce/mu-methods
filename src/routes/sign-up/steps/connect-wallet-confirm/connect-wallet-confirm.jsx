@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button, Layout } from "../../../../components"; //button needs to be changed when avail
 import { Header } from "../../../../components/layout/header";
 import { Body } from "./body";
@@ -25,6 +26,24 @@ import { Body } from "./body";
  */
 
 export const ConnectWalletConfirm = ({ onBackClick, onForwardClick }) => {
+  /* -------------------------------- useState -------------------------------- */
+  const [isConfirmed, setIsConfirmed] = useState(false);
+
+  /* -------------------------------- handlers -------------------------------- */
+  const handleConfirmClick = () => {
+    // fake api confirmation
+    const apiIsConfirmed = Math.random() < 0.5;
+    console.log(apiIsConfirmed);
+
+    setIsConfirmed(apiIsConfirmed); //is this needed for demo
+    //should it be sent to context to save confirmation
+
+    apiIsConfirmed
+      ? onForwardClick()
+      : console.log("couldn't confirm do something here");
+  };
+
+  /* --------------------------------- return --------------------------------- */
   return (
     <Layout
       className="mb-32px"
@@ -42,7 +61,7 @@ export const ConnectWalletConfirm = ({ onBackClick, onForwardClick }) => {
         </>
       }
       body={<Body></Body>}
-      footer={<Button onClick={onForwardClick}>Or confirm via App</Button>} //replace buton with step button
+      footer={<Button onClick={handleConfirmClick}>Or confirm via App</Button>} //replace buton with step button
     ></Layout>
   );
 };

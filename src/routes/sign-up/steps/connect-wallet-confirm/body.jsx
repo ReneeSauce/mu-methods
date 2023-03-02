@@ -3,8 +3,7 @@ import { useContext } from "react";
 import styled from "styled-components";
 import { Wallet } from "../../../../components/wallet/wallet";
 import { WizardContext } from "../../../../contexts/wizard-context";
-//TODO: need notification \reconfic for account or new reusable component
-//TODO: need placeholde for qr code --?**sdk will generate?
+
 //TODO: need logic to set is confirmed to true - use state
 //TODO: way to trigger setIsConfirmed to true
 //TODO: logic to go to next step when isConfirmed = true
