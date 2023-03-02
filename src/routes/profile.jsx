@@ -42,15 +42,11 @@ export const Profile = ({
     id,
   });
 
-  console.log(profileInfo);
   useEffect(() => {
-    console.log(src);
     // TO DO: replace this with API call for fetching profile data
     /*setProfileInfo({})*/
     setIsLoading(false);
   }, []);
-
-  //console.log(profileInfo)
 
   return (
     <Container className="d-flex flex-column align-items-center bg-alpha">
