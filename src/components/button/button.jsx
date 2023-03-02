@@ -38,7 +38,7 @@ export const Button = ({
     primary: "bg-primary",
     primary_red: "bg-danger",
     secondary: "border border-white bg-transparent",
-    tertiary: "bg-f6f6f6", //bg-white 0.5 opacity
+    tertiary: "bg-#f6f6f6", //bg-white 0.5 opacity
     textOnly: "bg-transparent text-white",
   };
 

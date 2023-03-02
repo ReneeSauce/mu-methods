@@ -109,7 +109,9 @@ export const Body = ({ isVisible, setIsVisible }) => {
           ></Pill>
         ))}
       </div>
-      <Button onClick={regenerateSeedPhrases}>Regenerate</Button>
+      <Button size="lg" buttonKind="tertiary" onClick={regenerateSeedPhrases}>
+        Regenerate
+      </Button>
       {isVisible && (
         <p className="position-absolute top-0 start-50 translate-middle mt-40px fs-16px w-100 fw-normal py-20px mb-0 lh-sm text-center text-white text-opacity-100 bg-beta bg-opacity-100 rounded">
           {isCopied ? "Seed phrase copied to clipboard" : ""}
@@ -122,8 +124,12 @@ export const Body = ({ isVisible, setIsVisible }) => {
         forever
       </p>
       <div className=" d-flex gap-16px">
-        <Button onClick={copy}>Copy</Button>
-        <Button onClick={downloadTextFile}>Download</Button>
+        <Button size="md" buttonKind="tertiary" onClick={copy}>
+          Copy
+        </Button>
+        <Button size="md" buttonKind="tertiary" onClick={downloadTextFile}>
+          Download
+        </Button>
       </div>
     </>
   );

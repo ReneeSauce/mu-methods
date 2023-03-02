@@ -1,3 +1,4 @@
+import chevron from "../../../assets/chevron.svg";
 import { Button, Layout } from "../../../components"; //button needs to be changed when avail
 import { Header } from "../../../components/layout/header";
 
@@ -23,9 +24,13 @@ export function UserInfo({ onBackClick, onForwardClick }) {
       header={
         <>
           <Header.Left>
-            <Button onClick={onBackClick} className="w-100">
-              **
-            </Button>
+            <Button
+              buttonKind="textOnly"
+              leftIcon={chevron}
+              size="sm"
+              onClick={onBackClick}
+              className="fs-24px"
+            />
           </Header.Left>
           <Header.Center>
             <Header.Title title="Sign up" />
@@ -35,7 +40,7 @@ export function UserInfo({ onBackClick, onForwardClick }) {
       }
       body="insert sign up form component here"
       footer={
-        <Button size="lg" kinds="primary" onClick={onForwardClick}>
+        <Button size="lg" buttonKind="primary" onClick={onForwardClick}>
           Continue
         </Button>
       } //replace buton with step button

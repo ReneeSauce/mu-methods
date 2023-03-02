@@ -180,14 +180,14 @@ export const SignUp = () => {
           onClose={onClose}
         ></Steps.ConnectWalletPermissions> */}
 
-        {/* <Steps.UserInfo
+        <Steps.UserInfo
           stepName="user-info"
           SW={SW}
           onForwardClick={goTo("seed-phrase")}
           onBackClick={goTo("entry-point")}
-        ></Steps.UserInfo> */}
+        ></Steps.UserInfo>
 
-        {/* <Steps.SeedPhrase
+        <Steps.SeedPhrase
           stepName="seed-phrase"
           SW={SW}
           onForwardClick={handleSaveSeedPhraseClick}
@@ -199,7 +199,7 @@ export const SignUp = () => {
           onClose={onClose}
           isVisible={isVisible}
           setIsVisible={setIsVisible}
-        ></Steps.SeedPhrase> */}
+        ></Steps.SeedPhrase>
 
         {/* <Steps.RepeatSeedPhrase
           stepName="repeat-seed-phrase"
