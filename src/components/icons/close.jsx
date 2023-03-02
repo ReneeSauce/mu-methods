@@ -1,8 +1,9 @@
-const Close = () => {
+const Close = ({ className, width = "16", height = "16" }) => {
   return (
     <svg
-      width="13"
-      height="13"
+      width={width}
+      height={height}
+      className={className}
       viewBox="0 0 13 13"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

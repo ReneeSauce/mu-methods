@@ -92,7 +92,7 @@ export const Modal = ({ isOpen, onClose, children }) => {
               aria-label="Close modal"
               data-bs-dismiss="modal"
             >
-              <CloseIcon />
+              <CloseIcon width="13" height="13"/>
             </CloseButton>
             <Header className="d-lg-none position-absolute rounded bg-white bg-opacity-35" />
             {children}

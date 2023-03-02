@@ -1,8 +1,9 @@
-const Settings = () => {
+const Settings = ({ className, width = "16", height = "16" }) => {
   return (
     <svg
-      height="16"
-      width="16"
+      width={width}
+      height={height}
+      className={className}
       viewBox="0 0 1024 1024"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"

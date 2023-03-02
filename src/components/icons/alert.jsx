@@ -1,8 +1,9 @@
-const Alert = () => {
+const Alert = ({ className, width = "16", height = "16" }) => {
   return (
     <svg
-      width="16"
-      height="22"
+      width={width}
+      height={height}
+      className={className}
       viewBox="0 0 16 22"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
