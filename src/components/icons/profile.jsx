@@ -1,4 +1,4 @@
-const ProfileIcon = ({ className, width = "16", height = "16", active }) => {
+const Profile = ({ className, width = "16", height = "16", active }) => {
   return (
     <svg
       width={width}
@@ -45,4 +45,4 @@ const ProfileIcon = ({ className, width = "16", height = "16", active }) => {
   );
 };
 
-export default ProfileIcon;
+export default Profile;

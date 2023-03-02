@@ -1,4 +1,4 @@
-const HomeIcon = ({ className, width = "16", height = "16", active }) => {
+const Home = ({ className, width = "16", height = "16", active }) => {
   return (
     <svg
       width={width}
@@ -19,4 +19,4 @@ const HomeIcon = ({ className, width = "16", height = "16", active }) => {
   );
 };
 
-export default HomeIcon;
+export default Home;
