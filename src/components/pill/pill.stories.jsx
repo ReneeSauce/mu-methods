@@ -5,7 +5,7 @@ export default {
   component: Pill,
   argTypes: {
     className: {
-      options: ["", "fs-16px", "fs-18px"],
+      options: ["", "fs-14px", "fs-16px", "fs-18px"],
       control: { type: "radio" },
     },
     isCopiable: {
@@ -25,6 +25,10 @@ export default {
       options: [100, "70"],
       control: { type: "radio" },
     },
+    size: {
+      options: ["small", "large"],
+      control: { type: "radio" },
+    },
   },
 };
 
@@ -38,4 +42,5 @@ Variants.args = {
   opacity: "20",
   textOpacity: 100,
   shape: "square",
+  size: "small",
 };
