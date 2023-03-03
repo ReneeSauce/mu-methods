@@ -5,7 +5,6 @@ import Overlay from "react-bootstrap/Overlay";
 import Tooltip from "react-bootstrap/Tooltip";
 import styled from "styled-components";
 import copyIcon from "../../assets/copy-icon.svg";
-
 /**
  * Pill Component
  * @author [Shaheen Hadadzadeh](https://github.com/shaheenhad)
