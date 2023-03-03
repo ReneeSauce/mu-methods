@@ -23,6 +23,7 @@ export function ChoosePeers({ onBackClick, onForwardClick }) {
       className="mb-32px"
       header={
         <>
+          {/* Layout.Header.Left */}
           <Header.Left>
             <Button
               buttonKind="textOnly"

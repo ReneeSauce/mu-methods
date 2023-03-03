@@ -66,7 +66,7 @@ export const ConnectWalletConfirm = ({ onBackClick, onForwardClick }) => {
       }
       body={<Body></Body>}
       footer={
-        <Button size="lg" buttonKind="primary" onClick={handleConfirmClick}>
+        <Button size="lg" buttonKind="textOnly" onClick={handleConfirmClick}>
           Or confirm via App
         </Button>
       } //replace buton with step button

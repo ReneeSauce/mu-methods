@@ -1,6 +1,4 @@
 //body component for choose-peers.jsx
-
-import { Button } from "../../../../components";
 //TODO: Add number of peers, find peers and chosen peers table
 //TODO: Hook up buttons and form inputs for choosing peers
 //TODO: Create logic to check array.length of peers to match number of peers
@@ -28,8 +26,14 @@ export const Body = ({}) => {
         Choose minimum amount of peers needed to recover your account
       </h4>
       <div className="d-flex flex-column gap-32px w-100 mb-24px">
-        <Button className="btn">Number of peers:</Button>
-        <Button onClick={handleFindPeers}>Find peers by nickname</Button>
+        <input
+          className="mt-auto rounded py-20px px-8px border-0 bg-beta fs-18px"
+          placeholder=" Number of peers: " //may need styled components to style per figma
+        ></input>
+        <input
+          className="mt-auto rounded py-20px px-8px border-0 bg-beta fs-18px"
+          placeholder=" Find peers by nickname " //may need styled components to style per figma
+        ></input>
       </div>
       <h4 className="pb-12px m-0 text-white text-opacity-90 fs-18px text-center">
         Chosen peers
