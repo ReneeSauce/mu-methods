@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
+// import { QRCodeScanner } from "react-qr-reader";
 import chevron from "../../../../assets/chevron.svg";
 import { Button, Layout } from "../../../../components"; //button needs to be changed when avail
 import { Header } from "../../../../components/layout/header";
 import { WizardContext } from "../../../../contexts/wizard-context";
 import { account, fSeedPhrases } from "../../../../utils/faker-data";
 import { Body } from "./body";
-
 //TODO:  Figure out step numbering
 //TODO:logic for grabbing qr values with faker- tbd with SDK- consider clearing state.accountData before scanning
 //TODO: figure out why editing this component results in error:
@@ -133,6 +133,9 @@ export const ConnectWalletScan = ({ onBackClick, onForwardClick }) => {
         </>
       }
       body={<Body onClick={handleScan}></Body>}
+      // body={<BodyCamera onClick={handleScan}></BodyCamera>}
+      // body={<BodyQr onClick={handleScan}></BodyQr>}
+      // body={<QrReader></QrReader>}
       footer={
         <>
           <div className="d-flex flex-column gap-16px">

@@ -5,8 +5,8 @@ const CameraContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  width: 100vw;
+  /* min-height: 100vh;
+  width: 100vw; */
   margin: 0 10px;
 `;
 
