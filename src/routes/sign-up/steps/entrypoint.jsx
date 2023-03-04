@@ -1,6 +1,7 @@
 //entrypoint? using to test out the wallet flow
-import logo from "../../../assets/mu-methods.svg";
+
 import { Button, Layout } from "../../../components"; //button needs to be changed when avail
+import Mu from "../../../components/icons/mu";
 import { Header } from "../../../components/layout/header";
 
 /**
@@ -27,13 +28,13 @@ export const EntryPoint = ({
       header={
         <>
           <Header.Center>
-            <img src={logo} alt="Mu-Methods Logo" />
+            <Mu width="30" height="37"></Mu>
           </Header.Center>
         </>
       }
       body={
         <>
-          <div className="fw-bold fs-32px text-center lh-sm mb-36px">
+          <div className="fw-bold fs-32px text-center lh-sm mb-36px ">
             Welcome to MU Methods
           </div>
           <div> slider component goes here</div>
