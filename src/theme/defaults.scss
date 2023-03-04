@@ -60,6 +60,34 @@ $utilities: map-merge(
   )
 );
 
+$utilities: map-merge(
+  $utilities,
+  (
+    "border-opacity":
+      map-merge(
+        map-get($utilities, "border-opacity"),
+        (
+          values:
+            map-merge(
+              map-get(map-get($utilities, "border-opacity"), "values"),
+              (
+                5: 0.05,
+                10: 0.1,
+                15: 0.15,
+                20: 0.2,
+                30: 0.3,
+                35: 0.35,
+                60: 0.6,
+                70: 0.7,
+                75: 0.75,
+                90: 0.9,
+              )
+            ),
+        )
+      ),
+  )
+);
+
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
@@ -72,7 +100,7 @@ body {
   line-height: 24px;
   font-weight: 400;
 
-  color: rgba($white, 0.9);
+  color: $white;
   background-color: $alpha;
 
   font-synthesis: none;
@@ -89,5 +117,5 @@ h4,
 h5,
 h6,
 p {
-  color: rgba($white, 0.9);
+  color: $white;
 }

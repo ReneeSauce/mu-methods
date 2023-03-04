@@ -6,10 +6,8 @@ describe("Component: Modal", () => {
     isOpen: true,
     isLessThan1000: true,
     title: "coinbase",
-    text: "Transaction for 0.008 ETH sign request",
-    notifications: "Type “carrot pizza” to sign your transaction",
   };
-  it("renders a modal that includes an title, notifications, text", (done) => {
+  it("renders a modal that includes a title", (done) => {
     render(
       <Modal isOpen={props.isOpen} onClose={handleClick} {...props}>
         <Modal.Title>{props.title}</Modal.Title>
@@ -21,7 +19,6 @@ describe("Component: Modal", () => {
     expect(modalElement).toBeInTheDocument();
     const closeButton = screen.getByLabelText("Close modal");
     fireEvent.click(closeButton);
-
     // Modal animation has to finish before element is no longer visible
     setTimeout(() => {
       expect(modalElement).not.toBeVisible();

@@ -17,7 +17,7 @@ const StyledHeading = styled.p`
 
 export const Table = ({ children }) => {
   return (
-    <div role="table" className="d-flex flex-column">
+    <div role="table" className="d-flex flex-column w-100">
       {children}
     </div>
   );
