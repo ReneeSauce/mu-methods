@@ -7,10 +7,10 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
+import "swiper/css/bundle";
 import { NavTray } from "./components/navigation-tray/nav-tray";
 import { Account, Home, Login, Profile } from "./routes";
 import "./theme/defaults.scss";
-
 const router = createBrowserRouter([
   {
     path: "/",
