@@ -7,5 +7,6 @@ export * from "./modal";
 export * from "./notification";
 export * from "./pill";
 export * from "./qr-reader";
+export * from "./slideshow";
 export * from "./table";
 export * from "./wallet";
