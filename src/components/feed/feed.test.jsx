@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-
 import { Feed } from "./feed";
 
 describe("Component: Feed", () => {
