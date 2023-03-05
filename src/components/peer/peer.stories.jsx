@@ -2,12 +2,14 @@ import { Peer } from "./peer";
 
 /**
  * @author [Kurtney J.] (github.com/xhundo)
+ * @param {string} title by default is chosen peers.
  */
 
 export default {
   title: "Components/Peer",
   component: Peer,
   argTypes: {
+    title: { control: "text" },
     src: { control: "text" },
     alt: { control: "text" },
     action: {
@@ -18,7 +20,7 @@ export default {
 
 const peers = [
   {
-    name: "Peer 2",
+    name: "Peer 1",
     src: "https://imgix.ranker.com/list_img_v2/18411/518411/original/my-top-10-favorite-anime-characters-u2",
   },
 
@@ -28,7 +30,10 @@ const peers = [
   },
 ];
 
-export const Template = (args) =>
-  peers.map((peer) => (
-    <Peer peer={peer.name} alt={args.alt} size={args.size} src={peer.src} />
-  ));
+export const Default = (args) => (
+  <Peer title={args.title}>
+    {peers.map((peer) => (
+      <Peer.Cell peer={peer.name} src={peer.src} alt={args.alt} />
+    ))}
+  </Peer>
+);
