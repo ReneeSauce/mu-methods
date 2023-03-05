@@ -2,10 +2,6 @@ import { useCallback, useMemo, useState } from "react";
 import StepWizard from "react-step-wizard";
 import { WizardContext } from "../../contexts/wizard-context";
 import { Steps } from "../steps";
-/* ----------------------------- Wizard Context ----------------------------- */
-//context - does this need to go in a separate file
-//does one context work for the entire app
-// export const WizardContext = React.createContext();
 
 /* -------------------------------------------------------------------------- */
 /*                               function SignUp                              */
@@ -71,12 +67,10 @@ export const SignUp = () => {
   /* -------------------------------- functions ------------------------------- */
   //do something on stepchange
   const onStepChange = (stats) => {
-    console.log(state);
-    console.log(state.seedPhrases);
-    // console.log(stats.previousStep);
+    console.log(state); //for presentation? - to show state being captured
+    console.log(state.seedPhrases); //for presentation to show seedphrase capture
+
     setPrevStep(stats.previousStep);
-    // // console.log(SW);
-    // console.log(account);
   };
 
   const setInstance = (sw) => {
@@ -96,12 +90,14 @@ export const SignUp = () => {
   };
 
   /* -------------------------------- handlers -------------------------------- */
-  const handleForwardClick = (nextStep) => {
-    console.log(nextStep);
-  };
-  const handleBackClick = () => {
-    console.log(nextStep);
-  };
+  // for debugging to see steps
+  // const handleForwardClick = (nextStep) => {
+  //   console.log(nextStep);
+  // };
+  // const handleBackClick = () => {
+  //   console.log(nextStep);
+  // };
+
   const handleSaveSeedPhraseClick = () => {
     setIsVisible(false);
     setIsOpen(true);
@@ -120,19 +116,17 @@ export const SignUp = () => {
     SW.goToNamedStep("choose-peers");
     setIsOpen(false);
   };
-  // const handleEnterKey = () => {
-  //   console.log("open input form to enter key manually");
-  //   console.log(state.accountData);
-  //   alert("open input form to enter key manually");
-  // };
+
   const handleOpenEmailApp = () => {
     //open email app - how does this work
     //create and save a token to local storage
     //send token to user's email - does this make more sense to put in next to last step?
     //on return from email, oath flow to logged in route
     console.log("open email app,");
+    alert("open email app");
     // window.location = "mailto:yourmail@domain.com";//opens a new email not the app
   };
+
   /* --------------------------- animation controls --------------------------- */
   //to customize transitions from animate.css
   let custom = {};
@@ -146,7 +140,6 @@ export const SignUp = () => {
         transitions={custom}
       >
         {/* steps go here with sw */}
-        {/* test entry point here */}
         <Steps.EntryPoint
           stepName="entry-point"
           SW={SW}
@@ -192,7 +185,6 @@ export const SignUp = () => {
           SW={SW}
           onForwardClick={handleSaveSeedPhraseClick}
           onBackClick={goTo("user-info")}
-          // onBackClick={goTo("user-info")}
           onSkipStepClick={handleSkipStepClick}
           onStoreWithPeersClick={handleWithPeersClick}
           isOpen={isOpen}

@@ -33,8 +33,6 @@ export function SeedPhrase({
   isVisible,
   setIsVisible,
 }) {
-  //call use context with wizard context imported
-
   return (
     <Layout
       className="mb-32px"

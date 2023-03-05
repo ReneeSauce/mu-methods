@@ -59,6 +59,7 @@ export const Body = ({ isVisible, setIsVisible }) => {
         faker.word.adjective()
       ) /** Sdk.generateSeedPhrases()  */
     );
+    setIsVisible(false);
   }, []);
 
   // Update Context store when seedPhrases changes
