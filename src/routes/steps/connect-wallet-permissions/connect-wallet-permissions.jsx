@@ -1,6 +1,5 @@
 import chevron from "../../../assets/chevron.svg";
 import { Button, Layout, Modal } from "../../../components"; //button needs to be changed when avail
-import { Header } from "../../../components/layout/header";
 import { Body } from "./body";
 
 //TODO: figure out step numbering
@@ -35,18 +34,18 @@ export const ConnectWalletPermissions = ({
       className="mb-32px"
       header={
         <>
-          <Header.Left>
+          <Layout.Header.Left>
             <Button
               buttonKind="textOnly"
               leftIcon={chevron}
               size="sm"
               onClick={onBackClick}
             />
-          </Header.Left>
-          <Header.Center>
-            <Header.Title title="Connecting wallet" />
-            <Header.SubTitle subtitle="Step 1/4" />
-          </Header.Center>
+          </Layout.Header.Left>
+          <Layout.Header.Center>
+            <Layout.Header.Title title="Connecting wallet" />
+            <Layout.Header.SubTitle subtitle="Step 1/4" />
+          </Layout.Header.Center>
         </>
       }
       body={

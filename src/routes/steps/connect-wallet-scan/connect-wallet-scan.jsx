@@ -1,11 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import chevron from "../../../assets/chevron.svg";
 import { Button, Layout } from "../../../components"; //button needs to be changed when avail
-import { Header } from "../../../components/layout/header";
 import { WizardContext } from "../../../contexts/wizard-context";
 import { account, fSeedPhrases } from "../../../utils/faker-data";
 import { Body } from "./body";
-
 //TODO:  Figure out step numbering
 //TODO:logic for grabbing qr values with faker- tbd with SDK- consider clearing state.accountData before scanning
 //TODO: figure out why editing this component results in error:
@@ -118,18 +116,18 @@ export const ConnectWalletScan = ({ onBackClick, onForwardClick }) => {
       className="mb-32px"
       header={
         <>
-          <Header.Left>
+          <Layout.Header.Left>
             <Button
               buttonKind="textOnly"
               leftIcon={chevron}
               size="sm"
               onClick={onBackClick}
             />
-          </Header.Left>
-          <Header.Center>
-            <Header.Title title="Connecting wallet" />
-            <Header.SubTitle subtitle="Step 1/4" />
-          </Header.Center>
+          </Layout.Header.Left>
+          <Layout.Header.Center>
+            <Layout.Header.Title title="Connecting wallet" />
+            <Layout.Header.SubTitle subtitle="Step 1/4" />
+          </Layout.Header.Center>
         </>
       }
       body={<Body onClick={handleScan}></Body>}

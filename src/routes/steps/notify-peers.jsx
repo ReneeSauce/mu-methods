@@ -1,5 +1,4 @@
 import { Button, Layout } from "../../components"; //button needs to be changed when avail
-import { Header } from "../../components/layout/header";
 //TODO: Update buttons when available
 
 export function NotifyPeers({ onForwardClick }) {
@@ -7,10 +6,10 @@ export function NotifyPeers({ onForwardClick }) {
     <Layout
       className="mb-32px"
       header={
-        <Header.Center subtitle=" Step 4/4">
-          <Header.Title title="Sign up" />
-          <Header.SubTitle subtitle=" Step 4/4" />
-        </Header.Center>
+        <Layout.Header.Center subtitle=" Step 4/4">
+          <Layout.Header.Title title="Sign up" />
+          <Layout.Header.SubTitle subtitle=" Step 4/4" />
+        </Layout.Header.Center>
       }
       body={
         <>

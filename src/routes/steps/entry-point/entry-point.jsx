@@ -1,8 +1,7 @@
 //entrypoint? using to test out the wallet flow
 
-import { Button, Layout } from "../../components"; //button needs to be changed when avail
-import Mu from "../../components/icons/mu";
-import { Header } from "../../components/layout/header";
+import { Button, Layout } from "../../../components"; //button needs to be changed when avail
+import Mu from "../../../components/icons/mu";
 
 /**
  * Home Component
@@ -27,9 +26,9 @@ export const EntryPoint = ({
       className="mb-32px"
       header={
         <>
-          <Header.Center>
+          <Layout.Header.Center>
             <Mu width="30" height="37"></Mu>
-          </Header.Center>
+          </Layout.Header.Center>
         </>
       }
       body={

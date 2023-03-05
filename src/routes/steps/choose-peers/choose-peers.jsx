@@ -1,6 +1,5 @@
 import chevron from "../../../assets/chevron.svg";
 import { Button, Layout } from "../../../components"; //button needs to be changed when avail
-import { Header } from "../../../components/layout/header";
 import { Body } from "./body";
 //TODO: Update buttons when available
 //TODO: Hook up buttons and form inputs for choosing peers
@@ -24,18 +23,18 @@ export function ChoosePeers({ onBackClick, onForwardClick }) {
       header={
         <>
           {/* Layout.Header.Left */}
-          <Header.Left>
+          <Layout.Header.Left>
             <Button
               buttonKind="textOnly"
               leftIcon={chevron}
               size="sm"
               onClick={onBackClick}
             />
-          </Header.Left>
-          <Header.Center>
-            <Header.Title title="Sign up" />
-            <Header.SubTitle subtitle="Step 3/4" />
-          </Header.Center>
+          </Layout.Header.Left>
+          <Layout.Header.Center>
+            <Layout.Header.Title title="Sign up" />
+            <Layout.Header.SubTitle subtitle="Step 3/4" />
+          </Layout.Header.Center>
         </>
       }
       body={<Body></Body>}

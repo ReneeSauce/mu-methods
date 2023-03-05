@@ -1,6 +1,5 @@
 import chevron from "../../assets/chevron.svg";
 import { Button, Layout } from "../../components"; //button needs to be changed when avail
-import { Header } from "../../components/layout/header";
 
 //TODO: Update buttons when available
 //TODO: need to import and add corresponding form when it is created
@@ -23,18 +22,18 @@ export function UserInfo({ onBackClick, onForwardClick }) {
       className="mb-32px"
       header={
         <>
-          <Header.Left>
+          <Layout.Header.Left>
             <Button
               buttonKind="textOnly"
               leftIcon={chevron}
               size="sm"
               onClick={onBackClick}
             />
-          </Header.Left>
-          <Header.Center>
-            <Header.Title title="Sign up" />
-            <Header.SubTitle subtitle="Step 1/4" />
-          </Header.Center>
+          </Layout.Header.Left>
+          <Layout.Header.Center>
+            <Layout.Header.Title title="Sign up" />
+            <Layout.Header.SubTitle subtitle="Step 1/4" />
+          </Layout.Header.Center>
         </>
       }
       body="insert sign up form component here"

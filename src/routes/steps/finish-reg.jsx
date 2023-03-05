@@ -1,5 +1,4 @@
 import { Button, Layout } from "../../components"; //button needs to be changed when avail
-import { Header } from "../../components/layout/header";
 //TODO: Update buttons when available
 //TODO: Create onForwardClick handler to open user's email account
 
@@ -18,9 +17,9 @@ export function FinishReg({ onForwardClick }) {
       className="mb-32px"
       header={
         <>
-          <Header.Center>
-            <Header.Title title="We've sent a link to your email to finish your registration process" />
-          </Header.Center>
+          <Layout.Header.Center>
+            <Layout.Header.Title title="We've sent a link to your email to finish your registration process" />
+          </Layout.Header.Center>
         </>
       }
       footer={
