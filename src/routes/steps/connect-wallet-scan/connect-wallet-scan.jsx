@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import chevron from "../../../../assets/chevron.svg";
-import { Button, Layout } from "../../../../components"; //button needs to be changed when avail
-import { Header } from "../../../../components/layout/header";
-import { WizardContext } from "../../../../contexts/wizard-context";
-import { account, fSeedPhrases } from "../../../../utils/faker-data";
+import chevron from "../../../assets/chevron.svg";
+import { Button, Layout } from "../../../components"; //button needs to be changed when avail
+import { Header } from "../../../components/layout/header";
+import { WizardContext } from "../../../contexts/wizard-context";
+import { account, fSeedPhrases } from "../../../utils/faker-data";
 import { Body } from "./body";
 
 //TODO:  Figure out step numbering

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import chevron from "../../../../assets/chevron.svg";
-import { Button, Layout } from "../../../../components"; //button needs to be changed when avail
-import { Header } from "../../../../components/layout/header";
+import chevron from "../../../assets/chevron.svg";
+import { Button, Layout } from "../../../components"; //button needs to be changed when avail
+import { Header } from "../../../components/layout/header";
 import { Body } from "./body";
 
 //TODO: figure out step numbering

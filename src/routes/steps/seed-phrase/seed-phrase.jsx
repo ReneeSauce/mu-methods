@@ -1,6 +1,6 @@
-import chevron from "../../../../assets/chevron.svg";
-import { Button, Layout, Modal } from "../../../../components"; //button needs to be changed when avail
-import { Header } from "../../../../components/layout/header";
+import chevron from "../../../assets/chevron.svg";
+import { Button, Layout, Modal } from "../../../components"; //button needs to be changed when avail
+import { Header } from "../../../components/layout/header";
 import { Body } from "./body";
 //TODO: Update buttons when available
 //TODO:  Figure out how to get modal to line up with layout bottom

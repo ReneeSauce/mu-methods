@@ -1,8 +1,8 @@
 //connect-wallet-confirm-body
 import { useContext } from "react";
 import styled from "styled-components";
-import { Wallet } from "../../../../components/wallet/wallet";
-import { WizardContext } from "../../../../contexts/wizard-context";
+import { Wallet } from "../../../components/wallet/wallet";
+import { WizardContext } from "../../../contexts/wizard-context";
 
 //TODO: need logic to set is confirmed to true - use state
 //TODO: way to trigger setIsConfirmed to true

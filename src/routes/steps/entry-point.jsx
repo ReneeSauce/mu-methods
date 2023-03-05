@@ -1,8 +1,8 @@
 //entrypoint? using to test out the wallet flow
 
-import { Button, Layout } from "../../../components"; //button needs to be changed when avail
-import Mu from "../../../components/icons/mu";
-import { Header } from "../../../components/layout/header";
+import { Button, Layout } from "../../components"; //button needs to be changed when avail
+import Mu from "../../components/icons/mu";
+import { Header } from "../../components/layout/header";
 
 /**
  * Home Component

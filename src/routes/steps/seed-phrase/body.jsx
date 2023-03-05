@@ -2,9 +2,9 @@
 import { faker } from "@faker-js/faker";
 import _ from "lodash";
 import { useCallback, useContext, useEffect, useState } from "react";
-import copyI from "../../../../assets/copy-icon.svg";
-import { Button, Pill } from "../../../../components";
-import { WizardContext } from "../../../../contexts/wizard-context";
+import copyI from "../../../assets/copy-icon.svg";
+import { Button, Pill } from "../../../components";
+import { WizardContext } from "../../../contexts/wizard-context";
 //TODO: Should Download button have an error popup?
 //TODO: put in icons when available
 //TODO: Check on tertiary bg color - temp change in button file set to bg-beta

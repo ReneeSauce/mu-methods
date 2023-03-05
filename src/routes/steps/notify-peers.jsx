@@ -1,5 +1,5 @@
-import { Button, Layout } from "../../../components"; //button needs to be changed when avail
-import { Header } from "../../../components/layout/header";
+import { Button, Layout } from "../../components"; //button needs to be changed when avail
+import { Header } from "../../components/layout/header";
 //TODO: Update buttons when available
 
 export function NotifyPeers({ onForwardClick }) {
