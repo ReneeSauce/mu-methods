@@ -1,5 +1,5 @@
 import { Button, Layout } from "../../../components"; //button needs to be changed when avail
-//TODO: Update buttons when available
+
 /**
  * Notify Peers Component -
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
@@ -33,7 +33,7 @@ export function NotifyPeers({ onForwardClick, title, subtitle }) {
         <Button size="lg" buttonKind="primary" onClick={onForwardClick}>
           Finish Registration
         </Button>
-      } //replace buton with step button
+      }
     ></Layout>
   );
 }

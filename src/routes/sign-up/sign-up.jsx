@@ -3,6 +3,13 @@ import StepWizard from "react-step-wizard";
 import { WizardContext } from "../../contexts/wizard-context";
 import { Steps } from "../steps";
 
+//TODO: how to open email app//how to emulate flow in presentation
+//TODO: handleOpenEmailApp should do the following
+//1. create a token and save to local storage
+//2. send to user email
+//3. on return form email, oath flow to logged in route
+
+//
 /* -------------------------------------------------------------------------- */
 /*                               function SignUp                              */
 /* -------------------------------------------------------------------------- */
@@ -90,7 +97,7 @@ export const SignUp = () => {
   };
 
   /* -------------------------------- handlers -------------------------------- */
-  // for debugging to see steps
+  // for debugging to visualize steps
   // const handleForwardClick = (nextStep) => {
   //   console.log(nextStep);
   // };
@@ -120,14 +127,10 @@ export const SignUp = () => {
     setIsOpen(false);
   };
 
+  //open email app and token creation
   const handleOpenEmailApp = () => {
-    //open email app - how does this work
-    //create and save a token to local storage
-    //send token to user's email - does this make more sense to put in next to last step?
-    //on return from email, oath flow to logged in route
     console.log("open email app,");
     alert("open email app");
-    // window.location = "mailto:yourmail@domain.com";//opens a new email not the app
   };
 
   /* --------------------------- animation controls --------------------------- */
@@ -160,25 +163,25 @@ export const SignUp = () => {
           title="Log In"
         ></Steps.LogIn>
 
-        {/* <Steps.ConnectWalletScan
+        <Steps.ConnectWalletScan
           stepName="connect-scan"
           SW={SW}
           onForwardClick={goTo("connect-confirm")}
           onBackClick={goTo("entry-point")}
           title="Connecting wallet"
           subtitle="Step 1/4"
-        ></Steps.ConnectWalletScan> */}
+        ></Steps.ConnectWalletScan>
 
-        {/* <Steps.ConnectWalletConfirm
+        <Steps.ConnectWalletConfirm
           stepName="connect-confirm"
           SW={SW}
           onForwardClick={goTo("connect-permissions")}
           onBackClick={goTo("connect-scan")}
           title="Connecting wallet"
           subtitle="Step 2/4"
-        ></Steps.ConnectWalletConfirm> */}
+        ></Steps.ConnectWalletConfirm>
 
-        {/* <Steps.ConnectWalletPermissions
+        <Steps.ConnectWalletPermissions
           stepName="connect-permissions"
           SW={SW}
           onForwardClick={handleConnectWallet}
@@ -189,7 +192,7 @@ export const SignUp = () => {
           onClose={onClose}
           title="Connecting wallet"
           subtitle="Step 2/4"
-        ></Steps.ConnectWalletPermissions> */}
+        ></Steps.ConnectWalletPermissions>
 
         <Steps.UserInfo
           stepName="user-info"
@@ -215,38 +218,38 @@ export const SignUp = () => {
           subtitle="Step 2/4"
         ></Steps.SeedPhrase>
 
-        {/* <Steps.RepeatSeedPhrase
+        <Steps.RepeatSeedPhrase
           stepName="repeat-seed-phrase"
           SW={SW}
           onForwardClick={goTo("finish-reg")}
           onBackClick={() => SW.goToStep(prevStep)}
           title="Sign up"
           subtitle="Step 3/4"
-        ></Steps.RepeatSeedPhrase> */}
+        ></Steps.RepeatSeedPhrase>
 
-        {/* <Steps.ChoosePeers
+        <Steps.ChoosePeers
           stepName="choose-peers"
           SW={SW}
           onForwardClick={goTo("notify-peers")}
           onBackClick={() => SW.goToStep(prevStep)}
           title="Sign up"
           subtitle="Step 3/4"
-        ></Steps.ChoosePeers> */}
+        ></Steps.ChoosePeers>
 
-        {/* <Steps.NotifyPeers
+        <Steps.NotifyPeers
           stepName="notify-peers"
           SW={SW}
           onForwardClick={goTo("finish-reg")}
           title="Sign up"
           subtitle=" Step 4/4"
-        ></Steps.NotifyPeers> */}
+        ></Steps.NotifyPeers>
 
-        {/* <Steps.FinishReg
+        <Steps.FinishReg
           stepName="finish-reg"
           SW={SW}
-          onForwardClick={handleOpenEmailApp} //need logic here to open email app
+          onForwardClick={handleOpenEmailApp}
           title="We've sent a link to your email to finish your registration process"
-        ></Steps.FinishReg> */}
+        ></Steps.FinishReg>
       </StepWizard>
     </WizardContext.Provider>
   );

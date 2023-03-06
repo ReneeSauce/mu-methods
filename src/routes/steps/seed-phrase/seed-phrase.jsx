@@ -75,7 +75,7 @@ export function SeedPhrase({
         <Button size="lg" buttonKind="primary" onClick={onForwardClick}>
           Continue
         </Button>
-      } //replace buton with step button
+      }
     ></Layout>
   );
 }

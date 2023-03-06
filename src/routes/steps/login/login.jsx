@@ -46,7 +46,7 @@ export function LogIn({ onBackClick, onSignUpClick, onLoginClick, title }) {
             Log In
           </Button>
         </>
-      } //replace buton with step button
+      }
     ></Layout>
   );
 }

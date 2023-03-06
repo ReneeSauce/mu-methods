@@ -1,5 +1,5 @@
 import { Button, Layout } from "../../../components"; //button needs to be changed when avail
-//TODO: Update buttons when available
+
 //TODO: Create onForwardClick handler to open user's email account
 
 /**
@@ -32,7 +32,7 @@ export function FinishReg({ onForwardClick, title }) {
         >
           Open email app
         </Button>
-      } //replace buton with step button
+      }
     ></Layout>
   );
 }

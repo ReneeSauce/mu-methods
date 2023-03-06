@@ -1,12 +1,9 @@
-import chevron from "../../../assets/chevron.svg";
 import { Button, Layout, Modal } from "../../../components"; //button needs to be changed when avail
 import { Body } from "./body";
 
-//TODO: figure out step numbering
 //TODO: get permissions form
 //TODO: logic to set permissions value send to context?
 //TODO: question will Account info context hold all of this stuff?
-//TODO: should modal open he re and then continue to flow from modal
 
 /**
  * Connect-Wallet Permissions Component -
@@ -39,7 +36,7 @@ export const ConnectWalletPermissions = ({
           <Layout.Header.Left>
             <Button
               buttonKind="textOnly"
-              leftIcon={chevron}
+              leftIcon="arrowLeft"
               size="sm"
               onClick={onBackClick}
             />
@@ -58,12 +55,7 @@ export const ConnectWalletPermissions = ({
               Store your seed phrase with peers so you never lose access to your
               account
             </div>
-            <Button
-              size="lg"
-              buttonKind="textOnly"
-              onClick={onSkipStepClick}
-              // className="btn btn-link text-decoration-none fs-18px text-white fw-bold mb-32px p-0"
-            >
+            <Button size="lg" buttonKind="textOnly" onClick={onSkipStepClick}>
               Skip this step
             </Button>
             <Button
@@ -80,7 +72,7 @@ export const ConnectWalletPermissions = ({
         <Button size="lg" buttonKind="primary" onClick={onForwardClick}>
           Continue
         </Button>
-      } //replace buton with step button
+      }
     ></Layout>
   );
 };

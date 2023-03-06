@@ -1,9 +1,8 @@
 import { useState } from "react";
-import chevron from "../../../assets/chevron.svg";
+
 import { Button, Layout } from "../../../components"; //button needs to be changed when avail
 import { Body } from "./body";
 
-//TODO: figure out step numbering
 //TODO: get body component finished
 //TODO: logic for confirm via App link (currently the continue button)
 //should continue to set permissions once confirmed
@@ -57,7 +56,7 @@ export const ConnectWalletConfirm = ({
           <Layout.Header.Left>
             <Button
               buttonKind="textOnly"
-              leftIcon={chevron}
+              leftIcon="arrowLeft"
               size="sm"
               onClick={onBackClick}
             />
@@ -73,7 +72,7 @@ export const ConnectWalletConfirm = ({
         <Button size="lg" buttonKind="textOnly" onClick={handleConfirmClick}>
           Or confirm via App
         </Button>
-      } //replace buton with step button
+      }
     ></Layout>
   );
 };

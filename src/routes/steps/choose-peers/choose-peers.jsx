@@ -1,7 +1,6 @@
-import chevron from "../../../assets/chevron.svg";
 import { Button, Layout } from "../../../components"; //button needs to be changed when avail
 import { Body } from "./body";
-//TODO: Update buttons when available
+
 //TODO: Hook up buttons and form inputs for choosing peers
 //TODO: Create logic to check array.length of peers to match number of peers
 //TODO: Button disable/enable logic based on if #peers chosen
@@ -21,15 +20,14 @@ import { Body } from "./body";
 
 export function ChoosePeers({ onBackClick, onForwardClick, title, subtitle }) {
   return (
-    <Layout //Layout and all props passed here
+    <Layout
       className="mb-32px"
       header={
         <>
-          {/* Layout.Header.Left */}
           <Layout.Header.Left>
             <Button
               buttonKind="textOnly"
-              leftIcon={chevron}
+              leftIcon="arrowLeft"
               size="sm"
               onClick={onBackClick}
             />
@@ -45,7 +43,7 @@ export function ChoosePeers({ onBackClick, onForwardClick, title, subtitle }) {
         <Button size="lg" buttonKind="primary" onClick={onForwardClick}>
           Share seed phrase
         </Button>
-      } //replace buton with step button
+      }
     ></Layout>
   );
 }

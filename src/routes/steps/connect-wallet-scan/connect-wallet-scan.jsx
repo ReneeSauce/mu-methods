@@ -1,19 +1,18 @@
 import { useContext, useEffect, useState } from "react";
-import chevron from "../../../assets/chevron.svg";
 import { Button, Layout } from "../../../components"; //button needs to be changed when avail
 import { WizardContext } from "../../../contexts/wizard-context";
 import { account, fSeedPhrases } from "../../../utils/faker-data";
 import { Body } from "./body";
-//TODO:  Figure out step numbering
-//TODO:logic for grabbing qr values with faker- tbd with SDK- consider clearing state.accountData before scanning
-//TODO: figure out why editing this component results in error:
-//cannot access connectWalletScan before initialization - is it from faker?
-//TODO: logic to get seeds from scan and pass to context
+
+//TODO: implement qr scanner component
+//TODO:logic for grabbing qr values with faker- tbd with SDK-
+//consider clearing state.accountData before scanning
+//TODO: logic to get seeds from scan and pass to context - working with faker
 //TODO: what should happen on public key manually
 //a form open or turn into input field
 //how will you know if submitted without button?  will continue serve as submit?
-
-//trying data as a prop to grab qr values - will use faker
+//TODO: get form inputs when ready for input public key
+//may need styled ocmponents to render placeholder text like figma
 
 /**
  * Connect-Wallet Component Scan -
@@ -90,8 +89,7 @@ export const ConnectWalletScan = ({
   //enter public key handler
   const handleEnterKeyClick = (e) => {
     setKey(e.target.value);
-
-    //keys sent to sdk
+    //keys sent to sdk?
   };
 
   const handleContinueClick = () => {
@@ -104,8 +102,7 @@ export const ConnectWalletScan = ({
   };
 
   /* -------------------------------- functions ------------------------------- */
-  // Copy to clipboard function - used for demonstration only in wallet path
-  // used here only so seeds are available to paste in seed validation step
+  // Copy to clipboard function
   // Gets seeds from store
   const copy = async () => {
     try {
@@ -124,7 +121,7 @@ export const ConnectWalletScan = ({
           <Layout.Header.Left>
             <Button
               buttonKind="textOnly"
-              leftIcon={chevron}
+              leftIcon="arrowLeft"
               size="sm"
               onClick={onBackClick}
             />
@@ -145,9 +142,7 @@ export const ConnectWalletScan = ({
               placeholder=" Or enter public key manually" //may need styled components to style per figma
               value={key}
             ></input>
-            {/* <Button onClick={onEnterKeyClick} className="mt-auto">
-              Or enter public key manually
-            </Button> */}
+
             <Button
               size="lg"
               buttonKind="primary"
@@ -158,7 +153,7 @@ export const ConnectWalletScan = ({
             </Button>
           </div>
         </>
-      } //replace buton with step button
+      }
     ></Layout>
   );
 };

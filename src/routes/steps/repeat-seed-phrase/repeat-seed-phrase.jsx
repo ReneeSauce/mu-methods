@@ -1,9 +1,8 @@
 import { useCallback, useContext, useEffect, useState } from "react";
-import chevron from "../../../assets/chevron.svg";
 import { Button, Layout } from "../../../components"; //button needs to be changed when avail
 import { WizardContext } from "../../../contexts/wizard-context";
 import { Body } from "./body";
-//TODO: Update buttons when available
+
 //TODO: Check Font Weight on body - all other steps have 700 and this step in figma has 500
 //TODOL consider auto focus to text area on pageload - having trouble since component mounts at signup
 //TODO: set up error messaging on not a match
@@ -83,7 +82,7 @@ export function RepeatSeedPhrase({
           <Layout.Header.Left>
             <Button
               buttonKind="textOnly"
-              leftIcon={chevron}
+              leftIcon="arrowLeft"
               size="sm"
               onClick={handleBackClick}
             />
