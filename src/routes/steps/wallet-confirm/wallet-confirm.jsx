@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import { Button, Layout } from "../../../components"; //button needs to be changed when avail
 import { Body } from "./body";
 
@@ -12,7 +11,7 @@ import { Body } from "./body";
 //or set isConfirmed to true, if not confirmed then what?
 
 /**
- * Connect-Wallet Component Confirm -
+ * Wallet Component Confirm -
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
  * @param onBackClick back click handler prop passed down from parent
  * @param onForwardClick forward click handler prop passed down from parent
@@ -24,7 +23,7 @@ import { Body } from "./body";
  *
  */
 
-export const ConnectWalletConfirm = ({
+export const WalletConfirm = ({
   onBackClick,
   onForwardClick,
   title,

@@ -15,7 +15,7 @@ import { Body } from "./body";
 //may need styled ocmponents to render placeholder text like figma
 
 /**
- * Connect-Wallet Component Scan -
+ * Wallet-Scan Component -
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
  * @param onBackClick back click handler prop passed down from parent
  * @param onForwardClick forward click handler prop passed down from parent
@@ -39,7 +39,7 @@ import { Body } from "./body";
  *
  */
 
-export const ConnectWalletScan = ({
+export const WalletScan = ({
   onBackClick,
   onForwardClick,
   title,
