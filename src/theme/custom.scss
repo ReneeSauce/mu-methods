@@ -5,6 +5,7 @@ $beta: #2d2d41;
 $primary: #8cbaff;
 $danger: #ff3e3e;
 $success: #1fdb00;
+$muted: #2E2E42;
 
 // Font sizes below:
 $font-sizes: (
@@ -25,6 +26,7 @@ $theme-colors: (
   "primary": $primary,
   "danger": $danger,
   "success": $success,
+  "muted": $muted
 ) !default;
 
 $font-sizes: (
@@ -40,6 +42,7 @@ $font-sizes: (
 $spacer: 4px;
 $spacers: (
   0: 0,
+  "2px": $spacer * 0.5,
   "4px": $spacer * 1,
   "8px": $spacer * 2,
   "12px": $spacer * 3,
@@ -51,3 +54,4 @@ $spacers: (
   "36px": $spacer * 9,
   "48px": $spacer * 12,
 );
+

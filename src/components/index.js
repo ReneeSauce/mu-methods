@@ -1,5 +1,6 @@
 export * from "./avatar";
 export * from "./button";
+export * from "./camera";
 export * from "./feed";
 export * from "./form";
 export * from "./input";
@@ -7,4 +8,6 @@ export * from "./layout";
 export * from "./modal";
 export * from "./notification";
 export * from "./pill";
+export * from "./qr-reader";
+export * from "./slideshow";
 export * from "./table";
