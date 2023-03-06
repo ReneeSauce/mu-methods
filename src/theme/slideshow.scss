@@ -1,16 +1,21 @@
 .swiper {
   width: 100%;
-  height: 100%;
+  // height: 100%;
 }
 
 .swiper-wrapper {
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .swiper-slide {
   text-align: center;
-  font-size: 18px;
-  background: #fff;
+  font-size: 16px;
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+
+  border: 1px solid red;
 
   display: -webkit-box;
   display: -ms-flexbox;

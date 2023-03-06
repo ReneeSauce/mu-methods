@@ -16,7 +16,7 @@ import {
   SlideCaption,
 } from "./home.styles";
 
-export const Home = () => {
+export const Homea = () => {
   return (
     <>
       <div> Home</div>

@@ -44,7 +44,7 @@ export const ConnectWalletPermissions = ({
           </Layout.Header.Left>
           <Layout.Header.Center>
             <Layout.Header.Title title="Connecting wallet" />
-            <Layout.Header.SubTitle subtitle="Step 1/4" />
+            <Layout.Header.SubTitle subtitle="Step 2/4" />
           </Layout.Header.Center>
         </>
       }

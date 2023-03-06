@@ -1,6 +1,7 @@
 //entrypoint? using to test out the wallet flow
-
-import { Button, Layout } from "../../../components"; //button needs to be changed when avail
+import { SwiperSlide } from "swiper/react";
+import { balls, cubes, users } from "../../../assets";
+import { Button, Layout, SlideShow } from "../../../components"; //button needs to be changed when avail
 import Mu from "../../../components/icons/mu";
 
 /**
@@ -36,7 +37,45 @@ export const EntryPoint = ({
           <div className="fw-bold fs-32px text-center lh-sm mb-36px ">
             Welcome to MU Methods
           </div>
-          <div> slider component goes here</div>
+
+          <SlideShow>
+            <SwiperSlide className="bg-alpha flex-column ">
+              <SlideShow.Image
+                maxwidth="320px"
+                height="187px"
+                src={cubes}
+                alt="image of cubes"
+              ></SlideShow.Image>
+              <p className="mt-32px mb-0  ">
+                All your crypro accounts in one place
+              </p>
+            </SwiperSlide>
+
+            <SwiperSlide className="bg-alpha flex-column">
+              <SlideShow.Image
+                maxwidth="355px"
+                height="145px"
+                src={balls}
+                alt="image of balls"
+              ></SlideShow.Image>
+
+              <p className="mt-32px mb-0  ">
+                Never loose access to your account by sharing your seed phrase
+              </p>
+            </SwiperSlide>
+
+            <SwiperSlide className="bg-alpha flex-column ">
+              <SlideShow.Image
+                maxwidth="203px"
+                height="182px"
+                src={users}
+                alt="image of cubes"
+              ></SlideShow.Image>
+              <p className="mt-32px mb-0  ">
+                Sign all transactions from one app
+              </p>
+            </SwiperSlide>
+          </SlideShow>
         </>
       }
       footer={
