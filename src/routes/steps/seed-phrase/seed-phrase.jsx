@@ -21,6 +21,8 @@ import { Body } from "./body";
  * @param header expects header components
  * @param body expects body components
  * @param footer expects footer components
+ * @param title title prop in layout headerpassed from parent
+ * @param subtitle subtitle in layout header prop passed from parent
  */
 
 export function SeedPhrase({
@@ -32,6 +34,8 @@ export function SeedPhrase({
   onClose,
   isVisible,
   setIsVisible,
+  title,
+  subtitle,
 }) {
   return (
     <Layout
@@ -47,8 +51,8 @@ export function SeedPhrase({
             />
           </Layout.Header.Left>
           <Layout.Header.Center>
-            <Layout.Header.Title title="Sign up" />
-            <Layout.Header.SubTitle subtitle=" Step 2/4" />
+            <Layout.Header.Title title={title} />
+            <Layout.Header.SubTitle subtitle={subtitle} />
           </Layout.Header.Center>
         </>
       }

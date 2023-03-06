@@ -1,5 +1,5 @@
-import chevron from "../../assets/chevron.svg";
-import { Button, Layout } from "../../components"; //button needs to be changed when avail
+import chevron from "../../../assets/chevron.svg";
+import { Button, Layout } from "../../../components"; //button needs to be changed when avail
 
 //TODO: Update buttons when available
 //TODO: need to import and add corresponding form when it is created
@@ -14,9 +14,11 @@ import { Button, Layout } from "../../components"; //button needs to be changed 
  * @param header expects header components
  * @param body expects body components
  * @param footer expects footer components
+ * @param title title prop in layout headerpassed from parent
+
  */
 
-export function LogIn({ onBackClick, onSignUpClick, onLoginClick }) {
+export function LogIn({ onBackClick, onSignUpClick, onLoginClick, title }) {
   return (
     <Layout
       className="mb-32px"
@@ -31,7 +33,7 @@ export function LogIn({ onBackClick, onSignUpClick, onLoginClick }) {
             />
           </Layout.Header.Left>
           <Layout.Header.Center>
-            <Layout.Header.Title title="Log In" />
+            <Layout.Header.Title title={title} />
           </Layout.Header.Center>
         </>
       }

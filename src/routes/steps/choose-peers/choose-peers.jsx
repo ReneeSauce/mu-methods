@@ -14,9 +14,12 @@ import { Body } from "./body";
  * @param header expects header components
  * @param body expects body components
  * @param footer expects footer components
+ * @param title title prop in layout headerpassed from parent
+ * @param subtitle subtitle in layout header prop passed from parent
+ *
  */
 
-export function ChoosePeers({ onBackClick, onForwardClick }) {
+export function ChoosePeers({ onBackClick, onForwardClick, title, subtitle }) {
   return (
     <Layout //Layout and all props passed here
       className="mb-32px"
@@ -32,8 +35,8 @@ export function ChoosePeers({ onBackClick, onForwardClick }) {
             />
           </Layout.Header.Left>
           <Layout.Header.Center>
-            <Layout.Header.Title title="Sign up" />
-            <Layout.Header.SubTitle subtitle="Step 3/4" />
+            <Layout.Header.Title title={title} />
+            <Layout.Header.SubTitle subtitle={subtitle} />
           </Layout.Header.Center>
         </>
       }

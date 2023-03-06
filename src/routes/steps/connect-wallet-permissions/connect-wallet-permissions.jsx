@@ -16,8 +16,8 @@ import { Body } from "./body";
  * @param header expects header components
  * @param body expects body components
  * @param footer expects footer components
- * @param title expects text for the Header.Title component
- * @param subtitle expects text for the Header.SubTitle component
+ * @param title title prop in layout headerpassed from parent
+ * @param subtitle subtitle in layout header prop passed from parent
  *
  */
 
@@ -28,6 +28,8 @@ export const ConnectWalletPermissions = ({
   onStoreWithPeersClick,
   isOpen,
   onClose,
+  title,
+  subtitle,
 }) => {
   return (
     <Layout
@@ -43,8 +45,8 @@ export const ConnectWalletPermissions = ({
             />
           </Layout.Header.Left>
           <Layout.Header.Center>
-            <Layout.Header.Title title="Connecting wallet" />
-            <Layout.Header.SubTitle subtitle="Step 2/4" />
+            <Layout.Header.Title title={title} />
+            <Layout.Header.SubTitle subtitle={subtitle} />
           </Layout.Header.Center>
         </>
       }

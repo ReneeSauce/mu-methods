@@ -1,4 +1,4 @@
-import { Button, Layout } from "../../components"; //button needs to be changed when avail
+import { Button, Layout } from "../../../components"; //button needs to be changed when avail
 //TODO: Update buttons when available
 //TODO: Create onForwardClick handler to open user's email account
 
@@ -8,17 +8,18 @@ import { Button, Layout } from "../../components"; //button needs to be changed 
  * @param onForwardClick forward click handler prop passed down from parent -opens email account
  * @param header expects header components
  * @param footer expects footer components
- * @param title expects title text for the Header.Title component
+ * @param title title prop in layout headerpassed from parent
+
  */
 
-export function FinishReg({ onForwardClick }) {
+export function FinishReg({ onForwardClick, title }) {
   return (
     <Layout
       className="mb-32px"
       header={
         <>
           <Layout.Header.Center>
-            <Layout.Header.Title title="We've sent a link to your email to finish your registration process" />
+            <Layout.Header.Title title={title} />
           </Layout.Header.Center>
         </>
       }

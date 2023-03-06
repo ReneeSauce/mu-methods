@@ -150,18 +150,23 @@ export const SignUp = () => {
           onSignUpClick={goTo("user-info")}
           onConnectWalletClick={goTo("connect-scan")}
         ></Steps.EntryPoint>
+
         <Steps.LogIn
           stepName="log-in"
           SW={SW}
           onLoginClick={handleLogInClick}
           onSignUpClick={goTo("user-info")}
           onBackClick={goTo("entry-point")}
+          title="Log In"
         ></Steps.LogIn>
+
         <Steps.ConnectWalletScan
           stepName="connect-scan"
           SW={SW}
           onForwardClick={goTo("connect-confirm")}
           onBackClick={goTo("entry-point")}
+          title="Connecting wallet"
+          subtitle="Step 1/4"
         ></Steps.ConnectWalletScan>
 
         <Steps.ConnectWalletConfirm
@@ -169,6 +174,8 @@ export const SignUp = () => {
           SW={SW}
           onForwardClick={goTo("connect-permissions")}
           onBackClick={goTo("connect-scan")}
+          title="Connecting wallet"
+          subtitle="Step 2/4"
         ></Steps.ConnectWalletConfirm>
 
         <Steps.ConnectWalletPermissions
@@ -180,6 +187,8 @@ export const SignUp = () => {
           onStoreWithPeersClick={handleWithPeersClick}
           isOpen={isOpen}
           onClose={onClose}
+          title="Connecting wallet"
+          subtitle="Step 2/4"
         ></Steps.ConnectWalletPermissions>
 
         <Steps.UserInfo
@@ -187,6 +196,8 @@ export const SignUp = () => {
           SW={SW}
           onForwardClick={goTo("seed-phrase")}
           onBackClick={goTo("entry-point")}
+          title="Sign up"
+          subtitle="Step 1/4"
         ></Steps.UserInfo>
 
         <Steps.SeedPhrase
@@ -200,6 +211,8 @@ export const SignUp = () => {
           onClose={onClose}
           isVisible={isVisible}
           setIsVisible={setIsVisible}
+          title="Sign up"
+          subtitle="Step 2/4"
         ></Steps.SeedPhrase>
 
         <Steps.RepeatSeedPhrase
@@ -207,6 +220,8 @@ export const SignUp = () => {
           SW={SW}
           onForwardClick={goTo("finish-reg")}
           onBackClick={() => SW.goToStep(prevStep)}
+          title="Sign up"
+          subtitle="Step 3/4"
         ></Steps.RepeatSeedPhrase>
 
         <Steps.ChoosePeers
@@ -214,18 +229,23 @@ export const SignUp = () => {
           SW={SW}
           onForwardClick={goTo("notify-peers")}
           onBackClick={() => SW.goToStep(prevStep)}
+          title="Sign up"
+          subtitle="Step 3/4"
         ></Steps.ChoosePeers>
 
         <Steps.NotifyPeers
           stepName="notify-peers"
           SW={SW}
           onForwardClick={goTo("finish-reg")}
+          title="Sign up"
+          subtitle=" Step 4/4"
         ></Steps.NotifyPeers>
 
         <Steps.FinishReg
           stepName="finish-reg"
           SW={SW}
           onForwardClick={handleOpenEmailApp} //need logic here to open email app
+          title="We've sent a link to your email to finish your registration process"
         ></Steps.FinishReg>
       </StepWizard>
     </WizardContext.Provider>

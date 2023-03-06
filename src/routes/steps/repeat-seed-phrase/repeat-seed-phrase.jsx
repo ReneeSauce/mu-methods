@@ -26,10 +26,17 @@ import { Body } from "./body";
  * @param header expects header components
  * @param body expects body components
  * @param footer expects footer components
+ * @param title title prop in layout headerpassed from parent
+ * @param subtitle subtitle in layout header prop passed from parent
 
  */
 
-export function RepeatSeedPhrase({ onBackClick, onForwardClick }) {
+export function RepeatSeedPhrase({
+  onBackClick,
+  onForwardClick,
+  title,
+  subtitle,
+}) {
   /* ----------------------------- set up Context ----------------------------- */
   const { state } = useContext(WizardContext);
   const seedPhrases = state.seedPhrases.join(" ");
@@ -82,8 +89,8 @@ export function RepeatSeedPhrase({ onBackClick, onForwardClick }) {
             />
           </Layout.Header.Left>
           <Layout.Header.Center>
-            <Layout.Header.Title title="Sign up" />
-            <Layout.Header.SubTitle subtitle=" Step 3/4" />
+            <Layout.Header.Title title={title} />
+            <Layout.Header.SubTitle subtitle={subtitle} />
           </Layout.Header.Center>
         </>
       }

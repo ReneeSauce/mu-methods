@@ -1,5 +1,5 @@
-import chevron from "../../assets/chevron.svg";
-import { Button, Layout } from "../../components"; //button needs to be changed when avail
+import chevron from "../../../assets/chevron.svg";
+import { Button, Layout } from "../../../components"; //button needs to be changed when avail
 
 //TODO: Update buttons when available
 //TODO: need to import and add corresponding form when it is created
@@ -14,9 +14,11 @@ import { Button, Layout } from "../../components"; //button needs to be changed 
  * @param header expects header components
  * @param body expects body components
  * @param footer expects footer components
+ * @param title title prop in layout headerpassed from parent
+ * @param subtitle subtitle in layout header prop passed from parent
  */
 
-export function UserInfo({ onBackClick, onForwardClick }) {
+export function UserInfo({ onBackClick, onForwardClick, title, subtitle }) {
   return (
     <Layout
       className="mb-32px"
@@ -31,8 +33,8 @@ export function UserInfo({ onBackClick, onForwardClick }) {
             />
           </Layout.Header.Left>
           <Layout.Header.Center>
-            <Layout.Header.Title title="Sign up" />
-            <Layout.Header.SubTitle subtitle="Step 1/4" />
+            <Layout.Header.Title title={title} />
+            <Layout.Header.SubTitle subtitle={subtitle} />
           </Layout.Header.Center>
         </>
       }
