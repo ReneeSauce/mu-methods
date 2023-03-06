@@ -93,6 +93,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         />
       </Routes>
       <NavTray
+        isLoggedIn={false}
         navLinks={[
           {
             role: "login",

@@ -151,34 +151,34 @@ export const SignUp = () => {
           onConnectWalletClick={goTo("connect-scan")}
         ></Steps.EntryPoint>
 
-        <Steps.LogIn
+        {/* <Steps.LogIn
           stepName="log-in"
           SW={SW}
           onLoginClick={handleLogInClick}
           onSignUpClick={goTo("user-info")}
           onBackClick={goTo("entry-point")}
           title="Log In"
-        ></Steps.LogIn>
+        ></Steps.LogIn> */}
 
-        <Steps.ConnectWalletScan
+        {/* <Steps.ConnectWalletScan
           stepName="connect-scan"
           SW={SW}
           onForwardClick={goTo("connect-confirm")}
           onBackClick={goTo("entry-point")}
           title="Connecting wallet"
           subtitle="Step 1/4"
-        ></Steps.ConnectWalletScan>
+        ></Steps.ConnectWalletScan> */}
 
-        <Steps.ConnectWalletConfirm
+        {/* <Steps.ConnectWalletConfirm
           stepName="connect-confirm"
           SW={SW}
           onForwardClick={goTo("connect-permissions")}
           onBackClick={goTo("connect-scan")}
           title="Connecting wallet"
           subtitle="Step 2/4"
-        ></Steps.ConnectWalletConfirm>
+        ></Steps.ConnectWalletConfirm> */}
 
-        <Steps.ConnectWalletPermissions
+        {/* <Steps.ConnectWalletPermissions
           stepName="connect-permissions"
           SW={SW}
           onForwardClick={handleConnectWallet}
@@ -189,18 +189,18 @@ export const SignUp = () => {
           onClose={onClose}
           title="Connecting wallet"
           subtitle="Step 2/4"
-        ></Steps.ConnectWalletPermissions>
+        ></Steps.ConnectWalletPermissions> */}
 
-        <Steps.UserInfo
+        {/* <Steps.UserInfo
           stepName="user-info"
           SW={SW}
           onForwardClick={goTo("seed-phrase")}
           onBackClick={goTo("entry-point")}
           title="Sign up"
           subtitle="Step 1/4"
-        ></Steps.UserInfo>
+        ></Steps.UserInfo> */}
 
-        <Steps.SeedPhrase
+        {/* <Steps.SeedPhrase
           stepName="seed-phrase"
           SW={SW}
           onForwardClick={handleSaveSeedPhraseClick}
@@ -213,40 +213,40 @@ export const SignUp = () => {
           setIsVisible={setIsVisible}
           title="Sign up"
           subtitle="Step 2/4"
-        ></Steps.SeedPhrase>
+        ></Steps.SeedPhrase> */}
 
-        <Steps.RepeatSeedPhrase
+        {/* <Steps.RepeatSeedPhrase
           stepName="repeat-seed-phrase"
           SW={SW}
           onForwardClick={goTo("finish-reg")}
           onBackClick={() => SW.goToStep(prevStep)}
           title="Sign up"
           subtitle="Step 3/4"
-        ></Steps.RepeatSeedPhrase>
+        ></Steps.RepeatSeedPhrase> */}
 
-        <Steps.ChoosePeers
+        {/* <Steps.ChoosePeers
           stepName="choose-peers"
           SW={SW}
           onForwardClick={goTo("notify-peers")}
           onBackClick={() => SW.goToStep(prevStep)}
           title="Sign up"
           subtitle="Step 3/4"
-        ></Steps.ChoosePeers>
+        ></Steps.ChoosePeers> */}
 
-        <Steps.NotifyPeers
+        {/* <Steps.NotifyPeers
           stepName="notify-peers"
           SW={SW}
           onForwardClick={goTo("finish-reg")}
           title="Sign up"
           subtitle=" Step 4/4"
-        ></Steps.NotifyPeers>
+        ></Steps.NotifyPeers> */}
 
-        <Steps.FinishReg
+        {/* <Steps.FinishReg
           stepName="finish-reg"
           SW={SW}
           onForwardClick={handleOpenEmailApp} //need logic here to open email app
           title="We've sent a link to your email to finish your registration process"
-        ></Steps.FinishReg>
+        ></Steps.FinishReg> */}
       </StepWizard>
     </WizardContext.Provider>
   );
