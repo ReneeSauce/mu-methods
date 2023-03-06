@@ -98,6 +98,9 @@ export const SignUp = () => {
   //   console.log(nextStep);
   // };
 
+  const handleLogInClick = () => {
+    console.log("Send Login Authentication Logic Here");
+  };
   const handleSaveSeedPhraseClick = () => {
     setIsVisible(false);
     setIsOpen(true);
@@ -143,11 +146,17 @@ export const SignUp = () => {
         <Steps.EntryPoint
           stepName="entry-point"
           SW={SW}
-          onLoginClick={goTo("user-info")}
+          onLoginClick={goTo("log-in")}
           onSignUpClick={goTo("user-info")}
           onConnectWalletClick={goTo("connect-scan")}
         ></Steps.EntryPoint>
-
+        <Steps.LogIn
+          stepName="log-in"
+          SW={SW}
+          onLoginClick={handleLogInClick}
+          onSignUpClick={goTo("user-info")}
+          onBackClick={goTo("entry-point")}
+        ></Steps.LogIn>
         <Steps.ConnectWalletScan
           stepName="connect-scan"
           SW={SW}
