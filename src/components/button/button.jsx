@@ -1,5 +1,6 @@
 import cx from "classnames";
 import styled from "styled-components";
+import Icon from "../icons/icon";
 
 /**
  * Button Component
@@ -15,8 +16,22 @@ import styled from "styled-components";
  * @param onClick callback function to run when btn is clicked
  */
 
-// TODO integrate icons when all are catalogued
-// TODO update bg-opacity when theme color mapping done
+const StyledButton = styled.button`
+  border: none;
+  border-radius: 8px;
+  opacity: ${(props) => props.disabled && "0.5"};
+  width: ${(props) => props.size};
+  transition: opacity 0.2s;
+  &:hover {
+    opacity: ${(props) => !props.disabled && "0.8"};
+    cursor: ${(props) => props.disabled && "default"};
+  }
+`;
+
+const StyledText = styled.h3`
+  margin: 19px 0px;
+  font-weight: 700;
+`;
 
 export const Button = ({
   size,
@@ -38,33 +53,31 @@ export const Button = ({
     primary: "bg-primary",
     primary_red: "bg-danger",
     secondary: "border border-white bg-transparent",
-    tertiary: "bg-f6f6f6", //bg-white 0.5 opacity
+    tertiary: "bg-white bg-opacity-10",
     textOnly: "bg-transparent text-white",
   };
 
-  Button.Container = styled.button`
-    border: none;
-    border-radius: 8px;
-    opacity: ${() => disabled && "0.5"};
-    width: ${(props) => props.size};
-    transition: opacity 0.2s;
-    &:hover {
-      opacity: ${() => !disabled && "0.8"};
-    }
-  `;
-
-  Button.Icon = styled.img`
-    height: 16px;
-    width: 16px;
-  `;
-
-  Button.Text = styled.h3`
-    margin: 19px 0px;
-    font-weight: 700;
-  `;
+  const icons = {
+    add: "add",
+    alert: "alert",
+    arrowDown: "arrowDown",
+    arrowLeft: "arrowLeft",
+    arrowRight: "arrowRight",
+    copy: "copy",
+    close: "close",
+    delete: "delete",
+    fMolecule: "fMolecule",
+    home: "home",
+    minus: "minus",
+    mu: "mu",
+    notification: "notification",
+    profile: "profile",
+    regenerate: "regenerate",
+    settings: "settings",
+  };
 
   return (
-    <Button.Container
+    <StyledButton
       disabled={disabled}
       onClick={onClick}
       size={sizes[size]}
@@ -74,13 +87,13 @@ export const Button = ({
       role="button"
     >
       {leftIcon && (
-        <Button.Icon
-          src={leftIcon}
+        <Icon
+          testId="icon"
+          name={icons[leftIcon]}
           className={(children && "me-12px") || "mx-8px"} // renders padding conditionally based on text content
-          role="icon"
         />
       )}
-      <Button.Text
+      <StyledText
         role="label"
         className={cx(
           `fs-18px ${
@@ -91,14 +104,13 @@ export const Button = ({
         )}
       >
         {children}
-      </Button.Text>
+      </StyledText>
       {rightIcon && (
-        <Button.Icon
-          src={rightIcon}
+        <Icon
+          name={icons[rightIcon]}
           className={(children && "ms-12px") || "mx-8px"} // renders padding conditionally based on text content
-          role="icon"
         />
       )}
-    </Button.Container>
+    </StyledButton>
   );
 };
