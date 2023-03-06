@@ -4,6 +4,7 @@ export * from "./camera";
 export * from "./feed";
 export * from "./layout";
 export * from "./modal";
+export * from "./navigation-tray";
 export * from "./notification";
 export * from "./pill";
 export * from "./qr-reader";
