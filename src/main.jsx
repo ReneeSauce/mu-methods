@@ -7,7 +7,7 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import { Account, Home, Login, Profile } from "./routes";
+import { Account, Home, Login, Notifications, Profile } from "./routes";
 import { SignUp } from "./routes/sign-up/sign-up";
 import "./theme/defaults.scss";
 
@@ -52,6 +52,10 @@ const router = createBrowserRouter([
       />
     ),
   },
+  {
+    path: "/notifications",
+    element: <Notifications />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -90,6 +94,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             />
           }
         />
+        <Route path="/notifications" element={<Notifications />} />
       </Routes>
       {/* <NavTray
         navLinks={[

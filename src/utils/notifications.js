@@ -1,0 +1,45 @@
+const notificationsData = [
+  {
+    summary: "Seed phrase recovery request",
+    src: "https://images.unsplash.com/photo-1590654495303-a7be3c9e10af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGxlb3BhcmR8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
+    title: "Coinbase",
+    status: "unread",
+    type: "action",
+    id: "1",
+  },
+  {
+    summary: "Sign transaction for 0.008 ETH",
+    src: "https://images.unsplash.com/photo-1590654495303-a7be3c9e10af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGxlb3BhcmR8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
+    title: "Coinbase",
+    status: "unread",
+    type: "action",
+    id: "2",
+    date: new Date(),
+  },
+  {
+    summary: "Transaction for 0.008 ETH signed",
+    src: "https://images.unsplash.com/photo-1590654495303-a7be3c9e10af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGxlb3BhcmR8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
+    title: "Coinbase",
+    status: "read",
+    type: "read",
+    date: new Date(),
+  },
+  {
+    summary: "Account ‘AccName’ linked",
+    src: "https://images.unsplash.com/photo-1590654495303-a7be3c9e10af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGxlb3BhcmR8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
+    title: "Coinbase",
+    status: "read",
+    type: "read",
+    id: "3",
+  },
+  {
+    summary: "Account AccName link request",
+    src: "https://images.unsplash.com/photo-1590654495303-a7be3c9e10af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGxlb3BhcmR8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
+    title: "Coinbase",
+    status: "unread",
+    type: "action",
+    id: "4",
+    date: Date.now(),
+  },
+];
+export default notificationsData;
