@@ -123,6 +123,7 @@ export const WalletScan = ({
               buttonKind="textOnly"
               leftIcon="arrowLeft"
               size="sm"
+              className="p-0 m-0"
               onClick={onBackClick}
             />
           </Layout.Header.Left>

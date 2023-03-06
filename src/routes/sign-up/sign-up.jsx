@@ -192,6 +192,7 @@ export const SignUp = () => {
           onClose={onClose}
           title="Connecting wallet"
           subtitle="Step 2/4"
+          btnText="Continue"
         ></Steps.WalletPermissions>
 
         <Steps.UserInfo

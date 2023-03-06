@@ -27,6 +27,7 @@ export const WalletPermissions = ({
   onClose,
   title,
   subtitle,
+  btnText,
 }) => {
   return (
     <Layout
@@ -70,7 +71,7 @@ export const WalletPermissions = ({
       }
       footer={
         <Button size="lg" buttonKind="primary" onClick={onForwardClick}>
-          Continue
+          {btnText}
         </Button>
       }
     ></Layout>

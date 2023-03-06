@@ -19,6 +19,7 @@ import { WizardContext } from "../../../contexts/wizard-context";
 const StyledBox = styled.div`
   min-width: 280px;
   min-height: 280px;
+  border-radius: 8px;
 `;
 
 export const Body = () => {

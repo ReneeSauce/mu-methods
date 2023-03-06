@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState } from "react";
 import StepWizard from "react-step-wizard";
 import { WizardContext } from "../../contexts/wizard-context";
+import { Steps } from "../steps";
 
 //TODO: update state useState with appropriate items
 /* -------------------------------------------------------------------------- */
@@ -12,23 +13,41 @@ export const AddAccount = () => {
   const [SW, setSW] = useState();
   const [prevStep, setPrevStep] = useState("");
   const [state, updateState] = useState({
-    form: {},
     seedPhrases: [],
     accountData: {},
   });
 
+  //isOpen for Modal
+  const [isOpen, setIsOpen] = useState(false);
   /* ------------------------------ use Callbacks ----------------------------- */
-
+  const updateSeedPhrases = useCallback(
+    (value) => {
+      updateState({
+        ...state,
+        seedPhrases: value,
+      });
+    },
+    [state]
+  );
+  const updateAccountData = useCallback(
+    (accountData) => {
+      updateState({
+        ...state,
+        accountData,
+      });
+    },
+    [state]
+  );
   /* -------------------------------- use Memo -------------------------------- */
+
   const storeValue = useMemo(() => {
     return {
       state,
-      updateForm,
+
       updateSeedPhrases,
       updateAccountData,
     };
-  }, [state, updateForm, updateSeedPhrases, updateAccountData]);
-
+  }, [state, updateSeedPhrases, updateAccountData]);
   /* -------------------------------- functions ------------------------------- */
   //do something on stepchange
   const onStepChange = (stats) => {
@@ -48,6 +67,10 @@ export const AddAccount = () => {
     },
     [SW]
   );
+  //close modal
+  const onClose = () => {
+    setIsOpen(false);
+  };
   /* -------------------------------- handlers -------------------------------- */
   // for debugging to visualize steps
   // const handleForwardClick = (nextStep) => {
@@ -56,6 +79,15 @@ export const AddAccount = () => {
   // const handleBackClick = () => {
   //   console.log(nextStep);
   // };
+  const handleAddWallet = () => {
+    // setIsOpen(true);
+    console.log("save wallet permissionsand data here");
+    alert("save wallet permissions and data here");
+  };
+
+  const handleReturnToDashboard = () => {
+    console.log("add logic here to return to dashboard");
+  };
 
   /* --------------------------- animation controls --------------------------- */
   //to customize transitions from animate.css
@@ -70,6 +102,35 @@ export const AddAccount = () => {
         transitions={custom}
       >
         {/* steps go here with sw */}
+        <Steps.WalletScan
+          stepName="wallet-scan"
+          SW={SW}
+          onForwardClick={goTo("wallet-confirm")}
+          onBackClick={handleReturnToDashboard} //somehow will need to get this to go to dashboard
+          title="Adding account"
+          subtitle="Step 1/3"
+        ></Steps.WalletScan>
+
+        <Steps.WalletConfirm
+          stepName="wallet-confirm"
+          SW={SW}
+          onForwardClick={goTo("wallet-permissions")}
+          onBackClick={goTo("wallet-scan")}
+          title="Adding account"
+          subtitle="Step 2/3"
+        ></Steps.WalletConfirm>
+
+        <Steps.WalletPermissions
+          stepName="wallet-permissions"
+          SW={SW}
+          onForwardClick={handleAddWallet}
+          onBackClick={goTo("wallet-confirm")}
+          isOpen={isOpen}
+          onClose={onClose}
+          title="Adding Account"
+          subtitle="Step 3/3"
+          btnText="Add Account"
+        ></Steps.WalletPermissions>
       </StepWizard>
     </WizardContext.Provider>
   );
