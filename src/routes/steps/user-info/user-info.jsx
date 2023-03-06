@@ -1,7 +1,5 @@
-import chevron from "../../../assets/chevron.svg";
 import { Button, Layout } from "../../../components"; //button needs to be changed when avail
 
-//TODO: Update buttons when available
 //TODO: need to import and add corresponding form when it is created
 //TODO: needs logic to disable/enable button - ?controlled by form validation?
 
@@ -27,7 +25,7 @@ export function UserInfo({ onBackClick, onForwardClick, title, subtitle }) {
           <Layout.Header.Left>
             <Button
               buttonKind="textOnly"
-              leftIcon={chevron}
+              leftIcon="arrowLeft"
               size="sm"
               onClick={onBackClick}
             />
@@ -43,7 +41,7 @@ export function UserInfo({ onBackClick, onForwardClick, title, subtitle }) {
         <Button size="lg" buttonKind="primary" onClick={onForwardClick}>
           Continue
         </Button>
-      } //replace buton with step button
+      }
     ></Layout>
   );
 }

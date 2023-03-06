@@ -81,20 +81,10 @@ export const EntryPoint = ({
       footer={
         <>
           <div className="d-flex flex-column align-items-center gap-16px">
-            <Button
-              size="lg"
-              buttonKind="textOnly"
-              onClick={onLoginClick}
-              className="bg-beta "
-            >
+            <Button size="lg" buttonKind="textOnly" onClick={onLoginClick}>
               Log In
             </Button>
-            <Button
-              size="lg"
-              buttonKind="primary"
-              onClick={onSignUpClick}
-              className="w-100 "
-            >
+            <Button size="lg" buttonKind="primary" onClick={onSignUpClick}>
               Sign Up
             </Button>
 
@@ -102,7 +92,6 @@ export const EntryPoint = ({
               size="lg"
               buttonKind="secondary"
               onClick={onConnectWalletClick}
-              className="w-100 "
             >
               Connect existing Web3 wallet
             </Button>

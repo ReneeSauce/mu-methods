@@ -1,4 +1,3 @@
-import chevron from "../../../assets/chevron.svg";
 import { Button, Layout } from "../../../components"; //button needs to be changed when avail
 
 //TODO: Update buttons when available
@@ -27,7 +26,7 @@ export function LogIn({ onBackClick, onSignUpClick, onLoginClick, title }) {
           <Layout.Header.Left>
             <Button
               buttonKind="textOnly"
-              leftIcon={chevron}
+              leftIcon="arrowLeft"
               size="sm"
               onClick={onBackClick}
             />
@@ -40,12 +39,7 @@ export function LogIn({ onBackClick, onSignUpClick, onLoginClick, title }) {
       body="insert login form component here"
       footer={
         <>
-          <Button
-            size="lg"
-            buttonKind="textOnly"
-            onClick={onSignUpClick}
-            className="bg-beta "
-          >
+          <Button size="lg" buttonKind="textOnly" onClick={onSignUpClick}>
             Sign Up
           </Button>
           <Button size="lg" buttonKind="primary" onClick={onLoginClick}>

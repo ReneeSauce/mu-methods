@@ -151,14 +151,14 @@ export const SignUp = () => {
           onConnectWalletClick={goTo("connect-scan")}
         ></Steps.EntryPoint>
 
-        {/* <Steps.LogIn
+        <Steps.LogIn
           stepName="log-in"
           SW={SW}
           onLoginClick={handleLogInClick}
           onSignUpClick={goTo("user-info")}
           onBackClick={goTo("entry-point")}
           title="Log In"
-        ></Steps.LogIn> */}
+        ></Steps.LogIn>
 
         {/* <Steps.ConnectWalletScan
           stepName="connect-scan"
@@ -191,16 +191,16 @@ export const SignUp = () => {
           subtitle="Step 2/4"
         ></Steps.ConnectWalletPermissions> */}
 
-        {/* <Steps.UserInfo
+        <Steps.UserInfo
           stepName="user-info"
           SW={SW}
           onForwardClick={goTo("seed-phrase")}
           onBackClick={goTo("entry-point")}
           title="Sign up"
           subtitle="Step 1/4"
-        ></Steps.UserInfo> */}
+        ></Steps.UserInfo>
 
-        {/* <Steps.SeedPhrase
+        <Steps.SeedPhrase
           stepName="seed-phrase"
           SW={SW}
           onForwardClick={handleSaveSeedPhraseClick}
@@ -213,7 +213,7 @@ export const SignUp = () => {
           setIsVisible={setIsVisible}
           title="Sign up"
           subtitle="Step 2/4"
-        ></Steps.SeedPhrase> */}
+        ></Steps.SeedPhrase>
 
         {/* <Steps.RepeatSeedPhrase
           stepName="repeat-seed-phrase"

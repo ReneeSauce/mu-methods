@@ -1,11 +1,5 @@
-import chevron from "../../../assets/chevron.svg";
 import { Button, Layout, Modal } from "../../../components"; //button needs to be changed when avail
 import { Body } from "./body";
-//TODO: Update buttons when available
-//TODO:  Figure out how to get modal to line up with layout bottom
-//TODO:  Modal need flexibility for font sizes and text layout
-//TODO: CHECK MODAL WORD SPACING VS FIGMA IS THIS OK?
-//TODO: how does body work with context in step?
 
 /**
  * Seed-phrase Component -
@@ -45,7 +39,7 @@ export function SeedPhrase({
           <Layout.Header.Left>
             <Button
               buttonKind="textOnly"
-              leftIcon={chevron}
+              leftIcon="arrowLeft"
               size="sm"
               onClick={onBackClick}
             />

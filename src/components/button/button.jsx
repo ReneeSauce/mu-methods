@@ -66,6 +66,7 @@ export const Button = ({
     copy: "copy",
     close: "close",
     delete: "delete",
+    download: "download",
     fMolecule: "fMolecule",
     home: "home",
     minus: "minus",
@@ -100,7 +101,7 @@ export const Button = ({
             (dangerText && "text-danger") ||
             (buttonKind === "primary" && "text-alpha") ||
             "text-white"
-          } ${buttonKind === "tertiary" && "my-12px"}` //added by ke - renders padding conditionally for puttons in seedphrase tertiary
+          } ${buttonKind === "tertiary" && "my-12px"}` //added by ke - temp solution-renders padding conditionally for puttons in seedphrase tertiary
         )}
       >
         {children}
