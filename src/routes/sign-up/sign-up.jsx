@@ -112,7 +112,6 @@ export const SignUp = () => {
     setIsVisible(false);
     setIsOpen(true);
   };
-
   const handleConnectWallet = () => {
     setIsOpen(true);
     console.log("save wallet data here");
