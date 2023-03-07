@@ -1,15 +1,18 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {
-  BrowserRouter,
-  createBrowserRouter,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "swiper/css/bundle";
 import { NavTray } from "./components";
-import { Account, AddAccount, Home, Login, Profile, SignUp, Notifications } from "./routes";
+import {
+  Account,
+  AddAccount,
+  Home,
+  Login,
+  Notifications,
+  Profile,
+  SignUp,
+} from "./routes";
 import "./theme/defaults.scss";
 
 ReactDOM.createRoot(document.getElementById("root")).render(

@@ -10,7 +10,7 @@ import notificationsData from "../utils/notifications";
  * Notifications Route
  *  @author [Nuriya](https://github.com/NuriyaAkh)
  * @param src the avatar image link
- * @param type expects "read", or "action"
+ * @param action expects true or false for notification sign actions
  * @param title the notification origin
  * @param summary the notification details
  * @param status expects 'read' or 'unread'
@@ -28,51 +28,61 @@ const NotificationCounter = styled.div`
 `;
 
 export const Notifications = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  //const [isLoading, setIsLoading] = useState(false);
   const [notifications, setNotifications] = useState({});
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedNotification, setSelectedNotification] = useState({});
 
   // unread notification counter
   const unreadNotifications = notificationsData.filter(
     (n) => n.status === "unread"
   );
   const counter = unreadNotifications.length;
+  // sort data by date
+  const groups = notificationsData.reduce((acc, item) => {
+    const date = new Date(item.createdAt).toLocaleDateString("default", {
+      month: "long",
+      day: "2-digit",
+    });
+    if (!acc[date]) {
+      acc[date] = [];
+    }
+    acc[date].push(item);
+    return acc;
+  }, {});
+
+  const currentDate = new Date().toLocaleString("default", {
+    month: "long",
+    day: "2-digit",
+  });
 
   //Generate notifications
   useEffect(() => {
     setNotifications(notificationsData);
   }, []);
-  useEffect(() => {
-    if (!notifications) {
-      setIsLoading(true);
-    } else {
-      setIsLoading(false);
-    }
-  }, [notifications]);
-  const currentDate = new Date().toLocaleString("default", {
-    month: "long",
-    day: "2-digit",
-  });
-  const onNotificationClick = () => {
+  // useEffect(() => {
+  //   if (!notifications) {
+  //     setIsLoading(true);
+  //   } else {
+  //     setIsLoading(false);
+  //   }
+  // }, [notifications]);
+
+  const onNotificationClick = (notification) => {
+    setSelectedNotification(notification);
     setIsOpen(true);
-    console.log("open modal");
   };
   const onClose = () => {
     setIsOpen(false);
-
-    console.log("close modal");
+    setSelectedNotification("");
   };
   const onSignClick = () => {
-    console.log("sign click");
+    console.log("sign click logic");
   };
   return (
     <>
       <NotificationsContainer className="d-flex flex-column bg-alpha pt-32px pb-24px px-16px my-0 mx-auto position-relative">
-        <MuIcon
-          height="20px"
-          className=""
-          onClick={() => console.log("home")}
-        />
+        <MuIcon height="20px" className="" />
         <div className="d-flex flex-row justify-content-center align-items-center">
           <Layout.Header.Center>
             <Header.Title title="Notifications" />
@@ -81,35 +91,56 @@ export const Notifications = () => {
             {counter}
           </NotificationCounter>
         </div>
-        <p className="mt-4 mb-4 fs-10px fw-normal text-uppercase text-white text-opacity-70 lh-sm">
-          {currentDate} (today)
-        </p>
+
         <div>
-          {notificationsData.map((notification, id) => {
-            return (
-              <div key={id} onClick={onNotificationClick}>
-                <Notification
-                  src={notification.src}
-                  title={notification.title}
-                  status={notification.status}
-                  summary={notification.summary}
-                  type={notification.type}
-                  createdAt={notification.date}
-                />
+          {Object.keys(groups)
+            .sort((dateA, dateB) => new Date(dateB) - new Date(dateA))
+            .map((date, id) => (
+              <div key={id}>
+                <p className="mt-4 mb-4 fs-10px fw-normal text-uppercase text-white text-opacity-70 lh-sm">
+                  {date === currentDate ? `${date} (today)` : date}
+                </p>
+                {groups[date]
+                  .sort(
+                    (dateA, dateB) =>
+                      new Date(dateB.createdAt) - new Date(dateA.createdAt)
+                  )
+                  .map((notification, id) => (
+                    <div
+                      key={id}
+                      onClick={() => onNotificationClick(notification)}
+                    >
+                      <Notification
+                        src={notification.src}
+                        title={notification.title}
+                        status={notification.status}
+                        summary={notification.summary}
+                        type={notification.type}
+                        createdAt={notification.createdAt}
+                      />
+                    </div>
+                  ))}
               </div>
-            );
-          })}
+            ))}
         </div>
       </NotificationsContainer>
       <Modal isOpen={isOpen} onClose={onClose}>
-        <Modal.Title>coinbase</Modal.Title>
-        <div>summary</div>
-        <Button size="lg" buttonKind="textOnly" onClick={onClose}>
-          Decline
-        </Button>
-        <Button size="lg" buttonKind="primary" onClick={onSignClick}>
-          Sign
-        </Button>
+        <Modal.Title>{selectedNotification.title}</Modal.Title>
+        <div className="flex-grow-1">{selectedNotification.summary}</div>
+        <div className="d-flex flex-column w-100 text-opacity-90 align-self-center gap-3">
+          {selectedNotification.action ? (
+            <>
+              <Button size="lg" buttonKind="primary_red" onClick={onClose}>
+                Decline
+              </Button>
+              <Button size="lg" buttonKind="primary" onClick={onSignClick}>
+                Sign
+              </Button>
+            </>
+          ) : (
+            ""
+          )}
+        </div>
       </Modal>
     </>
   );
