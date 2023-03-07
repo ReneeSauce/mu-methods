@@ -32,7 +32,7 @@ export default function LoginForm() {
 
   return (
     <>
-      <Form onSubmit={onSubmit}>
+      <Form formName="Login Form" onSubmit={onSubmit}>
         <Input
           name="email"
           placeholder="myemail@mumethods.com"

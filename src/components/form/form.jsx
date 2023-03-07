@@ -7,11 +7,17 @@ import { useForm } from "react-hook-form";
  * @author [Jake Bohn](https://github.com/JakobOrion)
  */
 
-export default function Form({ defaultValues, children, onSubmit, ...rest }) {
+export default function Form({
+  defaultValues,
+  children,
+  formName,
+  onSubmit,
+  ...rest
+}) {
   const { handleSubmit, register } = useForm({ defaultValues });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} {...rest}>
+    <form aria-label={formName} onSubmit={handleSubmit(onSubmit)} {...rest}>
       {Array.isArray(children)
         ? children.map((child) => {
             return child.props.name
