@@ -11,7 +11,7 @@ import { Steps } from "../steps";
 
 //
 /* -------------------------------------------------------------------------- */
-/*                               function SignUp                              */
+/*                                SignUp Wizard                           */
 /* -------------------------------------------------------------------------- */
 export const SignUp = () => {
   /* ------------------------------- use states ------------------------------- */
@@ -151,7 +151,7 @@ export const SignUp = () => {
           SW={SW}
           onLoginClick={goTo("log-in")}
           onSignUpClick={goTo("user-info")}
-          onConnectWalletClick={goTo("connect-scan")}
+          onConnectWalletClick={goTo("wallet-scan")}
         ></Steps.EntryPoint>
 
         <Steps.LogIn
@@ -163,36 +163,37 @@ export const SignUp = () => {
           title="Log In"
         ></Steps.LogIn>
 
-        <Steps.ConnectWalletScan
-          stepName="connect-scan"
+        <Steps.WalletScan
+          stepName="wallet-scan"
           SW={SW}
-          onForwardClick={goTo("connect-confirm")}
+          onForwardClick={goTo("wallet-confirm")}
           onBackClick={goTo("entry-point")}
           title="Connecting wallet"
           subtitle="Step 1/4"
-        ></Steps.ConnectWalletScan>
+        ></Steps.WalletScan>
 
-        <Steps.ConnectWalletConfirm
-          stepName="connect-confirm"
+        <Steps.WalletConfirm
+          stepName="wallet-confirm"
           SW={SW}
-          onForwardClick={goTo("connect-permissions")}
-          onBackClick={goTo("connect-scan")}
+          onForwardClick={goTo("wallet-permissions")}
+          onBackClick={goTo("wallet-scan")}
           title="Connecting wallet"
           subtitle="Step 2/4"
-        ></Steps.ConnectWalletConfirm>
+        ></Steps.WalletConfirm>
 
-        <Steps.ConnectWalletPermissions
-          stepName="connect-permissions"
+        <Steps.WalletPermissions
+          stepName="wallet-permissions"
           SW={SW}
           onForwardClick={handleConnectWallet}
-          onBackClick={goTo("connect-confirm")}
+          onBackClick={goTo("wallet-confirm")}
           onSkipStepClick={handleSkipStepClick}
           onStoreWithPeersClick={handleWithPeersClick}
           isOpen={isOpen}
           onClose={onClose}
           title="Connecting wallet"
           subtitle="Step 2/4"
-        ></Steps.ConnectWalletPermissions>
+          btnText="Continue"
+        ></Steps.WalletPermissions>
 
         <Steps.UserInfo
           stepName="user-info"

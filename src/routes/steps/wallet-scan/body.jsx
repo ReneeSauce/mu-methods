@@ -20,13 +20,14 @@ import styled from "styled-components";
 const StyledBox = styled.div`
   min-width: 280px;
   min-height: 280px;
+  border-radius: 8px;
 `;
 
 export const Body = ({ onClick }) => {
   /* --------------------------------- return --------------------------------- */
   return (
     <>
-      <h4 className="pb-12px m-0 text-white text-opacity-90 fs-24px text-center">
+      <h4 className="pb-32px px-12px m-0 text-white text-opacity-90 fs-24px text-center">
         Scan QR code to connect your existing Web3 wallet
       </h4>
 

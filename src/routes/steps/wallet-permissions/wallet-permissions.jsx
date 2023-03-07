@@ -6,7 +6,7 @@ import { Body } from "./body";
 //TODO: question will Account info context hold all of this stuff?
 
 /**
- * Connect-Wallet Permissions Component -
+ * Wallet Permissions Component -
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
  * @param onBackClick back click handler prop passed down from parent
  * @param onForwardClick forward click handler prop passed down from parent
@@ -18,7 +18,7 @@ import { Body } from "./body";
  *
  */
 
-export const ConnectWalletPermissions = ({
+export const WalletPermissions = ({
   onBackClick,
   onForwardClick,
   onSkipStepClick,
@@ -27,6 +27,7 @@ export const ConnectWalletPermissions = ({
   onClose,
   title,
   subtitle,
+  btnText,
 }) => {
   return (
     <Layout
@@ -70,7 +71,7 @@ export const ConnectWalletPermissions = ({
       }
       footer={
         <Button size="lg" buttonKind="primary" onClick={onForwardClick}>
-          Continue
+          {btnText}
         </Button>
       }
     ></Layout>
