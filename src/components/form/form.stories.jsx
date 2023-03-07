@@ -48,8 +48,6 @@ const Template = () => {
   });
 
   const {
-    register,
-    handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(LoginSchema) });
 
@@ -59,12 +57,7 @@ const Template = () => {
   };
 
   return (
-    <Form
-      formName="demo-form"
-      register={register}
-      handleSubmit={handleSubmit}
-      onSubmit={onSubmit}
-    >
+    <Form formName="demo login form" onSubmit={onSubmit}>
       <Input
         name="email"
         id="email"
@@ -79,7 +72,7 @@ const Template = () => {
         name="password"
         id="password"
         placeholder="password"
-        label="password"
+        label="Password"
         className="mb-3"
         error={errors.password?.message}
         type="password"
