@@ -70,7 +70,7 @@ export const Modal = ({ isOpen, onClose, children }) => {
             animate={{ y: isOpen ? 0 : "100%", opacity: 1 }}
             exit={{ y: "100%", opacity: 0 }}
             transition={{
-              duration: 0.3,
+              duration: 0.1,
               type: "spring",
               damping: 50,
               stiffness: 100,

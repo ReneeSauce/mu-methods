@@ -81,9 +81,7 @@ export const Notifications = () => {
     setIsSignModalOpen(true);
     console.log("sign click logic");
   };
-  // const onCloseSignModal = () => {
-  //   setIsSignModalOpen(false); // set sign modal state to closed
-  // };
+
   return (
     <>
       <NotificationsContainer className="d-flex flex-column bg-alpha pt-32px pb-24px px-16px my-0 mx-auto position-relative">
