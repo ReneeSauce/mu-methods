@@ -1,11 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import homeIconActive from "../../assets/home-active.svg";
-import homeIcon from "../../assets/home.svg";
-import notificationIconActive from "../../assets/notification-active.svg";
-import notificationIcon from "../../assets/notification.svg";
-import profileIconActive from "../../assets/profile-active.svg";
-import profileIcon from "../../assets/profile.svg";
-
+import HomeIcon from "../icons/home";
+import NotificationIcon from "../icons/notification";
+import ProfileIcon from "../icons/profile";
 import { NavTray } from "./nav-tray";
 
 const Home = () => {
@@ -34,27 +30,22 @@ const Notification = () => {
 
 const navLinks = [
   {
-    role: "login",
-    to: "/login",
-    icon: profileIcon,
-    activeIcon: profileIconActive,
+    to: "/profile",
+    Icon: ProfileIcon,
   },
   {
     role: "home",
     to: "/",
-    icon: homeIcon,
-    activeIcon: homeIconActive,
+    Icon: HomeIcon,
   },
   {
-    role: "notification",
     to: "/notification",
-    icon: notificationIcon,
-    activeIcon: notificationIconActive,
+    Icon: NotificationIcon,
     isNotification: true,
   },
 ];
 
-let isUnreadedMessages = false;
+let isUnreadMessages;
 
 export default {
   title: "Components/NavTray",
@@ -64,7 +55,7 @@ export default {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Profile />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/notification" element={<Notification />} />
         </Routes>
         <Story />
@@ -72,7 +63,7 @@ export default {
     ),
   ],
   argTypes: {
-    isUnreadedMessages: {
+    isUnreadMessages: {
       control: { type: "boolean" },
       defaultValue: false,
       description:
@@ -82,9 +73,5 @@ export default {
 };
 
 export const Mobile = (args) => (
-  <NavTray
-    navLinks={navLinks}
-    isUnreadedMessages={isUnreadedMessages}
-    {...args}
-  />
+  <NavTray navLinks={navLinks} isUnreadMessages={isUnreadMessages} {...args} />
 );

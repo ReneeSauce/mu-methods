@@ -9,8 +9,13 @@ import {
 } from "react-router-dom";
 import "swiper/css/bundle";
 import { NavTray } from "./components";
+import HomeIcon from "./components/icons/home";
+import NotificationIcon from "./components/icons/notification";
+import ProfileIcon from "./components/icons/profile";
 import { Account, AddAccount, Home, Login, Profile, SignUp } from "./routes";
 import "./theme/defaults.scss";
+
+const isLoggedIn = true;
 
 const router = createBrowserRouter([
   {
@@ -98,19 +103,27 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           }
         />
       </Routes>
-      <NavTray
-        isLoggedIn={false}
-        navLinks={[
-          {
-            role: "login",
-            to: "/login",
-          },
-          {
-            role: "home",
-            to: "/",
-          },
-        ]}
-      />
+      {isLoggedIn && (
+        <NavTray
+          navLinks={[
+            {
+              role: "profile",
+              to: "/profile",
+              Icon: ProfileIcon,
+            },
+            {
+              role: "home",
+              to: "/",
+              Icon: HomeIcon,
+            },
+            {
+              to: "/account",
+              Icon: NotificationIcon,
+              isNotification: true,
+            },
+          ]}
+        />
+      )}
     </BrowserRouter>
   </React.StrictMode>
 );

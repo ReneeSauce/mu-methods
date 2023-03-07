@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import notificationSign from "../../assets/notification-sign.svg";
 
@@ -18,13 +18,11 @@ const StyledNavLink = styled(NavLink)`
   background-repeat: no-repeat;
   background-size: center;
   position: relative;
-  background-image: url("${({ inactive }) => inactive}");
   &:active {
     background-color: rgba(255, 255, 255, 0.3);
   }
   &.active {
     background-color: rgba(255, 255, 255, 0.3);
-    background-image: url("${({ active }) => active}");
   }
 `;
 
@@ -37,38 +35,38 @@ const StyledNavBar = styled.nav`
   transform: translate(50%, 0);
 `;
 
-let num = 0;
-
-export const NavTray = ({ isUnreadMessages, navLinks, isLoggedIn }) => {
+export const NavTray = ({ isUnreadMessages, navLinks }) => {
+  const location = useLocation();
   return (
-    <>
-      {isLoggedIn && (
-        <StyledNavBar className="nav position-fixed d-flex justify-content-evenly align-items-center rounded-pill bg-white bg-opacity-10">
-          {navLinks.map((link) => {
-            return (
-              <StyledNavLink
-                key={_.uniqueId()}
-                role={link.role}
-                to={link.to}
-                className="nav-link rounded-circle"
-                inactive={link.icon}
-                active={link.activeIcon}
-              >
-                {link.isNotification && (
-                  <img
-                    src={notificationSign}
-                    alt="Blue circle"
-                    className={`position-absolute ${
-                      isUnreadMessages ? "d-block" : "d-none"
-                    }`}
-                    style={{ top: "13px", right: "13px" }}
-                  />
-                )}
-              </StyledNavLink>
-            );
-          })}
-        </StyledNavBar>
-      )}
-    </>
+    <StyledNavBar className="nav position-fixed d-flex justify-content-evenly align-items-center rounded-pill bg-white bg-opacity-10">
+      {navLinks.map((link) => {
+        return (
+          <StyledNavLink
+            key={_.uniqueId()}
+            role={link.role}
+            to={link.to}
+            className="nav-link rounded-circle d-flex justify-content-center align-items-center"
+          >
+            <link.Icon
+              className={
+                location.pathname === link.to ? "opacity-100" : "opacity-70"
+              }
+              width="22"
+              height="22"
+            />
+            {link.isNotification && (
+              <img
+                src={notificationSign}
+                alt="Blue circle"
+                className={`position-absolute ${
+                  isUnreadMessages ? "d-block" : "d-none"
+                }`}
+                style={{ top: "13px", right: "13px" }}
+              />
+            )}
+          </StyledNavLink>
+        );
+      })}
+    </StyledNavBar>
   );
 };
