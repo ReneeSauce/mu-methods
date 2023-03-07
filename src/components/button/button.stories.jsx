@@ -1,4 +1,3 @@
-import copyIcon from "../../assets/copy-icon.svg";
 import { Button } from "./button";
 
 export default {
@@ -20,10 +19,46 @@ export default {
       control: "boolean",
     },
     leftIcon: {
-      control: "text",
+      options: [
+        "add",
+        "alert",
+        "arrowDown",
+        "arrowLeft",
+        "arrowRight",
+        "copy",
+        "close",
+        "delete",
+        "fMolecule",
+        "home",
+        "minus",
+        "mu",
+        "notification",
+        "profile",
+        "regenerate",
+        "settings",
+      ],
+      control: { type: "select" },
     },
     rightIcon: {
-      control: "text",
+      options: [
+        "add",
+        "alert",
+        "arrowDown",
+        "arrowLeft",
+        "arrowRight",
+        "copy",
+        "close",
+        "delete",
+        "fMolecule",
+        "home",
+        "minus",
+        "mu",
+        "notification",
+        "profile",
+        "regenerate",
+        "settings",
+      ],
+      control: { type: "select" },
     },
     onClick: {
       control: "text",
@@ -57,8 +92,8 @@ Secondary.args = {
 Tertiary.args = {
   size: "lg",
   buttonKind: "tertiary",
-  children: "Need to update bg-opacity",
-  dangerText: true,
+  children: "New Group",
+  leftIcon: "add",
 };
 
 TextOnly.args = {
@@ -83,12 +118,12 @@ Disabled.args = {
 Icon.args = {
   size: "sm",
   buttonKind: "textOnly",
-  leftIcon: copyIcon,
+  leftIcon: "settings",
 };
 
 TextAndIcon.args = {
   size: "md",
   buttonKind: "secondary",
-  rightIcon: copyIcon,
-  children: "Copy",
+  children: "Regenerate",
+  leftIcon: "regenerate",
 };

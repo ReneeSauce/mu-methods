@@ -21,3 +21,6 @@ export const Layout = ({ header, body, footer, className }) => {
     </Container>
   );
 };
+Layout.Header = Header;
+// Layout.Body = Body;
+// Layout.Footer = Footer;

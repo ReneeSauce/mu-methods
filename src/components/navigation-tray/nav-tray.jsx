@@ -39,32 +39,36 @@ const StyledNavBar = styled.nav`
 
 let num = 0;
 
-export const NavTray = ({ isUnreadMessages, navLinks }) => {
+export const NavTray = ({ isUnreadMessages, navLinks, isLoggedIn }) => {
   return (
-    <StyledNavBar className="nav position-fixed d-flex justify-content-evenly align-items-center rounded-pill bg-white bg-opacity-10">
-      {navLinks.map((link) => {
-        return (
-          <StyledNavLink
-            key={_.uniqueId()}
-            role={link.role}
-            to={link.to}
-            className="nav-link rounded-circle"
-            inactive={link.icon}
-            active={link.activeIcon}
-          >
-            {link.isNotification && (
-              <img
-                src={notificationSign}
-                alt="Blue circle"
-                className={`position-absolute ${
-                  isUnreadMessages ? "d-block" : "d-none"
-                }`}
-                style={{ top: "13px", right: "13px" }}
-              />
-            )}
-          </StyledNavLink>
-        );
-      })}
-    </StyledNavBar>
+    <>
+      {isLoggedIn && (
+        <StyledNavBar className="nav position-fixed d-flex justify-content-evenly align-items-center rounded-pill bg-white bg-opacity-10">
+          {navLinks.map((link) => {
+            return (
+              <StyledNavLink
+                key={_.uniqueId()}
+                role={link.role}
+                to={link.to}
+                className="nav-link rounded-circle"
+                inactive={link.icon}
+                active={link.activeIcon}
+              >
+                {link.isNotification && (
+                  <img
+                    src={notificationSign}
+                    alt="Blue circle"
+                    className={`position-absolute ${
+                      isUnreadMessages ? "d-block" : "d-none"
+                    }`}
+                    style={{ top: "13px", right: "13px" }}
+                  />
+                )}
+              </StyledNavLink>
+            );
+          })}
+        </StyledNavBar>
+      )}
+    </>
   );
 };
