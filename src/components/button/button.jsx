@@ -51,7 +51,7 @@ export const Button = ({
 
   const kinds = {
     primary: "bg-primary",
-    primary_red: "bg-danger",
+    primary_red: "bg-danger bg-opacity-50",
     secondary: "border border-white bg-transparent",
     tertiary: "bg-white bg-opacity-10",
     textOnly: "bg-transparent text-white",
