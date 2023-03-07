@@ -3,7 +3,7 @@
  * @author [Colburn Sanders](https://github.com/colburncodes)
  */
 
-import { Camera } from "./Camera";
+import { Camera } from "./camera";
 
 export default {
   title: "Camera",
