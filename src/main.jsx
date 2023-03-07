@@ -8,9 +8,10 @@ import {
   Routes,
 } from "react-router-dom";
 import "swiper/css/bundle";
-import { NavTray } from "./components/navigation-tray/nav-tray";
-import { Account, Home, Login, Profile } from "./routes";
+import { NavTray } from "./components";
+import { Account, AddAccount, Home, Login, Profile, SignUp } from "./routes";
 import "./theme/defaults.scss";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,6 +20,14 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
+  },
+  {
+    path: "/addaccount",
+    element: <AddAccount />,
   },
   {
     path: "/profile",
@@ -57,6 +66,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/addaccount" element={<AddAccount />} />
         <Route
           path="/profile"
           element={
@@ -71,6 +82,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             />
           }
         />
+        <Route path="/accountpage" element={<SignUp />} />
         <Route
           path="/account"
           element={
@@ -87,6 +99,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         />
       </Routes>
       <NavTray
+        isLoggedIn={false}
         navLinks={[
           {
             role: "login",

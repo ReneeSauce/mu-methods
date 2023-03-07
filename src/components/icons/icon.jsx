@@ -6,6 +6,7 @@ import ArrowRight from "./arrowRight";
 import Close from "./close";
 import Copy from "./copy";
 import Delete from "./delete";
+import Download from "./download";
 import FMolecule from "./fMolecule";
 import Home from "./home";
 import Minus from "./minus";
@@ -33,6 +34,8 @@ const Icon = (props) => {
       return <Copy {...props} />;
     case "delete":
       return <Delete {...props} />;
+    case "download":
+      return <Download {...props} />;
     case "fMolecule":
       return <FMolecule {...props} />;
     case "home":
