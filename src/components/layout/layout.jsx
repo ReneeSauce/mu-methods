@@ -22,5 +22,5 @@ export const Layout = ({ header, body, footer, className }) => {
   );
 };
 Layout.Header = Header;
-Layout.Body = Body;
-Layout.Footer = Footer;
+// Layout.Body = Body;
+// Layout.Footer = Footer;
