@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Button, Layout } from "../components";
+import { Button, Layout, Modal, Notification } from "../components";
 import MuIcon from "../components/icons/mu";
 import { Header } from "../components/layout/header";
-import { Notification } from "../components/notification/notification";
+
 import notificationsData from "../utils/notifications";
 
 /**
@@ -14,68 +14,81 @@ import notificationsData from "../utils/notifications";
  * @param title the notification origin
  * @param summary the notification details
  * @param status expects 'read' or 'unread'
+ * @param createdAt expects date the notification is created
  **/
-
+const NotificationsContainer = styled.div`
+  width: 375px;
+  min-height: 762px;
+`;
 const NotificationCounter = styled.div`
   height: 18px;
   width: 24px;
   padding: 2px 8px;
   border-radius: 8px;
 `;
-export const Notifications = ({ data }) => {
+
+export const Notifications = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [notifications, setNotifications] = useState(notificationsData);
+  const [notifications, setNotifications] = useState({});
+  const [isOpen, setIsOpen] = useState(false);
+
   // unread notification counter
-  const unreadNotifications = notificationsData.filter((n) => {
-    console.log(n);
-    n.value === "unread";
-  });
+  const unreadNotifications = notificationsData.filter(
+    (n) => n.status === "unread"
+  );
   const counter = unreadNotifications.length;
 
-  console.log(unreadNotifications);
-  console.log(counter);
-  // Generate notifications
-  // useEffect(() => {
-  //   setNotifications(notificationsData);
-  // }, []);
-  // useEffect(() => {
-  //   if (!notifications) {
-  //     setIsLoading(true);
-  //   } else {
-  //     setIsLoading(false);
-  //   }
-  // }, [notifications]);
+  //Generate notifications
+  useEffect(() => {
+    setNotifications(notificationsData);
+  }, []);
+  useEffect(() => {
+    if (!notifications) {
+      setIsLoading(true);
+    } else {
+      setIsLoading(false);
+    }
+  }, [notifications]);
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "2-digit",
   });
+  const onNotificationClick = () => {
+    setIsOpen(true);
+    console.log("open modal");
+  };
+  const onClose = () => {
+    setIsOpen(false);
+
+    console.log("close modal");
+  };
+  const onSignClick = () => {
+    console.log("sign click");
+  };
   return (
     <>
-      <p>{currentDate}</p>
-      <Layout
-        className="mb-32px"
-        header={
-          <>
-            <MuIcon height="20px" className="" />
-
-            <Layout.Header.Center>
-              <Header.Title title="Notifications" />
-            </Layout.Header.Center>
-            <Layout.Header.Right>
-              {" "}
-              <NotificationCounter className="text-white fs-12px fw-normal bg-white bg-opacity-20 d-flex align-items-center">
-                {counter}
-              </NotificationCounter>
-            </Layout.Header.Right>
-          </>
-        }
-        body={notificationsData.map((notification, id) => {
-          return (
-            <>
-              {" "}
-              <Button size="lg">
+      <NotificationsContainer className="d-flex flex-column bg-alpha pt-32px pb-24px px-16px my-0 mx-auto position-relative">
+        <MuIcon
+          height="20px"
+          className=""
+          onClick={() => console.log("home")}
+        />
+        <div className="d-flex flex-row justify-content-center align-items-center">
+          <Layout.Header.Center>
+            <Header.Title title="Notifications" />
+          </Layout.Header.Center>
+          <NotificationCounter className="text-white fs-12px fw-normal bg-white bg-opacity-20 d-flex align-items-center">
+            {counter}
+          </NotificationCounter>
+        </div>
+        <p className="mt-4 mb-4 fs-10px fw-normal text-uppercase text-white text-opacity-70 lh-sm">
+          {currentDate} (today)
+        </p>
+        <div>
+          {notificationsData.map((notification, id) => {
+            return (
+              <div key={id} onClick={onNotificationClick}>
                 <Notification
-                  key={id}
                   src={notification.src}
                   title={notification.title}
                   status={notification.status}
@@ -83,11 +96,21 @@ export const Notifications = ({ data }) => {
                   type={notification.type}
                   createdAt={notification.date}
                 />
-              </Button>
-            </>
-          );
-        })}
-      ></Layout>
+              </div>
+            );
+          })}
+        </div>
+      </NotificationsContainer>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal.Title>coinbase</Modal.Title>
+        <div>summary</div>
+        <Button size="lg" buttonKind="textOnly" onClick={onClose}>
+          Decline
+        </Button>
+        <Button size="lg" buttonKind="primary" onClick={onSignClick}>
+          Sign
+        </Button>
+      </Modal>
     </>
   );
 };
