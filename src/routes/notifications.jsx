@@ -32,7 +32,7 @@ export const Notifications = () => {
   const [notifications, setNotifications] = useState({});
   const [isOpen, setIsOpen] = useState(false);
   const [selectedNotification, setSelectedNotification] = useState({});
-
+  const [isSignModalOpen, setIsSignModalOpen] = useState(false);
   // unread notification counter
   const unreadNotifications = notificationsData.filter(
     (n) => n.status === "unread"
@@ -75,14 +75,19 @@ export const Notifications = () => {
   const onClose = () => {
     setIsOpen(false);
     setSelectedNotification("");
+    setIsSignModalOpen(false);
   };
   const onSignClick = () => {
+    setIsSignModalOpen(true);
     console.log("sign click logic");
   };
+  // const onCloseSignModal = () => {
+  //   setIsSignModalOpen(false); // set sign modal state to closed
+  // };
   return (
     <>
       <NotificationsContainer className="d-flex flex-column bg-alpha pt-32px pb-24px px-16px my-0 mx-auto position-relative">
-        <MuIcon height="20px" className="" />
+        <MuIcon height="20px" />
         <div className="d-flex flex-row justify-content-center align-items-center">
           <Layout.Header.Center>
             <Header.Title title="Notifications" />
@@ -107,6 +112,7 @@ export const Notifications = () => {
                   )
                   .map((notification, id) => (
                     <div
+                      type="button"
                       key={id}
                       onClick={() => onNotificationClick(notification)}
                     >
@@ -140,6 +146,27 @@ export const Notifications = () => {
           ) : (
             ""
           )}
+        </div>
+      </Modal>
+      <Modal isOpen={isSignModalOpen} onClose={onClose}>
+        <Modal.Title>{selectedNotification.title}</Modal.Title>
+        <div className="d-flex flex-column flex-grow-1 justify-content-center align-items-center">
+          <p className="p-0 align-self-center">
+            {selectedNotification.summary}
+          </p>
+          <div>Type “carrot pizza” to sign your transaction</div>
+          <input
+            className="mt-4 text-white text-opacity-70 rounded py-20px px-8px border-0 bg-white bg-opacity-10 fs-18px w-100"
+            placeholder=" Type here "
+          ></input>
+        </div>
+        <div className="d-flex flex-column w-100 text-opacity-90 align-self-center gap-3">
+          <Button size="lg" buttonKind="primary_red" onClick={onClose}>
+            Decline
+          </Button>
+          <Button size="lg" buttonKind="primary" onClick={onSignClick}>
+            Sign
+          </Button>
         </div>
       </Modal>
     </>
