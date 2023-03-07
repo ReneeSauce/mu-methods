@@ -14,7 +14,7 @@ const StyledWrapper = styled.div`
 `;
 export const Container = ({ children }) => {
   return (
-    <StyledWrapper className="d-flex flex-column bg-alpha pt-32px pb-24px px-16px my-0 mx-auto">
+    <StyledWrapper className="d-flex flex-column bg-alpha pt-32px pb-24px px-16px my-0 mx-auto position-relative">
       {children}
     </StyledWrapper>
   );

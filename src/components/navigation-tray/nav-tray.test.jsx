@@ -19,6 +19,7 @@ describe("Navigation tray", () => {
           <Route path="/login" element={<Login />} />
         </Routes>
         <NavTray
+          isLoggedIn={true}
           navLinks={[
             {
               role: "login",

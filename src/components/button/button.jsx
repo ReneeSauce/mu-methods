@@ -66,6 +66,7 @@ export const Button = ({
     copy: "copy",
     close: "close",
     delete: "delete",
+    download: "download",
     fMolecule: "fMolecule",
     home: "home",
     minus: "minus",
@@ -82,7 +83,7 @@ export const Button = ({
       onClick={onClick}
       size={sizes[size]}
       className={cx(
-        `d-flex flex-row align-items-center justify-content-center ${kinds[buttonKind]}`
+        `d-flex flex-row align-items-center justify-content-center ${kinds[buttonKind]} `
       )}
       role="button"
     >
@@ -100,7 +101,7 @@ export const Button = ({
             (dangerText && "text-danger") ||
             (buttonKind === "primary" && "text-alpha") ||
             "text-white"
-          }`
+          } ${buttonKind === "tertiary" && "my-12px"}` //added by ke - temp solution-renders padding conditionally for puttons in seedphrase tertiary
         )}
       >
         {children}

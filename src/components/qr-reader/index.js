@@ -1,1 +1,1 @@
-export * as QRCodeScanner from "./qr-reader";
+export * from "./qr-reader";
