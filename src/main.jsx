@@ -7,10 +7,10 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import { Account, Home, Login, Notifications, Profile } from "./routes";
-import { SignUp } from "./routes/sign-up/sign-up";
+import "swiper/css/bundle";
+import { NavTray } from "./components/navigation-tray/nav-tray";
+import { Account, Home, Login, Profile } from "./routes";
 import "./theme/defaults.scss";
-
 const router = createBrowserRouter([
   {
     path: "/",

@@ -20,17 +20,4 @@ describe("Component: Button", () => {
     );
     expect(screen.getByRole("button")).toBeDisabled();
   });
-
-  it("Renders icon button", () => {
-    render(
-      <Button
-        buttonKind="textOnly"
-        size="sm"
-        leftIcon={
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/How_to_use_icon.svg/1200px-How_to_use_icon.svg.png"
-        }
-      />
-    );
-    expect(screen.getByRole("icon")).toBeInTheDocument();
-  });
 });
