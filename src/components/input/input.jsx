@@ -1,10 +1,25 @@
 import FloatingLabel from "react-bootstrap/FloatingLabel";
-import * as BS_FORM from "react-bootstrap/Form";
-
+import BS_FORM from "react-bootstrap/Form";
+import styled from "styled-components";
 /**
  * Form Input Components registers inputs into react-hook-form.
  * @author [Jake Bohn](https://github.com/JakobOrion)
  */
+const StyledInput = styled(BS_FORM.Control)`
+  border-color: var(--bs-beta);
+  font-weight: 500;
+
+  &:focus {
+    border-color: var(--bs-primary);
+    box-shadow: none;
+  }
+  &:invalid {
+    box-shadow: none;
+  }
+  &:invalid:focus {
+    box-shadow: none;
+  }
+`;
 
 export function Input({
   register,
@@ -17,10 +32,17 @@ export function Input({
 }) {
   return (
     <FloatingLabel controlId={id} label={label} className={className}>
-      <BS_FORM.Control {...register(name)} {...rest} isInvalid={error} />
-      <BS_FORM.Control.Feedback type="invalid">
-        {error}
-      </BS_FORM.Control.Feedback>
+      <StyledInput
+        isInvalid={error}
+        className="bg-beta text-white fs-18px text-opacity-90"
+        {...register(name)}
+        {...rest}
+      />
+      {error && (
+        <BS_FORM.Control.Feedback type="invalid">
+          {error}
+        </BS_FORM.Control.Feedback>
+      )}
     </FloatingLabel>
   );
 }
@@ -37,7 +59,7 @@ export function Select({
 }) {
   return (
     <FloatingLabel controlId={id} label={label} className={className}>
-      <BS_FORM.Select {...register(name)} {...rest} isInvalid={error}>
+      <BS_FORM.Select isInvalid={error} {...register(name)} {...rest}>
         {options.map((value) => (
           <option key={value} value={value}>
             {value}
