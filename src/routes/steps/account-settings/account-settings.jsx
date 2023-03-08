@@ -38,6 +38,7 @@ export const AccountSettings = ({
               leftIcon="arrowLeft"
               size="sm"
               onClick={onBackClick}
+              className="m-0 p-0 justify-content-start"
             />
           </Layout.Header.Left>
           <Layout.Header.Center>
