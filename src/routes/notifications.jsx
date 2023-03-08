@@ -30,11 +30,12 @@ const NotificationCounter = styled.div`
 export const Notifications = () => {
   //const [isLoading, setIsLoading] = useState(false);
   const [notifications, setNotifications] = useState({});
-  const [isOpen, setIsOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedNotification, setSelectedNotification] = useState({});
   const [isSignModalOpen, setIsSignModalOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const isInputEmpty = inputValue.trim() === "";
+  const isAnyModalOpen = isModalOpen || isSignModalOpen;
   // unread notification counter
   const unreadNotifications = notificationsData.filter(
     (n) => n.status === "unread"
@@ -75,18 +76,20 @@ export const Notifications = () => {
     setIsOpen(true);
   };
   const onClose = () => {
-    setIsOpen(false);
+    setIsModalOpen(false);
     setSelectedNotification("");
     setIsSignModalOpen(false);
     setInputValue("");
   };
+  const onInputValueChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
   const onSignClick = () => {
     setIsSignModalOpen(true);
     console.log("sign click logic");
   };
-  const onInputValueChange = (event) => {
-    setInputValue(event.target.value);
-  };
+
   const onSignTransaction = () => {
     if (inputValue.toLowerCase() === "carrot pizza") {
       console.log("signed successfully.");
@@ -141,7 +144,7 @@ export const Notifications = () => {
             ))}
         </div>
       </NotificationsContainer>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal isOpen={isModalOpen} onClose={onClose}>
         <Modal.Title>{selectedNotification.title}</Modal.Title>
         <div className="flex-grow-1">{selectedNotification.summary}</div>
         <div className="d-flex flex-column w-100 text-opacity-90 align-self-center gap-3">
