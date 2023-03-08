@@ -34,7 +34,7 @@ export const Notifications = () => {
   const [selectedNotification, setSelectedNotification] = useState({});
   const [isSignModalOpen, setIsSignModalOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
-
+  const isInputEmpty = inputValue.trim() === "";
   // unread notification counter
   const unreadNotifications = notificationsData.filter(
     (n) => n.status === "unread"
@@ -177,7 +177,12 @@ export const Notifications = () => {
           <Button size="lg" buttonKind="primary_red" onClick={onClose}>
             Decline
           </Button>
-          <Button size="lg" buttonKind="primary" onClick={onSignTransaction}>
+          <Button
+            size="lg"
+            buttonKind="primary"
+            disabled={isInputEmpty}
+            onClick={onSignTransaction}
+          >
             Sign
           </Button>
         </div>
