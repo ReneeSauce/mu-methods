@@ -33,6 +33,8 @@ export const Notifications = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedNotification, setSelectedNotification] = useState({});
   const [isSignModalOpen, setIsSignModalOpen] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+
   // unread notification counter
   const unreadNotifications = notificationsData.filter(
     (n) => n.status === "unread"
@@ -76,12 +78,23 @@ export const Notifications = () => {
     setIsOpen(false);
     setSelectedNotification("");
     setIsSignModalOpen(false);
+    setInputValue("");
   };
   const onSignClick = () => {
     setIsSignModalOpen(true);
     console.log("sign click logic");
   };
-
+  const onInputValueChange = (event) => {
+    setInputValue(event.target.value);
+  };
+  const onSignTransaction = () => {
+    if (inputValue.toLowerCase() === "carrot pizza") {
+      console.log("signed successfully.");
+      onClose();
+    } else {
+      console.log("signing failed.");
+    }
+  };
   return (
     <>
       <NotificationsContainer className="d-flex flex-column bg-alpha pt-32px pb-24px px-16px my-0 mx-auto position-relative">
@@ -156,13 +169,15 @@ export const Notifications = () => {
           <input
             className="mt-4 text-white text-opacity-70 rounded py-20px px-8px border-0 bg-white bg-opacity-10 fs-18px w-100"
             placeholder=" Type here "
+            value={inputValue}
+            onChange={onInputValueChange}
           ></input>
         </div>
         <div className="d-flex flex-column w-100 text-opacity-90 align-self-center gap-3">
           <Button size="lg" buttonKind="primary_red" onClick={onClose}>
             Decline
           </Button>
-          <Button size="lg" buttonKind="primary" onClick={onSignClick}>
+          <Button size="lg" buttonKind="primary" onClick={onSignTransaction}>
             Sign
           </Button>
         </div>
