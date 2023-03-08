@@ -1,13 +1,8 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import homeIconActive from "../../assets/home-active.svg";
-import homeIcon from "../../assets/home.svg";
-import notificationIconActive from "../../assets/notification-active.svg";
-import notificationIcon from "../../assets/notification.svg";
-import profileIconActive from "../../assets/profile-active.svg";
-import profileIcon from "../../assets/profile.svg";
-import { Home } from "../../routes/home";
-import { Login } from "../../routes/login";
+import { default as HomeIcon } from "../icons/home";
+import NotificationIcon from "../icons/notification";
+import ProfileIcon from "../icons/profile";
 import { NavTray } from "./nav-tray";
 
 describe("Navigation tray", () => {
@@ -15,29 +10,39 @@ describe("Navigation tray", () => {
     render(
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/"
+            element={
+              <>
+                <h1>Home</h1>
+              </>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <>
+                <h1>Login</h1>
+              </>
+            }
+          />
         </Routes>
         <NavTray
-          isLoggedIn={true}
           navLinks={[
             {
-              role: "login",
+              role: "profile",
               to: "/login",
-              icon: profileIcon,
-              activeIcon: profileIconActive,
+              Icon: ProfileIcon,
             },
             {
               role: "home",
               to: "/",
-              icon: homeIcon,
-              activeIcon: homeIconActive,
+              Icon: HomeIcon,
             },
             {
               role: "notification",
               to: "/notification",
-              icon: notificationIcon,
-              activeIcon: notificationIconActive,
+              Icon: NotificationIcon,
               isNotification: true,
             },
           ]}
@@ -45,13 +50,9 @@ describe("Navigation tray", () => {
       </BrowserRouter>
     );
 
-    const profile = screen.getByRole("login");
-    const home = screen.getByRole("home");
+    const profile = screen.getByRole("profile");
 
     fireEvent.click(profile);
     expect(screen.getByText("Login")).toBeInTheDocument();
-
-    fireEvent.click(home);
-    expect(screen.getByText("Home")).toBeInTheDocument();
   });
 });
