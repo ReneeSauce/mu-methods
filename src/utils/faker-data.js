@@ -1,5 +1,6 @@
 //faker-data
 import { faker } from "@faker-js/faker";
+import dayjs from "dayjs";
 
 export const account = {
   accountWallet: faker.word.interjection(),
@@ -27,9 +28,7 @@ export const cryptoTransactions = [...Array(5).keys()].map((i) => ({
   //acctTsxAmtCurrency: (acctTsxAmtCrypto.value *1250),?set value in formatting
   acctBalanceCrypto: faker.finance.amount(0, 2, 2), //Crypto Balance
   //acctBalanceCurrency:?multiply blance by 1250 for testing in component
-  acctTsxDate: faker.date
-    .recent(3)
-    .toDateString("en-us", { month: "short", day: "numeric" }),
+  acctTsxDate: dayjs(faker.date.recent(3).toDateString()).format("MMM DD"),
 }));
 
 export const nftTransactions = [...Array(5).keys()].map((i) => ({
@@ -43,7 +42,7 @@ export const nftTransactions = [...Array(5).keys()].map((i) => ({
   acctTsxKeyRecipient: faker.random.alphaNumeric(10), //Transaction Key Recipient
   acctTsxImage: faker.image.abstract(50, 50), //Transaction Image of Digital Asset 50px x 50px
   acctTsxDate: faker.date.recent(7).toDateString(),
-  acctTsxDate: faker.date.recent(3),
+  acctTsxDate: dayjs(faker.date.recent(3).toDateString()).format("MMM DD"),
 }));
 
 export const allTsx = nftTransactions.concat(cryptoTransactions);
