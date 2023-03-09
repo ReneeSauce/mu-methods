@@ -35,7 +35,7 @@ export const Notifications = () => {
   const [isSignModalOpen, setIsSignModalOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const isInputEmpty = inputValue.trim() === "";
-  const isAnyModalOpen = isModalOpen || isSignModalOpen;
+
   // unread notification counter
   const unreadNotifications = notificationsData.filter(
     (n) => n.status === "unread"
@@ -95,18 +95,10 @@ export const Notifications = () => {
 
   const onSignTransaction = ({ seed }) => {
     if (inputValue.toLowerCase() === "carrot pizza") {
-      api
-        .sendSignRequestData(seed)
-        .then(() => {
-          console.log("signed successfully");
-        })
-        .catch((err) => {
-          api.handleErrorResponse(err);
-          console.log(err, "signing failed.");
-        })
-        .finally(() => onClose());
-    }
+      console.log("signed successfully");
+    } else console.log(err, "signing failed.");
   };
+
   return (
     <>
       <NotificationsContainer className="d-flex flex-column bg-alpha pt-32px pb-24px px-16px my-0 mx-auto position-relative">
