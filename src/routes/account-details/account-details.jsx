@@ -112,16 +112,16 @@ export const AccountDetails = () => {
         transitions={custom}
       >
         {/* steps go here with sw */}
-        <Steps.AccountSummary
-          stepName="account-summary"
+        <Steps.AccountPage
+          stepName="account-page"
           onForwardClick={goTo("account-settings")}
           onBackClick={handleReturnToDashboard}
-        ></Steps.AccountSummary>
+        ></Steps.AccountPage>
 
         <Steps.AccountSettings
           stepName="account-settings"
           onForwardClick={goTo("account-permissions")}
-          onBackClick={goTo("account-summary")}
+          onBackClick={goTo("account-page")}
           onDisconnectClick={handleDisconnectClick}
           title="Account settings"
           isOpen={isOpen}

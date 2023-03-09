@@ -1,5 +1,5 @@
+import cx from "classnames";
 import styled from "styled-components";
-
 /* 
  @author [Kurtney J.](https://github.com/xhundo)
 */
@@ -15,9 +15,9 @@ const StyledHeading = styled.p`
   line-height: 12px;
 `;
 
-export const Table = ({ children }) => {
+export const Table = ({ children, className }) => {
   return (
-    <div role="table" className="d-flex flex-column w-100">
+    <div role="table" className={cx(`d-flex flex-column w-100`, className)}>
       {children}
     </div>
   );

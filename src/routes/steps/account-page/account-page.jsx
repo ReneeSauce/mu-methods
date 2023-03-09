@@ -12,7 +12,7 @@ import { Body } from "./body";
 //TODO: logic for settings button click
 
 /**
- * Account SummaryComponent
+ * Account Page Component
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
  * @param onBackClick back click handler prop passed down from parent
  * @param onForwardClick forward click handler prop passed down from parent
@@ -24,7 +24,7 @@ import { Body } from "./body";
  * @param subtitle subtitle in layout header prop passed from parent
  */
 
-export const AccountSummary = ({
+export const AccountPage = ({
   onBackClick,
   onForwardClick,
   title,
