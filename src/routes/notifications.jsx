@@ -170,7 +170,7 @@ export const Notifications = () => {
                 size="lg"
                 buttonKind="primary"
                 type="submit"
-                onClick={onSignClick}
+                onClick={isSignModalOpen ? onSignTransaction : onSignClick}
                 disabled={isSignModalOpen ? isInputEmpty : false}
               >
                 Sign
