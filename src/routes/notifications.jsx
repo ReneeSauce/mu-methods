@@ -73,7 +73,7 @@ export const Notifications = () => {
 
   const onNotificationClick = (notification) => {
     setSelectedNotification(notification);
-    setIsOpen(true);
+    setIsModalOpen(true);
   };
   const onClose = () => {
     setIsModalOpen(false);
@@ -85,17 +85,26 @@ export const Notifications = () => {
     setInputValue(event.target.value);
   };
 
-  const onSignClick = () => {
+  const onSignClick = (event) => {
+    event.preventDefault();
+
+    // setIsModalOpen(false);
     setIsSignModalOpen(true);
     console.log("sign click logic");
   };
 
-  const onSignTransaction = () => {
+  const onSignTransaction = ({ seed }) => {
     if (inputValue.toLowerCase() === "carrot pizza") {
-      console.log("signed successfully.");
-      onClose();
-    } else {
-      console.log("signing failed.");
+      api
+        .sendSignRequestData(seed)
+        .then(() => {
+          console.log("signed successfully");
+        })
+        .catch((err) => {
+          api.handleErrorResponse(err);
+          console.log(err, "signing failed.");
+        })
+        .finally(() => onClose());
     }
   };
   return (
@@ -126,6 +135,7 @@ export const Notifications = () => {
                   )
                   .map((notification, id) => (
                     <div
+                      className="cursor-pointer"
                       type="button"
                       key={id}
                       onClick={() => onNotificationClick(notification)}
@@ -150,44 +160,33 @@ export const Notifications = () => {
         <div className="d-flex flex-column w-100 text-opacity-90 align-self-center gap-3">
           {selectedNotification.action ? (
             <>
+              {isSignModalOpen && (
+                <>
+                  <div>Type “carrot pizza” to sign your transaction</div>
+                  <input
+                    className="mt-4 text-white text-opacity-70 rounded py-20px px-8px border-0 bg-white bg-opacity-10 fs-18px w-100"
+                    placeholder=" Type here "
+                    value={inputValue}
+                    onChange={onInputValueChange}
+                  ></input>
+                </>
+              )}
               <Button size="lg" buttonKind="primary_red" onClick={onClose}>
                 Decline
               </Button>
-              <Button size="lg" buttonKind="primary" onClick={onSignClick}>
+              <Button
+                size="lg"
+                buttonKind="primary"
+                type="submit"
+                onClick={onSignClick}
+                disabled={isSignModalOpen ? isInputEmpty : false}
+              >
                 Sign
               </Button>
             </>
           ) : (
             ""
           )}
-        </div>
-      </Modal>
-      <Modal isOpen={isSignModalOpen} onClose={onClose}>
-        <Modal.Title>{selectedNotification.title}</Modal.Title>
-        <div className="d-flex flex-column flex-grow-1 justify-content-center align-items-center">
-          <p className="p-0 align-self-center">
-            {selectedNotification.summary}
-          </p>
-          <div>Type “carrot pizza” to sign your transaction</div>
-          <input
-            className="mt-4 text-white text-opacity-70 rounded py-20px px-8px border-0 bg-white bg-opacity-10 fs-18px w-100"
-            placeholder=" Type here "
-            value={inputValue}
-            onChange={onInputValueChange}
-          ></input>
-        </div>
-        <div className="d-flex flex-column w-100 text-opacity-90 align-self-center gap-3">
-          <Button size="lg" buttonKind="primary_red" onClick={onClose}>
-            Decline
-          </Button>
-          <Button
-            size="lg"
-            buttonKind="primary"
-            disabled={isInputEmpty}
-            onClick={onSignTransaction}
-          >
-            Sign
-          </Button>
         </div>
       </Modal>
     </>
