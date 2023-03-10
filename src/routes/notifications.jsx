@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Button, Layout, Modal, Notification } from "../components";
 import MuIcon from "../components/icons/mu";
 import { Header } from "../components/layout/header";
-
 import notificationsData from "../utils/notifications";
 
 /**
@@ -35,7 +34,7 @@ export const Notifications = () => {
   const [isSignModalOpen, setIsSignModalOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const isInputEmpty = inputValue.trim() === "";
-
+  const [signingResult, setSigningResult] = useState("");
   // unread notification counter
   const unreadNotifications = notificationsData.filter(
     (n) => n.status === "unread"
@@ -80,6 +79,7 @@ export const Notifications = () => {
     setSelectedNotification("");
     setIsSignModalOpen(false);
     setInputValue("");
+    setSigningResult("");
   };
   const onInputValueChange = (event) => {
     setInputValue(event.target.value);
@@ -92,8 +92,15 @@ export const Notifications = () => {
 
   const onSignTransaction = () => {
     if (inputValue.toLowerCase() === "carrot pizza") {
+      setSigningResult("success");
       console.log("signed successfully");
-    } else console.log("signing failed.");
+      setTimeout(() => {
+        onClose();
+      }, 2000);
+    } else {
+      setSigningResult("failed");
+      console.log("signing failed.");
+    }
   };
 
   return (
@@ -174,6 +181,8 @@ export const Notifications = () => {
               >
                 Sign
               </Button>
+              {signingResult === "success" && <p>Success</p>}
+              {signingResult === "failed" && <p>Failed</p>}
             </>
           ) : (
             ""
