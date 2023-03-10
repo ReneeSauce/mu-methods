@@ -42,6 +42,7 @@ export const Button = ({
   rightIcon,
   onClick,
   children,
+  className,
 }) => {
   const sizes = {
     sm: "auto",
@@ -83,7 +84,8 @@ export const Button = ({
       onClick={onClick}
       size={sizes[size]}
       className={cx(
-        `d-flex flex-row align-items-center justify-content-center ${kinds[buttonKind]} `
+        `d-flex flex-row align-items-center justify-content-center ${kinds[buttonKind]} `,
+        className
       )}
       role="button"
     >

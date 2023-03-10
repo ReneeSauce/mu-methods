@@ -1,10 +1,8 @@
 import cx from "classnames";
-import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import Overlay from "react-bootstrap/Overlay";
 import Tooltip from "react-bootstrap/Tooltip";
-import styled from "styled-components";
-import copyIcon from "../../assets/copy-icon.svg";
+import { Button } from "../button/button";
 /**
  * Pill Component
  * @author [Shaheen Hadadzadeh](https://github.com/shaheenhad)
@@ -17,17 +15,6 @@ import copyIcon from "../../assets/copy-icon.svg";
  * @param size 'small' or 'large'
  */
 
-// TODO: Refactor to use common Button Component
-const CopyBtn = styled(motion.button)`
-  background-image: url(${copyIcon});
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 16px;
-  width: 16px;
-  border: none;
-  background-color: transparent;
-`;
-
 export const Pill = ({
   className,
   isCopiable,
@@ -39,6 +26,7 @@ export const Pill = ({
 }) => {
   const [show, setShow] = useState(false);
   const target = useRef(null);
+
   return (
     <div className="d-flex flex-row align-items-center">
       <div
@@ -54,7 +42,7 @@ export const Pill = ({
       </div>
       {isCopiable && (
         <>
-          <CopyBtn
+          <Button
             onClick={() => {
               navigator.clipboard.writeText(text);
               setShow(true);
@@ -62,11 +50,17 @@ export const Pill = ({
                 setShow(false);
               }, 1500);
             }}
-            className="ms-8px"
-            whileTap={{ scale: 0.75 }}
-          ></CopyBtn>
+            className="p-0"
+            size="sm"
+            buttonKind="textOnly"
+            leftIcon="copy"
+          ></Button>
           <Overlay target={target.current} show={show} placement="bottom">
-            {(props) => <Tooltip {...props}>Copied!</Tooltip>}
+            {(props) => (
+              <Tooltip className="fs-12px" {...props}>
+                Copied!
+              </Tooltip>
+            )}
           </Overlay>
         </>
       )}
