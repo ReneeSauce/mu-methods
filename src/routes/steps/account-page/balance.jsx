@@ -1,4 +1,3 @@
-import { faker } from "@faker-js/faker";
 import styled from "styled-components";
 
 /**
@@ -31,47 +30,68 @@ export const Balance = ({}) => {
   return (
     <>
       <div className="d-flex flex-column bg-white bg-opacity-10 rounded-3 p-12px mb-32px">
-        <p className="fs-10px lh-sm mb-8px">TOTAL BALANCE</p>
+        <p className="fs-10px lh-sm mb-8px tex-white text-opacity-70">
+          TOTAL BALANCE
+        </p>
         <div className="d-flex justify-content-between">
           <h2 className="fw-bold fs-24px m-0">ETH 0.80</h2>
-          <p className="fw-normal fs-16px m-0">$1000</p>
+          <p className="fw-normal text-white text-opacity-70 fs-16px m-0">
+            $1000
+          </p>
         </div>
       </div>
     </>
   );
 };
-
-export const TsxNft = () => {
-  const fakeImg = faker.image.abstract(50, 50);
-
+export const TsxNft = ({
+  description,
+  sender,
+  recipient,
+  img,
+  type,
+  tsxtype,
+}) => {
   return (
     <>
-      <StyledContainer className="bg-white bg-opacity-10 py-12px">
+      <StyledContainer className="  py-12px">
         <div className="d-flex flex-column w-75">
           <TsxHeader className="mb-8px text-truncate">
-            NFT Recieved/ Beautiful Digital Painting of Flowers
+            {type} {tsxtype} /{description}
           </TsxHeader>
           <TsxDetail className="text-opacity-70 text-white">
-            From: MyNickName/
+            From: {sender}
           </TsxDetail>
-          <TsxDetail className="text-opacity-70 text-white ">detail</TsxDetail>
+          <TsxDetail className="text-opacity-70 text-white ">
+            To: {recipient}
+          </TsxDetail>
         </div>
-        <img src={fakeImg} />
+        <img src={img} />
       </StyledContainer>
     </>
   );
 };
-export const TsxCrypto = () => {
-  const fakeImg = faker.image.abstract(50, 50);
+
+export const TsxCrypto = ({
+  type,
+  tsxtype,
+  amt,
+  value,
+  balanceCr,
+  balanceCu,
+}) => {
   return (
     <>
-      <StyledContainer className="bg-white bg-opacity-10 py-12px">
+      <StyledContainer className="py-12px">
         <div className="d-flex w-100 justify-content-between">
-          <TsxHeader className="mb-8px text-truncate">ETH Sent</TsxHeader>
+          <TsxHeader className="mb-8px text-truncate">
+            {type} {tsxtype}
+          </TsxHeader>
           <div className="d-flex flex-column align-items-end">
-            <TsxAmt>-0.0080 ETH ($10)</TsxAmt>
+            <TsxAmt>
+              {amt} {type} (${value})
+            </TsxAmt>
             <TsxDetail className="text-opacity-70 text-white">
-              0.80 ETH ($1000)
+              {balanceCr} {type} (${balanceCu})
             </TsxDetail>
           </div>
         </div>

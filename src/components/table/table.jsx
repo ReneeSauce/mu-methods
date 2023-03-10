@@ -27,7 +27,7 @@ const Header = ({ children }) => {
   return (
     <StyledHeading
       role="heading"
-      className="text-uppercase mb-2 fs-10px text-white text-opacity-75"
+      className="text-uppercase mb-2 fs-10px text-white text-opacity-70"
     >
       {children}
     </StyledHeading>
