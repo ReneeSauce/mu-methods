@@ -6,13 +6,13 @@ import { useForm } from "react-hook-form";
  * @author [Jake Bohn](https://github.com/JakobOrion)
  */
 
-export default function Form({
+export const Form = ({
   defaultValues,
   formName,
   children,
   onSubmit,
   ...rest
-}) {
+}) => {
   const { handleSubmit, register } = useForm({ defaultValues });
 
   return (
@@ -32,4 +32,4 @@ export default function Form({
         : children}
     </form>
   );
-}
+};

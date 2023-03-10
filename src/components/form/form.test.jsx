@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Form from "./form";
+import { Form } from "../../components";
 
 /**
  * Tests for Form Component

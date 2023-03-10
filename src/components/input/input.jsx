@@ -21,7 +21,23 @@ const StyledInput = styled(BS_FORM.Control)`
   }
 `;
 
-export function Input({
+const StyledSelect = styled(BS_FORM.Select)`
+  border-color: var(--bs-beta);
+  font-weight: 500;
+
+  &:focus {
+    border-color: var(--bs-primary);
+    box-shadow: none;
+  }
+  &:invalid {
+    box-shadow: none;
+  }
+  &:invalid:focus {
+    box-shadow: none;
+  }
+`;
+
+export const Input = ({
   register,
   name,
   id,
@@ -29,7 +45,7 @@ export function Input({
   className,
   error,
   ...rest
-}) {
+}) => {
   return (
     <FloatingLabel controlId={id} label={label} className={className}>
       <StyledInput
@@ -45,9 +61,9 @@ export function Input({
       )}
     </FloatingLabel>
   );
-}
+};
 
-export function Select({
+export const Select = ({
   register,
   options,
   name,
@@ -56,16 +72,21 @@ export function Select({
   className,
   error,
   ...rest
-}) {
+}) => {
   return (
     <FloatingLabel controlId={id} label={label} className={className}>
-      <BS_FORM.Select isInvalid={error} {...register(name)} {...rest}>
+      <StyledSelect
+        className="bg-beta text-white fs-18px text-opacity-90"
+        isInvalid={error}
+        {...register(name)}
+        {...rest}
+      >
         {options.map((value) => (
           <option key={value} value={value}>
             {value}
           </option>
         ))}
-      </BS_FORM.Select>
+      </StyledSelect>
     </FloatingLabel>
   );
-}
+};
