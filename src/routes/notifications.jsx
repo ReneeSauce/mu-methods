@@ -145,22 +145,22 @@ export const Notifications = () => {
       </NotificationsContainer>
       <Modal isOpen={isModalOpen} onClose={onClose}>
         <Modal.Title>{selectedNotification.title}</Modal.Title>
-        <div className={selectedNotification.action ? "flex-grow-1" : "d-flex"}>
+        <div className={isSignModalOpen ? "" : "flex-grow-1"}>
           {selectedNotification.summary}
         </div>
         <div className="d-flex flex-column w-100 text-opacity-90 align-self-center gap-3">
           {selectedNotification.action ? (
             <>
               {isSignModalOpen && (
-                <>
+                <div className="d-flex flex-column mt-5 mb-5">
                   <div>Type “carrot pizza” to sign your transaction</div>
                   <input
-                    className="mt-4  mb-6 text-white text-opacity-70 rounded py-20px px-8px border-0 bg-white bg-opacity-10 fs-18px w-100"
+                    className="mt-4 text-white text-opacity-70 rounded py-20px px-8px border-0 bg-white bg-opacity-10 fs-18px w-100"
                     placeholder=" Type here "
                     value={inputValue}
                     onChange={onInputValueChange}
                   ></input>
-                </>
+                </div>
               )}
               <Button size="lg" buttonKind="primary_red" onClick={onClose}>
                 Decline
