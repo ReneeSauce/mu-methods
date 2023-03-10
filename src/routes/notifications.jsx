@@ -87,16 +87,13 @@ export const Notifications = () => {
 
   const onSignClick = (event) => {
     event.preventDefault();
-
-    // setIsModalOpen(false);
     setIsSignModalOpen(true);
-    console.log("sign click logic");
   };
 
-  const onSignTransaction = ({ seed }) => {
+  const onSignTransaction = () => {
     if (inputValue.toLowerCase() === "carrot pizza") {
       console.log("signed successfully");
-    } else console.log(err, "signing failed.");
+    } else console.log("signing failed.");
   };
 
   return (
@@ -148,7 +145,9 @@ export const Notifications = () => {
       </NotificationsContainer>
       <Modal isOpen={isModalOpen} onClose={onClose}>
         <Modal.Title>{selectedNotification.title}</Modal.Title>
-        <div className="flex-grow-1">{selectedNotification.summary}</div>
+        <div className={selectedNotification.action ? "flex-grow-1" : "d-flex"}>
+          {selectedNotification.summary}
+        </div>
         <div className="d-flex flex-column w-100 text-opacity-90 align-self-center gap-3">
           {selectedNotification.action ? (
             <>
@@ -156,7 +155,7 @@ export const Notifications = () => {
                 <>
                   <div>Type “carrot pizza” to sign your transaction</div>
                   <input
-                    className="mt-4 text-white text-opacity-70 rounded py-20px px-8px border-0 bg-white bg-opacity-10 fs-18px w-100"
+                    className="mt-4  mb-6 text-white text-opacity-70 rounded py-20px px-8px border-0 bg-white bg-opacity-10 fs-18px w-100"
                     placeholder=" Type here "
                     value={inputValue}
                     onChange={onInputValueChange}
