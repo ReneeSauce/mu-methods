@@ -26,7 +26,7 @@ const Stop = ({ className, width = "16", height = "16" }) => {
         transform="rotate(45 15.4141 14)"
         fill="#FF3E3E"
       />
-      <circle cx="20" cy="20" r="20" fill="#F6F6F6" fill-opacity="0.1" />
+      <circle cx="20" cy="20" r="20" fill="#F6F6F6" fillOpacity="0.1" />
     </svg>
   );
 };

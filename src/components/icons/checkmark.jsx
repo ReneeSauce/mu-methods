@@ -11,11 +11,11 @@ const Checkmark = ({ className, width = "16", height = "16" }) => {
       <path
         d="M13 19.75L18.1538 25L27 15"
         stroke="#1FDB00"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
-      <circle cx="20" cy="20" r="20" fill="#F6F6F6" fill-opacity="0.1" />
+      <circle cx="20" cy="20" r="20" fill="#F6F6F6" fillOpacity="0.1" />
     </svg>
   );
 };

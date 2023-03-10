@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Button, Layout, Modal, Notification } from "../components";
+import SuccessIcon from "../components/icons/checkmark";
 import MuIcon from "../components/icons/mu";
+import FailedIcon from "../components/icons/stop";
 import { Header } from "../components/layout/header";
 import notificationsData from "../utils/notifications";
 
@@ -9,7 +11,7 @@ import notificationsData from "../utils/notifications";
  * Notifications Route
  *  @author [Nuriya](https://github.com/NuriyaAkh)
  * @param src the avatar image link
- * @param action expects true or false for notification sign actions
+ * @param action expects true or false for the notification sign actions
  * @param title the notification origin
  * @param summary the notification details
  * @param status expects 'read' or 'unread'
@@ -27,7 +29,7 @@ const NotificationCounter = styled.div`
 `;
 
 export const Notifications = () => {
-  //const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [notifications, setNotifications] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedNotification, setSelectedNotification] = useState({});
@@ -41,16 +43,19 @@ export const Notifications = () => {
   );
   const counter = unreadNotifications.length;
   // sort data by date
-  const groups = notificationsData.reduce((acc, item) => {
-    const date = new Date(item.createdAt).toLocaleDateString("default", {
-      month: "long",
-      day: "2-digit",
-    });
-    if (!acc[date]) {
-      acc[date] = [];
+  const groups = notificationsData.reduce((group, notification) => {
+    const date = new Date(notification.createdAt).toLocaleDateString(
+      "default",
+      {
+        month: "long",
+        day: "2-digit",
+      }
+    );
+    if (!group[date]) {
+      group[date] = [];
     }
-    acc[date].push(item);
-    return acc;
+    group[date].push(notification);
+    return group;
   }, {});
 
   const currentDate = new Date().toLocaleString("default", {
@@ -62,13 +67,13 @@ export const Notifications = () => {
   useEffect(() => {
     setNotifications(notificationsData);
   }, []);
-  // useEffect(() => {
-  //   if (!notifications) {
-  //     setIsLoading(true);
-  //   } else {
-  //     setIsLoading(false);
-  //   }
-  // }, [notifications]);
+  useEffect(() => {
+    if (!notifications) {
+      setIsLoading(true);
+    } else {
+      setIsLoading(false);
+    }
+  }, [notifications]);
 
   const onNotificationClick = (notification) => {
     setSelectedNotification(notification);
@@ -155,39 +160,49 @@ export const Notifications = () => {
         <div className={isSignModalOpen ? "" : "flex-grow-1"}>
           {selectedNotification.summary}
         </div>
-        <div className="d-flex flex-column w-100 text-opacity-90 align-self-center gap-3">
-          {selectedNotification.action ? (
-            <>
-              {isSignModalOpen && (
-                <div className="d-flex flex-column mt-5 mb-5">
-                  <div>Type “carrot pizza” to sign your transaction</div>
-                  <input
-                    className="mt-4 text-white text-opacity-70 rounded py-20px px-8px border-0 bg-white bg-opacity-10 fs-18px w-100"
-                    placeholder=" Type here "
-                    value={inputValue}
-                    onChange={onInputValueChange}
-                  ></input>
-                </div>
-              )}
-              <Button size="lg" buttonKind="primary_red" onClick={onClose}>
-                Decline
-              </Button>
-              <Button
-                size="lg"
-                buttonKind="primary"
-                type="submit"
-                onClick={isSignModalOpen ? onSignTransaction : onSignClick}
-                disabled={isSignModalOpen ? isInputEmpty : false}
-              >
-                Sign
-              </Button>
-              {signingResult === "success" && <p>Success</p>}
-              {signingResult === "failed" && <p>Failed</p>}
-            </>
-          ) : (
-            ""
-          )}
-        </div>
+        {signingResult === "success" ? (
+          <>
+            <div>success</div>
+            <SuccessIcon />
+          </>
+        ) : signingResult === "failed" ? (
+          <>
+            <div>failed</div>
+            <FailedIcon />
+          </>
+        ) : (
+          <div className="d-flex flex-column w-100 text-opacity-90 align-self-center gap-3">
+            {selectedNotification.action ? (
+              <>
+                {isSignModalOpen && (
+                  <div className="d-flex flex-column mt-5 mb-5">
+                    <div>Type “carrot pizza” to sign your transaction</div>
+                    <input
+                      className="mt-4 text-white text-opacity-70 rounded py-20px px-8px border-0 bg-white bg-opacity-10 fs-18px w-100"
+                      placeholder=" Type here "
+                      value={inputValue}
+                      onChange={onInputValueChange}
+                    ></input>
+                  </div>
+                )}
+                <Button size="lg" buttonKind="primary_red" onClick={onClose}>
+                  Decline
+                </Button>
+                <Button
+                  size="lg"
+                  buttonKind="primary"
+                  type="submit"
+                  onClick={isSignModalOpen ? onSignTransaction : onSignClick}
+                  disabled={isSignModalOpen ? isInputEmpty : false}
+                >
+                  Sign
+                </Button>
+              </>
+            ) : (
+              ""
+            )}
+          </div>
+        )}
       </Modal>
     </>
   );

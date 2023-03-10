@@ -70,7 +70,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             },
             {
               role: "home",
-              to: "/signup",
+              to: "/",
               Icon: HomeIcon,
             },
             {
