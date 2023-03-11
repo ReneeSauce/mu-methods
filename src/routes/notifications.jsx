@@ -27,7 +27,10 @@ const NotificationCounter = styled.div`
   padding: 2px 8px;
   border-radius: 8px;
 `;
-
+const Circle = styled.div`
+  height: 40px;
+  width: 40px;
+`;
 export const Notifications = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [notifications, setNotifications] = useState({});
@@ -98,13 +101,11 @@ export const Notifications = () => {
   const onSignTransaction = () => {
     if (inputValue.toLowerCase() === "carrot pizza") {
       setSigningResult("success");
-      console.log("signed successfully");
       setTimeout(() => {
         onClose();
-      }, 2000);
+      }, 3000);
     } else {
       setSigningResult("failed");
-      console.log("signing failed.");
     }
   };
 
@@ -157,19 +158,24 @@ export const Notifications = () => {
       </NotificationsContainer>
       <Modal isOpen={isModalOpen} onClose={onClose}>
         <Modal.Title>{selectedNotification.title}</Modal.Title>
-        <div className={isSignModalOpen ? "" : "flex-grow-1"}>
+        <div
+          className={"fs-18px fw-700" && isSignModalOpen ? "" : "flex-grow-1"}
+        >
           {selectedNotification.summary}
         </div>
         {signingResult === "success" ? (
-          <>
-            <div>success</div>
-            <SuccessIcon />
-          </>
+          <div className="d-flex flex-column my-auto align-items-center">
+            <SuccessIcon width="40px" height="40px" />
+            <p className=" mt-4 fs-18px fw-700">
+              Transaction signed successfully
+            </p>
+          </div>
         ) : signingResult === "failed" ? (
-          <>
-            <div>failed</div>
-            <FailedIcon />
-          </>
+          <div className="d-flex flex-column my-auto align-items-center">
+            <FailedIcon width="40px" height="40px" />
+
+            <div className="mt-4 fs-18px fw-700">Transaction was declined</div>
+          </div>
         ) : (
           <div className="d-flex flex-column w-100 text-opacity-90 align-self-center gap-3">
             {selectedNotification.action ? (
