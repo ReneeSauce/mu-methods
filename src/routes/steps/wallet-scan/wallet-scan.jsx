@@ -60,7 +60,7 @@ export const WalletScan = ({
   const [disabled, setDisabled] = useState(true);
 
   // /* ------------------------------- use Effect ------------------------------- */
-  // //not working
+
   // //update Context
   useEffect(() => {
     updateAccountData(data);

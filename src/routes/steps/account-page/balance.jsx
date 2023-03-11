@@ -50,6 +50,8 @@ export const TsxNft = ({
   img,
   type,
   tsxtype,
+  senderkey,
+  recipientkey,
 }) => {
   return (
     <>
@@ -59,10 +61,10 @@ export const TsxNft = ({
             {type} {tsxtype} /{description}
           </TsxHeader>
           <TsxDetail className="text-opacity-70 text-white">
-            From: {sender}
+            From: {sender} / {senderkey}
           </TsxDetail>
           <TsxDetail className="text-opacity-70 text-white ">
-            To: {recipient}
+            To: {recipient} / {recipientkey}
           </TsxDetail>
         </div>
         <img src={img} />

@@ -1,29 +1,61 @@
 //faker-data
 import { faker } from "@faker-js/faker";
-import dayjs from "dayjs";
 
+/* -------------------------------------------------------------------------- */
+/*               Account Profile for signup and add wallet flows              */
+/* -------------------------------------------------------------------------- */
+//faker account used in sign-up-connect-wallet and dashboard-add-wallet
 export const account = {
   accountWallet: faker.word.interjection(),
-  accountName: faker.finance.accountName(),
+  accountName: faker.random.words(2).split(" ").join(""),
   accountId: faker.finance.ethereumAddress(),
   avatar: faker.internet.avatar(),
 };
+//faker seeds used in sign-up-connect-wallet and dashboard-add-wallet
 export const fSeedPhrases = Array.from({ length: 12 }, () =>
   faker.music.genre()
 );
 
-export const accountInfoPrimary = {
+/* -------------------------------------------------------------------------- */
+/*              Main Account Profile used when simulating Auth -              */
+/* ------------------- used in Dashboard and Notifications ------------------ */
+/* -------------------------------------------------------------------------- */
+
+export const acctProfilePrimary = [...Array(1).keys()].map((i) => ({
+  acctPrimary: true,
   acctWallet: faker.word.interjection(),
-  acctName: faker.finance.accountName(),
+  acctName: faker.random.words(2).split(" ").join(""),
   acctAvatar: faker.internet.avatar(),
   acctAlt: "this is an image of something",
-  AcctPermissions: faker.helpers.arrayElement(["F", "L", "R"]),
+  acctPermissions: faker.helpers.arrayElement(["F", "L", "R"]),
   acctPublicKey: faker.random.alphaNumeric(10),
-  cryptoType: faker.helpers.arrayElement(["ETH", "BTC", "SOL", "MATIC"]),
-  tsxBalanceCrypto: faker.finance.amount(0, 2, 2), //Crypto Balance
+  cryptoType: faker.helpers.arrayElement(["ETH"]),
+  //should we make the primary profile eth
+  acctBalanceCrypto: faker.finance.amount(0, 200000, 0), //Crypto Balance
   //acctBalanceCurrency:?multiply blance by 1250 for testing in component
-};
-export const cryptoTsxs = [...Array(5).keys()].map((i) => ({
+  acctBalanceTotal: faker.finance.amount(0, 2, 2), //Total amount
+}));
+
+export const acctProfilesLinked = [...Array(2).keys()].map((i) => ({
+  acctPrimary: false,
+  acctWallet: faker.word.interjection(),
+  acctName: faker.random.words(2).split(" ").join(""),
+  acctAvatar: faker.internet.avatar(),
+  acctAlt: "this is an image of something",
+  acctPermissions: faker.helpers.arrayElement(["F", "L", "R"]),
+  acctPublicKey: faker.random.alphaNumeric(10),
+  cryptoType: faker.helpers.arrayElement(["BTC", "SOL", "MATIC"]),
+  acctBalanceCrypto: faker.finance.amount(0, 200000, 0), //Crypto Balance
+  //acctBalanceCurrency:?multiply blance by 1250 for testing in component
+  acctBalanceTotal: faker.finance.amount(0, 2, 2), //Total amount
+}));
+//sets account profiles
+export const acctProfiles = acctProfilePrimary.concat(acctProfilesLinked);
+console.log(acctProfiles);
+/* -------------------------------------------------------------------------- */
+/*                           Transaction Data Faker                           */
+/* -------------------------------------------------------------------------- */
+const cryptoTsxs = [...Array(10).keys()].map((i) => ({
   i: i,
   cryptoType: faker.helpers.arrayElement(["ETH", "BTC", "SOL", "MATIC"]), //Crypto Transaction
   tsxType: faker.helpers.arrayElement(["Sent", "Recieved"]), //Transaction Type
@@ -35,54 +67,31 @@ export const cryptoTsxs = [...Array(5).keys()].map((i) => ({
 }));
 
 //change these to tsx instead of acct
-export const nftTsxs = [...Array(5).keys()].map((i) => ({
+const nftTsxs = [...Array(5).keys()].map((i) => ({
   i: i, //primary key
   cryptoType: "NFT", //NFT Transaction
   tsxType: faker.helpers.arrayElement(["Sent", "Recieved"]), //Transaction Type
   tsxNameSender: faker.finance.accountName().split(" ").join(""), //Sender account name
   tsxNameRecipient: faker.finance.accountName().split(" ").join(""), //Recipient account name
-  acctTsxDesc: faker.company.catchPhrase(), //TransactionDescription
-  acctTsxKeySender: faker.random.alphaNumeric(10), //Transaction Key Sender
-  acctTsxKeyRecipient: faker.random.alphaNumeric(10), //Transaction Key Recipient
-  acctTsxImage: faker.image.abstract(50, 50, true), //Transaction Image of Digital Asset 50px x 50px
+  tsxDesc: faker.company.catchPhrase(), //TransactionDescription
+  tsxKeySender: [
+    faker.datatype.hexadecimal(),
+    faker.finance.mask(3, false),
+  ].join(""), //Transaction Key Sender
+  tsxKeyRecipient: [
+    faker.datatype.hexadecimal(),
+    faker.finance.mask(3, false),
+  ].join(""), //Transaction Key Recipient
+  tsxImg: faker.image.abstract(50, 50, true), //Transaction Image of Digital Asset 50px x 50px
   tsxDate: faker.date.recent(7),
 }));
 
 //1.Combine crypto and nft transaction arrays
 export const allTsxs = nftTsxs.concat(cryptoTsxs);
+console.log(allTsxs);
 
-//2.Sort with original date format
-export const sortedTsx = allTsxs.sort((a, b) => b.tsxDate - a.tsxDate);
-
-//3. function to change date format (must use after sort)
-function transformDate(arr) {
-  arr.forEach((tsx) => {
-    tsx.tsxDate = dayjs(tsx.tsxDate.toDateString()).format("MMM DD");
-  });
-}
-//4. call transformDate
-transformDate(sortedTsx);
-
-//5. get array of dates-- all dates here
-const dateKeys = sortedTsx.map((tsx) => tsx.tsxDate);
-
-//6.get unique date keys - only unique dates here
-export const uniqueDate = dateKeys.filter(
-  (item, index) => dateKeys.indexOf(item) === index
+const filtByCptType = allTsxs.filter(
+  (x) => x.cryptoType === "ETH" || x.cryptoType === "NFT"
 );
-
-//example of filtering by one unique date--not being used in body
-const dateOne = sortedTsx.filter((tsx) => tsx.tsxDate === uniqueDate[0]);
-// console.log(dateOne);
-
-//example of grouping data by text--not sure what format this is-noot being used in body
-// const groupsByDate = allTsxs.reduce((group, tsx) => {
-//   const date = new Date(tsx.tsxDate).toLocaleDateString("default", {
-//     month: "long",
-//     day: "2-digit",
-//   });
-//   group[date] = group[date] ?? [];
-//   group[date].push(tsx);
-//   return group;
-// }, {});
-// console.log(groupsByDate);
+console.log(filtByCptType);
+console.log(allTsxs);
