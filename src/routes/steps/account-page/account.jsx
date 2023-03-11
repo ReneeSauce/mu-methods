@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Spinner from "react-bootstrap/Spinner";
 import styled from "styled-components";
 import { Avatar } from "../../../components/avatar/avatar";
@@ -40,24 +39,8 @@ export const Account = ({
   permissions,
   pillText,
   isCopiable,
+  isLoading,
 }) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [accountInfo, setaccountInfo] = useState({
-    src,
-    alt,
-    name,
-    wallet,
-    permissions,
-    pillText,
-    isCopiable,
-  });
-
-  useEffect(() => {
-    // TO DO: replace this with API call for fetching account data
-    /*setaccountInfo({})*/
-    setIsLoading(false);
-  }, []);
-
   return (
     <Container className="d-flex flex-column align-items-center bg-alpha">
       {isLoading ? (
@@ -65,27 +48,22 @@ export const Account = ({
       ) : (
         <>
           <h3 className="fs-10px m-0 text-uppercase text-white text-opacity-60">
-            {accountInfo.wallet}
+            {wallet}
           </h3>
 
-          <Avatar
-            shape="round"
-            src={accountInfo.src}
-            size="lg"
-            alt={accountInfo.alt}
-          />
+          <Avatar shape="round" src={src} size="lg" alt={alt} />
           <AccountName className="d-flex align-items-center">
-            <h3 className="fs-18px fw-bold m-0">{accountInfo.name}</h3>
+            <h3 className="fs-18px fw-bold m-0">{name}</h3>
             <PermissionIcon className="d-flex align-items-center justify-content-center rounded-circle border border-white border-opacity-60 fs-10px text-uppercase m-0 text-white text-opacity-60">
-              {accountInfo.permissions}
+              {permissions}
             </PermissionIcon>
           </AccountName>
 
           <Pill
             className="profile__pill"
             shape="square"
-            isCopiable={accountInfo.isCopiable}
-            text={accountInfo.pillText}
+            isCopiable={isCopiable}
+            text={pillText}
             textOpacity="70"
             opacity="10"
           />

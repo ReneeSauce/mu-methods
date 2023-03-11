@@ -13,42 +13,25 @@ import { Balance, TsxCrypto, TsxNft } from "./balance";
 
  */
 
-export const Body = ({
-  src,
-  alt,
-  name,
-  // wallet,
-  permissions,
-  pillText,
-  isCopiable,
-}) => {
+export const Body = ({ isCopiable }) => {
   /* --------------------------------- consts --------------------------------- */
   //set usercontext
-  const { userProfile, setUserProfile } = useContext(UserContext);
-  //trying to reduce array
-  // const user = Object.keys(acctProfilePrimary).reduce((acc, val) => {
-  //   acc.push(val);
-  //   return acc;
-  // }, []);
-  // console.log(user);
+  const { state, updateUserProfile } = useContext(UserContext);
+
   /* -------------------------------- useStates ------------------------------- */
   const [tsxs, setTsxs] = useState([]);
   const [dateGroups, setDateGroups] = useState([]);
   const [account, setAccount] = useState("");
   const [filter, setFilter] = useState("ETH");
+  const [isLoading, setIsLoading] = useState(true);
   //set filter pressing button in dashboard
   //update filter to context? how to pass to this page to render
   /* ------------------------------- useEffects ------------------------------- */
   //set userprofile to context
   useEffect(() => {
-    setUserProfile(acctProfilePrimary);
+    updateUserProfile(acctProfilePrimary);
   }, []);
-  // console.log(JSON.stringify(userProfile));
-  console.log(Object.entries(userProfile));
 
-  const user = JSON.stringify(userProfile);
-
-  // console.log(user.acctWallet);
   //set all transactions
   useEffect(() => {
     setTsxs(allTsxs);
@@ -57,6 +40,12 @@ export const Body = ({
   useEffect(() => {
     setDateGroups(groupsByDate);
   }, [tsxs]);
+
+  useEffect(() => {
+    // TO DO: replace this with API call for fetching account data
+    /*setaccountInfo({})*/
+    setIsLoading(false);
+  }, []);
   /* --------------------------------- consts --------------------------------- */
   //group transactions by date - passing filter & Nft is set
   //setting up filter for render - need to get "filter" passed through context
@@ -84,14 +73,16 @@ export const Body = ({
   return (
     <>
       <Account
-        src={src}
-        alt={alt}
-        name={name}
-        wallet={userProfile.acctWallet}
-        permissions={permissions}
-        pillText={pillText}
+        src={state.userProfile.acctAvatar}
+        alt={state.userProfile.acctAlt}
+        name={state.userProfile.acctName}
+        wallet={state.userProfile.acctWallet}
+        permissions={state.userProfile.acctPermissions}
+        pillText={state.userProfile.acctPubKey}
         isCopiable={isCopiable}
+        isLoading={isLoading}
       ></Account>
+
       <div className="w-100">
         <Balance></Balance>
 

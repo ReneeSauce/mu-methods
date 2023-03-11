@@ -20,38 +20,67 @@ export const fSeedPhrases = Array.from({ length: 12 }, () =>
 /*              Main Account Profile used when simulating Auth -              */
 /* ------------------- used in Dashboard and Notifications ------------------ */
 /* -------------------------------------------------------------------------- */
-
-export const acctProfilePrimary = [...Array(1).keys()].map((i) => ({
+// export const acctProfilePrimary = [...Array(1).keys()].map((i) => ({
+//   acctId:faker.random.numeric(3),
+//   acctPrimary: true,
+//   acctWallet: faker.word.interjection(),
+//   acctName: faker.random.words(2).split(" ").join(""),
+//   acctAvatar: faker.internet.avatar(),
+//   acctAlt: "this is an image of something",
+//   acctPermissions: faker.helpers.arrayElement(["F", "L", "R"]),
+//   acctPublicKey: faker.random.alphaNumeric(10),
+//   cryptoType: faker.helpers.arrayElement(["ETH"]),
+//   //should we make the primary profile eth
+//   acctBalanceCrypto: faker.finance.amount(0, 200, 0), //Crypto Balance
+//   //acctBalanceCurrency:?multiply blance by 1250 for testing in component
+//   acctBalanceTotal: faker.finance.amount(0, 2, 2), //Total amount
+// }));
+export const acctProfilePrimary = {
+  acctId: faker.random.numeric(3),
   acctPrimary: true,
   acctWallet: faker.word.interjection(),
   acctName: faker.random.words(2).split(" ").join(""),
   acctAvatar: faker.internet.avatar(),
   acctAlt: "this is an image of something",
   acctPermissions: faker.helpers.arrayElement(["F", "L", "R"]),
-  acctPublicKey: faker.random.alphaNumeric(10),
+  acctPubKey: "0x6b...776",
   cryptoType: faker.helpers.arrayElement(["ETH"]),
-  //should we make the primary profile eth
-  acctBalanceCrypto: faker.finance.amount(0, 200000, 0), //Crypto Balance
+  acctBalanceCrypto: faker.finance.amount(0, 200, 0), //Crypto Balance
   //acctBalanceCurrency:?multiply blance by 1250 for testing in component
   acctBalanceTotal: faker.finance.amount(0, 2, 2), //Total amount
-}));
+};
 
-export const acctProfilesLinked = [...Array(2).keys()].map((i) => ({
+export const acctProfilesLinked = Array.from({ length: 2 }, () => ({
   acctPrimary: false,
   acctWallet: faker.word.interjection(),
   acctName: faker.random.words(2).split(" ").join(""),
   acctAvatar: faker.internet.avatar(),
   acctAlt: "this is an image of something",
   acctPermissions: faker.helpers.arrayElement(["F", "L", "R"]),
-  acctPublicKey: faker.random.alphaNumeric(10),
+  acctPubKey: "0x6b...776",
   cryptoType: faker.helpers.arrayElement(["BTC", "SOL", "MATIC"]),
   acctBalanceCrypto: faker.finance.amount(0, 200000, 0), //Crypto Balance
   //acctBalanceCurrency:?multiply blance by 1250 for testing in component
   acctBalanceTotal: faker.finance.amount(0, 2, 2), //Total amount
 }));
+// export const acctProfilesLinked = [...Array(2).keys()].map((i) => ({
+//   acctPrimary: false,
+//   acctWallet: faker.word.interjection(),
+//   acctName: faker.random.words(2).split(" ").join(""),
+//   acctAvatar: faker.internet.avatar(),
+//   acctAlt: "this is an image of something",
+//   acctPermissions: faker.helpers.arrayElement(["F", "L", "R"]),
+//   acctPublicKey: faker.random.alphaNumeric(10),
+//   cryptoType: faker.helpers.arrayElement(["BTC", "SOL", "MATIC"]),
+//   acctBalanceCrypto: faker.finance.amount(0, 200000, 0), //Crypto Balance
+//   //acctBalanceCurrency:?multiply blance by 1250 for testing in component
+//   acctBalanceTotal: faker.finance.amount(0, 2, 2), //Total amount
+// }));
 //sets account profiles
-export const acctProfiles = acctProfilePrimary.concat(acctProfilesLinked);
+// export const acctProfiles = acctProfilePrimary.concat(acctProfilesLinked);
+export const acctProfiles = acctProfilesLinked.concat(acctProfilePrimary);
 console.log(acctProfiles);
+console.log(acctProfilePrimary);
 /* -------------------------------------------------------------------------- */
 /*                           Transaction Data Faker                           */
 /* -------------------------------------------------------------------------- */
