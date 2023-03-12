@@ -1,5 +1,6 @@
+import { useContext } from "react";
 import { Button, Layout } from "../../../components"; //button needs to be changed when avail
-
+import { UserContext } from "../../../contexts/user-context";
 //TODO: logic to get data from dashboard
 //TODO: need to add button with arrow to trigger next page (permissions)
 //TODO: add logic for clearing context on disconnect account click
@@ -19,6 +20,8 @@ import { Button, Layout } from "../../../components"; //button needs to be chang
  */
 
 export const AccountPermissions = ({ onBackClick, onClick, title }) => {
+  const { state } = useContext(UserContext);
+  console.log("permissions", state);
   return (
     <Layout
       className="mb-32px"

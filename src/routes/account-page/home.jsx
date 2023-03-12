@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
-import { Layout } from "../components";
-import { UserContext } from "../contexts/user-context";
-import { walletProfiles } from "../utils";
-import { allTsxs } from "../utils/faker-data";
+import { Layout } from "../../components";
+import { UserContext } from "../../contexts/user-context";
+import { walletProfiles } from "../../utils";
+import { allTsxs } from "../../utils/faker-data";
 
 //Todo:
-export const Home = () => {
+export const Home = ({ onForwardClick }) => {
   /* --------------------------------- consts --------------------------------- */
   //set usercontext
   const { state, updatePrimaryAcct, updateWalletProfiles, updateAllTsxs } =
@@ -17,12 +17,15 @@ export const Home = () => {
   /* -------------------------------- useEffect ------------------------------- */
   //set accoutProfiles to context
 
+  //
   useEffect(() => {
     updateWalletProfiles(walletProfiles);
   }, []);
-  useEffect(() => {
-    updateAllTsxs(allTsxs);
-  }, []);
+
+  //page load set this then clears it
+  // useEffect(() => {
+  //   updateAllTsxs(allTsxs);
+  // }, []);
 
   /* -------------------------------- function -------------------------------- */
   function setWalletProfiles() {
@@ -31,19 +34,17 @@ export const Home = () => {
   function setTsxs() {
     // const tsx = allTsxs.filter((x)=>x.i >=0);
     updateAllTsxs(allTsxs);
-    console.log(state);
+    console.log("update tsxs", state);
   }
   function setPrimaryAccount() {
     const user = state.walletProfiles.filter((x) => x.isPrimary === true);
     updatePrimaryAcct(user);
-    console.log(state);
+    console.log("updateprimary", state);
   }
   function handleClick() {
     // setWalletProfiles();
     setPrimaryAccount();
     // setTsxs();
-    setPrimary(state.primaryAcct);
-    console.log(state.primaryAcct);
   }
   /* --------------------------------- return --------------------------------- */
   return (
@@ -61,6 +62,9 @@ export const Home = () => {
           </button>
           <button className="w-100 p-20px" onClick={() => handleClick()}>
             Handle Click
+          </button>
+          <button className="w-100 p-20px" onClick={onForwardClick}>
+            continue
           </button>
         </div>
       }

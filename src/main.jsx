@@ -10,13 +10,15 @@ import ProfileIcon from "./components/icons/profile";
 import { UserProvider } from "./contexts/user-context";
 import {
   Account,
-  AccountDetails,
+  AccountPage,
   AddAccount,
+  DbStub,
   Home,
   Login,
   Profile,
   SignUp,
 } from "./routes";
+
 import "./theme/defaults.scss";
 
 const isLoggedIn = false;
@@ -32,7 +34,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/addaccount" element={<AddAccount />} />
-          <Route path="/accountdetails" element={<AccountDetails />} />
+          <Route path="/accountpage" element={<AccountPage />} />
+          <Route path="/db" element={<DbStub />} />
           <Route
             path="/profile"
             element={
@@ -47,7 +50,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
               />
             }
           />
-          <Route path="/accountpage" element={<AccountDetails />} />
+          {/* <Route path="/accountpage" element={<AccountDetails />} /> */}
           <Route
             path="/account"
             element={

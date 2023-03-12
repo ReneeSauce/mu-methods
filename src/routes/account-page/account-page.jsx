@@ -1,13 +1,13 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 import StepWizard from "react-step-wizard";
-import { WizardContext } from "../../contexts/wizard-context";
 import { Steps } from "../steps";
+import { Home } from "./home";
 
 //TODO: update state useState with appropriate items
 /* -------------------------------------------------------------------------- */
-/*                         Account-Details Wizard                             */
+/*                         Account-Page Wizard                             */
 /* -------------------------------------------------------------------------- */
-export const AccountDetails = () => {
+export const AccountPage = () => {
   /* ------------------------------- use states ------------------------------- */
   //updates SW, form data and seedPhrases for context
   const [SW, setSW] = useState();
@@ -15,20 +15,13 @@ export const AccountDetails = () => {
   const [state, updateState] = useState({
     seedPhrases: [],
     accountData: {},
+    activeProfile: [],
   });
 
   //isOpen for Modal
   const [isOpen, setIsOpen] = useState(false);
   /* ------------------------------ use Callbacks ----------------------------- */
-  const updateSeedPhrases = useCallback(
-    (value) => {
-      updateState({
-        ...state,
-        seedPhrases: value,
-      });
-    },
-    [state]
-  );
+
   const updateAccountData = useCallback(
     (accountData) => {
       updateState({
@@ -40,19 +33,19 @@ export const AccountDetails = () => {
   );
   /* -------------------------------- use Memo -------------------------------- */
 
-  const storeValue = useMemo(() => {
-    return {
-      state,
+  // const storeValue = useMemo(() => {
+  //   return {
+  //     state,
 
-      updateSeedPhrases,
-      updateAccountData,
-    };
-  }, [state, updateSeedPhrases, updateAccountData]);
+  //     updateSeedPhrases,
+  //     updateAccountData,
+  //   };
+  // }, [state, updateSeedPhrases, updateAccountData]);
   /* -------------------------------- functions ------------------------------- */
   //do something on stepchange
   const onStepChange = (stats) => {
     console.log(state); //for presentation? - to show state being captured
-    console.log(state.seedPhrases); //for presentation to show seedphrase capture
+    console.log(state.allTsxs); //for presentation to show transactions capture
 
     setPrevStep(stats.previousStep);
   };
@@ -105,36 +98,37 @@ export const AccountDetails = () => {
 
   /* --------------------------------- return --------------------------------- */
   return (
-    <WizardContext.Provider value={storeValue}>
-      <StepWizard
-        onStepChange={onStepChange}
-        instance={setInstance}
-        transitions={custom}
-      >
-        {/* steps go here with sw */}
-        <Steps.AccountPage
-          stepName="account-page"
-          onForwardClick={goTo("account-settings")}
-          onBackClick={handleReturnToDashboard}
-        ></Steps.AccountPage>
+    // <WizardContext.Provider value={storeValue}>
+    <StepWizard
+      onStepChange={onStepChange}
+      instance={setInstance}
+      transitions={custom}
+    >
+      {/* steps go here with sw */}
+      <Home stepName="home" onForwardClick={goTo("account-details")}></Home>
+      <Steps.AccountDetails
+        stepName="account-details"
+        onForwardClick={goTo("account-settings")}
+        onBackClick={goTo("home")}
+      ></Steps.AccountDetails>
 
-        <Steps.AccountSettings
-          stepName="account-settings"
-          onForwardClick={goTo("account-permissions")}
-          onBackClick={goTo("account-page")}
-          onDisconnectClick={handleDisconnectClick}
-          title="Account settings"
-          isOpen={isOpen}
-          onClose={onClose}
-          onCancel={handleCancelClick}
-        ></Steps.AccountSettings>
+      <Steps.AccountSettings
+        stepName="account-settings"
+        onForwardClick={goTo("account-permissions")}
+        onBackClick={goTo("account-details")}
+        onDisconnectClick={handleDisconnectClick}
+        title="Account settings"
+        isOpen={isOpen}
+        onClose={onClose}
+        onCancel={handleCancelClick}
+      ></Steps.AccountSettings>
 
-        <Steps.AccountPermissions
-          stepName="account-permissions"
-          onBackClick={goTo("account-settings")}
-          title="Account permissions"
-        ></Steps.AccountPermissions>
-      </StepWizard>
-    </WizardContext.Provider>
+      <Steps.AccountPermissions
+        stepName="account-permissions"
+        onBackClick={goTo("account-settings")}
+        title="Account permissions"
+      ></Steps.AccountPermissions>
+    </StepWizard>
+    // </WizardContext.Provider>
   );
 };

@@ -1,4 +1,4 @@
-import { AccountPage } from "./account-page";
+import { AccountDetails } from "./account-details";
 import { AccountPermissions } from "./account-permissions";
 import { AccountSettings } from "./account-settings";
 import { ChoosePeers } from "./choose-peers";
@@ -25,7 +25,7 @@ export const Steps = {
   WalletConfirm,
   WalletPermissions,
   LogIn,
-  AccountPage,
+  AccountDetails,
   AccountSettings,
   AccountPermissions,
 };

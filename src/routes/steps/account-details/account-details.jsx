@@ -1,4 +1,7 @@
+import { useContext, useState } from "react";
 import { Button, Layout } from "../../../components"; //button needs to be changed when avail
+import { UserContext } from "../../../contexts/user-context";
+import { walletProfiles } from "../../../utils"; //data
 import { Body } from "./body";
 
 //TODO: need to update @params
@@ -12,7 +15,7 @@ import { Body } from "./body";
 //TODO: logic for settings button click
 
 /**
- * Account Page Component
+ * Account Details Component - n Account Page Wizard Flow
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
  * @param onBackClick back click handler prop passed down from parent
  * @param onForwardClick forward click handler prop passed down from parent
@@ -24,12 +27,22 @@ import { Body } from "./body";
  * @param subtitle subtitle in layout header prop passed from parent
  */
 
-export const AccountPage = ({
+export const AccountDetails = ({
   onBackClick,
   onForwardClick,
   title,
   subtitle,
 }) => {
+  const { state, updatePrimaryAcct, updateWalletProfiles } =
+    useContext(UserContext);
+
+  const [profile, setProfile] = useState([walletProfiles]);
+
+  const reloadPage = () => {
+    console.log("clicked");
+    const user = state.walletProfiles.filter((x) => x.isPrimary === true);
+    updatePrimaryAcct(user);
+  };
   return (
     <Layout
       className="mb-0px"
@@ -49,7 +62,9 @@ export const AccountPage = ({
               buttonKind="tertiary"
               rightIcon="regenerate"
               size="sm"
-              onCLick={onBackClick} //need regenerate info here
+              onClick={() => {
+                reloadPage();
+              }} //need regenerate info here
             ></Button>
             <Button
               buttonKind="tertiary"

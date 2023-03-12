@@ -1,12 +1,14 @@
+import _ from "lodash";
 import { useContext, useEffect, useState } from "react";
 import { Table } from "../../../components";
 import { UserContext } from "../../../contexts/user-context";
-import { acctProfilePrimary, allTsxs } from "../../../utils/faker-data";
+import { primaryProfile } from "../../../utils"; //primary profile data
+import { allTsxs } from "../../../utils/faker-data"; //all transaction data
 import { Account } from "./account";
-import { Balance, TsxCrypto, TsxNft } from "./balance";
-//TODO: make context with accountProfiles
-//TODO: where should filtered go in - should this be a use effect on
-//change in active account? - send the active account via context
+import { Balance, TsxCrypto, TsxNft } from "./cells";
+//TODO: make context work right
+//TODO: set up SDK to fetch data
+
 /**
  * Body Component - used with AccountPage Component -
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
@@ -16,39 +18,43 @@ import { Balance, TsxCrypto, TsxNft } from "./balance";
 export const Body = ({ isCopiable }) => {
   /* --------------------------------- consts --------------------------------- */
   //set usercontext
-  const { state, updateUserProfile } = useContext(UserContext);
+  const { state, updatePrimaryAcct, updateWalletProfiles, updateAllTsxs } =
+    useContext(UserContext);
 
   /* -------------------------------- useStates ------------------------------- */
-  const [tsxs, setTsxs] = useState([]);
-  const [dateGroups, setDateGroups] = useState([]);
-  const [account, setAccount] = useState("");
-  const [filter, setFilter] = useState("ETH");
+  const [tsxs, setTsxs] = useState([allTsxs]); //set transactions from file
+  const [dateGroups, setDateGroups] = useState([]); //used to group tsx by date
+  const [account, setAccount] = useState([]); //set account data to primary fake data
+  const [filter, setFilter] = useState("ETH"); //
   const [isLoading, setIsLoading] = useState(true);
-  //set filter pressing button in dashboard
-  //update filter to context? how to pass to this page to render
+
   /* ------------------------------- useEffects ------------------------------- */
-  //set userprofile to context
+  //set account rendered to primary account(not currently grabbed from context)
   useEffect(() => {
-    updateUserProfile(acctProfilePrimary);
+    setAccount(primaryProfile);
   }, []);
 
-  //set all transactions
+  //set all transactions - grabbed from file not context
   useEffect(() => {
     setTsxs(allTsxs);
+    // updateAllTsxs(allTsxs);
   }, []);
 
+  //group data by date for table
   useEffect(() => {
     setDateGroups(groupsByDate);
   }, [tsxs]);
 
   useEffect(() => {
-    // TO DO: replace this with API call for fetching account data
     /*setaccountInfo({})*/
     setIsLoading(false);
   }, []);
+
   /* --------------------------------- consts --------------------------------- */
   //group transactions by date - passing filter & Nft is set
-  //setting up filter for render - need to get "filter" passed through context
+  //setting up filter for render -
+  //TODO:need to get "filter" passed through context
+
   const filtered = tsxs.filter(
     (x) => x.cryptoType === filter || x.cryptoType === "NFT"
   );
@@ -73,23 +79,27 @@ export const Body = ({ isCopiable }) => {
   return (
     <>
       <Account
-        src={state.userProfile.acctAvatar}
-        alt={state.userProfile.acctAlt}
-        name={state.userProfile.acctName}
-        wallet={state.userProfile.acctWallet}
-        permissions={state.userProfile.acctPermissions}
-        pillText={state.userProfile.acctPubKey}
+        src={account.avatar}
+        alt={account.alt}
+        name={account.nickname}
+        wallet={account.wallet}
+        permissions={account.permissions}
+        pillText={account.pubKey}
         isCopiable={isCopiable}
         isLoading={isLoading}
       ></Account>
 
       <div className="w-100">
-        <Balance></Balance>
+        <Balance
+          ctype={account.cryptoType}
+          balancecr={account.balanceCr}
+          balancecu={account.balanceCr * 125}
+        ></Balance>
 
         {Object.keys(dateGroups)
           .sort((dateA, dateB) => new Date(dateB) - new Date(dateA))
-          .map((date, key) => (
-            <div key={key}>
+          .map((date) => (
+            <div key={_.uniqueId("date-")}>
               <Table className="mb-16px">
                 <Table.Header>
                   {date === currentDate ? `${date} (today)` : date}
@@ -100,8 +110,8 @@ export const Body = ({ isCopiable }) => {
                     (dateA, dateB) =>
                       new Date(dateB.tsxDate) - new Date(dateA.tsxDate)
                   )
-                  .map((tsx, id) => (
-                    <div key={id}>
+                  .map((tsx) => (
+                    <div key={_.uniqueId("tsx-")}>
                       {tsx.cryptoType != "NFT" && (
                         <TsxCrypto
                           type={tsx.cryptoType}

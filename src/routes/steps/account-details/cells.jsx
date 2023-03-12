@@ -3,9 +3,21 @@ import styled from "styled-components";
 /**
  * AccountPage Component
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
- * @param 
-
+ * @param description- NFT Transaction Description
+ * @param sender - NFT Transaction Sender
+ * @param recipient - NFT Transaction Recipient
+ * @param img - NFT Transaction Image
+ * @param ctype - Type of Crypto NFT, ETH, SOL, etc
+ * @param tsxtype Transaction type - Sent or Received
+ * @param senderkey - NFT sender key ?(not sure what this is ?tsx key or user pubkey)
+ * @param recipienkey - NFT recipient key ?(not sure what this is ?txs id or user pubkey)
+ * @param amt - transaction amount in crypto
+ * @param value - transaction amount in currency
+ * @param balancecr - account balance in Crypto
+ * @param balancecu - account balance in Currency
  */
+
+/* ---------------------------- styled components --------------------------- */
 const StyledContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -25,8 +37,9 @@ const TsxAmt = styled.h3`
   font-size: 16px;
   line-height: 22px;
 `;
-
-export const Balance = ({}) => {
+/* ------------------------ Account Page Cell layouts ----------------------- */
+//for accocunt balance
+export const Balance = ({ ctype, balancecu, balancecr }) => {
   return (
     <>
       <div className="d-flex flex-column bg-white bg-opacity-10 rounded-3 p-12px mb-32px">
@@ -34,15 +47,19 @@ export const Balance = ({}) => {
           TOTAL BALANCE
         </p>
         <div className="d-flex justify-content-between">
-          <h2 className="fw-bold fs-24px m-0">ETH 0.80</h2>
+          <h2 className="fw-bold fs-24px m-0">
+            {ctype} {balancecr}
+          </h2>
           <p className="fw-normal text-white text-opacity-70 fs-16px m-0">
-            $1000
+            ${balancecu}
           </p>
         </div>
       </div>
     </>
   );
 };
+
+//for NFT transactions
 export const TsxNft = ({
   description,
   sender,
