@@ -13,6 +13,7 @@ import HomeIcon from "./components/icons/home";
 import NotificationIcon from "./components/icons/notification";
 import ProfileIcon from "./components/icons/profile";
 import { Account, AddAccount, Home, Login, Profile, SignUp } from "./routes";
+import { Dashboard } from "./routes/dashboard/dashboard";
 import "./theme/defaults.scss";
 
 const isLoggedIn = true;
@@ -73,6 +74,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/addaccount" element={<AddAccount />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route
           path="/profile"
           element={
