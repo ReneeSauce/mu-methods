@@ -1,9 +1,8 @@
 import _ from "lodash";
 import { useContext, useEffect, useState } from "react";
 import { Table } from "../../../components";
+import { TransactionContext } from "../../../contexts/transaction-context";
 import { UserContext } from "../../../contexts/user-context";
-import { primaryProfile } from "../../../utils"; //primary profile data
-import { allTsxs } from "../../../utils/faker-data"; //all transaction data
 import { Account } from "./account";
 import { Balance, TsxCrypto, TsxNft } from "./cells";
 
@@ -12,7 +11,7 @@ import { Balance, TsxCrypto, TsxNft } from "./cells";
 //TODO:need to get "filter" passed through context
 
 /**
- * Body Component - used with AccountPage Component -(Dashboard)
+ * Body Component - used with AccountDetails Component -(Dashboard)
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
 
  */
@@ -20,29 +19,32 @@ import { Balance, TsxCrypto, TsxNft } from "./cells";
 export const Body = ({ isCopiable }) => {
   /* --------------------------------- consts --------------------------------- */
   //set usercontext
-  const { state, updatePrimaryAcct, updateWalletProfiles, updateAllTsxs } =
-    useContext(UserContext);
+  // const { state, updatePrimaryAcct, updateWalletProfiles, updateAllTsxs } =
+  //   useContext(UserContext);
+  const userCtx = useContext(UserContext);
+  const tsxCtx = useContext(TransactionContext);
 
   /* -------------------------------- useStates ------------------------------- */
-  const [tsxs, setTsxs] = useState([allTsxs]); //set transactions from file
+  const [tsxs, setTsxs] = useState([]); //set transactions from file
   const [dateGroups, setDateGroups] = useState([]); //used to group tsx by date
   const [account, setAccount] = useState([]); //set account data to primary fake data
   const [filter, setFilter] = useState("ETH"); //
   const [isLoading, setIsLoading] = useState(true);
 
   /* ------------------------------- useEffects ------------------------------- */
-  //set account rendered to primary account(not currently grabbed from context)
+  //set account locally rendered to primary account(not currently grabbed from context)
   useEffect(() => {
-    setAccount(primaryProfile);
+    // setAccount(primaryProfile);
+    setAccount(userCtx.state.primaryAcct);
   }, []);
 
-  //set all transactions - grabbed from file not context
+  //set all transactions locally - grabbed from context
   useEffect(() => {
-    setTsxs(allTsxs);
+    setTsxs(tsxCtx.state.allTransactions);
     // updateAllTsxs(allTsxs);
-  }, []);
+  }, [tsxCtx.state]);
 
-  //group data by date for table
+  //group data by date for table - uses locally set tsx
   useEffect(() => {
     setDateGroups(groupsByDate);
   }, [tsxs]);
@@ -51,7 +53,8 @@ export const Body = ({ isCopiable }) => {
     /*setaccountInfo({})*/
     setIsLoading(false);
   }, []);
-
+  console.log("account", account);
+  console.log("userctx", userCtx.state);
   /* --------------------------------- consts --------------------------------- */
   //group transactions by date - passing filter & Nft is set
   //setting up filter for render -
@@ -79,24 +82,31 @@ export const Body = ({ isCopiable }) => {
   /* --------------------------------- return --------------------------------- */
   return (
     <>
-      <Account
-        src={account.avatar}
-        alt={account.alt}
-        name={account.nickname}
-        wallet={account.wallet}
-        permissions={account.permissions}
-        pillText={account.pubKey}
-        isCopiable={isCopiable}
-        isLoading={isLoading}
-      ></Account>
-
+      {account.map((account) => (
+        <div
+          className="w-100 d-flex flex-column align-items-center"
+          key={_.uniqueId("acct-")}
+        >
+          <Account
+            src={account.avatar}
+            alt={account.alt}
+            name={account.nickname}
+            wallet={account.wallet}
+            permissions={account.permissions}
+            pillText={account.pubKey}
+            isCopiable={isCopiable}
+            isLoading={isLoading}
+          ></Account>
+          <div className="w-100">
+            <Balance
+              ctype={account.cryptoType}
+              balancecr={account.balanceCr}
+              balancecu={account.balanceCr * 125}
+            ></Balance>
+          </div>
+        </div>
+      ))}
       <div className="w-100">
-        <Balance
-          ctype={account.cryptoType}
-          balancecr={account.balanceCr}
-          balancecu={account.balanceCr * 125}
-        ></Balance>
-
         {Object.keys(dateGroups)
           .sort((dateA, dateB) => new Date(dateB) - new Date(dateA))
           .map((date) => (

@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { Button, Layout } from "../../../components"; //button needs to be changed when avail
+import { TransactionContext } from "../../../contexts/transaction-context";
 import { UserContext } from "../../../contexts/user-context";
 import { walletProfiles } from "../../../utils"; //data
 import { Body } from "./body";
@@ -19,17 +20,28 @@ import { Body } from "./body";
 
 export const AccountDetails = ({ onBackClick, onForwardClick }) => {
   /* ------------------------------- set Context ------------------------------ */
-  const { state, updatePrimaryAcct, updateWalletProfiles } =
-    useContext(UserContext);
+  // const { state, updatePrimaryAcct, updateWalletProfiles } =
+  //   useContext(UserContext);
+  const userCtx = useContext(UserContext);
+  const tsxCtx = useContext(TransactionContext);
 
   /* -------------------------------- useState -------------------------------- */
   const [profile, setProfile] = useState([walletProfiles]);
 
+  /* ------------------------------- useEffects ------------------------------- */
+  // useEffect(()=>{
+  //   tsxCtx.updateAllTsxs(allTsxs)
+  //   console.log("tsx",tsxCtx.state)
+  // },[])
+
   /* -------------------------------- functions ------------------------------- */
   const reloadPage = () => {
     console.log("clicked");
-    const user = state.walletProfiles.filter((x) => x.isPrimary === true);
-    updatePrimaryAcct(user);
+    const user = userCtx.state.walletProfiles.filter(
+      (x) => x.isPrimary === true
+    );
+    userCtx.updatePrimaryAcct(user);
+    console.log(tsxCtx.state);
   };
 
   /* --------------------------------- return --------------------------------- */

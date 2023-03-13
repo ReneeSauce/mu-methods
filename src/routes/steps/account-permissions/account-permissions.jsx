@@ -21,7 +21,7 @@ import { UserContext } from "../../../contexts/user-context";
 
 export const AccountPermissions = ({ onBackClick, onClick, title }) => {
   const { state } = useContext(UserContext);
-  console.log("permissions", state);
+
   return (
     <Layout
       className="mb-32px"

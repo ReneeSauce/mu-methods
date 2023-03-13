@@ -1,7 +1,6 @@
 import { useCallback, useState } from "react";
 import StepWizard from "react-step-wizard";
 import { Steps } from "../steps";
-import { Home } from "./home";
 
 //TODO: update state useState with appropriate items
 //TODO: combine with addaccount wizard and dashboard into one route
@@ -20,25 +19,25 @@ export const AccountPage = () => {
   //updates SW, form data and seedPhrases for context
   const [SW, setSW] = useState();
   const [prevStep, setPrevStep] = useState("");
-  const [state, updateState] = useState({
-    seedPhrases: [],
-    accountData: {},
-    activeProfile: [],
-  });
+  // const [state, updateState] = useState({
+  //   seedPhrases: [],
+  //   accountData: {},
+  //   activeProfile: [],
+  // });
 
   //isOpen for Modal
   const [isOpen, setIsOpen] = useState(false);
   /* ------------------------------ use Callbacks ----------------------------- */
 
-  const updateAccountData = useCallback(
-    (accountData) => {
-      updateState({
-        ...state,
-        accountData,
-      });
-    },
-    [state]
-  );
+  // const updateAccountData = useCallback(
+  //   (accountData) => {
+  //     updateState({
+  //       ...state,
+  //       accountData,
+  //     });
+  //   },
+  //   [state]
+  // );
   /* -------------------------------- use Memo -------------------------------- */
 
   // const storeValue = useMemo(() => {
@@ -52,8 +51,8 @@ export const AccountPage = () => {
   /* -------------------------------- functions ------------------------------- */
   //do something on stepchange
   const onStepChange = (stats) => {
-    console.log(state); //for presentation? - to show state being captured
-    console.log(state.allTsxs); //for presentation to show transactions capture
+    // console.log(state); //for presentation? - to show state being captured
+    // console.log(state.allTsxs); //for presentation to show transactions capture
 
     setPrevStep(stats.previousStep);
   };
@@ -73,13 +72,7 @@ export const AccountPage = () => {
     setIsOpen(false);
   };
   /* -------------------------------- handlers -------------------------------- */
-  // for debugging to visualize steps
-  // const handleForwardClick = (nextStep) => {
-  //   console.log(nextStep);
-  // };
-  // const handleBackClick = () => {
-  //   console.log(nextStep);
-  // };
+
   const handleAddWallet = () => {
     // setIsOpen(true);
     console.log("save wallet permissionsand data here");
@@ -107,17 +100,18 @@ export const AccountPage = () => {
   /* --------------------------------- return --------------------------------- */
   return (
     // <WizardContext.Provider value={storeValue}>
+
     <StepWizard
       onStepChange={onStepChange}
       instance={setInstance}
       transitions={custom}
     >
       {/* steps go here with sw */}
-      <Home stepName="home" onForwardClick={goTo("account-details")}></Home>
+      {/* <Home stepName="home" onForwardClick={goTo("account-details")}></Home> */}
       <Steps.AccountDetails
         stepName="account-details"
         onForwardClick={goTo("account-settings")}
-        onBackClick={goTo("home")}
+        onBackClick={goTo("accountsettings")}
       ></Steps.AccountDetails>
 
       <Steps.AccountSettings
@@ -137,6 +131,5 @@ export const AccountPage = () => {
         title="Account permissions"
       ></Steps.AccountPermissions>
     </StepWizard>
-    // </WizardContext.Provider>
   );
 };

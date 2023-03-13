@@ -6,9 +6,10 @@ export const UserProvider = ({ children }) => {
   //state to store userProfile
 
   const [state, updateState] = useState({
+    activeFilter: "",
     primaryAcct: [], //set on dashboard to populate account page
     walletProfiles: [], //all acount profiles - set on home page
-    activeProfile: [], //
+    activeWallet: [], //
     allTransactions: [], //set on dashboard to populate account page
   });
 
@@ -39,19 +40,32 @@ export const UserProvider = ({ children }) => {
     },
     [state]
   );
-  const updateActiveProfile = useCallback(
-    (activeProfile) => {
+  const updateActiveWallet = useCallback(
+    (activeWallet) => {
       updateState({
         ...state,
-        activeProfile,
+        activeWallet: activeWallet,
+        activeFilter: activeWallet.cryptoType,
       });
     },
     [state]
   );
 
   const store = useMemo(() => {
-    return { state, updatePrimaryAcct, updateWalletProfiles, updateAllTsxs };
-  }, [state, updatePrimaryAcct, updateWalletProfiles, updateAllTsxs]);
+    return {
+      state,
+      updateActiveWallet,
+      updateWalletProfiles,
+      updateAllTsxs,
+      updatePrimaryAcct,
+    };
+  }, [
+    state,
+    updateActiveWallet,
+    updateWalletProfiles,
+    updateAllTsxs,
+    updatePrimaryAcct,
+  ]);
 
   return <UserContext.Provider value={store}>{children}</UserContext.Provider>;
 };

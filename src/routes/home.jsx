@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Layout } from "../components";
+import { TransactionContext } from "../contexts/transaction-context";
 import { UserContext } from "../contexts/user-context";
 import { walletProfiles } from "../utils";
 import { allTsxs } from "../utils/faker-data";
@@ -9,8 +10,10 @@ import { allTsxs } from "../utils/faker-data";
 export const Home = () => {
   /* --------------------------------- consts --------------------------------- */
   //set usercontext
-  const { state, updatePrimaryAcct, updateWalletProfiles, updateAllTsxs } =
-    useContext(UserContext);
+  // const { state, updatePrimaryAcct, updateWalletProfiles, updateAllTsxs } =
+  //   useContext(UserContext);
+  const userCtx = useContext(UserContext);
+  const tsxCtx = useContext(TransactionContext);
 
   const navigate = useNavigate();
   /* -------------------------------- usestate -------------------------------- */
@@ -22,29 +25,33 @@ export const Home = () => {
   //set accoutProfiles to context
 
   useEffect(() => {
-    updateWalletProfiles(walletProfiles);
+    userCtx.updateWalletProfiles(walletProfiles);
   }, []);
   // useEffect(() => {
   //   updateAllTsxs(allTsxs);
   // }, []);
 
   /* -------------------------------- function -------------------------------- */
+  //sets wallet profiles in userCtx
   function setWalletProfiles() {
-    updateWalletProfiles(walletProfiles);
+    userCtx.updateWalletProfiles(walletProfiles);
   }
-  //sets transactions in context
+  //sets transactions in tsxcontext
   function setTsxs() {
     // const tsx = allTsxs.filter((x)=>x.i >=0);
-    updateAllTsxs(allTsxs);
+    tsxCtx.updateAllTsxs(allTsxs);
   }
-  //sets primary account in context
+  //sets primary account in User context
   function setPrimaryAccount() {
-    const user = state.walletProfiles.filter((x) => x.isPrimary === true);
-    updatePrimaryAcct(user);
+    const user = userCtx.state.walletProfiles.filter(
+      (x) => x.isPrimary === true
+    );
+    userCtx.updatePrimaryAcct(user);
   }
   function handleClick() {
     // setWalletProfiles();
     setPrimaryAccount();
+    setTsxs();
     // setTsxs();
     // setPrimary(state.primaryAcct);
     // console.log(state.primaryAcct);

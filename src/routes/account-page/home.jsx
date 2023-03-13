@@ -54,7 +54,7 @@ export const Home = ({ onForwardClick }) => {
   }
   function handleClick() {
     // setWalletProfiles();
-    setPrimaryAccount();
+    // setPrimaryAccount();
     // setTsxs();
   }
   /* --------------------------------- return --------------------------------- */
