@@ -9,6 +9,7 @@ import Icon from "../icons/icon";
  * @param kind expects 'primary', 'secondary', 'tertiary', or 'textOnly'
  * @param disabled expects boolean
  * @param danger expects boolean
+ * @param margin expects px value for text margin
  * @param leftIcon expects icon for left side of button
  * @param rightIcon expects icon expects icon for right side of button
  *
@@ -21,6 +22,7 @@ const StyledButton = styled.button`
   border-radius: 8px;
   opacity: ${(props) => props.disabled && "0.5"};
   width: ${(props) => props.size};
+  border-
   transition: opacity 0.2s;
   &:hover {
     opacity: ${(props) => !props.disabled && "0.8"};
@@ -29,7 +31,7 @@ const StyledButton = styled.button`
 `;
 
 const StyledText = styled.h3`
-  margin: 19px 0px;
+  margin: ${(props) => props.margin || "20px 0px"};
   font-weight: 700;
 `;
 
@@ -93,7 +95,7 @@ export const Button = ({
         <Icon
           testId="icon"
           name={icons[leftIcon]}
-          className={(children && "me-12px") || "mx-8px"} // renders padding conditionally based on text content
+          className={(children && "me-12px") || "mx-8px my-8px"} // renders padding conditionally based on text content
         />
       )}
       <StyledText
@@ -111,7 +113,7 @@ export const Button = ({
       {rightIcon && (
         <Icon
           name={icons[rightIcon]}
-          className={(children && "ms-12px") || "mx-8px"} // renders padding conditionally based on text content
+          className={(children && "ms-12px") || "mx-8px my-8px"} // renders padding conditionally based on text content
         />
       )}
     </StyledButton>
