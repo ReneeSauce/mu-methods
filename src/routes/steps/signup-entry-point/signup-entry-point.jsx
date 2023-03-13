@@ -17,7 +17,7 @@ import Mu from "../../../components/icons/mu";
  * @param alt the alt description
  */
 
-export const EntryPoint = ({
+export const SignupEntryPoint = ({
   onLoginClick,
   onSignUpClick,
   onConnectWalletClick,

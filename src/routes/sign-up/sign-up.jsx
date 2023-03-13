@@ -150,13 +150,13 @@ export const SignUp = () => {
         transitions={custom}
       >
         {/* steps go here with sw */}
-        <Steps.EntryPoint
+        <Steps.SignupEntryPoint
           stepName="entry-point"
           SW={SW}
           onLoginClick={goTo("log-in")}
           onSignUpClick={goTo("user-info")}
           onConnectWalletClick={goTo("wallet-scan")}
-        ></Steps.EntryPoint>
+        ></Steps.SignupEntryPoint>
 
         <Steps.LogIn
           stepName="log-in"

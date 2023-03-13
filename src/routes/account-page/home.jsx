@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Layout } from "../../components";
 import { UserContext } from "../../contexts/user-context";
 import { walletProfiles } from "../../utils";
@@ -21,7 +21,7 @@ export const Home = ({ onForwardClick }) => {
   //set usercontext
   const { state, updatePrimaryAcct, updateWalletProfiles, updateAllTsxs } =
     useContext(UserContext);
-
+  console.log("home", state);
   const { primary, setPrimary } = useState([]);
   // const user = state.walletProfiles.filter((x) => x.isPrimary === true);
   // console.log(user);
@@ -29,9 +29,9 @@ export const Home = ({ onForwardClick }) => {
   //set accoutProfiles to context
 
   //
-  useEffect(() => {
-    updateWalletProfiles(walletProfiles);
-  }, []);
+  // useEffect(() => {
+  //   updateWalletProfiles(walletProfiles);
+  // }, []);
 
   //page load set this then clears it
   // useEffect(() => {
