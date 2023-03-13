@@ -12,7 +12,7 @@ export const Dashboard = () => {
           <Layout.Header.Center>
             <div className="mt-20px"></div>
             <Table.Header>total balance</Table.Header>
-            <h1>$ 1,000,000</h1>
+            <h1 className="fw-bold">$ 1,000,000</h1>
             <Pill
               className="fs-14px fw-light"
               isCopiable
