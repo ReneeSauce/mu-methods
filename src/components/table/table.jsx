@@ -36,7 +36,10 @@ const Header = ({ children }) => {
 
 const Cell = ({ children }) => {
   return (
-    <StyledCell role="cell" className="rounded mb-2 bg-white bg-opacity-10">
+    <StyledCell
+      role="cell"
+      className="rounded mb-2 bg-white d-flex w-100 bg-beta gap-12px p-12px"
+    >
       {children}
     </StyledCell>
   );

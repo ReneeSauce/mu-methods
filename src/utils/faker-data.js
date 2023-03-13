@@ -5,8 +5,13 @@ import { faker } from "@faker-js/faker";
 /*               Account Profile for signup and add wallet flows              */
 /* -------------------------------------------------------------------------- */
 //faker account used in sign-up-connect-wallet and dashboard-add-wallet
+/* -------------------------------------------------------------------------- */
+/*               Account Profile for signup and add wallet flows              */
+/* -------------------------------------------------------------------------- */
+//faker account used in sign-up-connect-wallet and dashboard-add-wallet
 export const account = {
   accountWallet: faker.word.interjection(),
+  accountName: faker.random.words(2).split(" ").join(""),
   accountName: faker.random.words(2).split(" ").join(""),
   accountId: faker.finance.ethereumAddress(),
   avatar: faker.internet.avatar(),

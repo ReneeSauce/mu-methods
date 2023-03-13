@@ -17,6 +17,7 @@ import {
   Profile,
   SignUp,
 } from "./routes";
+import { Dashboard } from "./routes/dashboard/dashboard";
 
 import "./theme/defaults.scss";
 
@@ -34,6 +35,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             {/* <Route path="/login" element={<Login />} /> */}
             <Route path="/signup" element={<SignUp />} />
             <Route path="/addaccount" element={<AddAccount />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/accountpage" element={<AccountPage />} />
             <Route path="/db" element={<DbStub />} />
             <Route
