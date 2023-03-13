@@ -1,4 +1,6 @@
+import { useContext, useEffect, useState } from "react";
 import { Button } from "../../../components";
+import { UserContext } from "../../../contexts/user-context";
 /**
  * Body Component - used with Account-Settings Component-(Dashboard)
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
@@ -7,8 +9,33 @@ import { Button } from "../../../components";
  */
 
 export const Body = ({ onDisconnectClick, onForwardClick }) => {
-  /* -------------------------------- handlers -------------------------------- */
+  /* --------------------------------- consts --------------------------------- */
+  const userCtx = useContext(UserContext);
 
+  /* -------------------------------- useState -------------------------------- */
+  const [permission, setPermission] = useState("");
+  const [fullText, setFullText] = useState("");
+
+  useEffect(() => {
+    setPermission(userCtx.state.activePermission);
+  }, []);
+
+  useEffect(() => {
+    //set Text for Button
+    setFullText(convertText(permission));
+  }, [permission]);
+
+  /* -------------------------------- functions ------------------------------- */
+  //convert permission abbreviation to full text
+  function convertText(x) {
+    if (x === "F") {
+      return "Full";
+    } else if (x === "L") {
+      return "Limited";
+    } else if (x === "R") {
+      return "Read-only";
+    }
+  }
   /* --------------------------------- return --------------------------------- */
   return (
     <>
@@ -21,7 +48,7 @@ export const Body = ({ onDisconnectClick, onForwardClick }) => {
             className="py-8px px-16px justify-content-between"
             onClick={onForwardClick}
           >
-            Full
+            {fullText}
           </Button>
           <Button
             buttonKind="primary_red"

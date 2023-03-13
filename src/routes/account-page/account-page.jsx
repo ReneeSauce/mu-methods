@@ -1,4 +1,5 @@
 import { useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import StepWizard from "react-step-wizard";
 import { Steps } from "../steps";
 
@@ -15,45 +16,18 @@ import { Steps } from "../steps";
  */
 
 export const AccountPage = () => {
+  /* --------------------------------- consts --------------------------------- */
+  const navigate = useNavigate();
   /* ------------------------------- use states ------------------------------- */
   //updates SW, form data and seedPhrases for context
   const [SW, setSW] = useState();
   const [prevStep, setPrevStep] = useState("");
-  // const [state, updateState] = useState({
-  //   seedPhrases: [],
-  //   accountData: {},
-  //   activeProfile: [],
-  // });
 
-  //isOpen for Modal
   const [isOpen, setIsOpen] = useState(false);
-  /* ------------------------------ use Callbacks ----------------------------- */
 
-  // const updateAccountData = useCallback(
-  //   (accountData) => {
-  //     updateState({
-  //       ...state,
-  //       accountData,
-  //     });
-  //   },
-  //   [state]
-  // );
-  /* -------------------------------- use Memo -------------------------------- */
-
-  // const storeValue = useMemo(() => {
-  //   return {
-  //     state,
-
-  //     updateSeedPhrases,
-  //     updateAccountData,
-  //   };
-  // }, [state, updateSeedPhrases, updateAccountData]);
   /* -------------------------------- functions ------------------------------- */
   //do something on stepchange
   const onStepChange = (stats) => {
-    // console.log(state); //for presentation? - to show state being captured
-    // console.log(state.allTsxs); //for presentation to show transactions capture
-
     setPrevStep(stats.previousStep);
   };
 
@@ -61,6 +35,7 @@ export const AccountPage = () => {
     setSW(sw);
   };
 
+  //step wizard navigation by nameed step
   const goTo = useCallback(
     (step) => {
       return () => SW.goToNamedStep(step);
@@ -75,7 +50,7 @@ export const AccountPage = () => {
 
   const handleAddWallet = () => {
     // setIsOpen(true);
-    console.log("save wallet permissionsand data here");
+    console.log("save wallet permissions and data here");
     alert("save wallet permissions and data here");
   };
 
@@ -99,8 +74,6 @@ export const AccountPage = () => {
 
   /* --------------------------------- return --------------------------------- */
   return (
-    // <WizardContext.Provider value={storeValue}>
-
     <StepWizard
       onStepChange={onStepChange}
       instance={setInstance}
@@ -111,7 +84,7 @@ export const AccountPage = () => {
       <Steps.AccountDetails
         stepName="account-details"
         onForwardClick={goTo("account-settings")}
-        onBackClick={goTo("accountsettings")}
+        onBackClick={() => navigate("/db")} //return to dashboard outside of wizard
       ></Steps.AccountDetails>
 
       <Steps.AccountSettings

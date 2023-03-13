@@ -20,8 +20,7 @@ import { Body } from "./body";
 
 export const AccountDetails = ({ onBackClick, onForwardClick }) => {
   /* ------------------------------- set Context ------------------------------ */
-  // const { state, updatePrimaryAcct, updateWalletProfiles } =
-  //   useContext(UserContext);
+
   const userCtx = useContext(UserContext);
   const tsxCtx = useContext(TransactionContext);
 
@@ -29,19 +28,15 @@ export const AccountDetails = ({ onBackClick, onForwardClick }) => {
   const [profile, setProfile] = useState([walletProfiles]);
 
   /* ------------------------------- useEffects ------------------------------- */
-  // useEffect(()=>{
-  //   tsxCtx.updateAllTsxs(allTsxs)
-  //   console.log("tsx",tsxCtx.state)
-  // },[])
 
   /* -------------------------------- functions ------------------------------- */
   const reloadPage = () => {
+    //reload transactions instead?
     console.log("clicked");
     const user = userCtx.state.walletProfiles.filter(
       (x) => x.isPrimary === true
     );
     userCtx.updatePrimaryAcct(user);
-    console.log(tsxCtx.state);
   };
 
   /* --------------------------------- return --------------------------------- */

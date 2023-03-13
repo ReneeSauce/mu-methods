@@ -28,20 +28,22 @@ export const Body = ({ isCopiable }) => {
   const [tsxs, setTsxs] = useState([]); //set transactions from file
   const [dateGroups, setDateGroups] = useState([]); //used to group tsx by date
   const [account, setAccount] = useState([]); //set account data to primary fake data
-  const [filter, setFilter] = useState("ETH"); //
+  const [filter, setFilter] = useState(""); //
   const [isLoading, setIsLoading] = useState(true);
 
   /* ------------------------------- useEffects ------------------------------- */
-  //set account locally rendered to primary account(not currently grabbed from context)
+  //set account locally from context - used to render
   useEffect(() => {
     // setAccount(primaryProfile);
-    setAccount(userCtx.state.primaryAcct);
-  }, []);
+    setAccount(userCtx.state.activeWallet);
+  }, [userCtx.state]);
 
+  useEffect(() => {
+    setFilter(userCtx.state.activeFilter);
+  }, [userCtx.state]);
   //set all transactions locally - grabbed from context
   useEffect(() => {
     setTsxs(tsxCtx.state.allTransactions);
-    // updateAllTsxs(allTsxs);
   }, [tsxCtx.state]);
 
   //group data by date for table - uses locally set tsx
@@ -54,7 +56,8 @@ export const Body = ({ isCopiable }) => {
     setIsLoading(false);
   }, []);
   console.log("account", account);
-  console.log("userctx", userCtx.state);
+  console.log("userctx", userCtx.state.activeFilter);
+  console.log(filter);
   /* --------------------------------- consts --------------------------------- */
   //group transactions by date - passing filter & Nft is set
   //setting up filter for render -
@@ -82,30 +85,30 @@ export const Body = ({ isCopiable }) => {
   /* --------------------------------- return --------------------------------- */
   return (
     <>
-      {account.map((account) => (
-        <div
-          className="w-100 d-flex flex-column align-items-center"
-          key={_.uniqueId("acct-")}
-        >
-          <Account
-            src={account.avatar}
-            alt={account.alt}
-            name={account.nickname}
-            wallet={account.wallet}
-            permissions={account.permissions}
-            pillText={account.pubKey}
-            isCopiable={isCopiable}
-            isLoading={isLoading}
-          ></Account>
-          <div className="w-100">
-            <Balance
-              ctype={account.cryptoType}
-              balancecr={account.balanceCr}
-              balancecu={account.balanceCr * 125}
-            ></Balance>
-          </div>
+      {/* {account.map((account) => ( */}
+      <div
+        className="w-100 d-flex flex-column align-items-center"
+        key={_.uniqueId("acct-")}
+      >
+        <Account
+          src={account.avatar}
+          alt={account.alt}
+          name={account.nickname}
+          wallet={account.wallet}
+          permissions={account.permissions}
+          pillText={account.pubKey}
+          isCopiable={isCopiable}
+          isLoading={isLoading}
+        ></Account>
+        <div className="w-100">
+          <Balance
+            ctype={account.cryptoType}
+            balancecr={account.balanceCr}
+            balancecu={account.balanceCr * 125}
+          ></Balance>
         </div>
-      ))}
+      </div>
+      {/* ))} */}
       <div className="w-100">
         {Object.keys(dateGroups)
           .sort((dateA, dateB) => new Date(dateB) - new Date(dateA))

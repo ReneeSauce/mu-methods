@@ -6,11 +6,11 @@ export const UserProvider = ({ children }) => {
   //state to store userProfile
 
   const [state, updateState] = useState({
-    activeFilter: "",
-    primaryAcct: [], //set on dashboard to populate account page
+    primaryAcct: [], //set on dashboard to determine filters on dashboard
     walletProfiles: [], //all acount profiles - set on home page
-    activeWallet: [], //
-    allTransactions: [], //set on dashboard to populate account page
+    activeWallet: [], //active wallet on account page
+    activeFilter: "", //used on account page to filter transactions based on activewallet
+    activePermission: "", //used on account setting page for permissions base on active wallet
   });
 
   const updatePrimaryAcct = useCallback(
@@ -31,21 +31,14 @@ export const UserProvider = ({ children }) => {
     },
     [state]
   );
-  const updateAllTsxs = useCallback(
-    (allTransactions) => {
-      updateState({
-        ...state,
-        allTransactions: allTransactions,
-      });
-    },
-    [state]
-  );
+
   const updateActiveWallet = useCallback(
     (activeWallet) => {
       updateState({
         ...state,
         activeWallet: activeWallet,
         activeFilter: activeWallet.cryptoType,
+        activePermission: activeWallet.permissions,
       });
     },
     [state]
@@ -56,16 +49,9 @@ export const UserProvider = ({ children }) => {
       state,
       updateActiveWallet,
       updateWalletProfiles,
-      updateAllTsxs,
       updatePrimaryAcct,
     };
-  }, [
-    state,
-    updateActiveWallet,
-    updateWalletProfiles,
-    updateAllTsxs,
-    updatePrimaryAcct,
-  ]);
+  }, [state, updateActiveWallet, updateWalletProfiles, updatePrimaryAcct]);
 
   return <UserContext.Provider value={store}>{children}</UserContext.Provider>;
 };

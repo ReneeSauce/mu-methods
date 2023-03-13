@@ -9,32 +9,26 @@ import { Body } from "./body";
 
 export const DbStub = () => {
   /* --------------------------------- consts --------------------------------- */
-  //set usercontext
-  // const { state, updatePrimaryAcct, updateWalletProfiles, updateAllTsxs } =
-  //   useContext(UserContext);
   const userCtx = useContext(UserContext);
   const tsxCtx = useContext(TransactionContext);
   const navigate = useNavigate();
-  console.log("dbtsxctx", tsxCtx.state);
+
   /* -------------------------------- useState -------------------------------- */
   const [wallets, setWallets] = useState([]);
-  const [activeWallet, setActiveWallet] = useState([]); //not needed sent to context
-  const [filter, setFilter] = useState("");
 
   console.log("dbuserctx", userCtx.state);
   /* -------------------------------- useEffect ------------------------------- */
   useEffect(() => {
     //setWallets locally from user context on load
     setWallets(userCtx.state.walletProfiles);
-    // setWallets(walletProfiles);//sets from file
   }, []);
 
   /* -------------------------------- functions ------------------------------- */
   function onWalletClick(wallet) {
     //updates user context with active wallet from button click
+    //updates, activeWallet,activeFilter,activePermissions
     userCtx.updateActiveWallet(wallet);
-    console.log("db", tsxCtx.state);
-    //somehow
+
     navigate("/accountpage");
   }
 
