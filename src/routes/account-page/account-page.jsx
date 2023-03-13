@@ -80,7 +80,7 @@ export const AccountPage = () => {
       transitions={custom}
     >
       {/* steps go here with sw */}
-      {/* <Home stepName="home" onForwardClick={goTo("account-details")}></Home> */}
+
       <Steps.AccountDetails
         stepName="account-details"
         onForwardClick={goTo("account-settings")}

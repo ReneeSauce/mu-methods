@@ -16,7 +16,6 @@ export const DbStub = () => {
   /* -------------------------------- useState -------------------------------- */
   const [wallets, setWallets] = useState([]);
   const [primary, setPrimary] = useState({});
-  const [acctGroups, setAcctGroups] = useState([]);
 
   console.log("dbuserctx", userCtx.state);
   /* -------------------------------- useEffect ------------------------------- */
@@ -31,10 +30,6 @@ export const DbStub = () => {
     setPrimary(userCtx.state.primaryAcct[0]);
   }, []);
 
-  //set groups by account type
-  useEffect(() => {
-    setAcctGroups(groupsByAccount);
-  }, []);
   /* -------------------------------- functions ------------------------------- */
   function onWalletClick(wallet) {
     //updates user context with active wallet from button click
@@ -64,43 +59,20 @@ export const DbStub = () => {
             <div>{primary.pubKey}</div>
 
             <Table>
+              <Table.Header> test header</Table.Header>
+
               {wallets.map((wallet) => (
-                <Table key={_.uniqueId("wallet-")}>
-                  {wallet.isPrimary === true && (
-                    <>
-                      <Table.Header> Primary Account</Table.Header>
-                      <Body
-                        onClick={() => onWalletClick(wallet)}
-                        wallet={wallet.wallet}
-                        permissions={wallet.permissions}
-                        cryptoType={wallet.cryptoType}
-                        balanceCr={wallet.balanceCr}
-                        avatar={wallet.avatar}
-                        nickname={wallet.nickname}
-                        pubkey={wallet.pubkey}
-                      />
-                    </>
-                  )}
-                </Table>
-              ))}
-              <Table.Header> Linked Accounts</Table.Header>
-              {wallets.map((wallet) => (
-                <Table key={_.uniqueId("wallet-")}>
-                  {wallet.isPrimary === false && (
-                    <>
-                      <Body
-                        onClick={() => onWalletClick(wallet)}
-                        wallet={wallet.wallet}
-                        permissions={wallet.permissions}
-                        cryptoType={wallet.cryptoType}
-                        balanceCr={wallet.balanceCr}
-                        avatar={wallet.avatar}
-                        nickname={wallet.nickname}
-                        pubkey={wallet.pubkey}
-                      />
-                    </>
-                  )}
-                </Table>
+                <Body
+                  key={_.uniqueId("wallet-")}
+                  onClick={() => onWalletClick(wallet)}
+                  wallet={wallet.wallet}
+                  permissions={wallet.permissions}
+                  cryptoType={wallet.cryptoType}
+                  balanceCr={wallet.balanceCr}
+                  avatar={wallet.avatar}
+                  nickname={wallet.nickname}
+                  pubkey={wallet.pubkey}
+                />
               ))}
             </Table>
           </>

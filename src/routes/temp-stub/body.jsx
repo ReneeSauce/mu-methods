@@ -1,4 +1,13 @@
-export const Body = ({ wallet, permissions, cryptoType, onClick }) => {
+export const Body = ({
+  wallet,
+  permissions,
+  cryptoType,
+  balanceCr,
+  avatar,
+  nickname,
+  pubkey,
+  onClick,
+}) => {
   return (
     <>
       <button
@@ -8,6 +17,11 @@ export const Body = ({ wallet, permissions, cryptoType, onClick }) => {
         <div>{wallet}</div>
         <div>{permissions}</div>
         <div>{cryptoType}</div>
+        <div>{balanceCr}</div>
+        <div>{balanceCr * 125}</div>
+        <div>{avatar}</div>
+        <div>{nickname}</div>
+        <div>{pubkey}</div>
       </button>
     </>
   );

@@ -52,12 +52,9 @@ export const Body = ({ isCopiable }) => {
   }, [tsxs]);
 
   useEffect(() => {
-    /*setaccountInfo({})*/
     setIsLoading(false);
   }, []);
-  console.log("account", account);
-  console.log("userctx", userCtx.state.activeFilter);
-  console.log(filter);
+
   /* --------------------------------- consts --------------------------------- */
   //group transactions by date - passing filter & Nft is set
   //setting up filter for render -
@@ -85,7 +82,6 @@ export const Body = ({ isCopiable }) => {
   /* --------------------------------- return --------------------------------- */
   return (
     <>
-      {/* {account.map((account) => ( */}
       <div
         className="w-100 d-flex flex-column align-items-center"
         key={_.uniqueId("acct-")}
@@ -108,7 +104,7 @@ export const Body = ({ isCopiable }) => {
           ></Balance>
         </div>
       </div>
-      {/* ))} */}
+
       <div className="w-100">
         {Object.keys(dateGroups)
           .sort((dateA, dateB) => new Date(dateB) - new Date(dateA))
