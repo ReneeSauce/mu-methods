@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@faker-js/faker": "^7.6.0",
+    "@hookform/resolvers": "^2.9.11",
     "bootstrap": "^5.2.3",
     "classnames": "^2.3.2",
     "framer-motion": "^8.5.5",
@@ -31,6 +32,7 @@
     "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",
     "react-qr-reader": "^3.0.0-beta-1",
+    "react-hook-form": "^7.43.1",
     "react-router-dom": "^6.6.2",
     "react-step-wizard": "^5.3.11",
     "react-webcam": "^7.0.1",
@@ -38,7 +40,8 @@
     "styled-components": "^5.3.6",
     "swiper": "^8.4.7",
     "vite-plugin-babel-macros": "^1.0.6",
-    "webrtc-adapter": "^8.2.1"
+    "webrtc-adapter": "^8.2.1",
+    "yup": "^1.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
