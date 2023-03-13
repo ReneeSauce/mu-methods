@@ -19,6 +19,7 @@ import Icon from "../icons/icon";
 
 const StyledButton = styled.button`
   border: none;
+  padding: 0px;
   border-radius: 8px;
   opacity: ${(props) => props.disabled && "0.5"};
   width: ${(props) => props.size};
