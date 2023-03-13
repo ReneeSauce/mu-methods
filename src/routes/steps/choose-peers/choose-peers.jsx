@@ -29,6 +29,8 @@ export function ChoosePeers({ onBackClick, onForwardClick, title, subtitle }) {
               buttonKind="textOnly"
               leftIcon="arrowLeft"
               size="sm"
+              margin="0"
+              className="px-0"
               onClick={onBackClick}
             />
           </Layout.Header.Left>

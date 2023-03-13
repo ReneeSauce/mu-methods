@@ -3,7 +3,6 @@ import { Body } from "./body";
 
 //TODO: get permissions form
 //TODO: logic to set permissions value send to context?
-//TODO: question will Account info context hold all of this stuff?
 
 /**
  * Wallet Permissions Component -
@@ -39,6 +38,7 @@ export const WalletPermissions = ({
               buttonKind="textOnly"
               leftIcon="arrowLeft"
               size="sm"
+              className="p-0 m-0"
               onClick={onBackClick}
             />
           </Layout.Header.Left>

@@ -28,6 +28,8 @@ export function LogIn({ onBackClick, onSignUpClick, onLoginClick, title }) {
               buttonKind="textOnly"
               leftIcon="arrowLeft"
               size="sm"
+              margin="0"
+              className="px-0"
               onClick={onBackClick}
             />
           </Layout.Header.Left>

@@ -9,12 +9,10 @@ import NotificationIcon from "./components/icons/notification";
 import ProfileIcon from "./components/icons/profile";
 import { UserProvider } from "./contexts/user-context";
 import {
-  Account,
   AccountPage,
   AddAccount,
   DbStub,
   Home,
-  Login,
   Profile,
   SignUp,
 } from "./routes";
@@ -31,7 +29,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
+          {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/signup" element={<SignUp />} />
           <Route path="/addaccount" element={<AddAccount />} />
           <Route path="/accountpage" element={<AccountPage />} />
@@ -51,7 +49,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             }
           />
           {/* <Route path="/accountpage" element={<AccountDetails />} /> */}
-          <Route
+          {/* <Route
             path="/account"
             element={
               <Account
@@ -64,7 +62,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 isCopiable={true}
               />
             }
-          />
+          /> */}
         </Routes>
         {isLoggedIn && (
           <NavTray

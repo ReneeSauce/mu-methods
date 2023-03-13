@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import Spinner from "react-bootstrap/Spinner";
 import styled from "styled-components";
-import { Avatar } from "../components/avatar/avatar";
-import { Pill } from "../components/pill/pill";
+import { Avatar } from "../../components/avatar/avatar";
+import { Pill } from "../../components/pill/pill";
 
 /**
  * Account Route

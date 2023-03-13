@@ -84,6 +84,8 @@ export function RepeatSeedPhrase({
               buttonKind="textOnly"
               leftIcon="arrowLeft"
               size="sm"
+              margin="0"
+              className="px-0"
               onClick={handleBackClick}
             />
           </Layout.Header.Left>

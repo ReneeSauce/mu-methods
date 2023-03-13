@@ -22,7 +22,7 @@ const StyledButton = styled.button`
   border-radius: 8px;
   opacity: ${(props) => props.disabled && "0.5"};
   width: ${(props) => props.size};
-  border-
+  /* border- */
   transition: opacity 0.2s;
   &:hover {
     opacity: ${(props) => !props.disabled && "0.8"};
@@ -44,6 +44,7 @@ export const Button = ({
   rightIcon,
   onClick,
   children,
+  margin,
   className,
 }) => {
   const sizes = {
@@ -95,11 +96,12 @@ export const Button = ({
         <Icon
           testId="icon"
           name={icons[leftIcon]}
-          className={(children && "me-12px") || "mx-8px my-8px"} // renders padding conditionally based on text content
+          className={(children && "me-12px") || "mx-0px my-8px"} // renders padding conditionally based on text content
         />
       )}
       <StyledText
         role="label"
+        margin={margin}
         className={cx(
           `fs-18px ${
             (dangerText && "text-danger") ||
