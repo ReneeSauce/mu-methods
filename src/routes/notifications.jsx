@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Spinner from "react-bootstrap/Spinner";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Button, Layout, Modal, Notification } from "../components";
 import SuccessIcon from "../components/icons/checkmark";
@@ -118,7 +119,10 @@ export const Notifications = () => {
       ) : (
         <>
           <NotificationsContainer className="d-flex flex-column bg-alpha pt-32px pb-24px px-16px my-0 mx-auto position-relative">
-            <MuIcon height="20px" />
+            <Link to="/">
+              <MuIcon height="20px" />
+            </Link>
+
             <div className="d-flex flex-row justify-content-center align-items-center">
               <Layout.Header.Center>
                 <Header.Title title="Notifications" />
