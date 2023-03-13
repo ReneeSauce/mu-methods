@@ -18,7 +18,6 @@ export const DbStub = () => {
   const [primary, setPrimary] = useState({});
   const [acctGroups, setAcctGroups] = useState([]);
 
-  console.log("dbuserctx", userCtx.state);
   /* -------------------------------- useEffect ------------------------------- */
   useEffect(() => {
     //setWallets locally from user context on load
@@ -44,14 +43,17 @@ export const DbStub = () => {
 
     navigate("/accountpage");
   }
-
+  const handleAddAccountClick = () => {
+    navigate("/addaccount");
+  };
+  //not working
   const groupsByAccount = wallets.reduce((group, account) => {
     const type = account.isPrimary;
     group[type] = group[type] ?? [];
     group[type].push(account);
     return group;
   }, {});
-  console.log(groupsByAccount);
+
   /* --------------------------------- return --------------------------------- */
   return (
     <>
@@ -59,6 +61,7 @@ export const DbStub = () => {
         className="mb-12px"
         body={
           <>
+            <button onClick={handleAddAccountClick}></button>
             <div>Total Balance</div>
             <div>{primary.balanceTotal}</div>
             <div>{primary.pubKey}</div>

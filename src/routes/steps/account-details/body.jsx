@@ -6,9 +6,7 @@ import { UserContext } from "../../../contexts/user-context";
 import { Account } from "./account";
 import { Balance, TsxCrypto, TsxNft } from "./cells";
 
-//TODO: make context work right
 //TODO: set up logic to fetch SDK data
-//TODO:need to get "filter" passed through context
 
 /**
  * Body Component - used with AccountDetails Component -(Dashboard)
@@ -18,9 +16,7 @@ import { Balance, TsxCrypto, TsxNft } from "./cells";
 
 export const Body = ({ isCopiable }) => {
   /* --------------------------------- consts --------------------------------- */
-  //set usercontext
-  // const { state, updatePrimaryAcct, updateWalletProfiles, updateAllTsxs } =
-  //   useContext(UserContext);
+  //set usercontext, transaction context
   const userCtx = useContext(UserContext);
   const tsxCtx = useContext(TransactionContext);
 

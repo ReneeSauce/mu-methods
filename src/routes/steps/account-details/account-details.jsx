@@ -24,6 +24,8 @@ export const AccountDetails = ({ onBackClick, onForwardClick }) => {
   const userCtx = useContext(UserContext);
   const tsxCtx = useContext(TransactionContext);
 
+  console.log("userctx", userCtx.state);
+  console.log("tsxctx", tsxCtx.state);
   /* -------------------------------- useState -------------------------------- */
   const [profile, setProfile] = useState([walletProfiles]);
 
