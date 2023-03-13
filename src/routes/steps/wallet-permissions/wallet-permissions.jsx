@@ -1,4 +1,4 @@
-import { Button, Layout, Modal } from "../../../components"; //button needs to be changed when avail
+import { Button, Layout, Modal } from "../../../components";
 import { Body } from "./body";
 
 //TODO: get permissions form

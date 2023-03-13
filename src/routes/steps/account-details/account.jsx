@@ -17,7 +17,7 @@ import { Pill } from "../../../components/pill";
  */
 
 const Container = styled.div`
-  margin-bottom: 32px;
+  margin-bottom: 24px;
   max-width: 250px;
   row-gap: 12px;
 `;

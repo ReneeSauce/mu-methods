@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Button, Layout } from "../../../components"; //button needs to be changed when avail
+import { Button, Layout } from "../../../components";
 import { WizardContext } from "../../../contexts/wizard-context";
 import { account, fSeedPhrases } from "../../../utils/faker-data";
 import { Body } from "./body";

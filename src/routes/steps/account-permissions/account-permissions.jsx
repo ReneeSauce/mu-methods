@@ -1,22 +1,22 @@
 import { useContext } from "react";
 import { Button, Layout } from "../../../components"; //button needs to be changed when avail
 import { UserContext } from "../../../contexts/user-context";
-//TODO: logic to get data from dashboard
-//TODO: need to add button with arrow to trigger next page (permissions)
-//TODO: add logic for clearing context on disconnect account click
-//TODO: need to update @params
+
+//TODO: get radio button forms
+//TODO: logic to get permissions settings to select correct option on load
+//TODO: logic to save any new permission selection to context and sdk
+//TODO: make button disabled? until new setting selected
 
 /**
  * Account Permissions -
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
  * @param onBackClick back click handler prop passed down from parent
- * @param onForwardClick forward click handler prop passed down from parent
- * @param onConnectWalletClick connect wallet click handler prop passed down from parent
+ * @param onClick click handler prop for Save settings button passed down from parent
  * @param header expects header components
  * @param body expects body components
  * @param footer expects footer components
  * @param title title prop in layout headerpassed from parent
- * @param subtitle subtitle in layout header prop passed from parent
+
  */
 
 export const AccountPermissions = ({ onBackClick, onClick, title }) => {
@@ -32,6 +32,7 @@ export const AccountPermissions = ({ onBackClick, onClick, title }) => {
               buttonKind="textOnly"
               leftIcon="arrowLeft"
               size="sm"
+              className="p-0 m-0"
               onClick={onBackClick}
             />
           </Layout.Header.Left>
@@ -49,6 +50,12 @@ export const AccountPermissions = ({ onBackClick, onClick, title }) => {
             <div className="d-flex flex-column gap-32px">
               <Button buttonKind="tertiary">
                 Full - placeholder radio button
+              </Button>
+              <Button buttonKind="tertiary">
+                Limited - placeholder radio button
+              </Button>
+              <Button buttonKind="tertiary">
+                Read-Only - placeholder radio button
               </Button>
             </div>
           </div>

@@ -4,9 +4,17 @@ import { Steps } from "../steps";
 import { Home } from "./home";
 
 //TODO: update state useState with appropriate items
+//TODO: combine with addaccount wizard and dashboard into one route
+
 /* -------------------------------------------------------------------------- */
-/*                         Account-Page Wizard                             */
+/*                               AccountPage Wizard                           */
 /* -------------------------------------------------------------------------- */
+/**
+ * AccountPage Wizard Wizard - used for /accountpage route 
+ * @author [K. Ehrenclou](https://github.com/kehrenclou)
+
+ */
+
 export const AccountPage = () => {
   /* ------------------------------- use states ------------------------------- */
   //updates SW, form data and seedPhrases for context

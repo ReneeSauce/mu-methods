@@ -5,14 +5,12 @@ import { Wallet } from "../../../components";
 import { WizardContext } from "../../../contexts/wizard-context";
 
 //TODO: need logic to set is confirmed to true - use state
-//TODO: way to trigger setIsConfirmed to true
+//TODO: way to trigger setIsConfirmed to true from app or qr code
 //TODO: logic to go to next step when isConfirmed = true
-//TODO: send is confirmed to usercontext
 
 /**
  * Body Component - used with Connect-Wallet Confirm Component-
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
-
 
  *
  */

@@ -3,7 +3,7 @@ import { Button, Layout } from "../../../components"; //button needs to be chang
 //TODO: Create onForwardClick handler to open user's email account
 
 /**
- * Choose Peers Component -
+ * Finish Registration Component - used with SignupWizard
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
  * @param onForwardClick forward click handler prop passed down from parent -opens email account
  * @param header expects header components

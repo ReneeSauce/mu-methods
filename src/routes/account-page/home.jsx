@@ -5,6 +5,17 @@ import { walletProfiles } from "../../utils";
 import { allTsxs } from "../../utils/faker-data";
 
 //Todo:
+/* -------------------------------------------------------------------------- */
+/*                               Home Page   -                                */
+/* ----- to mock authoflow and set context for wallets and transactions ----- */
+/* ----- currently an experimental component - not needed for production ---- */
+/* -------------------------------------------------------------------------- */
+/**
+ * Home Component-  
+ * @author [K. Ehrenclou](https://github.com/kehrenclou)
+
+ */
+
 export const Home = ({ onForwardClick }) => {
   /* --------------------------------- consts --------------------------------- */
   //set usercontext

@@ -14,7 +14,6 @@ import styled from "styled-components";
 
  * @param onClick prop to call handleScan function
 
-
  *
  */
 const StyledBox = styled.div`

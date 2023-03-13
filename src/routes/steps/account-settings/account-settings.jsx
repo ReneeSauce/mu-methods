@@ -1,21 +1,23 @@
 import { Button, Layout, Modal } from "../../../components"; //button needs to be changed when avail
 import { Body } from "./body";
-//TODO: logic to get data from dashboard
-//TODO: need to add button with arrow to trigger next page (permissions)
+
+//TODO: add comparison to enable disconnect account button on modal from input
 //TODO: add logic for clearing context on disconnect account click
-//TODO: need to update @params
+//TODO: input placeholder needs styled component styling
 
 /**
- * Account Settings
+ * Account Settings - used in AccountPage Flow (Dashboard Wizard)
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
  * @param onBackClick back click handler prop passed down from parent
  * @param onForwardClick forward click handler prop passed down from parent
- * @param onConnectWalletClick connect wallet click handler prop passed down from parent
+ * @param onDisconnectClick disconnect click handler prop passed down from parent
+ * @param onChange - triggers handleTypePhrase
+ * @param onCancel - onCancel click handler prp passed down from parent to close modal
+ * @param isOpen - passed from parent - boolean useState value to control modal visibility
+ * @param onClose modal close button handler passed down from parent
+ * @param title - expects a title for header
  * @param header expects header components
  * @param body expects body components
- * @param footer expects footer components
- * @param title title prop in layout headerpassed from parent
- * @param subtitle subtitle in layout header prop passed from parent
  */
 
 export const AccountSettings = ({
@@ -27,6 +29,10 @@ export const AccountSettings = ({
   isOpen,
   onClose,
 }) => {
+  const handleTypePhrase = () => {
+    console.log("do something here");
+    //TODO: check phrase matches disconnect account to disconnedt
+  };
   return (
     <Layout
       className="mb-32px"
@@ -54,12 +60,14 @@ export const AccountSettings = ({
           ></Body>
           <Modal isOpen={isOpen} onClose={onClose}>
             <div className="mt-32px fs-18px flex-grow-1">
-              <h3 className="lh-sm fw-bold text-center fs-18px px-48px">
+              <h3 className="lh-sm fw-bold text-center fs-18px px-48px mb-16px">
                 Type "disconnect account" to proceed
               </h3>
               <input
-                placeholder="Type the phrase"
-                className="mt-16px w-100 "
+                onChange={handleTypePhrase}
+                className="mt-auto rounded py-20px px-8px border-0 bg-white bg-opacity-10 fs-18px w-100"
+                placeholder="Type the Phrase"
+                // value={key}
               ></input>
             </div>
             <div className="d-flex flex-column gap-12px w-100">

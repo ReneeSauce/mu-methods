@@ -9,10 +9,15 @@ import { Steps } from "../steps";
 //2. send to user email
 //3. on return form email, oath flow to logged in route
 
-//
 /* -------------------------------------------------------------------------- */
 /*                                SignUp Wizard                           */
 /* -------------------------------------------------------------------------- */
+/**
+ * SignUp Wizard - used for /signup route
+ * @author [K. Ehrenclou](https://github.com/kehrenclou)
+
+ */
+
 export const SignUp = () => {
   /* ------------------------------- use states ------------------------------- */
   //updates SW, form data and seedPhrases for context

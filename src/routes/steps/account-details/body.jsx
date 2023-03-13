@@ -6,11 +6,13 @@ import { primaryProfile } from "../../../utils"; //primary profile data
 import { allTsxs } from "../../../utils/faker-data"; //all transaction data
 import { Account } from "./account";
 import { Balance, TsxCrypto, TsxNft } from "./cells";
+
 //TODO: make context work right
-//TODO: set up SDK to fetch data
+//TODO: set up logic to fetch SDK data
+//TODO:need to get "filter" passed through context
 
 /**
- * Body Component - used with AccountPage Component -
+ * Body Component - used with AccountPage Component -(Dashboard)
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
 
  */
@@ -53,7 +55,6 @@ export const Body = ({ isCopiable }) => {
   /* --------------------------------- consts --------------------------------- */
   //group transactions by date - passing filter & Nft is set
   //setting up filter for render -
-  //TODO:need to get "filter" passed through context
 
   const filtered = tsxs.filter(
     (x) => x.cryptoType === filter || x.cryptoType === "NFT"

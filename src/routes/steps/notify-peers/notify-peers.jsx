@@ -1,7 +1,7 @@
-import { Button, Layout } from "../../../components"; //button needs to be changed when avail
+import { Button, Layout } from "../../../components";
 
 /**
- * Notify Peers Component -
+ * Notify Peers Component - used in SignUp Wizard
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
  * @param onForwardClick forward click handler prop passed down from parent -opens email account
  * @param header expects header components

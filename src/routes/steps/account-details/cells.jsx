@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 /**
- * AccountPage Component
+ * Layouts used in AccountDetails component - in uaccountpage flow (dashboard)
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
  * @param description- NFT Transaction Description
  * @param sender - NFT Transaction Sender

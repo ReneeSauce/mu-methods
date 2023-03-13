@@ -4,9 +4,17 @@ import { WizardContext } from "../../contexts/wizard-context";
 import { Steps } from "../steps";
 
 //TODO: update state useState with appropriate items
+//TODO: combine with account-page and dashboard into one route
+
 /* -------------------------------------------------------------------------- */
-/*                             Add-Account Wizard                             */
+/*                               AccountPage Wizard                           */
 /* -------------------------------------------------------------------------- */
+/**
+ * AddAccount  Wizard - used for /addaccount route 
+ * @author [K. Ehrenclou](https://github.com/kehrenclou)
+
+ */
+
 export const AddAccount = () => {
   /* ------------------------------- use states ------------------------------- */
   //updates SW, form data and seedPhrases for context

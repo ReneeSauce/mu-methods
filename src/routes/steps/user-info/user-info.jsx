@@ -1,10 +1,10 @@
-import { Button, Layout } from "../../../components"; //button needs to be changed when avail
+import { Button, Layout } from "../../../components";
 
 //TODO: need to import and add corresponding form when it is created
 //TODO: needs logic to disable/enable button - ?controlled by form validation?
 
 /**
- * User-Info Component - Sign up Info
+ * User-Info Component - used in Sign up component
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
  * @param onBackClick back click handler prop passed down from parent
  * @param onForwardClick forward click handler prop passed down from parent

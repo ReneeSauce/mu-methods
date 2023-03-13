@@ -5,7 +5,7 @@ import { Button, Layout, SlideShow } from "../../../components"; //button needs 
 import Mu from "../../../components/icons/mu";
 
 /**
- * Home Component
+ * Entry-Point Component - Starting component for the sSignUp Wizard
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
  * @param onLoginClick login click handler prop passed down from parent
  * @param onSignUpClick signup click handler prop passed down from parent

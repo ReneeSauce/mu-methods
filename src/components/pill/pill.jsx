@@ -50,7 +50,7 @@ export const Pill = ({
                 setShow(false);
               }, 1500);
             }}
-            className="p-0"
+            className="pl-8px"
             size="sm"
             buttonKind="textOnly"
             leftIcon="copy"

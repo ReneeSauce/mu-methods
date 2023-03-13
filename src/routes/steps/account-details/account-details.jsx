@@ -4,45 +4,35 @@ import { UserContext } from "../../../contexts/user-context";
 import { walletProfiles } from "../../../utils"; //data
 import { Body } from "./body";
 
-//TODO: need to update @params
-//TODO: logic to get data from dashboard
-//TODO: need to add account tables by date
-//where is this format coming from?
-//TODO: neneed to set up total balance logic and section
-//TODO:  need to set up faker to populate information
-//TODO: on wizard set up context
-//TODO: logic for regenerate button click
-//TODO: logic for settings button click
+//TODO: logic to get account filter for rendering correct account on this page
+//TODO: set up total balance logic -?SDK
 
 /**
- * Account Details Component - n Account Page Wizard Flow
+ * AccountDetails Component - used in Account Page Wizard Flow (Dashboard)
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
  * @param onBackClick back click handler prop passed down from parent
  * @param onForwardClick forward click handler prop passed down from parent
- * @param onConnectWalletClick connect wallet click handler prop passed down from parent
- * @param header expects header components
+
  * @param body expects body components
- * @param footer expects footer components
- * @param title title prop in layout headerpassed from parent
- * @param subtitle subtitle in layout header prop passed from parent
+
  */
 
-export const AccountDetails = ({
-  onBackClick,
-  onForwardClick,
-  title,
-  subtitle,
-}) => {
+export const AccountDetails = ({ onBackClick, onForwardClick }) => {
+  /* ------------------------------- set Context ------------------------------ */
   const { state, updatePrimaryAcct, updateWalletProfiles } =
     useContext(UserContext);
 
+  /* -------------------------------- useState -------------------------------- */
   const [profile, setProfile] = useState([walletProfiles]);
 
+  /* -------------------------------- functions ------------------------------- */
   const reloadPage = () => {
     console.log("clicked");
     const user = state.walletProfiles.filter((x) => x.isPrimary === true);
     updatePrimaryAcct(user);
   };
+
+  /* --------------------------------- return --------------------------------- */
   return (
     <Layout
       className="mb-0px"
@@ -53,6 +43,7 @@ export const AccountDetails = ({
               buttonKind="textOnly"
               leftIcon="arrowLeft"
               size="sm"
+              className="p-0 m-0"
               onClick={onBackClick}
             />
           </Layout.Header.Left>
@@ -62,15 +53,17 @@ export const AccountDetails = ({
               buttonKind="tertiary"
               rightIcon="regenerate"
               size="sm"
+              className="m-0 p-0"
               onClick={() => {
                 reloadPage();
-              }} //need regenerate info here
+              }}
             ></Button>
             <Button
               buttonKind="tertiary"
               rightIcon="settings"
               size="sm"
-              onClick={onForwardClick} //need onclick to wizard here
+              className="m-0 p-0"
+              onClick={onForwardClick}
             ></Button>
           </Layout.Header.Right>
         </>
