@@ -1,8 +1,9 @@
 //entrypoint? using to test out the wallet flow
+import { Link } from "react-router-dom";
 import { SwiperSlide } from "swiper/react";
 import { balls, cubes, users } from "../../../assets";
 import { Button, Layout, SlideShow } from "../../../components"; //button needs to be changed when avail
-import Mu from "../../../components/icons/mu";
+import MuIcon from "../../../components/icons/mu";
 
 /**
  * Entry-Point Component - Starting component for the sSignUp Wizard
@@ -28,7 +29,9 @@ export const SignupEntryPoint = ({
       header={
         <>
           <Layout.Header.Center>
-            <Mu width="30" height="37"></Mu>
+            <Link to="/">
+              <MuIcon width="30" height="37" />
+            </Link>
           </Layout.Header.Center>
         </>
       }

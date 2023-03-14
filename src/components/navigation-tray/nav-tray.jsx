@@ -53,9 +53,6 @@ export const NavTray = ({ isUnreadMessages, navLinks }) => {
     setIsVisible(authCtx.state.isNavVisible);
   }, [authCtx.state]);
 
-  console.log(authCtx.state);
-  console.log(isLoggedIn);
-
   return (
     isLoggedIn &&
     isVisible && (

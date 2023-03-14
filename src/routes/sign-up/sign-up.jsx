@@ -79,8 +79,8 @@ export const SignUp = () => {
   /* -------------------------------- functions ------------------------------- */
   //do something on stepchange
   const onStepChange = (stats) => {
-    console.log(state); //for presentation? - to show state being captured
-    console.log(state.seedPhrases); //for presentation to show seedphrase capture
+    // console.log(state); //for presentation? - to show state being captured
+    // console.log(state.seedPhrases); //for presentation to show seedphrase capture
 
     setPrevStep(stats.previousStep);
   };

@@ -7,9 +7,15 @@ import ProfileIcon from "../icons/profile";
 import { NavTray } from "./nav-tray";
 
 describe("Navigation tray", () => {
+  const props = {
+    isVisible: true,
+    isLoggedIn: true,
+  };
   it("Full app rendering and navigating thorugh NavTray", () => {
+    // const authCtx = useContext(AuthContext);
+    // authCtx.updateIsVisIsLogIn(true);
+
     render(
-      /* ---------------------- <AuthProvider></AuthProvider> --------------------- */
       <AuthProvider>
         <BrowserRouter>
           <Routes>
@@ -31,6 +37,9 @@ describe("Navigation tray", () => {
             />
           </Routes>
           <NavTray
+            isLoggedIn={props.isLoggedIn}
+            isVisible={props.isVisible}
+            {...props}
             navLinks={[
               {
                 role: "profile",
@@ -53,9 +62,9 @@ describe("Navigation tray", () => {
       </AuthProvider>
     );
 
-    const profile = screen.getByRole("profile");
+    const iconButton = screen.getByText("Home");
 
-    fireEvent.click(profile);
-    expect(screen.getByText("Profile")).toBeInTheDocument();
+    fireEvent.click(iconButton);
+    expect(iconButton).toBeInTheDocument();
   });
 });

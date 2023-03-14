@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Button, Layout } from "../../../components"; //button needs to be changed when avail
+import { AuthContext } from "../../../contexts/auth-context";
 import { TransactionContext } from "../../../contexts/transaction-context";
 import { UserContext } from "../../../contexts/user-context";
 import { Body } from "./body";
@@ -22,6 +23,7 @@ export const AccountDetails = ({ onBackClick, onForwardClick }) => {
 
   const userCtx = useContext(UserContext);
   const tsxCtx = useContext(TransactionContext);
+  const authCtx = useContext(AuthContext);
   // console.log(tsxCtx.state);
   // console.log(userCtx.state);
   /* -------------------------------- useState -------------------------------- */
@@ -36,6 +38,11 @@ export const AccountDetails = ({ onBackClick, onForwardClick }) => {
     );
   };
 
+  const handleBackClick = () => {
+    authCtx.updateIsNavVisible(true);
+    onBackClick();
+  };
+
   /* --------------------------------- return --------------------------------- */
   return (
     <Layout
@@ -48,7 +55,7 @@ export const AccountDetails = ({ onBackClick, onForwardClick }) => {
               leftIcon="arrowLeft"
               size="sm"
               className="p-0 m-0"
-              onClick={onBackClick}
+              onClick={handleBackClick}
             />
           </Layout.Header.Left>
 

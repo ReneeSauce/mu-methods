@@ -1,6 +1,7 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useContext, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import StepWizard from "react-step-wizard";
+import { AuthContext } from "../../contexts/auth-context";
 import { WizardContext } from "../../contexts/wizard-context";
 import { Steps } from "../steps";
 
@@ -19,6 +20,7 @@ import { Steps } from "../steps";
 export const AddAccount = () => {
   /* --------------------------------- consts --------------------------------- */
   const navigate = useNavigate();
+  const authCtx = useContext(AuthContext);
   /* ------------------------------- use states ------------------------------- */
   //updates SW, form data and seedPhrases for context
   const [SW, setSW] = useState();
@@ -91,6 +93,7 @@ export const AddAccount = () => {
   };
 
   const handleReturnToDashboard = () => {
+    authCtx.updateIsNavVisible(true);
     navigate("/dashboard");
   };
 

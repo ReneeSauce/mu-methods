@@ -12,8 +12,8 @@ export const AuthProvider = ({ children }) => {
   //state to store userProfile
 
   const [state, updateState] = useState({
-    isLoggedIn: true, //set to true for demo
-    isNavVisible: true, //set to true for home page demo to get to notifications
+    isLoggedIn: false, //set to false for default
+    isNavVisible: false, //set to false for default
   });
 
   const updateIsLoggedIn = useCallback(
@@ -34,10 +34,20 @@ export const AuthProvider = ({ children }) => {
     },
     [state]
   );
+  const updateIsVisIsLogIn = useCallback(
+    (value) => {
+      updateState({
+        ...state,
+        isLoggedIn: value,
+        isNavVisible: value,
+      });
+    },
+    [state]
+  );
 
   const store = useMemo(() => {
-    return { state, updateIsNavVisible, updateIsLoggedIn };
-  }, [state, updateIsNavVisible, updateIsLoggedIn]);
+    return { state, updateIsNavVisible, updateIsLoggedIn, updateIsVisIsLogIn };
+  }, [state, updateIsNavVisible, updateIsLoggedIn, updateIsVisIsLogIn]);
 
   return <AuthContext.Provider value={store}>{children}</AuthContext.Provider>;
 };

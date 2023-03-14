@@ -32,12 +32,12 @@ export const WalletConfirm = ({
 
   /* -------------------------------- handlers -------------------------------- */
   const handleConfirmClick = () => {
-    // fake api confirmation
+    // fake api confirmation - will simulate fail randomly.
+    //keep clicking button until it returns true
     const apiIsConfirmed = Math.random() < 0.5;
     console.log(apiIsConfirmed);
 
-    setIsConfirmed(apiIsConfirmed); //is this needed for demo
-    //should it be sent to context to save confirmation
+    setIsConfirmed(apiIsConfirmed);
 
     apiIsConfirmed
       ? onForwardClick()

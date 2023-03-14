@@ -2,6 +2,7 @@ import _ from "lodash";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Layout, Pill, Table, Wallet } from "../../components";
+import { AuthContext } from "../../contexts/auth-context";
 import { TransactionContext } from "../../contexts/transaction-context";
 import { UserContext } from "../../contexts/user-context";
 // import { Body } from "./body";
@@ -9,6 +10,7 @@ import { UserContext } from "../../contexts/user-context";
 /**
  * Dashboard Component
  * @author [Jenny Doctor](https://github.com/jendoc)
+ * @co-author [K. Ehrenclou](https://github.com/kehrenclou)
 
  */
 
@@ -16,6 +18,7 @@ export const Dashboard = () => {
   /* --------------------------------- consts --------------------------------- */
   const userCtx = useContext(UserContext);
   const tsxCtx = useContext(TransactionContext);
+  const authCtx = useContext(AuthContext);
   const navigate = useNavigate();
 
   /* -------------------------------- useState -------------------------------- */
@@ -41,13 +44,16 @@ export const Dashboard = () => {
     //updates, activeWallet,activeFilter,activePermissions
 
     userCtx.updateActiveWallet(wallet);
+    authCtx.updateIsNavVisible(false);
     navigate("/accountpage");
   }
   const handleAddAccountClick = () => {
+    authCtx.updateIsNavVisible(false);
     navigate("/addaccount");
   };
 
   const handleReturnToHome = () => {
+    authCtx.updateIsVisIsLogIn(false);
     navigate("/");
   };
 
