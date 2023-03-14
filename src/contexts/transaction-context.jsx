@@ -1,5 +1,11 @@
 import { createContext, useCallback, useMemo, useState } from "react";
 
+/**
+ * Transaction Context - 
+ * @author [K. Ehrenclou](https://github.com/kehrenclou)
+
+ */
+
 export const TransactionContext = createContext();
 
 export const TransactionProvider = ({ children }) => {

@@ -1,5 +1,11 @@
 import { createContext, useCallback, useMemo, useState } from "react";
 
+/**
+ * User Context - 
+ * @author [K. Ehrenclou](https://github.com/kehrenclou)
+
+ */
+
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
