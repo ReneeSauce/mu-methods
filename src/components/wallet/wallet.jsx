@@ -1,11 +1,16 @@
+import styled from "styled-components";
 import { Avatar } from "../avatar/avatar";
-import FMolecule from "../icons/fMolecule";
+
 /**
  * Wallet Component
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
  * @coauthor [Jenny Doctor](https://github.com/jendoc)
  */
 
+const PermissionsIcon = styled.span`
+  height: 16px;
+  width: 16px;
+`;
 export const Wallet = ({
   src,
   alt,
@@ -15,6 +20,7 @@ export const Wallet = ({
   cryptoType,
   balanceCr,
   balanceCu,
+  permissions,
 }) => {
   return (
     <>
@@ -27,7 +33,10 @@ export const Wallet = ({
         </h3>
         <div className="d-flex flex-row gap-8px align-items-center">
           <h3 className="m-0 fs-18px lh-sm">{name}</h3>
-          <FMolecule />
+
+          <PermissionsIcon className="d-flex align-items-center justify-content-center rounded-circle border border-white border-opacity-60 fs-10px text-uppercase m-0 text-white text-opacity-60">
+            {permissions}
+          </PermissionsIcon>
         </div>
         <p className="m-0 fs-12px lh-sm fw-normal text-white text-opacity-70">
           {pubkey}

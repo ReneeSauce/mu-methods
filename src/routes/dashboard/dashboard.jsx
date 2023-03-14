@@ -112,6 +112,7 @@ export const Dashboard = () => {
                           cryptoType={wallet.cryptoType}
                           balanceCr={wallet.balanceCr}
                           balanceCu={wallet.balanceCr * 125}
+                          permissions={wallet.permissions}
                         />
                       </Table.Button>
                     </div>
@@ -135,6 +136,7 @@ export const Dashboard = () => {
                           cryptoType={wallet.cryptoType}
                           balanceCr={wallet.balanceCr}
                           balanceCu={wallet.balanceCr * 125}
+                          permissions={wallet.permissions}
                         />
                       </Table.Cell>
                     </div>
