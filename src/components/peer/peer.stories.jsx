@@ -33,10 +33,10 @@ export const Template = (args) => {
     },
   ]);
 
-  // useEffect(() => {
-  //   // After fetching peers from API: set peers
-  //   // setPeers();
-  // }, []);
+  /* After fetching peers from API: set peers
+  useEffect(() => {
+    setPeers();
+  }, []); */
 
   return (
     <Peer title={args.title}>
