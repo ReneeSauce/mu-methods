@@ -14,7 +14,9 @@ const Template = ({ onClose, ...args }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div>
-      <Button onClick={() => setIsOpen(true)}>Click Me</Button>
+      <Button buttonKind="primary" onClick={() => setIsOpen(true)}>
+        Click Me
+      </Button>
       <Modal
         {...args}
         isOpen={isOpen}
