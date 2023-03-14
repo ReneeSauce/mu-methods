@@ -59,9 +59,6 @@ export const Home = () => {
           <h1>Home from Route</h1>
           <p>This is where auth flow ischecked </p>
 
-          {/* <button className="w-100 p-20px" onClick={() => handleClick()}>
-            Handle Click goto db
-          </button> */}
           <button
             className="w-100 p-20px"
             onClick={() => handleClickDashboard()}
