@@ -1,4 +1,4 @@
-const Profile = ({ className, width = "16", height = "16", active }) => {
+const Profile = ({ className, width = "16", height = "16" }) => {
   return (
     <svg
       width={width}
@@ -8,13 +8,7 @@ const Profile = ({ className, width = "16", height = "16", active }) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle
-        cx="11"
-        cy="11"
-        r="11"
-        fill="#F6F6F6"
-        fillOpacity={active ? "1" : "0.7"}
-      />
+      <circle cx="11" cy="11" r="11" fill="#F6F6F6" />
       <mask
         id="mask0_1508_1842"
         style={{ maskType: "alpha" }}
@@ -31,15 +25,8 @@ const Profile = ({ className, width = "16", height = "16", active }) => {
         <path
           d="M4 19C4 15.6863 6.68629 13 10 13H12C15.3137 13 18 15.6863 18 19V20H4V19Z"
           fill="#F6F6F6"
-          fillOpacity={active ? "1" : "0.7"}
         />
-        <circle
-          cx="11"
-          cy="8"
-          r="3"
-          fill="#F6F6F6"
-          fillOpacity={active ? "1" : "0.7"}
-        />
+        <circle cx="11" cy="8" r="3" fill="#F6F6F6" />
       </g>
     </svg>
   );
