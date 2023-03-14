@@ -7,7 +7,7 @@ it("Renders wallet", () => {
     alt: "salmon nigiri",
     wallet: "METAMASK",
     name: "MyMETAMASKAKK",
-    id: "1234",
+    pubkey: "1234",
   };
   render(
     <Wallet
@@ -15,7 +15,7 @@ it("Renders wallet", () => {
       alt={props.alt}
       wallet={props.wallet}
       name={props.name}
-      id={props.id}
+      pubkey={props.pubkey}
     />
   );
 

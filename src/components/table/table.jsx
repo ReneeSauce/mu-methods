@@ -27,7 +27,7 @@ const Header = ({ children }) => {
   return (
     <StyledHeading
       role="heading"
-      className="text-uppercase mb-2 fs-10px text-white text-opacity-70"
+      className="text-uppercase mb-8px fs-10px text-white text-opacity-70"
     >
       {children}
     </StyledHeading>
@@ -44,6 +44,17 @@ const Cell = ({ children }) => {
     </StyledCell>
   );
 };
+const Button = ({ children }) => {
+  return (
+    <StyledCell
+      role="button"
+      className="rounded mb-2 bg-white d-flex w-100 bg-beta gap-12px p-12px"
+    >
+      {children}
+    </StyledCell>
+  );
+};
 
 Table.Header = Header;
 Table.Cell = Cell;
+Table.Button = Button;

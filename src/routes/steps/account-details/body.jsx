@@ -88,7 +88,7 @@ export const Body = ({ isCopiable }) => {
           name={account.nickname}
           wallet={account.wallet}
           permissions={account.permissions}
-          pillText={account.pubKey}
+          pillText={account.pubkey}
           isCopiable={isCopiable}
           isLoading={isLoading}
         ></Account>

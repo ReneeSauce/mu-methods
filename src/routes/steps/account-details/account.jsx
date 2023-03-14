@@ -60,7 +60,7 @@ export const Account = ({
           </AccountName>
 
           <Pill
-            className="profile__pill"
+            className="profile__pill me-8px"
             shape="square"
             isCopiable={isCopiable}
             text={pillText}

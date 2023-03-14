@@ -12,6 +12,8 @@ export const DbStub = () => {
   const userCtx = useContext(UserContext);
   const tsxCtx = useContext(TransactionContext);
   const navigate = useNavigate();
+  console.log("user", userCtx);
+  console.log("tsxCtx", tsxCtx);
 
   /* -------------------------------- useState -------------------------------- */
   const [wallets, setWallets] = useState([]);

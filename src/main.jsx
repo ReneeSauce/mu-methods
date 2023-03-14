@@ -21,7 +21,7 @@ import { Dashboard } from "./routes/dashboard/dashboard";
 
 import "./theme/defaults.scss";
 
-const isLoggedIn = false;
+const isLoggedIn = true;
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

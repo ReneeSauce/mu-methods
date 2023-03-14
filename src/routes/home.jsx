@@ -44,6 +44,12 @@ export const Home = () => {
 
     navigate("/db");
   }
+  function handleClickDashboard() {
+    setPrimaryAccount(); //set primary acct to user context
+    setTsxs(); //set all transactions to transaction context
+
+    navigate("/dashboard");
+  }
   /* --------------------------------- return --------------------------------- */
   return (
     <Layout
@@ -55,6 +61,12 @@ export const Home = () => {
 
           <button className="w-100 p-20px" onClick={() => handleClick()}>
             Handle Click goto db
+          </button>
+          <button
+            className="w-100 p-20px"
+            onClick={() => handleClickDashboard()}
+          >
+            Handle Click goto database
           </button>
         </div>
       }

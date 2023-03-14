@@ -12,7 +12,10 @@ export default {
     alt: { contorl: "text" },
     wallet: { control: "text" },
     name: { control: "text" },
-    id: { control: "text" },
+    pubkey: { control: "text" },
+    cryptoType: { control: "text" },
+    balanceCr: { control: number },
+    balanceCu: { control: number },
   },
 };
 
@@ -24,5 +27,8 @@ Variants.args = {
   alt: "wallet avatar",
   wallet: "METAMASK",
   name: "MyMetamaskAkk",
-  id: "1234567",
+  pubkey: "1234567",
+  cryptoType: "ETH",
+  balanceCr: "80",
+  balanceCU: "1000",
 };
