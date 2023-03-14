@@ -8,6 +8,7 @@ export * from "./layout";
 export * from "./modal";
 export * from "./navigation-tray";
 export * from "./notification";
+export * from "./peer";
 export * from "./pill";
 export * from "./qr-reader";
 export * from "./slideshow";
