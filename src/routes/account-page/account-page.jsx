@@ -55,7 +55,7 @@ export const AccountPage = () => {
   };
 
   const handleReturnToDashboard = () => {
-    console.log("add logic here to return to dashboard");
+    navigate("/dashboard");
   };
 
   const handleDisconnectClick = () => {
@@ -68,6 +68,7 @@ export const AccountPage = () => {
     setIsOpen(false);
     //do other things - clear the phrase states?
   };
+
   /* --------------------------- animation controls --------------------------- */
   //to customize transitions from animate.css
   let custom = {};
@@ -84,7 +85,7 @@ export const AccountPage = () => {
       <Steps.AccountDetails
         stepName="account-details"
         onForwardClick={goTo("account-settings")}
-        onBackClick={() => navigate("/db")} //return to dashboard outside of wizard
+        onBackClick={handleReturnToDashboard} //return to dashboard outside of wizard
       ></Steps.AccountDetails>
 
       <Steps.AccountSettings

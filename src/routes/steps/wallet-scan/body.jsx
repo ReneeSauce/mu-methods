@@ -32,7 +32,9 @@ export const Body = ({ onClick }) => {
 
       <StyledBox className="d-flex flex-column align-items-center justify-content-center bg-beta">
         <div>camera component goes here</div>
-        <div role="button" onClick={onClick}>
+        <div>you must click TestFaker below</div>
+        <div>to enable continue button</div>
+        <div role="button" onClick={onClick} className="text-danger">
           TestFaker
         </div>
       </StyledBox>

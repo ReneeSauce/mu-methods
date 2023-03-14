@@ -17,12 +17,10 @@ export const Dashboard = () => {
   const userCtx = useContext(UserContext);
   const tsxCtx = useContext(TransactionContext);
   const navigate = useNavigate();
-  console.log("user", userCtx);
-  console.log("tsxCtx", tsxCtx);
+
   /* -------------------------------- useState -------------------------------- */
   const [wallets, setWallets] = useState([]);
   const [primary, setPrimary] = useState({});
-  const [acctGroups, setAcctGroups] = useState([]);
 
   /* -------------------------------- useEffect ------------------------------- */
   useEffect(() => {
@@ -36,30 +34,22 @@ export const Dashboard = () => {
     setPrimary(userCtx.state.primaryAcct[0]);
   }, []);
 
-  //set groups by account type//?is this needed
-  useEffect(() => {
-    setAcctGroups(groupsByAccount);
-  }, []);
   /* -------------------------------- functions ------------------------------- */
   function onWalletClick(wallet) {
     //updates user context with active wallet from button click
     //active wallet is used to populate account page (next step)
     //updates, activeWallet,activeFilter,activePermissions
-    console.log("click");
-    userCtx.updateActiveWallet(wallet);
 
+    userCtx.updateActiveWallet(wallet);
     navigate("/accountpage");
   }
   const handleAddAccountClick = () => {
     navigate("/addaccount");
   };
-  //not working ?is this needed
-  const groupsByAccount = wallets.reduce((group, account) => {
-    const type = account.isPrimary;
-    group[type] = group[type] ?? [];
-    group[type].push(account);
-    return group;
-  }, {});
+
+  const handleReturnToHome = () => {
+    navigate("/");
+  };
 
   /* --------------------------------- return --------------------------------- */
 
@@ -69,7 +59,12 @@ export const Dashboard = () => {
       header={
         <>
           <Layout.Header.Left>
-            <Button size="sm" leftIcon="mu" buttonKind="textOnly" />
+            <Button
+              size="sm"
+              leftIcon="mu"
+              buttonKind="textOnly"
+              onClick={handleReturnToHome}
+            />
           </Layout.Header.Left>
 
           <Layout.Header.Right>
