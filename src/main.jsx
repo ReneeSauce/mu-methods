@@ -14,6 +14,7 @@ import {
   AddAccount,
   DbStub,
   Home,
+  Notifications,
   Profile,
   SignUp,
 } from "./routes";
@@ -67,6 +68,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
               />
             }
           /> */}
+            <Route path="/notifications" element={<Notifications />} />
           </Routes>
           {isLoggedIn && (
             <NavTray
@@ -82,7 +84,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                   Icon: HomeIcon,
                 },
                 {
-                  to: "/account",
+                  to: "/notifications",
                   Icon: NotificationIcon,
                   isNotification: true,
                 },
