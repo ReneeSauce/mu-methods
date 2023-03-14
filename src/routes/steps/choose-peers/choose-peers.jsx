@@ -1,12 +1,13 @@
 import { Button, Layout } from "../../../components"; //button needs to be changed when avail
 import { Body } from "./body";
 
+//TODO: get form components
 //TODO: Hook up buttons and form inputs for choosing peers
 //TODO: Create logic to check array.length of peers to match number of peers
 //TODO: Button disable/enable logic based on if #peers chosen
 
 /**
- * Choose Peers Component -
+ * Choose Peers Component -Used in Signup Wizard
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
  * @param onBackClick back click handler prop passed down from parent
  * @param onForwardClick forward click handler prop passed down from parent
@@ -29,6 +30,8 @@ export function ChoosePeers({ onBackClick, onForwardClick, title, subtitle }) {
               buttonKind="textOnly"
               leftIcon="arrowLeft"
               size="sm"
+              margin="0"
+              className="px-0"
               onClick={onBackClick}
             />
           </Layout.Header.Left>

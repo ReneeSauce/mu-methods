@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import Spinner from "react-bootstrap/Spinner";
 import styled from "styled-components";
-import { Avatar } from "../components/avatar/avatar";
-import { Pill } from "../components/pill/pill";
+import { Avatar } from "../../components/avatar/avatar";
+import { Pill } from "../../components/pill/pill";
 
 /**
  * Profile Route
@@ -17,12 +17,12 @@ import { Pill } from "../components/pill/pill";
  */
 
 const Container = styled.div`
-  margin: 40px auto;
+  margin: 0px auto;
   max-width: 250px;
-  row-gap: 12px;
+  row-gap: 4px;
 `;
 
-export const Profile = ({
+export const ProfileInfo = ({
   src,
   alt,
   name,
@@ -49,7 +49,7 @@ export const Profile = ({
   }, []);
 
   return (
-    <Container className="d-flex flex-column align-items-center bg-alpha">
+    <Container className="d-flex flex-column  align-items-center bg-alpha">
       {isLoading ? (
         <Spinner />
       ) : (
@@ -62,7 +62,7 @@ export const Profile = ({
           />
           <h3 className="fs-18px fw-bold m-0">{profileInfo.name}</h3>
           <Pill
-            className="profile__pill fw-normal"
+            className="profile__pill fw-normal me-8px  "
             shape="square"
             isCopiable={profileInfo.isCopiable}
             text={profileInfo.pillText}

@@ -2,6 +2,7 @@ import { Avatar } from "../avatar/avatar";
 /**
  * Account Info Component
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
+ *  @coauthor [Jenny Doctor](https://github.com/jendoc)
  */
 
 export const WalletData = ({ src, alt, wallet, name, id }) => {

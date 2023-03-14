@@ -1,8 +1,8 @@
-import { Button, Layout, Modal } from "../../../components"; //button needs to be changed when avail
+import { Button, Layout, Modal } from "../../../components";
 import { Body } from "./body";
 
 /**
- * Seed-phrase Component -
+ * Seed-phrase Component - used in sign up wizard
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
  * @param onBackClick back click handler prop passed down from parent
  * @param onForwardClick forward click handler prop passed down from parent
@@ -41,6 +41,8 @@ export function SeedPhrase({
               buttonKind="textOnly"
               leftIcon="arrowLeft"
               size="sm"
+              margin="0"
+              className="px-0"
               onClick={onBackClick}
             />
           </Layout.Header.Left>

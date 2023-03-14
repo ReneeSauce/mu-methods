@@ -9,10 +9,15 @@ import { Steps } from "../steps";
 //2. send to user email
 //3. on return form email, oath flow to logged in route
 
-//
 /* -------------------------------------------------------------------------- */
 /*                                SignUp Wizard                           */
 /* -------------------------------------------------------------------------- */
+/**
+ * SignUp Wizard - used for /signup route
+ * @author [K. Ehrenclou](https://github.com/kehrenclou)
+
+ */
+
 export const SignUp = () => {
   /* ------------------------------- use states ------------------------------- */
   //updates SW, form data and seedPhrases for context
@@ -74,8 +79,8 @@ export const SignUp = () => {
   /* -------------------------------- functions ------------------------------- */
   //do something on stepchange
   const onStepChange = (stats) => {
-    console.log(state); //for presentation? - to show state being captured
-    console.log(state.seedPhrases); //for presentation to show seedphrase capture
+    // console.log(state); //for presentation? - to show state being captured
+    // console.log(state.seedPhrases); //for presentation to show seedphrase capture
 
     setPrevStep(stats.previousStep);
   };
@@ -112,7 +117,6 @@ export const SignUp = () => {
     setIsVisible(false);
     setIsOpen(true);
   };
-
   const handleConnectWallet = () => {
     setIsOpen(true);
     console.log("save wallet data here");
@@ -146,13 +150,13 @@ export const SignUp = () => {
         transitions={custom}
       >
         {/* steps go here with sw */}
-        <Steps.EntryPoint
+        <Steps.SignupEntryPoint
           stepName="entry-point"
           SW={SW}
           onLoginClick={goTo("log-in")}
           onSignUpClick={goTo("user-info")}
           onConnectWalletClick={goTo("wallet-scan")}
-        ></Steps.EntryPoint>
+        ></Steps.SignupEntryPoint>
 
         <Steps.LogIn
           stepName="log-in"

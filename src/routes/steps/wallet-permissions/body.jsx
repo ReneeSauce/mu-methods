@@ -2,12 +2,9 @@
 
 //TODO: Continue button will need to send
 //permissions selection from the radio buttons to the sdk
-//TODO: send selections up to connect-wallet-permissions component
-//or move body to the component /composition
-//From here continue will go to signin step to choose seeds
 
 /**
- * Body Component - used with Connect-Wallet Permissions Component -
+ * Body Component - used with Connect-Wallet Permissions Component 
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
 
  *

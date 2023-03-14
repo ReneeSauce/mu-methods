@@ -2,7 +2,7 @@
 import styled from "styled-components";
 
 /**
- * Body Component - used with Repeat Seed Phrase Component - 
+ * Body Component - used with Repeat Seed Phrase Component - in Signup Wizard
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
  * @param repeatedseedPhrase  useState value copied seed phrase - used to control input label
  * @param onChange prop passed from parent to call handleInputChange function

@@ -1,12 +1,10 @@
 import { useState } from "react";
-import { Button, Layout } from "../../../components"; //button needs to be changed when avail
+import { Button, Layout } from "../../../components";
 import { Body } from "./body";
 
-//TODO: get body component finished
 //TODO: logic for confirm via App link (currently the continue button)
 //should continue to set permissions once confirmed
 //TODO: placeholder for the QR code - how will sdk confirm?
-//put in dummy logic for presentation
 //logic to add or delete from context?  should this happen on this step or next step
 //or set isConfirmed to true, if not confirmed then what?
 
@@ -34,12 +32,12 @@ export const WalletConfirm = ({
 
   /* -------------------------------- handlers -------------------------------- */
   const handleConfirmClick = () => {
-    // fake api confirmation
+    // fake api confirmation - will simulate fail randomly.
+    //keep clicking button until it returns true
     const apiIsConfirmed = Math.random() < 0.5;
     console.log(apiIsConfirmed);
 
-    setIsConfirmed(apiIsConfirmed); //is this needed for demo
-    //should it be sent to context to save confirmation
+    setIsConfirmed(apiIsConfirmed);
 
     apiIsConfirmed
       ? onForwardClick()
@@ -57,6 +55,7 @@ export const WalletConfirm = ({
               buttonKind="textOnly"
               leftIcon="arrowLeft"
               size="sm"
+              className="p-0 m-0"
               onClick={onBackClick}
             />
           </Layout.Header.Left>

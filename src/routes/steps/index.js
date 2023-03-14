@@ -1,10 +1,13 @@
+import { AccountDetails } from "./account-details";
+import { AccountPermissions } from "./account-permissions";
+import { AccountSettings } from "./account-settings";
 import { ChoosePeers } from "./choose-peers";
-import { EntryPoint } from "./entry-point";
 import { FinishReg } from "./finish-reg";
 import { LogIn } from "./login";
 import { NotifyPeers } from "./notify-peers";
 import { RepeatSeedPhrase } from "./repeat-seed-phrase";
 import { SeedPhrase } from "./seed-phrase";
+import { SignupEntryPoint } from "./signup-entry-point";
 import { UserInfo } from "./user-info";
 import { WalletConfirm } from "./wallet-confirm";
 import { WalletPermissions } from "./wallet-permissions";
@@ -17,9 +20,12 @@ export const Steps = {
   RepeatSeedPhrase,
   NotifyPeers,
   FinishReg,
-  EntryPoint,
+  SignupEntryPoint,
   WalletScan,
   WalletConfirm,
   WalletPermissions,
   LogIn,
+  AccountDetails,
+  AccountSettings,
+  AccountPermissions,
 };

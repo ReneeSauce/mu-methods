@@ -18,7 +18,7 @@ export const Body = ({}) => {
   const handleFindPeers = () => {
     //open search screen form
     //from form it will add to chosen peers
-    console.log("handleFindPeers");
+    console.log("handleFindPeers logic here");
   };
   return (
     <>

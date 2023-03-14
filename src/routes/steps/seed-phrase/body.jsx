@@ -4,12 +4,11 @@ import _ from "lodash";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { Button, Pill } from "../../../components";
 import { WizardContext } from "../../../contexts/wizard-context";
+
 //TODO: Should Download button have an error popup?
-//TODO: Check on how to change padding/margin-y to 13px from 19px
-//note will need to be 12px or 16px bs
 
 /**
- * Body Component - used with the Seed-phrase component
+ * Body Component - used with the Seed-phrase component in Signup Wizard
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
  * @param isVisible passed from parent - boolean useState value to control seed phrase copied notification
  * @param setIsVisible passed from parent - boolean useState setter to control seed phrase copied notification

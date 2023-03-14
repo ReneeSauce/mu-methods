@@ -1,11 +1,10 @@
-import { Button, Layout } from "../../../components"; //button needs to be changed when avail
+import { Button, Layout } from "../../../components";
 
-//TODO: Update buttons when available
 //TODO: need to import and add corresponding form when it is created
 //TODO: needs logic to disable/enable button - ?controlled by form validation?
 
 /**
- * LogIn Component - Sign up Route
+ * LogIn Component - used in Signup Wizard
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
  * @param onBackClick back click handler prop passed down from parent
  * @param onForwardClick forward click handler prop passed down from parent
@@ -28,6 +27,8 @@ export function LogIn({ onBackClick, onSignUpClick, onLoginClick, title }) {
               buttonKind="textOnly"
               leftIcon="arrowLeft"
               size="sm"
+              margin="0"
+              className="px-0"
               onClick={onBackClick}
             />
           </Layout.Header.Left>

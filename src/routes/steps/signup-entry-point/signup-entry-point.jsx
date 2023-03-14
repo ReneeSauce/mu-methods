@@ -1,11 +1,12 @@
 //entrypoint? using to test out the wallet flow
+import { Link } from "react-router-dom";
 import { SwiperSlide } from "swiper/react";
 import { balls, cubes, users } from "../../../assets";
 import { Button, Layout, SlideShow } from "../../../components"; //button needs to be changed when avail
-import Mu from "../../../components/icons/mu";
+import MuIcon from "../../../components/icons/mu";
 
 /**
- * Home Component
+ * Entry-Point Component - Starting component for the sSignUp Wizard
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
  * @param onLoginClick login click handler prop passed down from parent
  * @param onSignUpClick signup click handler prop passed down from parent
@@ -17,7 +18,7 @@ import Mu from "../../../components/icons/mu";
  * @param alt the alt description
  */
 
-export const EntryPoint = ({
+export const SignupEntryPoint = ({
   onLoginClick,
   onSignUpClick,
   onConnectWalletClick,
@@ -28,7 +29,9 @@ export const EntryPoint = ({
       header={
         <>
           <Layout.Header.Center>
-            <Mu width="30" height="37"></Mu>
+            <Link to="/">
+              <MuIcon width="30" height="37" />
+            </Link>
           </Layout.Header.Center>
         </>
       }

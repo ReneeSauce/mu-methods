@@ -1,5 +1,5 @@
 import { useCallback, useContext, useEffect, useState } from "react";
-import { Button, Layout } from "../../../components"; //button needs to be changed when avail
+import { Button, Layout } from "../../../components";
 import { WizardContext } from "../../../contexts/wizard-context";
 import { Body } from "./body";
 
@@ -9,7 +9,7 @@ import { Body } from "./body";
 //TODO: check useEffect that clears on load - component mounts on signup route may not work without lazyloading
 
 /**
- * Repeat Seed Phrase Component - 
+ * Repeat Seed Phrase Component - used in Sign up Wizard
  * @author [K. Ehrenclou](https://github.com/kehrenclou)
  * @param onBackClick back click handler prop passed down from parent
  * @param onForwardClick forward click handler prop passed down from parent
@@ -84,6 +84,8 @@ export function RepeatSeedPhrase({
               buttonKind="textOnly"
               leftIcon="arrowLeft"
               size="sm"
+              margin="0"
+              className="px-0"
               onClick={handleBackClick}
             />
           </Layout.Header.Left>

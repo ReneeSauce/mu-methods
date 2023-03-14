@@ -1,13 +1,26 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useContext, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import StepWizard from "react-step-wizard";
+import { AuthContext } from "../../contexts/auth-context";
 import { WizardContext } from "../../contexts/wizard-context";
 import { Steps } from "../steps";
 
 //TODO: update state useState with appropriate items
+//TODO: combine with account-page and dashboard into one route
+//TODO: logic for handleAddWallet button at end of flow -
 /* -------------------------------------------------------------------------- */
-/*                             Add-Account Wizard                             */
+/*                               AccountPage Wizard                           */
 /* -------------------------------------------------------------------------- */
+/**
+ * AddAccount  Wizard - used for /addaccount route 
+ * @author [K. Ehrenclou](https://github.com/kehrenclou)
+
+ */
+
 export const AddAccount = () => {
+  /* --------------------------------- consts --------------------------------- */
+  const navigate = useNavigate();
+  const authCtx = useContext(AuthContext);
   /* ------------------------------- use states ------------------------------- */
   //updates SW, form data and seedPhrases for context
   const [SW, setSW] = useState();
@@ -51,8 +64,8 @@ export const AddAccount = () => {
   /* -------------------------------- functions ------------------------------- */
   //do something on stepchange
   const onStepChange = (stats) => {
-    console.log(state); //for presentation? - to show state being captured
-    console.log(state.seedPhrases); //for presentation to show seedphrase capture
+    // console.log(state); //for presentation? - to show state being captured
+    // console.log(state.seedPhrases); //for presentation to show seedphrase capture
 
     setPrevStep(stats.previousStep);
   };
@@ -72,13 +85,7 @@ export const AddAccount = () => {
     setIsOpen(false);
   };
   /* -------------------------------- handlers -------------------------------- */
-  // for debugging to visualize steps
-  // const handleForwardClick = (nextStep) => {
-  //   console.log(nextStep);
-  // };
-  // const handleBackClick = () => {
-  //   console.log(nextStep);
-  // };
+
   const handleAddWallet = () => {
     // setIsOpen(true);
     console.log("save wallet permissionsand data here");
@@ -86,7 +93,8 @@ export const AddAccount = () => {
   };
 
   const handleReturnToDashboard = () => {
-    console.log("add logic here to return to dashboard");
+    authCtx.updateIsNavVisible(true);
+    navigate("/dashboard");
   };
 
   /* --------------------------- animation controls --------------------------- */
@@ -106,7 +114,7 @@ export const AddAccount = () => {
           stepName="wallet-scan"
           SW={SW}
           onForwardClick={goTo("wallet-confirm")}
-          onBackClick={handleReturnToDashboard} //somehow will need to get this to go to dashboard
+          onBackClick={handleReturnToDashboard}
           title="Adding account"
           subtitle="Step 1/3"
         ></Steps.WalletScan>

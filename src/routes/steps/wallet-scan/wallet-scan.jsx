@@ -1,18 +1,16 @@
 import { useContext, useEffect, useState } from "react";
-import { Button, Layout } from "../../../components"; //button needs to be changed when avail
+import { Button, Layout } from "../../../components";
 import { WizardContext } from "../../../contexts/wizard-context";
 import { account, fSeedPhrases } from "../../../utils/faker-data";
 import { Body } from "./body";
 
 //TODO: implement qr scanner component
-//TODO:logic for grabbing qr values with faker- tbd with SDK-
+//TODO:logic for grabbing qr values for SDK-
 //consider clearing state.accountData before scanning
 //TODO: logic to get seeds from scan and pass to context - working with faker
 //TODO: what should happen on public key manually
 //a form open or turn into input field
 //how will you know if submitted without button?  will continue serve as submit?
-//TODO: get form inputs when ready for input public key
-//may need styled ocmponents to render placeholder text like figma
 
 /**
  * Wallet-Scan Component -
@@ -53,14 +51,14 @@ export const WalletScan = ({
   const [data, setData] = useState("");
   const [key, setKey] = useState("");
 
-  //state of scan data capture
+  //state of scan data capture - to be hooked up with scanner
   const [didGetData, setDidGetData] = useState(false);
 
   //control buuton state
   const [disabled, setDisabled] = useState(true);
 
   // /* ------------------------------- use Effect ------------------------------- */
-  // //not working
+
   // //update Context
   useEffect(() => {
     updateAccountData(data);
@@ -77,12 +75,12 @@ export const WalletScan = ({
     }
   }, [state.accountData, key]);
   // /* --------------------------------- handler -------------------------------- */
-  //w react-qrreader - passed via onResult?how to implement
+
   //currently pulling account data and seed phrases(needed for next step) from faker
   const handleScan = () => {
     setData(account);
     updateSeedPhrases(fSeedPhrases);
-    console.log(fSeedPhrases);
+
     //sdk will handle this
   };
 
