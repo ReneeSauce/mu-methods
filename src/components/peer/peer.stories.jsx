@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import { useState } from "react";
 import { Peer } from "./peer";
 
@@ -14,16 +15,13 @@ export default {
   component: Peer,
   argTypes: {
     title: { control: "text" },
-    src: { control: "text" },
     alt: { control: "text" },
-    action: {
-      onClick: "Peer removed!",
-    },
+    add: { control: "boolean" },
   },
 };
 
 export const Template = (args) => {
-  // REACT HOOK! Inital state for peers:
+  // Inital state for peers:
   const [peers, setPeers] = useState([
     {
       name: "Peer 1",
@@ -41,9 +39,16 @@ export const Template = (args) => {
   // }, []);
 
   return (
-    <Peer title={args.alt}>
+    <Peer title={args.title}>
       {peers.map((peer) => (
-        <Peer.Cell src={peer.src} peer={peer.name} alt={args.alt} />
+        <Peer.Cell
+          src={peer.src}
+          peer={peer.name}
+          alt={args.alt}
+          isAdding={args.add}
+          handleAddPeer={action("addPeer")}
+          handleDeletePeer={action("deletePeer")}
+        />
       ))}
     </Peer>
   );
