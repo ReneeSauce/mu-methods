@@ -10,6 +10,9 @@ import { Button } from "../button";
  * @param shape avatar shape by default is rounded.
  * @param {string} title by default is chosen peers
  * @param children expects peer title and peer cell
+ * @param isAdding expects true or false for adding new peers with add icon instead of delete icon.
+ * @function handleDeletePeer expects func to remove peer
+ * @function handleAddPeer expects func func to add peers
  */
 
 const Container = styled.div`
@@ -41,7 +44,16 @@ const Header = ({ children }) => {
   );
 };
 
-const Cell = ({ src, peer, alt, size = "sm", shape = "round" }) => {
+const Cell = ({
+  src,
+  peer,
+  alt,
+  size = "sm",
+  shape = "round",
+  isAdding,
+  handleAddPeer,
+  handleDeletePeer,
+}) => {
   return (
     <PeerCell className="d-flex flex-row bg-white bg-opacity-10 align-items-center rounded mb-16px">
       <div className="ms-8px me-12px">
@@ -49,12 +61,21 @@ const Cell = ({ src, peer, alt, size = "sm", shape = "round" }) => {
       </div>
       <div className="d-flex justify-content-between align-items-center w-100 me-18px">
         <PeerText className="text-white fs-18px mb-0">{peer}</PeerText>
-        <Button
-          buttonKind="textOnly"
-          onClick={() => {}}
-          rightIcon="delete"
-          size="sm"
-        />
+        {isAdding ? (
+          <Button
+            buttonKind="textOnly"
+            onClick={handleAddPeer}
+            rightIcon="add"
+            size="sm"
+          />
+        ) : (
+          <Button
+            buttonKind="textOnly"
+            onClick={handleDeletePeer}
+            rightIcon="delete"
+            size="sm"
+          />
+        )}
       </div>
     </PeerCell>
   );
