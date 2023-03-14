@@ -13,3 +13,4 @@ export * from "./qr-reader";
 export * from "./slideshow";
 export * from "./table";
 export * from "./wallet";
+export * from "./wallet-data";

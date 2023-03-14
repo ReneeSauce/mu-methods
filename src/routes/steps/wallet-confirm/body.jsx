@@ -1,7 +1,7 @@
 //connect-wallet-confirm-body
 import { useContext } from "react";
 import styled from "styled-components";
-import { Wallet } from "../../../components";
+import { WalletData } from "../../../components";
 import { WizardContext } from "../../../contexts/wizard-context";
 
 //TODO: need logic to set is confirmed to true - use state
@@ -27,13 +27,13 @@ export const Body = () => {
       <h4 className="pb-16px m-0 text-white text-opacity-90 fs-24px text-center">
         Confirm your account
       </h4>
-      <Wallet
+      <WalletData
         src={state.accountData.avatar}
         alt="wallet avatar"
         wallet={state.accountData.accountWallet}
         name={state.accountData.accountName}
         id={state.accountData.accountId}
-      ></Wallet>
+      ></WalletData>
       <div className="d-flex flex-column flex-grow-1 justify-content-center">
         <StyledBox className="d-flex flex-column align-items-center justify-content-center bg-beta">
           <div>confirmation qr code here</div>
