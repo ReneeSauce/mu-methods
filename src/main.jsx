@@ -12,17 +12,17 @@ import { UserProvider } from "./contexts/user-context";
 import {
   AccountPage,
   AddAccount,
-  DbStub,
+  Dashboard,
   Home,
   Notifications,
   Profile,
   SignUp,
 } from "./routes";
-import { Dashboard } from "./routes/dashboard/dashboard";
 
 import "./theme/defaults.scss";
 
 const isLoggedIn = true;
+const isVisible = true;
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -38,7 +38,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <Route path="/addaccount" element={<AddAccount />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/accountpage" element={<AccountPage />} />
-            <Route path="/db" element={<DbStub />} />
+            <Route path="/notifications" element={<Notifications />} />
             <Route
               path="/profile"
               element={
@@ -53,24 +53,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 />
               }
             />
-            {/* <Route path="/accountpage" element={<AccountDetails />} /> */}
-            {/* <Route
-            path="/account"
-            element={
-              <Account
-                src="https://images.unsplash.com/photo-1615361200141-f45040f367be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
-                alt="sushi"
-                name="MyMetaMaskAkk"
-                wallet="Metamask"
-                permissions="F"
-                pillText="0x6b...7776"
-                isCopiable={true}
-              />
-            }
-          /> */}
-            <Route path="/notifications" element={<Notifications />} />
           </Routes>
-          {isLoggedIn && (
+          {isLoggedIn && isVisible && (
             <NavTray
               navLinks={[
                 {
