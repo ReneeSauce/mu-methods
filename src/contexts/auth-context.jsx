@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
   //state to store userProfile
 
   const [state, updateState] = useState({
-    isLoggedIn: false, //set to true for demo
+    isLoggedIn: true, //set to true for demo
     isNavVisible: true, //set to true for home page demo to get to notifications
   });
 

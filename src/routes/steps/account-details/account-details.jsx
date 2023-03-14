@@ -22,8 +22,8 @@ export const AccountDetails = ({ onBackClick, onForwardClick }) => {
 
   const userCtx = useContext(UserContext);
   const tsxCtx = useContext(TransactionContext);
-  console.log(tsxCtx.state);
-  console.log(userCtx.state);
+  // console.log(tsxCtx.state);
+  // console.log(userCtx.state);
   /* -------------------------------- useState -------------------------------- */
 
   /* ------------------------------- useEffects ------------------------------- */

@@ -1,8 +1,9 @@
 import _ from "lodash";
+import { useContext, useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import notificationSign from "../../assets/notification-sign.svg";
-
+import { AuthContext } from "../../contexts/auth-context";
 /**
  The **NavTrau** component is the navigation tray component for mobile version of the application.
  *
@@ -37,36 +38,59 @@ const StyledNavBar = styled.nav`
 
 export const NavTray = ({ isUnreadMessages, navLinks }) => {
   const location = useLocation();
+
+  /* --------------------- useContext setters and getters --------------------- */
+  const authCtx = useContext(AuthContext);
+
+  const [isLoggedIn, setIsLoggedIn] = useState();
+  const [isVisible, setIsVisible] = useState();
+
+  useEffect(() => {
+    setIsLoggedIn(authCtx.state.isLoggedIn);
+  }, [authCtx.state]);
+
+  useEffect(() => {
+    setIsVisible(authCtx.state.isNavVisible);
+  }, [authCtx.state]);
+
+  console.log(authCtx.state);
+  console.log(isLoggedIn);
+
   return (
-    <StyledNavBar className="nav position-fixed d-flex justify-content-evenly align-items-center rounded-pill bg-white bg-opacity-10">
-      {navLinks.map((link) => {
-        return (
-          <StyledNavLink
-            key={_.uniqueId()}
-            role={link.role}
-            to={link.to}
-            className="nav-link rounded-circle d-flex justify-content-center align-items-center"
-          >
-            <link.Icon
-              className={
-                location.pathname === link.to ? "opacity-100" : "opacity-70"
-              }
-              width="22"
-              height="22"
-            />
-            {link.isNotification && (
-              <img
-                src={notificationSign}
-                alt="Blue circle"
-                className={`position-absolute ${
-                  isUnreadMessages ? "d-block" : "d-none"
-                }`}
-                style={{ top: "13px", right: "13px" }}
-              />
-            )}
-          </StyledNavLink>
-        );
-      })}
-    </StyledNavBar>
+    isLoggedIn &&
+    isVisible && (
+      <div>
+        <StyledNavBar className="nav position-fixed d-flex justify-content-evenly align-items-center rounded-pill bg-white bg-opacity-10">
+          {navLinks.map((link) => {
+            return (
+              <StyledNavLink
+                key={_.uniqueId()}
+                role={link.role}
+                to={link.to}
+                className="nav-link rounded-circle d-flex justify-content-center align-items-center"
+              >
+                <link.Icon
+                  className={
+                    location.pathname === link.to ? "opacity-100" : "opacity-70"
+                  }
+                  width="22"
+                  height="22"
+                />
+                {link.isNotification && (
+                  <img
+                    src={notificationSign}
+                    alt="Blue circle"
+                    className={`position-absolute ${
+                      isUnreadMessages ? "d-block" : "d-none"
+                    }`}
+                    style={{ top: "13px", right: "13px" }}
+                  />
+                )}
+              </StyledNavLink>
+            );
+          })}
+        </StyledNavBar>
+      </div>
+    )
   );
 };
