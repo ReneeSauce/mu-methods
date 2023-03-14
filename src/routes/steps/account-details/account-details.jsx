@@ -1,8 +1,7 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Button, Layout } from "../../../components"; //button needs to be changed when avail
 import { TransactionContext } from "../../../contexts/transaction-context";
 import { UserContext } from "../../../contexts/user-context";
-import { walletProfiles } from "../../../utils"; //data
 import { Body } from "./body";
 
 //TODO: logic to get account filter for rendering correct account on this page
@@ -23,22 +22,18 @@ export const AccountDetails = ({ onBackClick, onForwardClick }) => {
 
   const userCtx = useContext(UserContext);
   const tsxCtx = useContext(TransactionContext);
-
-  console.log("userctx", userCtx.state);
-  console.log("tsxctx", tsxCtx.state);
+  console.log(tsxCtx.state);
+  console.log(userCtx.state);
   /* -------------------------------- useState -------------------------------- */
-  const [profile, setProfile] = useState([walletProfiles]);
 
   /* ------------------------------- useEffects ------------------------------- */
 
   /* -------------------------------- functions ------------------------------- */
   const reloadPage = () => {
-    //reload transactions instead?
-    console.log("clicked");
-    const user = userCtx.state.walletProfiles.filter(
-      (x) => x.isPrimary === true
+    const filter = userCtx.state.activeFilter;
+    const reload = tsxCtx.state.allTransactions.filter(
+      (x) => x.cryptoType === filter || x.cryptoType === "NFT"
     );
-    userCtx.updatePrimaryAcct(user);
   };
 
   /* --------------------------------- return --------------------------------- */

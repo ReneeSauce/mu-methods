@@ -59,14 +59,14 @@ export const Home = () => {
           <h1>Home from Route</h1>
           <p>This is where auth flow ischecked </p>
 
-          <button className="w-100 p-20px" onClick={() => handleClick()}>
+          {/* <button className="w-100 p-20px" onClick={() => handleClick()}>
             Handle Click goto db
-          </button>
+          </button> */}
           <button
             className="w-100 p-20px"
             onClick={() => handleClickDashboard()}
           >
-            Handle Click goto database
+            Click here to go to dashboard -pretend you are logged in
           </button>
         </div>
       }
